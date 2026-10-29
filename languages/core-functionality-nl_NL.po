@@ -47,7 +47,6 @@ msgid "Core Functionality"
 msgstr "Core Functionality"
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:353
-#: src/Admin/Services/Settings/AdminSettingsPage.php:398
 #: src/Environment/Plugins/Automatewoo.php:156
 #: src/Environment/Plugins/EventTickets.php:96
 #: src/Environment/Plugins/FestingerVault.php:111
@@ -3115,7 +3114,7 @@ msgid "Expand all"
 msgstr "Alles uitklappen"
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:439
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:253
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
 msgid "Explanation"
 msgstr "Uitleg"
@@ -3763,7 +3762,7 @@ msgid "The previous version is restored; the replaced version is now the previou
 msgstr "De vorige versie is teruggezet; de vervangen versie is nu de vorige."
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:748
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:402
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:400
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:405
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:517
@@ -4176,10 +4175,6 @@ msgstr "Inhoud bewerken"
 msgid "Finding, reading and writing drafts of site content."
 msgstr "Concepten van de inhoud van de site zoeken, lezen en schrijven."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:234
-msgid "Content type"
-msgstr "Inhoudstype"
-
 #. translators: %s: the current post status.
 #: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:186
 #, php-format
@@ -4373,7 +4368,7 @@ msgstr "Sensei LMS"
 msgid "Adjustments to Sensei LMS."
 msgstr "Aanpassingen aan Sensei LMS."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:288
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:277
 msgid "Other"
 msgstr "Overig"
 
@@ -4390,42 +4385,39 @@ msgstr "Een AI-assistent mag geen concepten van dit inhoudstype maken."
 msgid "Choose per content type what an AI assistant (such as Claude) may do on this site. It never publishes or deletes: you decide what goes live."
 msgstr "Kies per inhoudstype wat een AI-assistent (zoals Claude) op deze site mag doen. Hij publiceert en verwijdert nooit: jij bepaalt wat online komt."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:235
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:361
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:359
 msgid "Read"
 msgstr "Lezen"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:236
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:362
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:360
 msgid "Make and change drafts"
 msgstr "Concepten maken en aanpassen"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:237
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:363
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:361
 msgid "Change published content"
 msgstr "Gepubliceerde inhoud aanpassen"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:255
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:244
 msgid "These options let an AI assistant help you make the content of this site. The assistant logs in as a WordPress user with an application password and never has more rights than that user. What you switch on below narrows that down to these content types and these actions."
 msgstr "Met deze opties kan een AI-assistent je helpen de inhoud van deze site te maken. De assistent logt in als een WordPress-gebruiker met een applicatiewachtwoord en heeft nooit meer rechten dan die gebruiker. Wat je hieronder aanzet, beperkt dat verder tot deze inhoudstypes en deze handelingen."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:256
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:245
 msgid "Read: the assistant may find and read items of the type, published ones too, for example as a source for a new text."
 msgstr "Lezen: de assistent mag items van dit type zoeken en lezen, ook gepubliceerde, bijvoorbeeld als bron voor een nieuwe tekst."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:257
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:246
 msgid "Make and change drafts: the assistant may make new drafts, change drafts and items pending review, and put them up for review. This covers everything that belongs to making content: text, layout in blocks, terms and fields. It never publishes and never deletes: you check, change and publish a draft, or throw it away."
 msgstr "Concepten maken en aanpassen: de assistent mag nieuwe concepten maken, concepten en items die op beoordeling wachten aanpassen, en ze ter beoordeling aanbieden. Dat omvat alles wat bij het maken van inhoud hoort: tekst, opmaak met blokken, termen en velden. Hij publiceert en verwijdert nooit: jij kijkt een concept na, past het aan en publiceert het, of gooit het weg."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:258
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:247
 msgid "Change published content: the assistant may change an item that is already published, in a copy (Rewrite & Republish of Yoast Duplicate Post). The original stays unchanged and online. Only when you publish the copy does it replace the original; until then you can still change the copy or throw it away."
 msgstr "Gepubliceerde inhoud aanpassen: de assistent mag een item dat al gepubliceerd is aanpassen in een kopie (Herschrijven & Opnieuw publiceren van Yoast Duplicate Post). Het origineel blijft ongewijzigd en online. Pas als jij de kopie publiceert, vervangt die het origineel; tot die tijd kun je de kopie nog aanpassen of weggooien."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:259
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:248
 msgid "Although changing published content this way should be safe, check that it works well for your content before you switch it on. When in doubt, have the assistant write a new draft and paste it into the existing content yourself."
 msgstr "Ofschoon het op deze wijze aanpassen van gepubliceerde inhoud veilig zou moeten zijn, is het belangrijk dat je voordat je deze optie aanzet controleert of het voor jouw inhoud ook goed werkt. Bij twijfel kun je ook een nieuw concept laten schrijven en dat handmatig in de bestaande inhoud plakken."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:260
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:249
 msgid "The levels are steps: a level includes the ones before it."
 msgstr "De opties werken als treden: een hogere trede omvat de lagere."
 

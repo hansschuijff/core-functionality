@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T20:30:02+01:00\n"
+"POT-Creation-Date: 2026-10-29T21:04:58+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -45,7 +45,6 @@ msgid "Core Functionality"
 msgstr ""
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:353
-#: src/Admin/Services/Settings/AdminSettingsPage.php:398
 #: src/Environment/Plugins/Automatewoo.php:156
 #: src/Environment/Plugins/EventTickets.php:96
 #: src/Environment/Plugins/FestingerVault.php:111
@@ -91,7 +90,7 @@ msgid "🚨 CRITICAL WARNING:\\n\\nAre you sure you want to trigger a settings r
 msgstr ""
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:748
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:402
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:400
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:405
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:517
@@ -3131,7 +3130,7 @@ msgid "Expand all"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:439
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:253
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
 msgid "Explanation"
 msgstr ""
@@ -3629,51 +3628,44 @@ msgstr ""
 msgid "Choose per content type what an AI assistant (such as Claude) may do on this site. It never publishes or deletes: you decide what goes live."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:234
-msgid "Content type"
-msgstr ""
-
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:235
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:361
-msgid "Read"
-msgstr ""
-
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:236
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:362
-msgid "Make and change drafts"
-msgstr ""
-
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:237
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:363
-msgid "Change published content"
-msgstr ""
-
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:255
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:244
 msgid "These options let an AI assistant help you make the content of this site. The assistant logs in as a WordPress user with an application password and never has more rights than that user. What you switch on below narrows that down to these content types and these actions."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:256
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:245
 msgid "Read: the assistant may find and read items of the type, published ones too, for example as a source for a new text."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:257
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:246
 msgid "Make and change drafts: the assistant may make new drafts, change drafts and items pending review, and put them up for review. This covers everything that belongs to making content: text, layout in blocks, terms and fields. It never publishes and never deletes: you check, change and publish a draft, or throw it away."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:258
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:247
 msgid "Change published content: the assistant may change an item that is already published, in a copy (Rewrite & Republish of Yoast Duplicate Post). The original stays unchanged and online. Only when you publish the copy does it replace the original; until then you can still change the copy or throw it away."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:259
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:248
 msgid "Although changing published content this way should be safe, check that it works well for your content before you switch it on. When in doubt, have the assistant write a new draft and paste it into the existing content yourself."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:260
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:249
 msgid "The levels are steps: a level includes the ones before it."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:288
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:277
 msgid "Other"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:359
+msgid "Read"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:360
+msgid "Make and change drafts"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:361
+msgid "Change published content"
 msgstr ""
 
 #. translators: %s: the current post status.
