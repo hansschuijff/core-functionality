@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T01:18:56+01:00\n"
+"POT-Creation-Date: 2026-10-29T14:07:24+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -467,6 +467,7 @@ msgstr ""
 #: src/Environment/Plugins/BeaverBuilder.php:124
 #: src/Environment/Plugins/BrokenLinkChecker.php:65
 #: src/Environment/Plugins/CoreFunctionality.php:109
+#: src/Environment/Plugins/DuplicatePost.php:69
 #: src/Environment/Plugins/EuVatCompliance.php:78
 #: src/Environment/Plugins/EventTickets.php:84
 #: src/Environment/Plugins/EventTickets.php:95
@@ -1140,6 +1141,15 @@ msgstr ""
 
 #: src/Environment/Plugins/DebugToolkit.php:78
 msgid "Debug Toolkit Diagnostics"
+msgstr ""
+
+#: src/Environment/Plugins/DuplicatePost.php:67
+#: src/Environment/Plugins/DuplicatePost.php:69
+msgid "Duplicate Post Settings"
+msgstr ""
+
+#: src/Environment/Plugins/DuplicatePost.php:71
+msgid "Duplicate Post"
 msgstr ""
 
 #: src/Environment/Plugins/EuVatCompliance.php:76
@@ -3510,6 +3520,292 @@ msgstr ""
 msgid "Node ID's"
 msgstr ""
 
+#: src/Modules/AiAccess/AiAccess.php:46
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:104
+msgid "AI Access"
+msgstr ""
+
+#: src/Modules/AiAccess/AiAccess.php:47
+msgid "Abilities an AI assistant may use on this site, for example to write drafts. Publishing stays with you."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/AbstractContentAbility.php:173
+msgid "No item with this id that an AI assistant may use."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/AbstractContentAbility.php:177
+msgid "You may not edit this item."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/CreateDraft.php:55
+msgid "Create draft"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/CreateDraft.php:66
+msgid "Creates a new post, page or other item as a draft, with title, content, excerpt, terms and extra fields. It is never published; the site owner does that."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/CreateDraft.php:109
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/FindContent.php:147
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:144
+msgid "This content type is not available to an AI assistant."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/CreateDraft.php:114
+msgid "You may not create items of this type."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/FindContent.php:65
+msgid "Find content"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/FindContent.php:76
+msgid "Searches posts, pages and other content an AI assistant may work on, by type, status, text and term. Returns id, title, status, dates and links; use get-content for the full item."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/GetContent.php:54
+msgid "Get content"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/GetContent.php:65
+msgid "Returns one item in full: content as block markup, excerpt, terms and extra fields, and whether it can be changed now."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/ListTerms.php:62
+msgid "List terms"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/ListTerms.php:73
+msgid "Lists the existing categories, tags and other terms that can be given to content, with their ids. New terms are not created."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/ListTerms.php:127
+msgid "This taxonomy is not available to an AI assistant."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/SubmitForReview.php:53
+msgid "Submit for review"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/SubmitForReview.php:64
+msgid "Sets a draft to \"pending review\", so the site owner sees it is ready to look at. It can still be changed afterwards."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/UpdateDraft.php:54
+msgid "Update draft"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/Abilities/UpdateDraft.php:65
+msgid "Changes a draft or an item pending review: only the fields that are given. Published items cannot be changed here; use start-rewrite for a copy where that is allowed."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:73
+msgid "Content Editing"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:74
+msgid "An AI assistant may find, read and write drafts of posts, pages and other content types. It never publishes; you do."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:108
+msgid "Content editing"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:109
+msgid "Finding, reading and writing drafts of site content."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:115
+msgid "What an AI assistant (for example Claude through the MCP Adapter) may do with the content of this site. It works with the rights of the user it logs in as, writes drafts only and never publishes or deletes."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:199
+msgid "Content type"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:200
+msgid "AI may use it"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:201
+msgid "Change published items in a copy"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:202
+msgid "A copy (Rewrite & Republish of Yoast Duplicate Post) replaces the original only when you publish it. Switch it on per type only after testing that the type's own data (tickets, dates, course structure) survives."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:283
+#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
+#: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:517
+msgid "Save"
+msgstr ""
+
+#. translators: %s: the current post status.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:186
+#, php-format
+msgid "Only a draft can be submitted for review; this one has the status \"%s\"."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:213
+msgid "Use core-functionality/start-rewrite to work in a copy that replaces the original once it is published."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:214
+msgid "Ask the site owner to set it back to draft."
+msgstr ""
+
+#. translators: 1: the post status, 2: what to do instead.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:219
+#, php-format
+msgid "This item has the status \"%1$s\" and cannot be changed by an AI assistant. %2$s"
+msgstr ""
+
+#. translators: %s: block names, separated by commas.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:270
+#, php-format
+msgid "The new content leaves out blocks that must stay: %s. Keep them as they are."
+msgstr ""
+
+#. translators: %s: taxonomy name.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:290
+#, php-format
+msgid "The taxonomy \"%s\" cannot be used for this content type."
+msgstr ""
+
+#. translators: 1: term id, 2: taxonomy name.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:300
+#, php-format
+msgid "There is no term %1$d in \"%2$s\". Use core-functionality/list-terms to find existing terms."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:327
+msgid "The item could not be found after saving."
+msgstr ""
+
+#. translators: %s: the id of a group of fields.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:335
+#, php-format
+msgid "The fields \"%s\" do not apply to this content type and were ignored."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:73
+msgid "Course Content"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:74
+msgid "An AI assistant may write drafts of Sensei courses and lessons and place lessons in a course and module. Quizzes and enrolments are left alone."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/CourseContent/CourseFields.php:140
+msgid "A course's structure cannot be changed here; place each lesson instead."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/CourseContent/CourseFields.php:150
+msgid "Give an existing course you may edit (course_id)."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/CourseContent/CourseFields.php:175
+msgid "Untitled lesson"
+msgstr ""
+
+#. translators: %d: module id.
+#: src/Modules/AiAccess/Features/CourseContent/CourseFields.php:184
+#, php-format
+msgid "The course has no module %d."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/CourseContent/CourseFields.php:194
+msgid "The course structure could not be saved."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/EventContent/EventContent.php:68
+msgid "Event Content"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/EventContent/EventContent.php:69
+msgid "An AI assistant may write drafts of events (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/EventContent/EventFields.php:155
+msgid "This event has no dates yet; give both start and end."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/EventContent/EventFields.php:160
+msgid "The event data could not be saved."
+msgstr ""
+
+#. translators: %s: the field name.
+#: src/Modules/AiAccess/Features/EventContent/EventFields.php:182
+#, php-format
+msgid "The event field \"%s\" is not a valid date."
+msgstr ""
+
+#. translators: %d: post id.
+#: src/Modules/AiAccess/Features/EventContent/EventFields.php:201
+#, php-format
+msgid "There is no venue %d."
+msgstr ""
+
+#. translators: %d: post id.
+#: src/Modules/AiAccess/Features/EventContent/EventFields.php:211
+#, php-format
+msgid "There is no organizer %d."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/EventContent/ListVenuesAndOrganizers.php:57
+msgid "List venues and organizers"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/EventContent/ListVenuesAndOrganizers.php:68
+msgid "Lists the existing venues and organizers of events with their ids, to link them to an event. New ones are not created."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:54
+msgid "Rewrite Copies"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:55
+msgid "An AI assistant may change published content in a Rewrite & Republish copy (Yoast Duplicate Post) that replaces the original only when you publish it."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:78
+msgid "Start rewrite"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:89
+msgid "Makes a Rewrite & Republish copy of a published item (or returns the existing one) to change with update-draft. The copy replaces the original only when the site owner publishes it."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:165
+msgid "Only a published item gets a copy; change drafts directly with update-draft."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:169
+msgid "This item is itself a copy."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:173
+msgid "Copies are not allowed for this content type (see the AI Access settings)."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:177
+msgid "Duplicate Post does not allow a copy of this content type, or not for this user (see its settings)."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:198
+#: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:211
+msgid "The copy could not be found after it was made."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:48
+msgid "SEO Fields"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
+msgid "An AI assistant may write the SEO title and meta description of Yoast SEO."
+msgstr ""
+
 #: src/Modules/Cleaner/Cleaner.php:41
 msgid "WordPress Cleaner"
 msgstr ""
@@ -3763,11 +4059,6 @@ msgstr ""
 
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:758
 msgid "The previous version is restored; the replaced version is now the previous one."
-msgstr ""
-
-#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
-#: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:517
-msgid "Save"
 msgstr ""
 
 #: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:86
