@@ -144,6 +144,15 @@ are built too, `get_toolbar_nodes()` may only call WordPress functions directly;
 plugin itself goes in a closure as href (`ToolbarShortcut::get_href()` resolves it). The admin menu nodes
 still go to `AdminMenuRegister` from `is_ready()`.
 
+**Post type catalogue.** Plugin guards and the core guard also name the post types their plugin registers
+(`get_post_types()`, `PostTypeProviderInterface`; plain names only, so it works for inactive plugins too;
+default none). `PostTypeRegister` collects them per provider with the same status and name, filled on first
+use after `init` by `Environment::load_post_type_catalogue()`; both catalogues share the status per provider
+(found once per request). Features use it to offer choices per plugin instead of per post type and to find
+the plugin of a post type (`get_provider()`), such as the Duplicate Post tab and the grouping on the AI
+Access tab (Hans, October 2026). Themes name no post types. Sensei Pro extends the Sensei LMS guard but
+names none: the course types belong to Sensei LMS.
+
 `ToolbarShortcut::$orientation` is the kind of link (to an admin page or to the site), shown as a badge in
 the menu builder. Where a node is shown is not decided by the guard but per node in the menu builder.
 
@@ -333,12 +342,15 @@ The module `DuplicatePost` (dependency: the `duplicate-post` guard) adjusts Yoas
 bulk actions for the post types whose own plugin duplicates them, such as events (new ticket products per
 copy) and Sensei courses (the lessons come along). A plain copy of post and meta would share those and mix
 up two items; one duplicate link per item also avoids confusion (Hans, October 2026). The post types stay
-enabled in Duplicate Post, so code (the AI Access rewrite copies) can still use it. The list is chosen per
-post type on the "Duplicate Post" tab (`duplicate-post-settings`, defaults in
-`settings/modules/duplicate-post/`: events, series, the three ticket types, courses, lessons, quizzes and
-questions). Types without an admin screen (tickets) are not on the tab and are kept when it is saved;
-the filter `core-functionality/duplicate-post-own-duplication-types` adjusts the list in code. Choosing per
-plugin instead of per post type could come later, if guards learn which post types belong to their plugin.
+enabled in Duplicate Post, so code (the AI Access rewrite copies) can still use it. The choice is made on
+the "Duplicate Post" tab (`duplicate-post-settings`, defaults in `settings/modules/duplicate-post/`). The tab
+offers one checkbox per active plugin from the post type catalogue (all its post types
+follow, also those without an admin screen) and, under "Other", loose post types of no known plugin.
+Stored as `own_duplication_providers` and `own_duplication_post_types`; choices for plugins not on the tab
+(inactive) are kept on save, and loose types that belong to a plugin on the tab are dropped (its checkbox
+decides). Defaults: The Events Calendar (Pro), Event Tickets (Plus) and Sensei LMS. The filter
+`core-functionality/duplicate-post-own-duplication-types` adjusts the resulting post types in code. The bulk
+action filters are added on `admin_init`, so the catalogue is not built on the front end for them.
 
 ### Sensei LMS
 

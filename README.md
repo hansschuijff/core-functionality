@@ -112,6 +112,8 @@ the plugin's admin links, from which the quick menu in the admin toolbar is comp
    itself goes in a closure (`href: fn () => wc_get_page_permalink( 'shop' )`). The `orientation` of a
    shortcut says whether it links to an admin page or to the site; where it is shown is set in the
    menu builder.
+5. `get_post_types()` returns the post types the plugin registers (plain names), if any. Features use
+   them to offer choices per plugin, such as the Duplicate Post tab.
 
 Themes work the same in `src/Environment/Themes/` with the id suffix `-theme`; their index entry holds
 the theme name and author.
