@@ -16,7 +16,6 @@ namespace DeWittePrins\CoreFunctionality\Environment\Plugins;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
-use DeWittePrins\CoreFunctionality\Environment\Plugins\Interfaces\PluginInterface;
 use Override;
 
 use function __;
@@ -30,13 +29,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class CoreFunctionality
  *
  * The guard of this plugin itself, which supplies its admin toolbar nodes, such as the link to its
- * settings page. The plugin is always active when it runs, so the guard is always ready and needs
- * no entry in environment-index.php; it does not extend AbstractPlugin, which looks the plugin up
- * there. Nothing depends on it, but if something ever names it as a dependency, it answers true.
+ * settings page. It extends AbstractPlugin like every plugin guard, so it gets each new default
+ * from there; it only differs in needing no proof: the plugin is always active when it runs, so the
+ * guard is always ready and needs no entry in environment-index.php. Nothing depends on it, but if
+ * something ever names it as a dependency, it answers true.
  *
  * @since 1.0.0
  */
-class CoreFunctionality implements PluginInterface {
+class CoreFunctionality extends AbstractPlugin {
 
 	/**
 	 * The guard id (the class name in kebab-case).
@@ -47,17 +47,6 @@ class CoreFunctionality implements PluginInterface {
 	#[Override]
 	public function get_id(): string {
 		return 'core-functionality';
-	}
-
-	/**
-	 * Returns the post types this plugin registers (none).
-	 *
-	 * @since  1.0.0
-	 * @return string[] Empty array.
-	 */
-	#[Override]
-	public function get_post_types(): array {
-		return array();
 	}
 
 	/**
