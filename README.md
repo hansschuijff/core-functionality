@@ -116,6 +116,30 @@ the plugin's admin links, from which the quick menu in the admin toolbar is comp
 Themes work the same in `src/Environment/Themes/` with the id suffix `-theme`; their index entry holds
 the theme name and author.
 
+## AI Access
+
+The module AI Access lets an AI assistant (for example Claude through the
+[MCP Adapter](https://wordpress.org/plugins/mcp-adapter/)) find, read and write drafts. It never
+publishes, schedules or deletes: published items are changed in a Rewrite & Republish copy of Yoast
+Duplicate Post, which replaces the original only when you publish it. The assistant logs in as a
+WordPress user with an application password and has that user's rights.
+
+| Ability | What it does |
+|---|---|
+| `core-functionality/find-content` | Search by type, status, text and term |
+| `core-functionality/get-content` | One item in full: block markup, excerpt, terms, extra fields |
+| `core-functionality/list-terms` | Existing categories, tags and other terms |
+| `core-functionality/create-draft` | A new item as a draft |
+| `core-functionality/update-draft` | Change a draft, an item pending review, or a copy |
+| `core-functionality/submit-for-review` | Set a draft to pending review |
+| `core-functionality/start-rewrite` | Copy of a published item (with Duplicate Post) |
+| `core-functionality/list-venues-and-organizers` | Venues and organizers (with The Events Calendar) |
+
+Posts and pages are always available; events (The Events Calendar), courses and lessons (Sensei LMS) and
+the Yoast SEO title and description come with their plugin. Per content type, the "AI Access" tab
+switches the assistant and the copies on or off. Other code can add content types, fields and
+abilities with the hooks below.
+
 ## Hooks
 
 | Hook | Type | Default | Arguments | Example |
@@ -125,6 +149,12 @@ the theme name and author.
 | `core-functionality/register-settings-sections` | action | | `AdminSettingsPage $page` | `add_action( 'core-functionality/register-settings-sections', fn ( $page ) => $page->register_section( MySettings::class ) );` |
 | `core-functionality/admin-menu-config-nodes` | filter | The admin menu items from the settings files | `AdminMenuConfigNode[] $config_nodes` | `add_filter( 'core-functionality/admin-menu-config-nodes', fn ( $nodes ) => $nodes );` |
 | `core-functionality/admin-menu-removals` | filter | The admin menu slugs to remove | `string[] $slugs_to_remove` | `add_filter( 'core-functionality/admin-menu-removals', fn ( $slugs ) => array_merge( $slugs, array( 'edit-comments.php' ) ) );` |
+| `core-functionality/ai-access-content-types` | filter | Posts and pages, plus the types of active integrations | `ContentTypeProfileInterface[] $profiles` (keyed by post type) | `add_filter( 'core-functionality/ai-access-content-types', fn ( $p ) => $p + array( 'faq' => new ContentTypeProfile( 'faq' ) ) );` |
+| `core-functionality/ai-access-field-handlers` | filter | The field groups of active integrations | `FieldHandlerInterface[] $handlers` | `add_filter( 'core-functionality/ai-access-field-handlers', fn ( $h ) => array_merge( $h, array( new MyFields() ) ) );` |
+| `core-functionality/ai-access-abilities` | filter | The content abilities | `AbilityInterface[] $abilities`, `ContentServices $services` | `add_filter( 'core-functionality/ai-access-abilities', fn ( $a, $s ) => array_merge( $a, array( new MyAbility( $s ) ) ), 10, 2 );` |
+| `core-functionality/ai-access-content-summary` | filter | Id, type, status, title, dates, links | `array $summary`, `WP_Post $post` | `add_filter( 'core-functionality/ai-access-content-summary', fn ( $s, $p ) => $s + array( 'author' => $p->post_author ), 10, 2 );` |
+| `core-functionality/ai-access-editable-statuses` | filter | `draft`, `pending` (publishing statuses are always refused) | `string[] $statuses`, `WP_Post $post` | `add_filter( 'core-functionality/ai-access-editable-statuses', fn ( $s ) => array( 'draft' ) );` |
+| `core-functionality/ai-access-rewrite-available` | filter | `false`; `true` with the Rewrite Copies feature | `bool $available` | `add_filter( 'core-functionality/ai-access-rewrite-available', '__return_false' );` |
 
 To run code from another plugin once Core Functionality has started, whether or not that already
 happened:

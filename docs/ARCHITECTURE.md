@@ -279,6 +279,47 @@ left. Whether theme copies are reported at all is a choice on the tab (`events-s
 `settings/modules/events/`); the scan keeps them, the notice leaves them out. "CF templates" is the
 name: the templates hang on Core Functionality, and other plugins may get the same later.
 
+### AI Access
+
+The module `AiAccess` ("AI-toegang"; October 2026) gives an AI assistant such as Claude abilities of the
+WordPress Abilities API, which the MCP Adapter exposes (`meta.mcp.public`). The assistant logs in as a
+WordPress user with an application password and works with that user's rights; each ability checks
+`edit_posts` and per item `edit_post`. Ability names are `core-functionality/<name>`, category
+`content-editing`.
+
+Fixed rule, in `ContentWriter`, whatever the role: the assistant never publishes, schedules, makes private,
+trashes or deletes. New items are drafts; existing items change only while they are `draft` or `pending`
+(filter `core-functionality/ai-access-editable-statuses`, publishing statuses are always left out). Content
+goes through `wp_kses_post()`, terms must exist in a taxonomy of the type's profile, and a content change
+that drops a protected block (an event's date or ticket block, a course outline, a lesson's quiz) is
+refused.
+
+Feature `ContentEditing` (no dependency) holds the base: `ContentTypes` (profiles per post type, from
+`core-functionality/ai-access-content-types`, with the choices of the "AI Access" tab: per type on/off and
+whether a Rewrite & Republish copy is allowed; defaults in `settings/modules/ai-access/`),
+`FieldHandlers` (groups of extra fields under `fields`, from `core-functionality/ai-access-field-handlers`),
+`ContentReader`, `ContentWriter`, and the abilities `find-content`, `get-content`, `list-terms`,
+`create-draft`, `update-draft`, `submit-for-review` (list filterable: `core-functionality/ai-access-abilities`,
+which also hands over the shared `ContentServices`). The other features plug in through those filters and
+each has its own dependency:
+
+- `RewriteCopies` (`duplicate-post`): ability `start-rewrite` makes a Rewrite & Republish copy of a
+  published item (or returns the existing one) as a draft; the assistant changes the copy, the site owner
+  publishes it, and Duplicate Post merges it into the original, which keeps its id. Switches on
+  `core-functionality/ai-access-rewrite-available`; summaries get `rewrite_of` / `rewrite_copy_id`.
+- `EventContent` (`the-events-calendar`): profile `tribe_events`, field group `event` (start, end, all day,
+  time zone, venue, organizers, cost) saved through `Tribe__Events__API::saveEventMeta()` with the current
+  values filled in (that API resets what it misses; the repository cannot find a draft without dates
+  because of TEC's custom tables), ability `list-venues-and-organizers`. Tickets are left alone.
+- `CourseContent` (`sensei-lms`): profiles `course` and `lesson`, field group `course`: a lesson's course,
+  module and position, placed through `Sensei_Course_Structure` (as the outline block does); a course
+  shows its structure read-only. Quizzes and enrolments are left alone. Not yet tested (Sensei is off on
+  the speeltuin).
+- `SeoFields` (`yoast-seo`): field group `seo` (Yoast title and meta description). Not yet tested.
+
+Rewrite copies are on by default for posts and pages only; events, courses and lessons get them after a
+test that their own data survives copying and merging (Hans, October 2026).
+
 ## Settings and options
 
 - **Settings files** (`settings/`) hold defaults and site data as PHP files returning arrays. General files
@@ -332,6 +373,12 @@ ids in the error log and as an admin notice.
 | `core-functionality/launch-timing` | filter | `array( hook, priority )` on which the Kernel boots (default `init`, 0) |
 | `core-functionality/admin-menu-config-nodes` | filter | Admin menu nodes |
 | `core-functionality/admin-menu-removals` | filter | Admin menu items to remove |
+| `core-functionality/ai-access-content-types` | filter | Content type profiles an AI assistant may use |
+| `core-functionality/ai-access-field-handlers` | filter | Groups of extra fields (SEO, event, course) |
+| `core-functionality/ai-access-abilities` | filter | The AI Access abilities (with `ContentServices`) |
+| `core-functionality/ai-access-content-summary` | filter | The summary of an item the abilities return |
+| `core-functionality/ai-access-editable-statuses` | filter | Statuses in which an AI assistant may change an item |
+| `core-functionality/ai-access-rewrite-available` | filter | Whether Rewrite & Republish copies can be made |
 
 ## Decisions
 
@@ -356,6 +403,8 @@ ids in the error log and as an admin notice.
 | Toolbar catalogue of all known plugins | The register holds the nodes of every guard with a provider status; the toolbar shows only active ones | A menu is set up once; installing or activating a plugin switches its links on and off |
 | Catalogue in memory only | Built per request on first use, not stored in the database | Hrefs can be closures and titles are translated; the cost is small |
 | Visibility per menu node | Admin, front end or both, set in the menu builder; the guard's orientation only says what kind of link it is | Where a link is useful depends on the menu, not on the plugin |
+| AI writes, Hans publishes | AI Access abilities only write drafts; published items change in a Rewrite & Republish copy (October 2026) | Hans wants to work together with AI but keep the last word on what goes live |
+| AI Access extensible | Content types, field groups and abilities come in through filters, one feature per plugin integration | Hans expects to extend and adjust it later; each integration switches on with its own plugin |
 
 ## Open points
 
