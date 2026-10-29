@@ -46,6 +46,7 @@ return array(
 		'spectra-blocks'                          => 'spectra-blocks/spectra-blocks.php',
 		'wp-server-stats'                         => 'wp-server-stats/wp-server-stats.php',
 		'reader-experience'                       => 'reader-experience/reader-experience.php',
+		'duplicate-post'                          => 'duplicate-post/duplicate-post.php',
 
 		// Updates and licences.
 		'git-updater'                             => 'git-updater/git-updater.php',
