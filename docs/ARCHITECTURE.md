@@ -340,6 +340,14 @@ questions). Types without an admin screen (tickets) are not on the tab and are k
 the filter `core-functionality/duplicate-post-own-duplication-types` adjusts the list in code. Choosing per
 plugin instead of per post type could come later, if guards learn which post types belong to their plugin.
 
+### Sensei LMS
+
+The module `Sensei` (dependency: the `sensei-lms` guard) adjusts Sensei LMS. Feature `MessageLabels` calls
+the post type `sensei_message` "Sensei messages" ("Sensei-berichten") through Sensei's filter
+`sensei_register_post_type_sensei_message`, because in Dutch both those and posts are "Berichten", which
+confuses lists of post types (Hans, October 2026). The other labels use Sensei's own patterns. Sensei's
+submenu item stays "Berichten": under the Sensei menu it is clear.
+
 ## Settings and options
 
 - **Settings files** (`settings/`) hold defaults and site data as PHP files returning arrays. General files
