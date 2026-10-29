@@ -540,7 +540,14 @@ span.dwp-menu-item.is-active {
 .dwp-cf-explanation > summary {
     cursor: pointer;
     color: #2271b1;
+    font-weight: 600;
     width: max-content;
+}
+.dwp-cf-explanation > summary .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    vertical-align: text-bottom;
 }
 .dwp-cf-explanation > summary:focus-visible {
     outline: 2px solid #2271b1;
@@ -564,6 +571,82 @@ span.dwp-menu-item.is-active {
 }
 .dwp-cf-explanation-aside p {
     margin: 0;
+}
+
+/* Cards of choices, grouped under a heading (such as content types per plugin). */
+/* The group lies a level lower (light grey), its cards a level higher (white), like a difference in height. */
+.dwp-cf-card-group {
+    margin: 0 0 20px 0;
+    padding: 16px 20px 20px 20px;
+    max-width: 1000px;
+    background: #f6f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+.dwp-cf-card-group > h3 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+}
+.dwp-cf-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+.dwp-cf-card {
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    background: #fff;
+    padding: 16px 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.15s ease-in-out;
+}
+.dwp-cf-card:hover {
+    border-color: #2271b1;
+}
+/* A card can be a fieldset: its legend then sits inside the card, not on its border. */
+.dwp-cf-card {
+    min-width: 0;
+    margin: 0;
+}
+.dwp-cf-card-title {
+    float: left;
+    width: 100%;
+    margin: 0 0 12px 0;
+    padding: 0;
+    font-weight: 600;
+}
+.dwp-cf-card-title + * {
+    clear: both;
+}
+.dwp-cf-card-title code {
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 4px;
+}
+.dwp-cf-card-choices {
+    margin: 0 0 0 6px;
+    padding: 2px 0 2px 16px;
+    border-left: 2px solid #2271b1;
+}
+.dwp-cf-card-choices label {
+    display: block;
+    margin: 0 0 8px 0;
+}
+.dwp-cf-card-choices label:last-child {
+    margin-bottom: 0;
+}
+
+/* The factory reset button stands apart, at the far end of the footer. */
+.dwp-gutenberg-actions-footer .dwp-cf-factory-reset {
+    margin-left: auto;
+    color: #b32d2e;
+    border-color: #b32d2e;
+}
+.dwp-gutenberg-actions-footer .dwp-cf-factory-reset:hover,
+.dwp-gutenberg-actions-footer .dwp-cf-factory-reset:focus {
+    color: #8a2424;
+    border-color: #8a2424;
 }
 
 /* A choice with a small grey hint under it (such as the content types of a plugin). */

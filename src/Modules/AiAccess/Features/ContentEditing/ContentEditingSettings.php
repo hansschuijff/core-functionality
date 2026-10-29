@@ -210,7 +210,7 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Outputs the tab: one row per content type.
+	 * Outputs the tab: per plugin a group, in it a card per content type with its levels.
 	 *
 	 * @since  1.0.0
 	 * @param  bool $defaults_only Whether to show the defaults instead of the saved choices.
@@ -221,24 +221,13 @@ class ContentEditingSettings implements SettingsSectionInterface {
 		$types   = new ContentTypes( $this->plugin );
 		$choices = self::get_values( $this->plugin, $defaults_only )['types'];
 
-		$rows = array();
+		$groups = array();
 		foreach ( $this->group_by_plugin( $types->get_all() ) as $plugin_name => $profiles ) {
-			$rows[] = $this->render_group_row( $plugin_name );
-			foreach ( $profiles as $post_type => $profile ) {
-				$rows[] = $this->render_type_row( $profile, $choices[ $post_type ] ?? array() );
-			}
+			$groups[] = $this->render_plugin_group( $plugin_name, $profiles, $choices );
 		}
 
 		echo $this->render_explanation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
-
-		$heading_type    = esc_html__( 'Content type', 'core-functionality' );
-		$heading_read    = esc_html__( 'Read', 'core-functionality' );
-		$heading_write   = esc_html__( 'Make and change drafts', 'core-functionality' );
-		$heading_rewrite = esc_html__( 'Change published content', 'core-functionality' );
-
-		echo '<table class="widefat striped dwp-cf-ai-levels" role="presentation"><thead><tr>';
-		echo '<th scope="col">' . $heading_type . '</th><th scope="col">' . $heading_read . '</th><th scope="col">' . $heading_write . '</th><th scope="col">' . $heading_rewrite . '</th>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
-		echo '</tr></thead><tbody>' . implode( '', $rows ) . '</tbody></table>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
+		echo '<div class="dwp-cf-ai-levels">' . implode( '', $groups ) . '</div><!-- closes dwp-cf-ai-levels -->'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
 	}
 
 	/**
@@ -292,65 +281,74 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Returns the heading row of a plugin's group.
+	 * Returns the group of one plugin: its name, and a card per content type.
 	 *
 	 * @since  1.0.0
-	 * @param  string $plugin_name The plugin's name.
-	 * @return string The row.
+	 * @param  string                        $plugin_name The plugin's name.
+	 * @param  ContentTypeProfileInterface[] $profiles    The profiles of its content types.
+	 * @param  array                         $choices     The saved levels per post type.
+	 * @return string The group (HTML).
 	 */
-	private function render_group_row( string $plugin_name ): string {
-		$name = esc_html( $plugin_name );
+	private function render_plugin_group( string $plugin_name, array $profiles, array $choices ): string {
+		$name  = esc_html( $plugin_name );
+		$cards = '';
+		foreach ( $profiles as $post_type => $profile ) {
+			$cards .= $this->render_type_card( $profile, $choices[ $post_type ] ?? array() );
+		}
 
-		return "<tr><th scope=\"rowgroup\" colspan=\"4\"><strong>{$name}</strong></th></tr>";
+		return '<section class="dwp-cf-card-group"><h3>' . $name . '</h3>'
+			. '<div class="dwp-cf-cards">' . $cards . '</div>'
+			. '</section><!-- closes dwp-cf-card-group -->';
 	}
 
 	/**
-	 * Returns the row of one content type.
+	 * Returns the card of one content type: its name, and its levels under each other.
 	 *
 	 * @since  1.0.0
 	 * @param  ContentTypeProfileInterface $profile The profile.
 	 * @param  array                       $saved   The saved levels of this type.
-	 * @return string The row.
+	 * @return string The card (HTML).
 	 */
-	private function render_type_row( ContentTypeProfileInterface $profile, array $saved ): string {
+	private function render_type_card( ContentTypeProfileInterface $profile, array $saved ): string {
 		$post_type = $profile->get_post_type();
 		$object    = get_post_type_object( $post_type );
-		$name      = null !== $object ? $object->labels->name : $post_type;
-		$label     = esc_html( $name );
+		$label     = esc_html( null !== $object ? $object->labels->name : $post_type );
 		$code      = esc_html( $post_type );
 
-		$cells = '';
+		$choices = '';
 		foreach ( ContentTypes::LEVELS as $level ) {
-			$default = ContentTypes::LEVEL_REWRITE === $level ? $profile->allows_rewrite_by_default() : true;
-			$cells  .= '<td>' . $this->checkbox( $post_type, $level, $saved[ $level ] ?? $default, $name ) . '</td>';
+			$default  = ContentTypes::LEVEL_REWRITE === $level ? $profile->allows_rewrite_by_default() : true;
+			$choices .= $this->render_level_checkbox( $post_type, $level, $saved[ $level ] ?? $default );
 		}
 
-		return "<tr><td>{$label} <code>{$code}</code></td>{$cells}</tr>";
+		return '<fieldset class="dwp-cf-card">'
+			. '<legend class="dwp-cf-card-title">' . $label . ' <code>' . $code . '</code></legend>'
+			. '<div class="dwp-cf-card-choices">' . $choices . '</div>'
+			. '</fieldset><!-- closes dwp-cf-card -->';
 	}
 
 	/**
-	 * Returns a checkbox with a hidden field that sends "0" when it is unchecked. The data
-	 * attributes let the tab's script keep the levels of a row in steps.
+	 * Returns the checkbox of one level with its label, and a hidden field that sends "0" when it is
+	 * unchecked. The data attributes let the tab's script keep the levels of a card in steps.
 	 *
 	 * @since  1.0.0
 	 * @param  string $post_type The post type.
 	 * @param  string $level     One of the ContentTypes::LEVEL_ constants.
 	 * @param  bool   $checked   Whether it is checked.
-	 * @param  string $label     The content type's name (for screen readers).
-	 * @return string The checkbox.
+	 * @return string The checkbox (HTML).
 	 */
-	private function checkbox( string $post_type, string $level, bool $checked, string $label ): string {
+	private function render_level_checkbox( string $post_type, string $level, bool $checked ): string {
 		$name       = esc_attr( self::FIELD . '[types][' . $post_type . '][' . $level . ']' );
 		$type_attr  = esc_attr( $post_type );
 		$level_attr = esc_attr( $level );
-		$aria       = esc_attr( $label . ': ' . $this->get_level_name( $level ) );
+		$label      = esc_html( $this->get_level_name( $level ) );
 
 		return '<input type="hidden" name="' . $name . '" value="0" />'
-			. '<input type="checkbox" name="' . $name . '" value="1" data-type="' . $type_attr . '" data-level="' . $level_attr . '" aria-label="' . $aria . '"' . checked( $checked, true, false ) . ' />';
+			. '<label><input type="checkbox" name="' . $name . '" value="1" data-type="' . $type_attr . '" data-level="' . $level_attr . '"' . checked( $checked, true, false ) . ' /> ' . $label . '</label>';
 	}
 
 	/**
-	 * Returns the name of a level, as in the column heading.
+	 * Returns the name of a level.
 	 *
 	 * @since  1.0.0
 	 * @param  string $level One of the ContentTypes::LEVEL_ constants.
