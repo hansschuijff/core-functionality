@@ -395,7 +395,7 @@ class AdminSettingsPage {
 			<!-- STICKY HEADER AREA (Alleen voor de H1 Titel voor maximale ruimte) -->
 			<div class="dwp-gutenberg-sticky-header">
 				<h1>
-					<?php echo esc_html( $section::get_name() . ' ' . __( 'Settings', 'core-functionality' ) ); ?>
+					<?php echo esc_html( $section::get_name() ); ?>
 				</h1>
 			</div>
 
@@ -732,7 +732,7 @@ class AdminSettingsPage {
 		$are_you_sure_text = esc_attr__( '🚨 CRITICAL WARNING:\n\nAre you sure you want to trigger a settings reset for this section?', 'core-functionality' );
 
 		return <<<HTML
-			<button type="submit" name="dwp_cf_reset_defaults" value="1" class="button button-secondary" onclick="return confirm('{$are_you_sure_text}');" >
+			<button type="submit" name="dwp_cf_reset_defaults" value="1" class="button button-secondary dwp-cf-factory-reset" onclick="return confirm('{$are_you_sure_text}');" >
 				{$button_text}
 			</button>
 		HTML;

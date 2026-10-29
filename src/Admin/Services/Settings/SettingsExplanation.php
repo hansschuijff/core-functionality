@@ -23,9 +23,8 @@ use function implode;
 /**
  * Class SettingsExplanation
  *
- * A collapsed explanation for a settings tab: a short summary line that opens into a few
- * paragraphs, optionally with a side note. It keeps a tab short while the full explanation stays
- * one click away. A native <details> element, so it needs no script; its styling lives in the
+ * An explanation for a settings tab that can be folded away: a summary line over a few paragraphs,
+ * optionally with a side note. It starts open, so a new visitor sees it, and closes with one click. A native <details> element, so it needs no script; its styling lives in the
  * settings page stylesheet (admin-settings.css), which loads on every tab.
  *
  * @since 1.0.0
@@ -39,14 +38,16 @@ class SettingsExplanation {
 	 * @param  string   $summary    The line that opens it, for example "Explanation".
 	 * @param  string[] $paragraphs The paragraphs, as plain text.
 	 * @param  string   $aside      A side note, as plain text, or ''.
+	 * @param  bool     $open       Whether it starts open (the default, so new visitors see it).
 	 * @return string The explanation (HTML).
 	 */
-	public static function render( string $summary, array $paragraphs, string $aside = '' ): string {
+	public static function render( string $summary, array $paragraphs, string $aside = '', bool $open = true ): string {
 		$summary_html    = esc_html( $summary );
 		$paragraphs_html = self::render_paragraphs( $paragraphs );
 		$aside_html      = '' !== $aside ? self::render_aside( $aside ) : '';
+		$open_attr       = $open ? ' open' : '';
 
-		return '<details class="dwp-cf-explanation"><summary>' . $summary_html . '</summary>'
+		return '<details class="dwp-cf-explanation"' . $open_attr . '><summary><span class="dashicons dashicons-info-outline" aria-hidden="true"></span> ' . $summary_html . '</summary>'
 			. '<div class="dwp-cf-explanation-body">' . $paragraphs_html . $aside_html . '</div>'
 			. '</details><!-- closes dwp-cf-explanation -->';
 	}
