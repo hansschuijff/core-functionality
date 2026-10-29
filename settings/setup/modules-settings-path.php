@@ -20,4 +20,5 @@ return array(
 	'reader-experience' => 'reader-experience/',
 	'events'            => 'events/',
 	'ai-access'         => 'ai-access/',
+	'duplicate-post'    => 'duplicate-post/',
 );
