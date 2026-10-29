@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
+use DeWittePrins\CoreFunctionality\Environment\Registers\PostTypeRegister;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\AiAccess;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Interfaces\ContentTypeProfileInterface;
 use DeWittePrins\CoreFunctionality\Plugin;
@@ -192,8 +193,11 @@ class ContentEditingSettings implements SettingsSectionInterface {
 		$choices = self::get_values( $this->plugin, $defaults_only )['types'];
 
 		$rows = array();
-		foreach ( $types->get_all() as $post_type => $profile ) {
-			$rows[] = $this->render_type_row( $profile, $choices[ $post_type ] ?? array() );
+		foreach ( $this->group_by_plugin( $types->get_all() ) as $plugin_name => $profiles ) {
+			$rows[] = $this->render_group_row( $plugin_name );
+			foreach ( $profiles as $post_type => $profile ) {
+				$rows[] = $this->render_type_row( $profile, $choices[ $post_type ] ?? array() );
+			}
 		}
 
 		$heading_type    = esc_html__( 'Content type', 'core-functionality' );
@@ -205,6 +209,48 @@ class ContentEditingSettings implements SettingsSectionInterface {
 		echo '<th scope="col">' . $heading_type . '</th><th scope="col">' . $heading_enabled . '</th><th scope="col">' . $heading_rewrite . '</th>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
 		echo '</tr></thead><tbody>' . implode( '', $rows ) . '</tbody></table>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
 		echo '<p class="description">' . $hint . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
+	}
+
+	/**
+	 * Groups the profiles by the plugin their post type belongs to, as the post type catalogue knows
+	 * it; post types of no known plugin come last, under "Other".
+	 *
+	 * @since  1.0.0
+	 * @param  ContentTypeProfileInterface[] $profiles The profiles, keyed by post type.
+	 * @return array<string, ContentTypeProfileInterface[]> Plugin name => profiles.
+	 */
+	private function group_by_plugin( array $profiles ): array {
+		$groups = array();
+		$other  = array();
+
+		foreach ( $profiles as $post_type => $profile ) {
+			$provider_id = PostTypeRegister::get_provider( $post_type );
+			if ( null === $provider_id ) {
+				$other[ $post_type ] = $profile;
+				continue;
+			}
+
+			$groups[ PostTypeRegister::get_name( $provider_id ) ][ $post_type ] = $profile;
+		}
+
+		if ( array() !== $other ) {
+			$groups[ __( 'Other', 'core-functionality' ) ] = $other;
+		}
+
+		return $groups;
+	}
+
+	/**
+	 * Returns the heading row of a plugin's group.
+	 *
+	 * @since  1.0.0
+	 * @param  string $plugin_name The plugin's name.
+	 * @return string The row.
+	 */
+	private function render_group_row( string $plugin_name ): string {
+		$name = esc_html( $plugin_name );
+
+		return "<tr><th scope=\"rowgroup\" colspan=\"3\"><strong>{$name}</strong></th></tr>";
 	}
 
 	/**
