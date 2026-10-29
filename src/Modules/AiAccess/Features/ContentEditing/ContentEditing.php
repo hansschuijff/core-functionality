@@ -19,9 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\CreateDraft;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\FindContent;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\GetContent;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\ListTerms;
+use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\SubmitForReview;
+use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\UpdateDraft;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Interfaces\AbilityInterface;
 use Override;
 
@@ -133,6 +136,9 @@ class ContentEditing extends AbstractFeature {
 			new FindContent( $services ),
 			new GetContent( $services ),
 			new ListTerms( $services ),
+			new CreateDraft( $services ),
+			new UpdateDraft( $services ),
+			new SubmitForReview( $services ),
 		);
 
 		/**
