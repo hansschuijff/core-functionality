@@ -670,9 +670,8 @@ class AdminSettingsPage {
 			}
 		} else {
 			// Fallback: Render the standard global default framework submission actions.
-			$submit_button = get_submit_button( __( 'Save Settings', 'core-functionality' ), 'primary', 'submit', false );
-			echo $submit_button;
-			$this->render_return_to_factory_settings_button();
+			echo self::get_save_button(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built by get_submit_button().
+			echo self::get_factory_reset_button(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
 		}
 
 		echo '</div></form>';
@@ -722,20 +721,31 @@ class AdminSettingsPage {
 	}
 
 	/**
-	 * Renders the standard return to factory settings button.
+	 * Returns the standard "reset to factory defaults" button of the footer, for tabs with buttons of
+	 * their own too.
 	 *
 	 * @since  1.0.0
-	 * @return void
+	 * @return string The button (HTML).
 	 */
-	private function render_return_to_factory_settings_button(): void {
+	public static function get_factory_reset_button(): string {
 		$button_text       = esc_html__( 'Reset to Factory Defaults', 'core-functionality' );
 		$are_you_sure_text = esc_attr__( '🚨 CRITICAL WARNING:\n\nAre you sure you want to trigger a settings reset for this section?', 'core-functionality' );
 
-		echo <<<HTML
+		return <<<HTML
 			<button type="submit" name="dwp_cf_reset_defaults" value="1" class="button button-secondary" onclick="return confirm('{$are_you_sure_text}');" >
 				{$button_text}
 			</button>
 		HTML;
+	}
+
+	/**
+	 * Returns the standard save button of the footer, for tabs with buttons of their own too.
+	 *
+	 * @since  1.0.0
+	 * @return string The button (HTML).
+	 */
+	public static function get_save_button(): string {
+		return get_submit_button( __( 'Save', 'core-functionality' ), 'primary', 'submit', false );
 	}
 
 	/**

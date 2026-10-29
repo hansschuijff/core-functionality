@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WP_Error;
 use DeWittePrins\CoreFunctionality\Plugin;
 use DeWittePrins\CoreFunctionality\Enums\Register;
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
 
 use function __;
@@ -162,14 +163,10 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	 */
 	private function render_section_start() {
 		$button_text_select_everything = esc_html__( 'Select all', 'core-functionality' );
-		$button_text_rebuild_register  = esc_html__( 'Scan for new features', 'core-functionality' );
 		echo <<<HTML
 			<div class="dewitteprins-global-actions" style="margin: 20px 0; display: flex; gap: 10px; align-items: center;">
 				<button type="button" class="button button-secondary js-dwp-toggle-all" data-state="select">
 					{$button_text_select_everything}
-				</button>
-				<button type="submit" name="dwp_cf_rescan" value="1" class="button button-secondary">
-					{$button_text_rebuild_register}
 				</button>
 			</div>
 			<div class="dwp-modules-grid">
@@ -398,13 +395,19 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Delivers custom context-aware action buttons to the host administration factory footer container.
+	 * Returns the buttons of the footer: save, scan for new features, and reset to factory defaults.
 	 *
 	 * @since  1.0.0
-	 * @return array<string, string> Dictionary indexing raw HTML button element blocks strings.
+	 * @return array<string, string> Button key => button HTML.
 	 */
 	#[Override]
 	public function get_action_buttons(): array {
-		return array();
+		$button_text_rescan = esc_html__( 'Scan for new features', 'core-functionality' );
+
+		return array(
+			'save'    => AdminSettingsPage::get_save_button(),
+			'rescan'  => '<button type="submit" name="dwp_cf_rescan" value="1" class="button button-secondary">' . $button_text_rescan . '</button>',
+			'factory' => AdminSettingsPage::get_factory_reset_button(),
+		);
 	}
 }
