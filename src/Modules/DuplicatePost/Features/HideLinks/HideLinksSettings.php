@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\SettingsExplanation;
 use DeWittePrins\CoreFunctionality\Environment\Registers\PostTypeRegister;
 use DeWittePrins\CoreFunctionality\Modules\DuplicatePost\DuplicatePost;
 use DeWittePrins\CoreFunctionality\Plugin;
@@ -42,6 +43,7 @@ use function get_post_types;
 use function implode;
 use function in_array;
 use function is_array;
+use function sprintf;
 use function wp_unslash;
 
 /**
@@ -111,7 +113,7 @@ class HideLinksSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_name(): string {
-		return __( 'Duplicate Post', 'core-functionality' );
+		return __( 'Hide Yoast duplicate links', 'core-functionality' );
 	}
 
 	/**
@@ -122,7 +124,7 @@ class HideLinksSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_description(): string {
-		return __( 'Content types whose own plugin duplicates them, taking care of what belongs to them (such as the ticket products of an event or the lessons of a course). Duplicate Post shows no links for these, so there is one way to duplicate them. Duplicate Post itself stays enabled for them. Choose a plugin and all its content types follow, also those without an admin screen (such as tickets).', 'core-functionality' );
+		return __( 'Hide the duplicate links of Yoast Duplicate Post for content that its own plugin duplicates better, so there is one way to duplicate it.', 'core-functionality' );
 	}
 
 	/**
@@ -228,12 +230,34 @@ class HideLinksSettings implements SettingsSectionInterface {
 			$loose[] = $this->render_post_type_checkbox( $post_type, in_array( $post_type->name, $values['hidden_post_types'], true ) );
 		}
 
-		$rows = $this->render_row( esc_html__( 'Per plugin', 'core-functionality' ), implode( '', $plugins ) );
+		$rows = $this->render_row( esc_html__( 'Content of these plugins', 'core-functionality' ), implode( '', $plugins ) );
 		if ( array() !== $loose ) {
-			$rows .= $this->render_row( esc_html__( 'Other content types', 'core-functionality' ), implode( '', $loose ) );
+			$rows .= $this->render_row( esc_html__( 'Loose content types', 'core-functionality' ), implode( '', $loose ) );
 		}
 
+		$heading = esc_html__( 'Hide the duplicate links of Yoast for', 'core-functionality' );
+
+		echo $this->render_explanation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
+		echo '<h3>' . $heading . '</h3>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
 		echo '<table class="form-table" role="presentation">' . $rows . '</table>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
+	}
+
+	/**
+	 * Returns the collapsed explanation of the tab, with a side note about the AI assistant.
+	 *
+	 * @since  1.0.0
+	 * @return string The explanation (HTML).
+	 */
+	private function render_explanation(): string {
+		return SettingsExplanation::render(
+			__( 'Explanation', 'core-functionality' ),
+			array(
+				__( 'Some plugins have a duplicate function of their own that also copies what belongs to their content, such as the ticket products of an event or the lessons of a course. Yoast Duplicate Post only copies the item itself. That makes it always usable to change published content in a draft copy, but not always to make new content by cloning an existing item.', 'core-functionality' ),
+				__( 'Tick the plugins whose own duplicate function you use. Yoast then shows no duplicate links and buttons for their content in the lists and the editor, so there is one way to duplicate it. Choosing a plugin covers all its content types, also those without a screen of their own (such as tickets).', 'core-functionality' ),
+				__( 'Yoast Duplicate Post itself sets per content type whether it is switched on. This tab refines that per plugin or group of content types: the content types stay switched on in Yoast, only the links are hidden.', 'core-functionality' ),
+			),
+			__( 'If you use an AI assistant (AI Access), it still uses Yoast Duplicate Post in the background to change published content in a copy. Hiding the links here does not change that.', 'core-functionality' )
+		);
 	}
 
 	/**
@@ -280,7 +304,7 @@ class HideLinksSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Returns the checkbox of a plugin, with its post types as a hint.
+	 * Returns the checkbox of a plugin, with its content types as a small hint under it.
 	 *
 	 * @since  1.0.0
 	 * @param  string   $provider_id The plugin id.
@@ -292,13 +316,17 @@ class HideLinksSettings implements SettingsSectionInterface {
 		$name  = esc_attr( self::FIELD . '[hidden_providers][]' );
 		$value = esc_attr( $provider_id );
 		$label = esc_html( PostTypeRegister::get_name( $provider_id ) );
-		$types = esc_html( implode( ', ', $post_types ) );
+		/* translators: %s: post type names, separated by commas. */
+		$hint = esc_html( sprintf( __( 'Content types: %s', 'core-functionality' ), implode( ', ', $post_types ) ) );
 
-		return '<label style="display:block"><input type="checkbox" name="' . $name . '" value="' . $value . '"' . checked( $checked, true, false ) . ' /> ' . $label . ' <code>' . $types . '</code></label>';
+		return '<div class="dwp-cf-choice">'
+			. '<label><input type="checkbox" name="' . $name . '" value="' . $value . '"' . checked( $checked, true, false ) . ' /> ' . $label . '</label>'
+			. '<span class="dwp-cf-choice-hint">' . $hint . '</span>'
+			. '</div>';
 	}
 
 	/**
-	 * Returns the checkbox of one content type, with its label and code name (labels can repeat).
+	 * Returns the checkbox of one content type, with its code name as a small hint (labels can repeat).
 	 *
 	 * @since  1.0.0
 	 * @param  WP_Post_Type $post_type The post type.
@@ -309,9 +337,13 @@ class HideLinksSettings implements SettingsSectionInterface {
 		$name  = esc_attr( self::FIELD . '[hidden_post_types][]' );
 		$value = esc_attr( $post_type->name );
 		$label = esc_html( $post_type->labels->name );
-		$code  = esc_html( $post_type->name );
+		/* translators: %s: a post type name. */
+		$hint = esc_html( sprintf( __( 'Content type: %s', 'core-functionality' ), $post_type->name ) );
 
-		return '<label style="display:block"><input type="checkbox" name="' . $name . '" value="' . $value . '"' . checked( $checked, true, false ) . ' /> ' . $label . ' <code>' . $code . '</code></label>';
+		return '<div class="dwp-cf-choice">'
+			. '<label><input type="checkbox" name="' . $name . '" value="' . $value . '"' . checked( $checked, true, false ) . ' /> ' . $label . '</label>'
+			. '<span class="dwp-cf-choice-hint">' . $hint . '</span>'
+			. '</div>';
 	}
 
 	/**

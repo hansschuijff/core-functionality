@@ -60,8 +60,8 @@ class HideLinks extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:          'duplicate_post_hide_links',
-			name:        __( 'Own duplication', 'core-functionality' ),
-			description: __( 'Duplicate Post shows no links for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab.', 'core-functionality' ),
+			name:        __( 'Hide Yoast duplicate links', 'core-functionality' ),
+			description: __( 'Hides the duplicate links of Yoast Duplicate Post for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab.', 'core-functionality' ),
 		);
 	}
 
