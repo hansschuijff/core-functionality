@@ -43,6 +43,11 @@ return array(
 	'events-settings'                => 'events-settings',
 
 	/**
+	 * Feature: AiAccess->ContentEditing. The defaults of the AI Access tab.
+	 */
+	'ai-access-settings'             => 'ai-access-settings',
+
+	/**
 	 * Feature: module->feature
 	 */
 

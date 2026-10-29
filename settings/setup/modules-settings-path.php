@@ -19,4 +19,5 @@ return array(
 	'active-woo'        => 'active-woo/',
 	'reader-experience' => 'reader-experience/',
 	'events'            => 'events/',
+	'ai-access'         => 'ai-access/',
 );
