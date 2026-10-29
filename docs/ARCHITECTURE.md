@@ -318,7 +318,7 @@ change drafts and items pending review, submit for review: `create-draft`, `upda
 `submit-for-review`; "making" covers layout in blocks, terms and fields too; uploading media is not possible
 yet) and `rewrite` (change published content in a copy: `start-rewrite`). They are steps: a level counts only
 when every lower one is on (`ContentTypes::has_level()`), saving switches the lower ones on, and a small
-script on the tab keeps the checkboxes of a row in steps. Defaults: read and write on, rewrite as the
+script on the tab keeps the checkboxes of a card in steps. Defaults: read and write on, rewrite as the
 profile says. The former single choice `enabled` is read as read plus write. Publishing is never an option.
 The tab has a short intro and a collapsed explanation (`SettingsExplanation`).
 
@@ -413,7 +413,12 @@ section in the Modules namespace without a module class is a programming error, 
 and left out of the menu. Sections outside the Modules namespace are plugin settings and stay in the core
 group. The footer button is "Save"; a tab can bring its own buttons (`get_action_buttons()`) and reuse
 `AdminSettingsPage::get_save_button()` and `get_factory_reset_button()`, as Feature Activation does with
-"Scan for new features" between them. Tabs can show a collapsed explanation with `SettingsExplanation`.
+"Scan for new features" between them; the factory reset button stands apart at the far right in red, as the
+exceptional action (Hans). The page title is the tab's name (no "Settings" behind it). Tabs can show an
+explanation with `SettingsExplanation`: open by default, closed with one click. Shared card styles in
+`admin-settings.css` (`dwp-cf-card-group` light grey, `dwp-cf-card` white on top, like a difference in
+height, with the choices along a blue line) give a calm vertical layout; the AI Access tab uses them, one
+card per content type with its levels under each other.
 
 ## Naming
 
