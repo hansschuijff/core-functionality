@@ -415,7 +415,8 @@ group. The footer button is "Save"; a tab can bring its own buttons (`get_action
 `AdminSettingsPage::get_save_button()` and `get_factory_reset_button()`, as Feature Activation does with
 "Scan for new features" between them; the factory reset button stands apart at the far right in red, as the
 exceptional action (Hans). The page title is the tab's name (no "Settings" behind it). Tabs can show an
-explanation with `SettingsExplanation`: open by default, closed with one click. Shared card styles in
+explanation with `SettingsExplanation`: closed by default, with an info icon and a bold summary that
+invite to open it. Shared card styles in
 `admin-settings.css` (`dwp-cf-card-group` light grey, `dwp-cf-card` white on top, like a difference in
 height, with the choices along a blue line) give a calm vertical layout; the AI Access tab uses them, one
 card per content type with its levels under each other.
