@@ -160,24 +160,49 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	 *
 	 * @since  1.0.0
 	 * @param  array $values The raw choices.
-	 * @return array{types: array<string, array{enabled?: bool, rewrite?: bool}>} The choices.
+	 * @return array{types: array<string, array{read?: bool, write?: bool, rewrite?: bool}>} The choices.
 	 */
 	private static function normalize( array $values ): array {
 		$types = array();
 		foreach ( is_array( $values['types'] ?? null ) ? $values['types'] : array() as $post_type => $choices ) {
-			if ( ! is_string( $post_type ) || ! is_array( $choices ) ) {
-				continue;
-			}
-
-			$post_type = sanitize_key( $post_type );
-			foreach ( array( 'enabled', 'rewrite' ) as $choice ) {
-				if ( isset( $choices[ $choice ] ) ) {
-					$types[ $post_type ][ $choice ] = ! empty( $choices[ $choice ] );
-				}
+			if ( is_string( $post_type ) && is_array( $choices ) ) {
+				$types[ sanitize_key( $post_type ) ] = self::normalize_levels( $choices );
 			}
 		}
 
 		return array( 'types' => $types );
+	}
+
+	/**
+	 * Returns the levels of one content type. A level that is on includes the lower ones. The
+	 * former single choice "enabled" (before October 2026) stands for reading and drafts.
+	 *
+	 * @since  1.0.0
+	 * @param  array $choices The raw choices of the type.
+	 * @return array<string, bool> Level => on, only for the levels that were chosen.
+	 */
+	private static function normalize_levels( array $choices ): array {
+		$levels = array();
+		if ( isset( $choices['enabled'] ) ) {
+			$levels[ ContentTypes::LEVEL_READ ]  = ! empty( $choices['enabled'] );
+			$levels[ ContentTypes::LEVEL_WRITE ] = ! empty( $choices['enabled'] );
+		}
+
+		foreach ( ContentTypes::LEVELS as $level ) {
+			if ( isset( $choices[ $level ] ) ) {
+				$levels[ $level ] = ! empty( $choices[ $level ] );
+			}
+		}
+
+		// A higher level that is on switches the lower ones on.
+		if ( ! empty( $levels[ ContentTypes::LEVEL_REWRITE ] ) ) {
+			$levels[ ContentTypes::LEVEL_WRITE ] = true;
+		}
+		if ( ! empty( $levels[ ContentTypes::LEVEL_WRITE ] ) ) {
+			$levels[ ContentTypes::LEVEL_READ ] = true;
+		}
+
+		return $levels;
 	}
 
 	/**
@@ -201,14 +226,13 @@ class ContentEditingSettings implements SettingsSectionInterface {
 		}
 
 		$heading_type    = esc_html__( 'Content type', 'core-functionality' );
-		$heading_enabled = esc_html__( 'AI may use it', 'core-functionality' );
-		$heading_rewrite = esc_html__( 'Change published items in a copy', 'core-functionality' );
-		$hint            = esc_html__( 'A copy (Rewrite & Republish of Yoast Duplicate Post) replaces the original only when you publish it. Switch it on per type only after testing that the type\'s own data (tickets, dates, course structure) survives.', 'core-functionality' );
+		$heading_read    = esc_html__( 'Read', 'core-functionality' );
+		$heading_write   = esc_html__( 'Make and change drafts', 'core-functionality' );
+		$heading_rewrite = esc_html__( 'Change published content', 'core-functionality' );
 
-		echo '<table class="widefat striped" role="presentation"><thead><tr>';
-		echo '<th scope="col">' . $heading_type . '</th><th scope="col">' . $heading_enabled . '</th><th scope="col">' . $heading_rewrite . '</th>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
+		echo '<table class="widefat striped dwp-cf-ai-levels" role="presentation"><thead><tr>';
+		echo '<th scope="col">' . $heading_type . '</th><th scope="col">' . $heading_read . '</th><th scope="col">' . $heading_write . '</th><th scope="col">' . $heading_rewrite . '</th>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
 		echo '</tr></thead><tbody>' . implode( '', $rows ) . '</tbody></table>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
-		echo '<p class="description">' . $hint . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
 	}
 
 	/**
@@ -250,7 +274,7 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	private function render_group_row( string $plugin_name ): string {
 		$name = esc_html( $plugin_name );
 
-		return "<tr><th scope=\"rowgroup\" colspan=\"3\"><strong>{$name}</strong></th></tr>";
+		return "<tr><th scope=\"rowgroup\" colspan=\"4\"><strong>{$name}</strong></th></tr>";
 	}
 
 	/**
@@ -258,37 +282,59 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	 *
 	 * @since  1.0.0
 	 * @param  ContentTypeProfileInterface $profile The profile.
-	 * @param  array                       $saved   The saved choices of this type.
+	 * @param  array                       $saved   The saved levels of this type.
 	 * @return string The row.
 	 */
 	private function render_type_row( ContentTypeProfileInterface $profile, array $saved ): string {
 		$post_type = $profile->get_post_type();
 		$object    = get_post_type_object( $post_type );
-		$label     = esc_html( null !== $object ? $object->labels->name : $post_type );
+		$name      = null !== $object ? $object->labels->name : $post_type;
+		$label     = esc_html( $name );
 		$code      = esc_html( $post_type );
 
-		$enabled = $saved['enabled'] ?? true;
-		$rewrite = $saved['rewrite'] ?? $profile->allows_rewrite_by_default();
+		$cells = '';
+		foreach ( ContentTypes::LEVELS as $level ) {
+			$default = ContentTypes::LEVEL_REWRITE === $level ? $profile->allows_rewrite_by_default() : true;
+			$cells  .= '<td>' . $this->checkbox( $post_type, $level, $saved[ $level ] ?? $default, $name ) . '</td>';
+		}
 
-		$enabled_box = $this->checkbox( $post_type, 'enabled', $enabled );
-		$rewrite_box = $this->checkbox( $post_type, 'rewrite', $rewrite );
-
-		return "<tr><td>{$label} <code>{$code}</code></td><td>{$enabled_box}</td><td>{$rewrite_box}</td></tr>";
+		return "<tr><td>{$label} <code>{$code}</code></td>{$cells}</tr>";
 	}
 
 	/**
-	 * Returns a checkbox with a hidden field that sends "0" when it is unchecked.
+	 * Returns a checkbox with a hidden field that sends "0" when it is unchecked. The data
+	 * attributes let the tab's script keep the levels of a row in steps.
 	 *
 	 * @since  1.0.0
 	 * @param  string $post_type The post type.
-	 * @param  string $choice    'enabled' or 'rewrite'.
+	 * @param  string $level     One of the ContentTypes::LEVEL_ constants.
 	 * @param  bool   $checked   Whether it is checked.
+	 * @param  string $label     The content type's name (for screen readers).
 	 * @return string The checkbox.
 	 */
-	private function checkbox( string $post_type, string $choice, bool $checked ): string {
-		$name = esc_attr( self::FIELD . '[types][' . $post_type . '][' . $choice . ']' );
+	private function checkbox( string $post_type, string $level, bool $checked, string $label ): string {
+		$name       = esc_attr( self::FIELD . '[types][' . $post_type . '][' . $level . ']' );
+		$type_attr  = esc_attr( $post_type );
+		$level_attr = esc_attr( $level );
+		$aria       = esc_attr( $label . ': ' . $this->get_level_name( $level ) );
 
-		return '<input type="hidden" name="' . $name . '" value="0" /><input type="checkbox" name="' . $name . '" value="1"' . checked( $checked, true, false ) . ' />';
+		return '<input type="hidden" name="' . $name . '" value="0" />'
+			. '<input type="checkbox" name="' . $name . '" value="1" data-type="' . $type_attr . '" data-level="' . $level_attr . '" aria-label="' . $aria . '"' . checked( $checked, true, false ) . ' />';
+	}
+
+	/**
+	 * Returns the name of a level, as in the column heading.
+	 *
+	 * @since  1.0.0
+	 * @param  string $level One of the ContentTypes::LEVEL_ constants.
+	 * @return string The name.
+	 */
+	private function get_level_name( string $level ): string {
+		return match ( $level ) {
+			ContentTypes::LEVEL_READ  => __( 'Read', 'core-functionality' ),
+			ContentTypes::LEVEL_WRITE => __( 'Make and change drafts', 'core-functionality' ),
+			default                   => __( 'Change published content', 'core-functionality' ),
+		};
 	}
 
 	/**

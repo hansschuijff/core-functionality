@@ -140,8 +140,8 @@ class ContentWriter {
 	 */
 	public function update( WP_Post $post, array $input ): array|WP_Error {
 		$profile = $this->types->get( $post->post_type );
-		if ( null === $profile ) {
-			return new WP_Error( 'cf_ai_type', __( 'This content type is not available to an AI assistant.', 'core-functionality' ) );
+		if ( null === $profile || ! $this->types->can_write( $post->post_type ) ) {
+			return new WP_Error( 'cf_ai_type', __( 'An AI assistant may not make drafts of this content type.', 'core-functionality' ) );
 		}
 
 		if ( ! $this->is_editable( $post ) ) {

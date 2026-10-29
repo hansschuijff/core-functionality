@@ -37,6 +37,34 @@ use function post_type_exists;
 class ContentTypes {
 
 	/**
+	 * Level: find and read items of the type.
+	 *
+	 * @var string
+	 */
+	public const LEVEL_READ = 'read';
+
+	/**
+	 * Level: make and change drafts of the type.
+	 *
+	 * @var string
+	 */
+	public const LEVEL_WRITE = 'write';
+
+	/**
+	 * Level: change published items of the type, in a copy that replaces them once published.
+	 *
+	 * @var string
+	 */
+	public const LEVEL_REWRITE = 'rewrite';
+
+	/**
+	 * The levels, from low to high; each includes the ones before it.
+	 *
+	 * @var string[]
+	 */
+	public const LEVELS = array( self::LEVEL_READ, self::LEVEL_WRITE, self::LEVEL_REWRITE );
+
+	/**
 	 * The profiles, keyed by post type, once collected.
 	 *
 	 * @var ContentTypeProfileInterface[]|null
@@ -99,45 +127,74 @@ class ContentTypes {
 	}
 
 	/**
-	 * Returns the profiles that are switched on.
+	 * Returns the profiles an AI assistant may read.
 	 *
 	 * @since  1.0.0
 	 * @return ContentTypeProfileInterface[] The profiles, keyed by post type.
 	 */
-	public function get_enabled(): array {
+	public function get_readable(): array {
 		return array_filter(
 			$this->get_all(),
-			fn ( ContentTypeProfileInterface $profile ) => $this->get_choice( $profile, 'enabled' )
+			fn ( ContentTypeProfileInterface $profile ) => $this->has_level( $profile, self::LEVEL_READ )
 		);
 	}
 
 	/**
-	 * Returns the post types that are switched on.
+	 * Returns the post types an AI assistant may read.
 	 *
 	 * @since  1.0.0
 	 * @return string[] Post types.
 	 */
-	public function get_enabled_post_types(): array {
-		return array_keys( $this->get_enabled() );
+	public function get_readable_post_types(): array {
+		return array_keys( $this->get_readable() );
 	}
 
 	/**
-	 * Returns the profile of a post type when that type is switched on.
+	 * Returns the post types in which an AI assistant may make and change drafts.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post types.
+	 */
+	public function get_writable_post_types(): array {
+		return array_keys(
+			array_filter(
+				$this->get_all(),
+				fn ( ContentTypeProfileInterface $profile ) => $this->has_level( $profile, self::LEVEL_WRITE )
+			)
+		);
+	}
+
+	/**
+	 * Returns the profile of a post type an AI assistant may read.
 	 *
 	 * @since  1.0.0
 	 * @param  string $post_type The post type.
 	 * @return ContentTypeProfileInterface|null The profile, or null.
 	 */
 	public function get( string $post_type ): ?ContentTypeProfileInterface {
-		return $this->get_enabled()[ $post_type ] ?? null;
+		return $this->get_readable()[ $post_type ] ?? null;
 	}
 
 	/**
-	 * Returns whether a Rewrite & Republish copy is allowed for a post type.
+	 * Returns whether an AI assistant may make and change drafts of a post type.
 	 *
 	 * @since  1.0.0
 	 * @param  string $post_type The post type.
-	 * @return bool True when copies can be made, the type is switched on and its copies are allowed.
+	 * @return bool True when it may.
+	 */
+	public function can_write( string $post_type ): bool {
+		$profile = $this->get_all()[ $post_type ] ?? null;
+
+		return null !== $profile && $this->has_level( $profile, self::LEVEL_WRITE );
+	}
+
+	/**
+	 * Returns whether an AI assistant may change published items of a post type in a Rewrite &
+	 * Republish copy.
+	 *
+	 * @since  1.0.0
+	 * @param  string $post_type The post type.
+	 * @return bool True when copies can be made and that level is switched on for the type.
 	 */
 	public function allows_rewrite( string $post_type ): bool {
 		/**
@@ -151,27 +208,50 @@ class ContentTypes {
 			return false;
 		}
 
-		$profile = $this->get( $post_type );
+		$profile = $this->get_all()[ $post_type ] ?? null;
 
-		return null !== $profile && $this->get_choice( $profile, 'rewrite' );
+		return null !== $profile && $this->has_level( $profile, self::LEVEL_REWRITE );
 	}
 
 	/**
-	 * Returns one choice of the settings tab for a profile, or its default when none was saved.
+	 * Returns whether a level is switched on for a profile. The levels are steps: a level only
+	 * counts when every lower level is on too.
 	 *
 	 * @since  1.0.0
 	 * @param  ContentTypeProfileInterface $profile The profile.
-	 * @param  string                      $choice  'enabled' or 'rewrite'.
+	 * @param  string                      $level   One of the LEVEL_ constants.
+	 * @return bool True when that level and every lower one are on.
+	 */
+	public function has_level( ContentTypeProfileInterface $profile, string $level ): bool {
+		foreach ( self::LEVELS as $step ) {
+			if ( ! $this->get_choice( $profile, $step ) ) {
+				return false;
+			}
+			if ( $step === $level ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Returns one choice of the settings tab for a profile, or its default when none was saved:
+	 * reading and drafts on, published items as the profile says.
+	 *
+	 * @since  1.0.0
+	 * @param  ContentTypeProfileInterface $profile The profile.
+	 * @param  string                      $level   One of the LEVEL_ constants.
 	 * @return bool The choice.
 	 */
-	public function get_choice( ContentTypeProfileInterface $profile, string $choice ): bool {
+	public function get_choice( ContentTypeProfileInterface $profile, string $level ): bool {
 		$this->choices ??= ContentEditingSettings::get_values( $this->plugin )['types'];
 
-		$saved = $this->choices[ $profile->get_post_type() ][ $choice ] ?? null;
+		$saved = $this->choices[ $profile->get_post_type() ][ $level ] ?? null;
 		if ( null !== $saved ) {
 			return (bool) $saved;
 		}
 
-		return 'rewrite' === $choice ? $profile->allows_rewrite_by_default() : true;
+		return self::LEVEL_REWRITE === $level ? $profile->allows_rewrite_by_default() : true;
 	}
 }

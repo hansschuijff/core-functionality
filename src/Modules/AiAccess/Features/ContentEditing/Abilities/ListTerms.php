@@ -161,7 +161,7 @@ class ListTerms extends AbstractContentAbility {
 	 */
 	private function get_taxonomies(): array {
 		$taxonomies = array();
-		foreach ( $this->services->types->get_enabled() as $profile ) {
+		foreach ( $this->services->types->get_readable() as $profile ) {
 			$taxonomies = array_merge( $taxonomies, $profile->get_taxonomies() );
 		}
 

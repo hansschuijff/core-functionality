@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentTypes;
 use Override;
 use WP_Error;
 
@@ -103,7 +104,7 @@ class UpdateDraft extends AbstractContentAbility {
 	 */
 	#[Override]
 	protected function run( array $input ): array|WP_Error {
-		$post = $this->get_usable_post( (int) ( $input['id'] ?? 0 ) );
+		$post = $this->get_usable_post( (int) ( $input['id'] ?? 0 ), ContentTypes::LEVEL_WRITE );
 		if ( $post instanceof WP_Error ) {
 			return $post;
 		}

@@ -79,7 +79,7 @@ class CreateDraft extends AbstractContentAbility {
 			'additionalProperties' => false,
 			'required'             => array( 'post_type', 'title' ),
 			'properties'           => array(
-				'post_type' => $this->get_post_type_schema( 'The content type of the new item.' ),
+				'post_type' => $this->get_post_type_schema( 'The content type of the new item.', true ),
 			) + $this->get_writable_properties(),
 		);
 	}
@@ -105,8 +105,8 @@ class CreateDraft extends AbstractContentAbility {
 	#[Override]
 	protected function run( array $input ): array|WP_Error {
 		$profile = $this->services->types->get( (string) ( $input['post_type'] ?? '' ) );
-		if ( null === $profile ) {
-			return new WP_Error( 'cf_ai_type', __( 'This content type is not available to an AI assistant.', 'core-functionality' ) );
+		if ( null === $profile || ! $this->services->types->can_write( $profile->get_post_type() ) ) {
+			return new WP_Error( 'cf_ai_type', __( 'An AI assistant may not make drafts of this content type.', 'core-functionality' ) );
 		}
 
 		$type_object = get_post_type_object( $profile->get_post_type() );

@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentEditing;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentServices;
+use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentTypes;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Interfaces\AbilityInterface;
 use Override;
 use WP_Error;
@@ -161,13 +162,14 @@ abstract class AbstractContentAbility implements AbilityInterface {
 	}
 
 	/**
-	 * Returns a post the current user may edit, of a content type that is switched on.
+	 * Returns a post the current user may edit, of a content type that has the level switched on.
 	 *
 	 * @since  1.0.0
-	 * @param  int $post_id The post id.
+	 * @param  int    $post_id The post id.
+	 * @param  string $level   The level needed: one of the ContentTypes::LEVEL_ constants.
 	 * @return WP_Post|WP_Error The post, or the reason why it cannot be used.
 	 */
-	protected function get_usable_post( int $post_id ): WP_Post|WP_Error {
+	protected function get_usable_post( int $post_id, string $level = ContentTypes::LEVEL_READ ): WP_Post|WP_Error {
 		$post = get_post( $post_id );
 		if ( ! $post instanceof WP_Post || null === $this->services->types->get( $post->post_type ) ) {
 			return new WP_Error( 'cf_ai_not_found', __( 'No item with this id that an AI assistant may use.', 'core-functionality' ) );
@@ -175,6 +177,10 @@ abstract class AbstractContentAbility implements AbilityInterface {
 
 		if ( ! current_user_can( 'edit_post', $post->ID ) ) {
 			return new WP_Error( 'cf_ai_forbidden', __( 'You may not edit this item.', 'core-functionality' ) );
+		}
+
+		if ( ContentTypes::LEVEL_WRITE === $level && ! $this->services->types->can_write( $post->post_type ) ) {
+			return new WP_Error( 'cf_ai_read_only', __( 'An AI assistant may only read this content type, not make or change drafts of it.', 'core-functionality' ) );
 		}
 
 		return $post;
@@ -195,20 +201,23 @@ abstract class AbstractContentAbility implements AbilityInterface {
 	}
 
 	/**
-	 * Returns the schema of a post type: one of the types that are switched on.
+	 * Returns the schema of a post type: one of the types that may be read, or written.
 	 *
 	 * @since  1.0.0
 	 * @param  string $description The description for the AI assistant.
+	 * @param  bool   $writable    Whether only types with drafts switched on count.
 	 * @return array The schema.
 	 */
-	protected function get_post_type_schema( string $description ): array {
+	protected function get_post_type_schema( string $description, bool $writable = false ): array {
 		$schema = array(
 			'type'        => 'string',
 			'description' => $description,
 		);
 
 		// An empty enum would refuse everything; with no types the ability refuses them itself.
-		$types = $this->services->types->get_enabled_post_types();
+		$types = $writable
+			? $this->services->types->get_writable_post_types()
+			: $this->services->types->get_readable_post_types();
 		if ( array() !== $types ) {
 			$schema['enum'] = $types;
 		}

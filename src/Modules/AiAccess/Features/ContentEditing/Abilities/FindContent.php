@@ -141,7 +141,7 @@ class FindContent extends AbstractContentAbility {
 	 */
 	#[Override]
 	protected function run( array $input ): array|WP_Error {
-		$types     = $this->services->types->get_enabled_post_types();
+		$types     = $this->services->types->get_readable_post_types();
 		$post_type = (string) ( $input['post_type'] ?? '' );
 		if ( '' !== $post_type && ! in_array( $post_type, $types, true ) ) {
 			return new WP_Error( 'cf_ai_type', __( 'This content type is not available to an AI assistant.', 'core-functionality' ) );
