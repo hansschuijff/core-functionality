@@ -61,7 +61,7 @@ class OwnDuplication extends AbstractFeature {
 		return new ComponentMeta(
 			id:          'duplicate_post_own_duplication',
 			name:        __( 'Own duplication', 'core-functionality' ),
-			description: __( 'Duplicate Post shows no links for the content types whose own plugin duplicates them (by default events, tickets, courses and lessons), chosen on a settings tab.', 'core-functionality' ),
+			description: __( 'Duplicate Post shows no links for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab.', 'core-functionality' ),
 		);
 	}
 
@@ -83,6 +83,17 @@ class OwnDuplication extends AbstractFeature {
 		add_filter( 'duplicate_post_show_link', array( $this, 'filter_show_link' ), 10, 2 );
 
 		// Duplicate Post adds its bulk actions per enabled post type on admin_init (priority 10).
+		add_action( 'admin_init', array( $this, 'add_bulk_action_filters' ), 20 );
+	}
+
+	/**
+	 * Hooks the removal of Duplicate Post's bulk actions into the lists of those post types. Only in
+	 * the admin, so the post type catalogue is not built on the front end for this.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function add_bulk_action_filters(): void {
 		foreach ( $this->get_excluded_post_types() as $post_type ) {
 			add_filter( "bulk_actions-edit-{$post_type}", array( $this, 'remove_bulk_actions' ), 20 );
 		}
@@ -130,11 +141,12 @@ class OwnDuplication extends AbstractFeature {
 			return $this->post_types;
 		}
 
-		$chosen = OwnDuplicationSettings::get_values( $this->plugin )['own_duplication_post_types'];
+		$chosen = OwnDuplicationSettings::get_chosen_post_types( $this->plugin );
 
 		/**
 		 * Filters the post types for which Duplicate Post shows no links, because their own plugin
-		 * duplicates them. Starts from the choices of the Duplicate Post settings tab.
+		 * duplicates them. Starts from the choices of the Duplicate Post settings tab: the post types
+		 * of the chosen plugins and the loose ones.
 		 *
 		 * @since 1.0.0
 		 * @param string[] $post_types The post types.
