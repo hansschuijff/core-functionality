@@ -527,3 +527,53 @@ span.dwp-menu-item.is-active {
 .dwp-gutenberg-notices {
     padding-top: 20px;
 }
+
+/* ==========================================================================
+   Collapsed explanation of a tab (SettingsExplanation) and choice hints
+   ========================================================================== */
+.dwp-cf-explanation {
+    max-width: 800px;
+    margin: -16px 0 32px 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+.dwp-cf-explanation > summary {
+    cursor: pointer;
+    color: #2271b1;
+    width: max-content;
+}
+.dwp-cf-explanation > summary:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+.dwp-cf-explanation-body {
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-left: 3px solid #dcdcde;
+    background: #f6f7f7;
+}
+.dwp-cf-explanation-body p {
+    margin: 0 0 10px 0;
+}
+.dwp-cf-explanation-aside {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed #c3c4c7;
+    color: #50575e;
+    font-style: italic;
+}
+.dwp-cf-explanation-aside p {
+    margin: 0;
+}
+
+/* A choice with a small grey hint under it (such as the content types of a plugin). */
+.dwp-cf-choice {
+    display: block;
+    margin: 0 0 12px 0;
+}
+.dwp-cf-choice-hint {
+    display: block;
+    margin: 2px 0 0 24px;
+    font-size: 12px;
+    color: #757575;
+}
