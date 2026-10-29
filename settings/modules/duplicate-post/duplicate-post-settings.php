@@ -1,6 +1,6 @@
 <?php
 /**
- * Defaults of the Duplicate Post settings tab (module DuplicatePost, feature OwnDuplication).
+ * Defaults of the Duplicate Post settings tab (module DuplicatePost, feature HideLinks).
  *
  * The plugins that duplicate their content themselves (all post types their guard names), and
  * loose post types of no known plugin; Duplicate Post shows no links for these. The tab saves its
@@ -17,12 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'own_duplication_providers'  => array(
+	'hidden_providers'  => array(
 		'the-events-calendar',
 		'the-events-calendar-pro',
 		'event-tickets',
 		'event-tickets-plus',
 		'sensei-lms',
 	),
-	'own_duplication_post_types' => array(),
+	'hidden_post_types' => array(),
 );

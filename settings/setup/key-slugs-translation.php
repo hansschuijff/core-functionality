@@ -48,7 +48,7 @@ return array(
 	'ai-access-settings'             => 'ai-access-settings',
 
 	/**
-	 * Feature: DuplicatePost->OwnDuplication. The defaults of the Duplicate Post tab.
+	 * Feature: DuplicatePost->HideLinks. The defaults of the Duplicate Post tab.
 	 */
 	'duplicate-post-settings'        => 'duplicate-post-settings',
 

@@ -3,7 +3,7 @@
  * Duplicate Post Settings Tab.
  *
  * @package    DeWittePrins\CoreFunctionality
- * @subpackage Modules\DuplicatePost\Features\OwnDuplication
+ * @subpackage Modules\DuplicatePost\Features\HideLinks
  * @author     Hans Schuijff <@hansschuijff>
  * @license    GPL-2.0
  * @since      1.0.0
@@ -11,7 +11,7 @@
 
 declare( strict_types=1 );
 
-namespace DeWittePrins\CoreFunctionality\Modules\DuplicatePost\Features\OwnDuplication;
+namespace DeWittePrins\CoreFunctionality\Modules\DuplicatePost\Features\HideLinks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -45,7 +45,7 @@ use function is_array;
 use function wp_unslash;
 
 /**
- * Class OwnDuplicationSettings
+ * Class HideLinksSettings
  *
  * The Duplicate Post settings tab: the plugins (and loose post types) that duplicate their content
  * themselves, for which Duplicate Post shows no links. A plugin stands for all the post types its
@@ -55,7 +55,7 @@ use function wp_unslash;
  *
  * @since 1.0.0
  */
-class OwnDuplicationSettings implements SettingsSectionInterface {
+class HideLinksSettings implements SettingsSectionInterface {
 
 	/**
 	 * The settings key of all choices of this tab.
@@ -153,7 +153,7 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 	 * @since  1.0.0
 	 * @param  Plugin $plugin        The main plugin instance.
 	 * @param  bool   $defaults_only Whether to return the defaults instead of the saved choices.
-	 * @return array{own_duplication_providers: string[], own_duplication_post_types: string[]} The choices.
+	 * @return array{hidden_providers: string[], hidden_post_types: string[]} The choices.
 	 */
 	public static function get_values( Plugin $plugin, bool $defaults_only = false ): array {
 		$module   = DuplicatePost::get_id();
@@ -173,9 +173,9 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 	 */
 	public static function get_chosen_post_types( Plugin $plugin ): array {
 		$values     = self::get_values( $plugin );
-		$post_types = $values['own_duplication_post_types'];
+		$post_types = $values['hidden_post_types'];
 
-		foreach ( $values['own_duplication_providers'] as $provider_id ) {
+		foreach ( $values['hidden_providers'] as $provider_id ) {
 			$post_types = array_merge( $post_types, PostTypeRegister::get_post_types( $provider_id ) );
 		}
 
@@ -187,12 +187,12 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 	 *
 	 * @since  1.0.0
 	 * @param  array $values The raw choices.
-	 * @return array{own_duplication_providers: string[], own_duplication_post_types: string[]} The choices.
+	 * @return array{hidden_providers: string[], hidden_post_types: string[]} The choices.
 	 */
 	private static function normalize( array $values ): array {
 		return array(
-			'own_duplication_providers'  => self::list_of_keys( $values['own_duplication_providers'] ?? array() ),
-			'own_duplication_post_types' => self::list_of_keys( $values['own_duplication_post_types'] ?? array() ),
+			'hidden_providers'  => self::list_of_keys( $values['hidden_providers'] ?? array() ),
+			'hidden_post_types' => self::list_of_keys( $values['hidden_post_types'] ?? array() ),
 		);
 	}
 
@@ -225,7 +225,7 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 
 		$loose = array();
 		foreach ( $this->get_loose_post_types() as $post_type ) {
-			$loose[] = $this->render_post_type_checkbox( $post_type, in_array( $post_type->name, $values['own_duplication_post_types'], true ) );
+			$loose[] = $this->render_post_type_checkbox( $post_type, in_array( $post_type->name, $values['hidden_post_types'], true ) );
 		}
 
 		$rows = $this->render_row( esc_html__( 'Per plugin', 'core-functionality' ), implode( '', $plugins ) );
@@ -247,8 +247,8 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 	 * @return bool True when it is chosen.
 	 */
 	private function is_provider_chosen( string $provider_id, array $post_types, array $values ): bool {
-		return in_array( $provider_id, $values['own_duplication_providers'], true )
-			|| array() !== array_intersect( $post_types, $values['own_duplication_post_types'] );
+		return in_array( $provider_id, $values['hidden_providers'], true )
+			|| array() !== array_intersect( $post_types, $values['hidden_post_types'] );
 	}
 
 	/**
@@ -289,7 +289,7 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 	 * @return string The checkbox.
 	 */
 	private function render_provider_checkbox( string $provider_id, array $post_types, bool $checked ): string {
-		$name  = esc_attr( self::FIELD . '[own_duplication_providers][]' );
+		$name  = esc_attr( self::FIELD . '[hidden_providers][]' );
 		$value = esc_attr( $provider_id );
 		$label = esc_html( PostTypeRegister::get_name( $provider_id ) );
 		$types = esc_html( implode( ', ', $post_types ) );
@@ -306,7 +306,7 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 	 * @return string The checkbox.
 	 */
 	private function render_post_type_checkbox( WP_Post_Type $post_type, bool $checked ): string {
-		$name  = esc_attr( self::FIELD . '[own_duplication_post_types][]' );
+		$name  = esc_attr( self::FIELD . '[hidden_post_types][]' );
 		$value = esc_attr( $post_type->name );
 		$label = esc_html( $post_type->labels->name );
 		$code  = esc_html( $post_type->name );
@@ -339,24 +339,24 @@ class OwnDuplicationSettings implements SettingsSectionInterface {
 		$input = is_array( $input ) ? wp_unslash( $input ) : array();
 
 		// Nothing checked sends nothing at all.
-		$checked_providers  = self::list_of_keys( $input['own_duplication_providers'] ?? array() );
-		$checked_post_types = self::list_of_keys( $input['own_duplication_post_types'] ?? array() );
+		$checked_providers  = self::list_of_keys( $input['hidden_providers'] ?? array() );
+		$checked_post_types = self::list_of_keys( $input['hidden_post_types'] ?? array() );
 
 		// What is not on the tab keeps its choice: inactive plugins, and loose types without a screen.
 		// Loose types of a plugin on the tab are dropped: the plugin's checkbox decides for them now.
 		$current        = self::get_values( $this->plugin );
 		$shown_plugins  = array_keys( PostTypeRegister::get_active() );
-		$hidden_plugins = array_diff( $current['own_duplication_providers'], $shown_plugins );
+		$hidden_plugins = array_diff( $current['hidden_providers'], $shown_plugins );
 		$hidden_types   = array();
-		foreach ( array_diff( $current['own_duplication_post_types'], array_keys( $this->get_loose_post_types() ) ) as $post_type ) {
+		foreach ( array_diff( $current['hidden_post_types'], array_keys( $this->get_loose_post_types() ) ) as $post_type ) {
 			if ( ! in_array( PostTypeRegister::get_provider( $post_type ), $shown_plugins, true ) ) {
 				$hidden_types[] = $post_type;
 			}
 		}
 
 		$choices = array(
-			'own_duplication_providers'  => array_merge( $hidden_plugins, $checked_providers ),
-			'own_duplication_post_types' => array_merge( $hidden_types, $checked_post_types ),
+			'hidden_providers'  => array_merge( $hidden_plugins, $checked_providers ),
+			'hidden_post_types' => array_merge( $hidden_types, $checked_post_types ),
 		);
 
 		return $this->plugin->settings->save( self::SETTINGS_KEY, self::normalize( $choices ) );

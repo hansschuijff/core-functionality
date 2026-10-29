@@ -3,7 +3,7 @@
  * Own Duplication Feature.
  *
  * @package    DeWittePrins\CoreFunctionality
- * @subpackage Modules\DuplicatePost\Features\OwnDuplication
+ * @subpackage Modules\DuplicatePost\Features\HideLinks
  * @author     Hans Schuijff <@hansschuijff>
  * @license    GPL-2.0
  * @since      1.0.0
@@ -11,7 +11,7 @@
 
 declare( strict_types=1 );
 
-namespace DeWittePrins\CoreFunctionality\Modules\DuplicatePost\Features\OwnDuplication;
+namespace DeWittePrins\CoreFunctionality\Modules\DuplicatePost\Features\HideLinks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -30,7 +30,7 @@ use function in_array;
 use function is_array;
 
 /**
- * Class OwnDuplication
+ * Class HideLinks
  *
  * Hides the links and bulk actions of Yoast Duplicate Post for events, tickets, courses and
  * lessons. Their plugins duplicate them with their own functions, which take care of what belongs
@@ -41,7 +41,7 @@ use function is_array;
  *
  * @since 1.0.0
  */
-class OwnDuplication extends AbstractFeature {
+class HideLinks extends AbstractFeature {
 
 	/**
 	 * The post types with their own duplication, once read.
@@ -59,7 +59,7 @@ class OwnDuplication extends AbstractFeature {
 	#[Override]
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
-			id:          'duplicate_post_own_duplication',
+			id:          'duplicate_post_hide_links',
 			name:        __( 'Own duplication', 'core-functionality' ),
 			description: __( 'Duplicate Post shows no links for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab.', 'core-functionality' ),
 		);
@@ -76,7 +76,7 @@ class OwnDuplication extends AbstractFeature {
 		add_action(
 			'core-functionality/register-settings-sections',
 			function ( $settings_factory ) {
-				$settings_factory->register_section( OwnDuplicationSettings::class );
+				$settings_factory->register_section( HideLinksSettings::class );
 			}
 		);
 
@@ -141,7 +141,7 @@ class OwnDuplication extends AbstractFeature {
 			return $this->post_types;
 		}
 
-		$chosen = OwnDuplicationSettings::get_chosen_post_types( $this->plugin );
+		$chosen = HideLinksSettings::get_chosen_post_types( $this->plugin );
 
 		/**
 		 * Filters the post types for which Duplicate Post shows no links, because their own plugin
@@ -151,7 +151,7 @@ class OwnDuplication extends AbstractFeature {
 		 * @since 1.0.0
 		 * @param string[] $post_types The post types.
 		 */
-		$post_types = apply_filters( 'core-functionality/duplicate-post-own-duplication-types', $chosen );
+		$post_types = apply_filters( 'core-functionality/duplicate-post-hidden-types', $chosen );
 
 		$this->post_types = is_array( $post_types ) ? $post_types : $chosen;
 
