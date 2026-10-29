@@ -23,8 +23,9 @@ use function implode;
 /**
  * Class SettingsExplanation
  *
- * An explanation for a settings tab that can be folded away: a summary line over a few paragraphs,
- * optionally with a side note. It starts open, so a new visitor sees it, and closes with one click. A native <details> element, so it needs no script; its styling lives in the
+ * An explanation for a settings tab that can be folded open: a summary line with an info icon over a
+ * few paragraphs, optionally with a side note. It starts closed, which keeps the tab short; the icon
+ * and bold summary make it inviting enough to open (Hans, October 2026). A native <details> element, so it needs no script; its styling lives in the
  * settings page stylesheet (admin-settings.css), which loads on every tab.
  *
  * @since 1.0.0
@@ -38,10 +39,10 @@ class SettingsExplanation {
 	 * @param  string   $summary    The line that opens it, for example "Explanation".
 	 * @param  string[] $paragraphs The paragraphs, as plain text.
 	 * @param  string   $aside      A side note, as plain text, or ''.
-	 * @param  bool     $open       Whether it starts open (the default, so new visitors see it).
+	 * @param  bool     $open       Whether it starts open.
 	 * @return string The explanation (HTML).
 	 */
-	public static function render( string $summary, array $paragraphs, string $aside = '', bool $open = true ): string {
+	public static function render( string $summary, array $paragraphs, string $aside = '', bool $open = false ): string {
 		$summary_html    = esc_html( $summary );
 		$paragraphs_html = self::render_paragraphs( $paragraphs );
 		$aside_html      = '' !== $aside ? self::render_aside( $aside ) : '';

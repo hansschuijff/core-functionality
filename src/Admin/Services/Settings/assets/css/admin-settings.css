@@ -590,7 +590,8 @@ span.dwp-menu-item.is-active {
 }
 .dwp-cf-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* min() keeps a card within a narrow screen instead of at least 280px wide. */
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
     gap: 16px;
 }
 .dwp-cf-card {
@@ -608,6 +609,7 @@ span.dwp-menu-item.is-active {
 .dwp-cf-card {
     min-width: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 .dwp-cf-card-title {
     float: left;
@@ -629,9 +631,25 @@ span.dwp-menu-item.is-active {
     padding: 2px 0 2px 16px;
     border-left: 2px solid #2271b1;
 }
+/* Checkbox and text side by side, so a long label wraps under its own text, not under the box. */
 .dwp-cf-card-choices label {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
     margin: 0 0 8px 0;
+}
+.dwp-cf-card-choices label input {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@media (max-width: 782px) {
+    .dwp-cf-card-group {
+        padding: 12px;
+    }
+    .dwp-cf-card {
+        padding: 12px 14px;
+    }
 }
 .dwp-cf-card-choices label:last-child {
     margin-bottom: 0;
