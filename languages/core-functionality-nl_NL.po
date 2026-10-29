@@ -3769,6 +3769,7 @@ msgid "The previous version is restored; the replaced version is now the previou
 msgstr "De vorige versie is teruggezet; de vervangen versie is nu de vorige."
 
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:283
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:275
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:517
 msgid "Save"
@@ -4083,6 +4084,8 @@ msgid "Duplicate Post Settings"
 msgstr "Instellingen Duplicate Post"
 
 #: src/Environment/Plugins/DuplicatePost.php:71
+#: src/Modules/DuplicatePost/DuplicatePost.php:45
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:110
 msgid "Duplicate Post"
 msgstr "Duplicate Post"
 
@@ -4365,3 +4368,20 @@ msgstr "SEO-velden"
 #: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
 msgid "An AI assistant may write the SEO title and meta description of Yoast SEO."
 msgstr "Een AI-assistent mag de SEO-titel en metabeschrijving van Yoast SEO schrijven."
+
+#: src/Modules/DuplicatePost/DuplicatePost.php:46
+msgid "Adjustments to Yoast Duplicate Post."
+msgstr "Aanpassingen aan Yoast Duplicate Post."
+
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplication.php:63
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:194
+msgid "Own duplication"
+msgstr "Eigen duplicatie"
+
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplication.php:64
+msgid "Duplicate Post shows no links for the content types whose own plugin duplicates them (by default events, tickets, courses and lessons), chosen on a settings tab."
+msgstr "Duplicate Post toont geen links bij de inhoudstypes die hun eigen plugin dupliceert (standaard evenementen, tickets, cursussen en lessen), te kiezen op een instellingentabblad."
+
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:121
+msgid "Content types whose own plugin duplicates them, taking care of what belongs to them (such as the ticket products of an event or the lessons of a course). Duplicate Post shows no links for these, so there is one way to duplicate them. Duplicate Post itself stays enabled for them. Types without an admin screen (such as tickets) come from the defaults file."
+msgstr "Inhoudstypes die hun eigen plugin dupliceert, inclusief wat erbij hoort (zoals de ticketproducten van een evenement of de lessen van een cursus). Duplicate Post toont hier geen links bij, zodat er één manier is om ze te dupliceren. Duplicate Post zelf blijft voor deze types ingeschakeld. Types zonder beheerscherm (zoals tickets) komen uit het defaults-bestand."
