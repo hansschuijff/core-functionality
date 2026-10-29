@@ -405,6 +405,16 @@ Feature Activation, Push Notices, Deployment, Options Management. Features add t
 `core-functionality/register-settings-sections`. `PluginIntegrityWatch` reports structural problems such as duplicate
 ids in the error log and as an admin notice.
 
+The sidebar shows the core sections first, then one group per module with the module's name as title
+(modules sorted by name, tabs in registration order), so a tab keeps the context of its module (Hans, October
+2026). The module follows from the folder rule (`…\Modules\<Module>\…` → `…\Modules\<Module>\<Module>`);
+its name is also a search term. There is no "Other" group: a feature only loads with its module, so a
+section in the Modules namespace without a module class is a programming error, written to the PHP error log
+and left out of the menu. Sections outside the Modules namespace are plugin settings and stay in the core
+group. The footer button is "Save"; a tab can bring its own buttons (`get_action_buttons()`) and reuse
+`AdminSettingsPage::get_save_button()` and `get_factory_reset_button()`, as Feature Activation does with
+"Scan for new features" between them. Tabs can show a collapsed explanation with `SettingsExplanation`.
+
 ## Naming
 
 | What | Convention |
