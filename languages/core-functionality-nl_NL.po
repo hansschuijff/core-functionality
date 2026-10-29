@@ -4385,3 +4385,27 @@ msgstr "Duplicate Post toont geen links bij de inhoudstypes die hun eigen plugin
 #: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:121
 msgid "Content types whose own plugin duplicates them, taking care of what belongs to them (such as the ticket products of an event or the lessons of a course). Duplicate Post shows no links for these, so there is one way to duplicate them. Duplicate Post itself stays enabled for them. Types without an admin screen (such as tickets) come from the defaults file."
 msgstr "Inhoudstypes die hun eigen plugin dupliceert, inclusief wat erbij hoort (zoals de ticketproducten van een evenement of de lessen van een cursus). Duplicate Post toont hier geen links bij, zodat er één manier is om ze te dupliceren. Duplicate Post zelf blijft voor deze types ingeschakeld. Types zonder beheerscherm (zoals tickets) komen uit het defaults-bestand."
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:53
+msgid "Sensei message labels"
+msgstr "Labels van Sensei-berichten"
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
+msgid "Calls Sensei's messages \"Sensei messages\", so they are not mixed up with posts (both \"Berichten\" in Dutch)."
+msgstr "Noemt de berichten van Sensei \"Sensei-berichten\", zodat ze niet verward worden met gewone berichten."
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:94
+msgid "Sensei message"
+msgstr "Sensei-bericht"
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:95
+msgid "Sensei messages"
+msgstr "Sensei-berichten"
+
+#: src/Modules/Sensei/Sensei.php:45
+msgid "Sensei LMS"
+msgstr "Sensei LMS"
+
+#: src/Modules/Sensei/Sensei.php:46
+msgid "Adjustments to Sensei LMS."
+msgstr "Aanpassingen aan Sensei LMS."

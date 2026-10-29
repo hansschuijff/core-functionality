@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T15:15:25+01:00\n"
+"POT-Creation-Date: 2026-10-29T15:17:53+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -4278,6 +4278,30 @@ msgstr ""
 
 #: src/Modules/ReaderExperience/ReaderExperience.php:44
 msgid "Settings for the Reader Experience plugin: heading anchors, reading time and feedback."
+msgstr ""
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:53
+msgid "Sensei message labels"
+msgstr ""
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
+msgid "Calls Sensei's messages \"Sensei messages\", so they are not mixed up with posts (both \"Berichten\" in Dutch)."
+msgstr ""
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:94
+msgid "Sensei message"
+msgstr ""
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:95
+msgid "Sensei messages"
+msgstr ""
+
+#: src/Modules/Sensei/Sensei.php:45
+msgid "Sensei LMS"
+msgstr ""
+
+#: src/Modules/Sensei/Sensei.php:46
+msgid "Adjustments to Sensei LMS."
 msgstr ""
 
 #: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:83
