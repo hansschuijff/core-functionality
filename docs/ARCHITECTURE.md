@@ -313,9 +313,14 @@ each has its own dependency:
   because of TEC's custom tables), ability `list-venues-and-organizers`. Tickets are left alone.
 - `CourseContent` (`sensei-lms`): profiles `course` and `lesson`, field group `course`: a lesson's course,
   module and position, placed through `Sensei_Course_Structure` (as the outline block does); a course
-  shows its structure read-only. Quizzes and enrolments are left alone. Not yet tested (Sensei is off on
-  the speeltuin).
-- `SeoFields` (`yoast-seo`): field group `seo` (Yoast title and meta description). Not yet tested.
+  shows its structure read-only; modules are not created here. Quizzes and enrolments are left alone.
+- `SeoFields` (`yoast-seo`): field group `seo` (Yoast title and meta description). Yoast's own meta
+  watcher rebuilds its indexable after these meta changes (on production; Yoast keeps no indexables on a
+  development site).
+
+Tested through MCP on the speeltuin (October 2026): posts, pages, events (dates, venue, organizer, TEC's
+custom tables), Sensei (lessons placed in a course, a module and at a position) and Yoast's fields, plus
+the refusals (published item, unknown term or module, a protected block left out).
 
 Rewrite copies are on by default for posts and pages only; events, courses and lessons get them after a
 test that their own data survives copying and merging (Hans, October 2026).
