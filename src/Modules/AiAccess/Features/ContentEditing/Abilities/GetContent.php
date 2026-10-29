@@ -108,8 +108,9 @@ class GetContent extends AbstractContentAbility {
 			return $post;
 		}
 
+		// Editable now: drafts are switched on for the type and the item is in an editable status.
 		return $this->services->reader->read( $post ) + array(
-			'editable' => $this->services->writer->is_editable( $post ),
+			'editable' => $this->services->types->can_write( $post->post_type ) && $this->services->writer->is_editable( $post ),
 		);
 	}
 }
