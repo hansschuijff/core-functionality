@@ -304,13 +304,23 @@ that drops a protected block (an event's date or ticket block, a course outline,
 refused.
 
 Feature `ContentEditing` (no dependency) holds the base: `ContentTypes` (profiles per post type, from
-`core-functionality/ai-access-content-types`, with the choices of the "AI Access" tab: per type on/off and
-whether a Rewrite & Republish copy is allowed; defaults in `settings/modules/ai-access/`),
+`core-functionality/ai-access-content-types`, with the choices of the "AI Access" tab; defaults in
+`settings/modules/ai-access/`),
 `FieldHandlers` (groups of extra fields under `fields`, from `core-functionality/ai-access-field-handlers`),
 `ContentReader`, `ContentWriter`, and the abilities `find-content`, `get-content`, `list-terms`,
 `create-draft`, `update-draft`, `submit-for-review` (list filterable: `core-functionality/ai-access-abilities`,
 which also hands over the shared `ContentServices`). The other features plug in through those filters and
-each has its own dependency:
+each has its own dependency (listed below).
+
+**Levels per content type** (Hans, October 2026: every checkbox must say which action it allows):
+`read` (find and read, published items too: `find-content`, `get-content`, `list-terms`), `write` (make and
+change drafts and items pending review, submit for review: `create-draft`, `update-draft`,
+`submit-for-review`; "making" covers layout in blocks, terms and fields too; uploading media is not possible
+yet) and `rewrite` (change published content in a copy: `start-rewrite`). They are steps: a level counts only
+when every lower one is on (`ContentTypes::has_level()`), saving switches the lower ones on, and a small
+script on the tab keeps the checkboxes of a row in steps. Defaults: read and write on, rewrite as the
+profile says. The former single choice `enabled` is read as read plus write. Publishing is never an option.
+The tab has a short intro and a collapsed explanation (`SettingsExplanation`).
 
 - `RewriteCopies` (`duplicate-post`): ability `start-rewrite` makes a Rewrite & Republish copy of a
   published item (or returns the existing one) as a draft; the assistant changes the copy, the site owner
@@ -337,19 +347,23 @@ test that their own data survives copying and merging (Hans, October 2026).
 
 ### Duplicate Post
 
-The module `DuplicatePost` (dependency: the `duplicate-post` guard) adjusts Yoast Duplicate Post. Feature
-`OwnDuplication` hides its links (list rows, admin toolbar, editor, through `duplicate_post_show_link`) and
+The module `DuplicatePost` (dependency: the `duplicate-post` guard) adjusts Yoast Duplicate Post; it is not
+an AI feature, which only needs Duplicate Post to be active. Feature `HideLinks` (named after what it does;
+"OwnDuplication" read as owning, Hans, October 2026) hides its links (list rows, admin toolbar, editor,
+through `duplicate_post_show_link`) and
 bulk actions for the post types whose own plugin duplicates them, such as events (new ticket products per
 copy) and Sensei courses (the lessons come along). A plain copy of post and meta would share those and mix
 up two items; one duplicate link per item also avoids confusion (Hans, October 2026). The post types stay
-enabled in Duplicate Post, so code (the AI Access rewrite copies) can still use it. The choice is made on
-the "Duplicate Post" tab (`duplicate-post-settings`, defaults in `settings/modules/duplicate-post/`). The tab
-offers one checkbox per active plugin from the post type catalogue (all its post types
-follow, also those without an admin screen) and, under "Other", loose post types of no known plugin.
-Stored as `own_duplication_providers` and `own_duplication_post_types`; choices for plugins not on the tab
-(inactive) are kept on save, and loose types that belong to a plugin on the tab are dropped (its checkbox
-decides). Defaults: The Events Calendar (Pro), Event Tickets (Plus) and Sensei LMS. The filter
-`core-functionality/duplicate-post-own-duplication-types` adjusts the resulting post types in code. The bulk
+enabled in Duplicate Post, so code (the AI Access rewrite copies) can still use it; this refines Yoast's own
+setting per content type into one per plugin. The choice is made on the tab "Hide Yoast duplicate links"
+(`duplicate-post-settings`, defaults in `settings/modules/duplicate-post/`): one checkbox per active plugin
+from the post type catalogue, with "Content types: …" as a small hint under it (all its post types follow,
+also those without an admin screen), and "Loose content types" of no known plugin. A collapsed explanation
+mentions the AI assistant only as a side note. Stored as `hidden_providers` and `hidden_post_types`;
+choices for plugins not on the tab (inactive) are kept on save, and loose types that belong to a plugin on
+the tab are dropped (its checkbox decides). Defaults: The Events Calendar (Pro), Event Tickets (Plus) and
+Sensei LMS. The filter `core-functionality/duplicate-post-hidden-types` adjusts the resulting post types in
+code. The bulk
 action filters are added on `admin_init`, so the catalogue is not built on the front end for them.
 
 ### Sensei LMS
@@ -419,7 +433,7 @@ ids in the error log and as an admin notice.
 | `core-functionality/ai-access-content-summary` | filter | The summary of an item the abilities return |
 | `core-functionality/ai-access-editable-statuses` | filter | Statuses in which an AI assistant may change an item |
 | `core-functionality/ai-access-rewrite-available` | filter | Whether Rewrite & Republish copies can be made |
-| `core-functionality/duplicate-post-own-duplication-types` | filter | Post types for which Duplicate Post shows no links |
+| `core-functionality/duplicate-post-hidden-types` | filter | Post types for which Duplicate Post shows no links |
 
 ## Decisions
 
