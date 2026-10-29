@@ -319,7 +319,8 @@ each has its own dependency:
   development site).
 
 Tested through MCP on the speeltuin (October 2026): posts, pages, events (dates, venue, organizer, TEC's
-custom tables), Sensei (lessons placed in a course, a module and at a position) and Yoast's fields, plus
+custom tables), Sensei (lessons placed in a course, a module and at a position), Yoast's fields and a
+rewrite copy of a post merged back by publishing it (the original kept its id, URL and terms), plus
 the refusals (published item, unknown term or module, a protected block left out).
 
 Rewrite copies are on by default for posts and pages only; events, courses and lessons get them after a
