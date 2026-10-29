@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace DeWittePrins\CoreFunctionality\Environment\Plugins;
 
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
-use DeWittePrins\CoreFunctionality\DTO\AdminMenuBlock;
 use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use DeWittePrins\CoreFunctionality\Environment\DTO\ProofRequirement;
 use Override;
@@ -65,16 +64,5 @@ class WoocommerceSmartCoupons extends AbstractPlugin {
 				group:       'my-account',
 			),
 		);
-	}
-
-	/**
-	 * Returns the admin menu blocks this plugin offers.
-	 *
-	 * @since  1.0.0
-	 * @return AdminMenuBlock[] The menu blocks.
-	 */
-	#[Override]
-	protected function get_menu_nodes(): array {
-		return array();
 	}
 }

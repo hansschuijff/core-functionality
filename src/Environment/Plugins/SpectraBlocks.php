@@ -118,15 +118,4 @@ class SpectraBlocks extends AbstractPlugin {
 			),
 		);
 	}
-
-	/**
-	 * Returns the admin menu blocks Spectra Blocks offers (none yet).
-	 *
-	 * @since  1.0.0
-	 * @return array Empty array.
-	 */
-	#[Override]
-	protected function get_menu_nodes(): array {
-		return array();
-	}
 }

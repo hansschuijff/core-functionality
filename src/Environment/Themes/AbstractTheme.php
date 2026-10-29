@@ -160,11 +160,12 @@ abstract class AbstractTheme implements ThemeInterface {
 	}
 
 	/**
-	 * Compiles and returns the available pool of admin menu blocks this theme can offer.
+	 * Returns the admin menu blocks this theme offers; none unless a guard says so.
 	 *
-	 * Must be implemented by child classes to supply their links to the register feed.
-	 *
-	 * @return \DeWittePrins\CoreFunctionality\DTO\AdminMenuBlock[]
+	 * @since  1.0.0
+	 * @return \DeWittePrins\CoreFunctionality\DTO\AdminMenuBlock[] The menu blocks.
 	 */
-	abstract protected function get_menu_nodes(): array;
+	protected function get_menu_nodes(): array {
+		return array();
+	}
 }

@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace DeWittePrins\CoreFunctionality\Environment\Plugins;
 
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
-use DeWittePrins\CoreFunctionality\DTO\AdminMenuBlock;
 use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use DeWittePrins\CoreFunctionality\Environment\DTO\ProofRequirement;
 use Override;
@@ -186,16 +185,5 @@ class EventTickets extends AbstractPlugin {
 				group:       'tickets',
 			),
 		);
-	}
-
-	/**
-	 * Compiles and returns the available pool of admin menu blocks this plugin can offer.
-	 *
-	 * @since 1.0.0
-	 * @return AdminMenuBlock[] Collection of plugin sidebar menu blocks.
-	 */
-	#[Override]
-	protected function get_menu_nodes(): array {
-		return array();
 	}
 }

@@ -111,15 +111,4 @@ class AnyBlockTheme extends AbstractTheme {
 			),
 		);
 	}
-
-	/**
-	 * Compiles and returns the available pool of admin menu blocks this theme can offer.
-	 *
-	 * @since 1.0.0
-	 * @return \DeWittePrins\CoreFunctionality\DTO\AdminMenuBlock[] Collection of theme sidebar menu blocks.
-	 */
-	#[Override]
-	protected function get_menu_nodes(): array {
-		return array();
-	}
 }

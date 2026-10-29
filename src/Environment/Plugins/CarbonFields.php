@@ -58,15 +58,4 @@ class CarbonFields extends AbstractPlugin {
 	public function get_toolbar_nodes(): array {
 		return array();
 	}
-
-	/**
-	 * Returns the admin menu blocks this plugin offers.
-	 *
-	 * @since  1.0.0
-	 * @return AdminMenuBlock[] The menu blocks.
-	 */
-	#[Override]
-	protected function get_menu_nodes(): array {
-		return array();
-	}
 }

@@ -274,14 +274,4 @@ class SenseiLms extends AbstractPlugin {
 			),
 		);
 	}
-
-	/**
-	 * Returns the admin menu blocks this plugin offers.
-	 *
-	 * @since  1.0.0
-	 * @return AdminMenuBlock[] The menu blocks.
-	 */
-	#[Override]
-	protected function get_menu_nodes(): array {
-		return array(); }
 }
