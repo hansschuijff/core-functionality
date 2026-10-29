@@ -11,7 +11,8 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 A modular core functionality plugin build using OOP concepts and responding to the availability of plugins and themes in the environment to activate and de-activate parts of it's functionality according to the needs of modules and features.
 
-== Features ==
+= Features =
+
 * Smart Timing Check: Timing of the loading of the plugin can be tuned in settings.
 * Customizable: Uses settings and a settings page whenever needed to customize the functionality and content.
 * Ability to synchronize: has builtin call when ready technology, so dependent plugins or themes can know when to start their functionality.
