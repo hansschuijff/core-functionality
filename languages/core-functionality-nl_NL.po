@@ -36,18 +36,18 @@ msgstr ""
 msgid "https://dewitteprins.nl"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:130
-#: src/Admin/Services/Settings/AdminSettingsPage.php:482
+#: src/Admin/Services/Settings/AdminSettingsPage.php:133
+#: src/Admin/Services/Settings/AdminSettingsPage.php:485
 msgid "Core Functionality Settings"
 msgstr "Instellingen Core Functionality"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:131
+#: src/Admin/Services/Settings/AdminSettingsPage.php:134
 #: src/Environment/Plugins/CoreFunctionality.php:107
 msgid "Core Functionality"
 msgstr "Core Functionality"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:350
-#: src/Admin/Services/Settings/AdminSettingsPage.php:395
+#: src/Admin/Services/Settings/AdminSettingsPage.php:353
+#: src/Admin/Services/Settings/AdminSettingsPage.php:398
 #: src/Environment/Plugins/Automatewoo.php:156
 #: src/Environment/Plugins/EventTickets.php:96
 #: src/Environment/Plugins/FestingerVault.php:111
@@ -64,55 +64,47 @@ msgstr "Core Functionality"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:351
+#: src/Admin/Services/Settings/AdminSettingsPage.php:354
 msgid "This section does not exist (any more). Choose a section in the menu."
 msgstr "Deze sectie bestaat niet (meer). Kies een sectie in het menu."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:364
+#: src/Admin/Services/Settings/AdminSettingsPage.php:367
 msgid "Type to search... (↑↓ to navigate, Enter)"
 msgstr "Typ om te zoeken… (↑↓ om te navigeren, Enter)"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:465
+#: src/Admin/Services/Settings/AdminSettingsPage.php:468
 msgid "Search... (/)"
 msgstr "Zoeken… (/)"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:466
+#: src/Admin/Services/Settings/AdminSettingsPage.php:469
 msgid "Collapse menu"
 msgstr "Menu inklappen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:494
-msgid "Active Components"
-msgstr "Actieve onderdelen"
-
-#: src/Admin/Services/Settings/AdminSettingsPage.php:503
+#: src/Admin/Services/Settings/AdminSettingsPage.php:501
 msgid "No items found"
 msgstr "Geen items gevonden"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:590
-msgid "Save Settings"
-msgstr "Instellingen opslaan"
-
-#: src/Admin/Services/Settings/AdminSettingsPage.php:647
+#: src/Admin/Services/Settings/AdminSettingsPage.php:731
 msgid "Reset to Factory Defaults"
 msgstr "Terug naar fabrieksinstellingen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:648
+#: src/Admin/Services/Settings/AdminSettingsPage.php:732
 msgid "🚨 CRITICAL WARNING:\\n\\nAre you sure you want to trigger a settings reset for this section?"
 msgstr "🚨 BELANGRIJKE WAARSCHUWING:\\n\\nWeet je zeker dat je de instellingen van dit onderdeel wilt terugzetten?"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:689
+#: src/Admin/Services/Settings/AdminSettingsPage.php:783
 msgid "Security check failed. Please try again."
 msgstr "Beveiligingscontrole mislukt. Probeer het opnieuw."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:694
+#: src/Admin/Services/Settings/AdminSettingsPage.php:788
 msgid "You do not have sufficient permissions to update this settings."
 msgstr "Je hebt onvoldoende rechten om deze instellingen te wijzigen."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:716
+#: src/Admin/Services/Settings/AdminSettingsPage.php:810
 msgid "Validation failed. Please double-check your entries."
 msgstr "Validatie mislukt. Controleer je invoer."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:723
+#: src/Admin/Services/Settings/AdminSettingsPage.php:817
 msgid "Settings saved successfully."
 msgstr "Instellingen opgeslagen."
 
@@ -132,35 +124,35 @@ msgstr "Kritieke fout: de deploymentniveaus konden niet worden opgeslagen."
 msgid "Release status settings saved successfully. Remember to commit changes in Git! 🚀"
 msgstr "Deploymentniveaus opgeslagen. Vergeet niet de wijzigingen in Git te committen! 🚀"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:78
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:79
 msgid "Feature Activation"
 msgstr "Features activeren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:88
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:89
 msgid "Here you can enable and disable the modules and features in this plugin. Refreshing this list, will perform a scan that automatically detect new modules and features if there are any. By default new modules and features will be disabled en need to be enabled to launch them."
 msgstr "Hier zet je de modules en features van deze plugin aan en uit. Vernieuwen voert een scan uit die nieuwe modules en features vindt. Nieuwe modules en features staan standaard uit en moeten eerst worden aangezet."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:164
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:165
 msgid "Select all"
 msgstr "Alles selecteren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:165
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:405
 msgid "Scan for new features"
 msgstr "Zoeken naar nieuwe features"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:215
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:212
 msgid "Available features:"
 msgstr "Beschikbare features:"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:340
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:337
 msgid "All modules and features where reset to their default settings."
 msgstr "Alle modules en features zijn teruggezet naar hun standaardinstellingen."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:373
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:370
 msgid "Critical Error: Failed to find modules and features in scan. Is this correct?"
 msgstr "Kritieke fout: de scan vond geen modules en features. Klopt dat?"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:377
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:374
 msgid "Scan was succesful. All Modules and Features succesfully registered."
 msgstr "Scan geslaagd. Alle modules en features zijn geregistreerd."
 
@@ -3770,6 +3762,7 @@ msgstr "De vorige versie kon niet worden teruggezet. Er is niets gewijzigd."
 msgid "The previous version is restored; the replaced version is now the previous one."
 msgstr "De vorige versie is teruggezet; de vervangen versie is nu de vorige."
 
+#: src/Admin/Services/Settings/AdminSettingsPage.php:748
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:402
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:405
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
