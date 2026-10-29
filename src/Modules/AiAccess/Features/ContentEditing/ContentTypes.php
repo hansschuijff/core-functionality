@@ -137,9 +137,20 @@ class ContentTypes {
 	 *
 	 * @since  1.0.0
 	 * @param  string $post_type The post type.
-	 * @return bool True when the type is switched on and its copies are allowed.
+	 * @return bool True when copies can be made, the type is switched on and its copies are allowed.
 	 */
 	public function allows_rewrite( string $post_type ): bool {
+		/**
+		 * Filters whether Rewrite & Republish copies can be made at all. The feature that makes
+		 * them (with Yoast Duplicate Post) switches this on.
+		 *
+		 * @since 1.0.0
+		 * @param bool $available Whether copies can be made.
+		 */
+		if ( true !== apply_filters( 'core-functionality/ai-access-rewrite-available', false ) ) {
+			return false;
+		}
+
 		$profile = $this->get( $post_type );
 
 		return null !== $profile && $this->get_choice( $profile, 'rewrite' );
