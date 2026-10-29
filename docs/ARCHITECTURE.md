@@ -133,8 +133,8 @@ item's dependencies itself.)
 **Toolbar catalogue.** `AdminToolbarRegister` holds the toolbar nodes of *every known* plugin and theme
 (every guard class in `Plugins/` and `Themes/`) plus the WordPress core, each provider with a
 `ProviderStatus`. This plugin has a guard of its own there (`Plugins\CoreFunctionality`, e.g. the link to
-its settings page): always ready, no index entry, and should anything name it as a dependency it answers
-true. The statuses:
+its settings page): it extends `AbstractPlugin` like every plugin guard, but is always ready, needs no
+index entry, and should anything name it as a dependency it answers true. The statuses:
 active (`is_ready()`), inactive (installed) or not installed. `get_all()` serves the settings page, so a
 menu can be set up once, before a plugin is installed or activated; `get_active()` serves the toolbar, so
 activating or deactivating a plugin switches its nodes on and off. The register is filled in memory on

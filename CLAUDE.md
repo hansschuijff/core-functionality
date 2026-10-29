@@ -67,9 +67,10 @@ new modules and features for Hans's own sites.
   (`any-genesis-theme`). Each id needs a guard class in `src/Environment/Plugins|Themes/`; its `get_id()` is the class name in kebab-case and equals the
   key in `settings/environment-index.php` (plugins: basename, themes: name and author).
 - A new guard method gets a default in the abstract base (`AbstractPlugin`, `AbstractTheme`); a guard only
-  overrides it when it has something to say. No empty overrides. Guards that implement an interface
-  directly (`Plugins\CoreFunctionality`, `Core\WordPress`) need every new interface method themselves:
-  check them first, a missing one is a fatal (Hans, October 2026).
+  overrides it when it has something to say. No empty overrides. Every plugin guard extends
+  `AbstractPlugin`, also this plugin's own guard (`Plugins\CoreFunctionality`, which only overrides
+  `is_ready()` and the like). Only `Core\WordPress` implements its interfaces directly and needs every new
+  interface method itself: check it first, a missing one is a fatal (Hans, October 2026).
 - A guard's proof must hold when the Kernel boots (`init` priority 0): use a constant, function or class
   that the plugin defines once it has started, verified in its source or on the local site. Proofs use
   `class_exists( $class, false )`, so a class that is only autoloaded on first use does not count.
