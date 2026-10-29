@@ -66,6 +66,9 @@ use function is_wp_error;
 use function is_string;
 use function wp_unslash;
 use function sanitize_text_field;
+use function error_log;
+use function preg_match;
+use function uksort;
 
 /**
  * Class AdminSettingsPage
@@ -489,21 +492,101 @@ class AdminSettingsPage {
 					?>
 				</div>
 
-				<!-- GROEP 2: ACTIVE COMPONENTS -->
-				<div class="dwp-menu-group">
-					<span class="dwp-group-title"><?php esc_html_e( 'Active Components', 'core-functionality' ); ?></span>
-					<?php
-					foreach ( $this->sections as $id => $fqcn ) {
-						if ( $this->is_feature_section( $fqcn ) ) {
-							$this->render_sidebar_link_html( $id, $fqcn, $active_section_id );
-						}
-					}
-					?>
-				</div>
+				<?php
+				// One group per module, so each tab of a feature keeps the context of its module.
+				foreach ( $this->get_feature_sections_by_module() as $module_name => $sections ) {
+					$this->render_sidebar_group( $module_name, $sections, $active_section_id );
+				}
+				?>
 				<div class="dwp-no-results" id="js-search-no-results" style="display: none;"><?php esc_html_e( 'No items found', 'core-functionality' ); ?></div>
 			</nav>
 		</aside>
 		<?php
+	}
+
+	/**
+	 * Returns the sections of features grouped by the name of their module, modules sorted by name and
+	 * sections in the order they were registered.
+	 *
+	 * @since  1.0.0
+	 * @return array<string, array<string, string>> Module name => section id => section class.
+	 */
+	private function get_feature_sections_by_module(): array {
+		$groups = array();
+		foreach ( $this->sections as $id => $fqcn ) {
+			if ( ! $this->is_feature_section( $fqcn ) ) {
+				continue;
+			}
+
+			$module_name = $this->get_module_name( $fqcn );
+			if ( null === $module_name ) {
+				$this->report_section_without_module( $fqcn );
+				continue;
+			}
+
+			$groups[ $module_name ][ $id ] = $fqcn;
+		}
+
+		uksort( $groups, 'strnatcasecmp' );
+
+		return $groups;
+	}
+
+	/**
+	 * Returns the name of the module a feature section belongs to, found through the folder rule:
+	 * a class in `…\Modules\<Module>\…` belongs to the module class `…\Modules\<Module>\<Module>`.
+	 *
+	 * @since  1.0.0
+	 * @param  string $section_fqcn The section class.
+	 * @return string|null The module's (translated) name, or null when no module class is found.
+	 */
+	private function get_module_name( string $section_fqcn ): ?string {
+		if ( 1 !== preg_match( '/^(.*\\\\Modules\\\\)([^\\\\]+)\\\\/', $section_fqcn, $matches ) ) {
+			return null;
+		}
+
+		$module_fqcn = $matches[1] . $matches[2] . '\\' . $matches[2];
+		if ( ! ClassParser::is_module_fqcn( $module_fqcn ) ) {
+			return null;
+		}
+
+		return $module_fqcn::get_meta()->name;
+	}
+
+	/**
+	 * Writes a section of a feature without a module to the PHP error log. A feature only loads with its
+	 * module, so this is a programming error (a section class outside its feature's folder, say).
+	 *
+	 * @since  1.0.0
+	 * @param  string $section_fqcn The section class.
+	 * @return void
+	 */
+	private function report_section_without_module( string $section_fqcn ): void {
+		error_log( // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- A programming error must be visible, also without WP_DEBUG.
+			sprintf(
+				'[CoreFunctionality Settings] The settings section %s is in the Modules namespace but no module class was found for it. It is left out of the menu; check its namespace and folder.',
+				$section_fqcn
+			)
+		);
+	}
+
+	/**
+	 * Outputs one group of the sidebar: a title and the links of its sections.
+	 *
+	 * @since  1.0.0
+	 * @param  string                $title             The group title, such as the module's name.
+	 * @param  array<string, string> $sections          Section id => section class.
+	 * @param  string                $active_section_id The currently active section key.
+	 * @return void
+	 */
+	private function render_sidebar_group( string $title, array $sections, string $active_section_id ): void {
+		$title_html = esc_html( $title );
+
+		echo '<div class="dwp-menu-group"><span class="dwp-group-title">' . $title_html . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
+		foreach ( $sections as $id => $fqcn ) {
+			$this->render_sidebar_link_html( $id, $fqcn, $active_section_id, $title );
+		}
+		echo '</div><!-- closes dwp-menu-group -->';
 	}
 
 	/**
@@ -602,9 +685,10 @@ class AdminSettingsPage {
 	 * @param  string $id                The unique settings section identifier key.
 	 * @param  string $section_fqcn      The Fully Qualified Class Name of the section.
 	 * @param  string $active_section_id The currently active section key.
+	 * @param  string $group_name        The name of the group (module), added to the search terms.
 	 * @return void
 	 */
-	private function render_sidebar_link_html( string $id, string $section_fqcn, string $active_section_id ): void {
+	private function render_sidebar_link_html( string $id, string $section_fqcn, string $active_section_id, string $group_name = '' ): void {
 		$section_url = add_query_arg( array( 'section' => $id ), menu_page_url( self::SLUG, false ) );
 		$section_url = esc_url( $section_url );
 
@@ -617,7 +701,7 @@ class AdminSettingsPage {
 			$dashicon = 'dashicons-admin-generic';
 		}
 
-		$search_terms = strtolower( $section_name ) . ' ' . $id;
+		$search_terms = esc_attr( strtolower( $section_fqcn::get_name() . ' ' . $group_name ) . ' ' . $id );
 
 		if ( $is_active_section ) {
 			echo <<<HTML
