@@ -42,23 +42,23 @@ msgid "Core Functionality Settings"
 msgstr "Instellingen Core Functionality"
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:131
-#: src/Environment/Plugins/CoreFunctionality.php:107
+#: src/Environment/Plugins/CoreFunctionality.php:118
 msgid "Core Functionality"
 msgstr "Core Functionality"
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:350
 #: src/Admin/Services/Settings/AdminSettingsPage.php:395
 #: src/Environment/Plugins/Automatewoo.php:156
-#: src/Environment/Plugins/EventTickets.php:86
+#: src/Environment/Plugins/EventTickets.php:97
 #: src/Environment/Plugins/FestingerVault.php:111
 #: src/Environment/Plugins/FestingerVault.php:113
 #: src/Environment/Plugins/GitUpdater.php:74
 #: src/Environment/Plugins/LocoTranslate.php:114
-#: src/Environment/Plugins/SenseiLms.php:148
+#: src/Environment/Plugins/SenseiLms.php:159
 #: src/Environment/Plugins/SpectraBlocks.php:110
 #: src/Environment/Plugins/SpectraLegacy.php:110
-#: src/Environment/Plugins/TheEventsCalendar.php:126
-#: src/Environment/Plugins/Woocommerce.php:119
+#: src/Environment/Plugins/TheEventsCalendar.php:137
+#: src/Environment/Plugins/Woocommerce.php:130
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:81
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:482
 msgid "Settings"
@@ -406,35 +406,35 @@ msgstr "🔬 Staging"
 msgid "🌐 Production"
 msgstr "🌐 Productie"
 
-#: src/Environment/Core/WordPress.php:111
-#: src/Environment/Core/WordPress.php:113
+#: src/Environment/Core/WordPress.php:123
+#: src/Environment/Core/WordPress.php:125
 msgid "Installed Plugins"
 msgstr "Geïnstalleerde plugins"
 
 #. translators: %s: title of the page or settings tab.
 #. translators: %s: name of a tax class.
-#: src/Environment/Core/WordPress.php:113
-#: src/Environment/Core/WordPress.php:122
-#: src/Environment/Core/WordPress.php:130
-#: src/Environment/Core/WordPress.php:139
-#: src/Environment/Core/WordPress.php:152
-#: src/Environment/Core/WordPress.php:160
-#: src/Environment/Core/WordPress.php:168
-#: src/Environment/Core/WordPress.php:176
+#: src/Environment/Core/WordPress.php:125
+#: src/Environment/Core/WordPress.php:134
+#: src/Environment/Core/WordPress.php:142
+#: src/Environment/Core/WordPress.php:151
+#: src/Environment/Core/WordPress.php:164
+#: src/Environment/Core/WordPress.php:172
+#: src/Environment/Core/WordPress.php:180
 #: src/Environment/Core/WordPress.php:188
-#: src/Environment/Core/WordPress.php:197
-#: src/Environment/Core/WordPress.php:206
-#: src/Environment/Core/WordPress.php:215
-#: src/Environment/Core/WordPress.php:224
-#: src/Environment/Core/WordPress.php:233
-#: src/Environment/Core/WordPress.php:240
-#: src/Environment/Core/WordPress.php:249
-#: src/Environment/Core/WordPress.php:258
-#: src/Environment/Core/WordPress.php:267
-#: src/Environment/Core/WordPress.php:276
-#: src/Environment/Core/WordPress.php:283
+#: src/Environment/Core/WordPress.php:200
+#: src/Environment/Core/WordPress.php:209
+#: src/Environment/Core/WordPress.php:218
+#: src/Environment/Core/WordPress.php:227
+#: src/Environment/Core/WordPress.php:236
+#: src/Environment/Core/WordPress.php:245
+#: src/Environment/Core/WordPress.php:252
+#: src/Environment/Core/WordPress.php:261
+#: src/Environment/Core/WordPress.php:270
+#: src/Environment/Core/WordPress.php:279
+#: src/Environment/Core/WordPress.php:288
 #: src/Environment/Core/WordPress.php:295
-#: src/Environment/Core/WordPress.php:302
+#: src/Environment/Core/WordPress.php:307
+#: src/Environment/Core/WordPress.php:314
 #: src/Environment/Plugins/AeliaEuVatAssistant.php:78
 #: src/Environment/Plugins/AeliaFoundationClasses.php:78
 #: src/Environment/Plugins/AutocompleteWoocommerceOrders.php:78
@@ -468,22 +468,22 @@ msgstr "Geïnstalleerde plugins"
 #: src/Environment/Plugins/BeaverBuilder.php:116
 #: src/Environment/Plugins/BeaverBuilder.php:124
 #: src/Environment/Plugins/BrokenLinkChecker.php:65
-#: src/Environment/Plugins/CoreFunctionality.php:109
+#: src/Environment/Plugins/CoreFunctionality.php:120
 #: src/Environment/Plugins/DuplicatePost.php:69
 #: src/Environment/Plugins/EuVatCompliance.php:78
-#: src/Environment/Plugins/EventTickets.php:84
 #: src/Environment/Plugins/EventTickets.php:95
-#: src/Environment/Plugins/EventTickets.php:104
-#: src/Environment/Plugins/EventTickets.php:114
-#: src/Environment/Plugins/EventTickets.php:124
-#: src/Environment/Plugins/EventTickets.php:133
-#: src/Environment/Plugins/EventTickets.php:142
-#: src/Environment/Plugins/EventTickets.php:152
-#: src/Environment/Plugins/EventTickets.php:162
-#: src/Environment/Plugins/EventTickets.php:172
-#: src/Environment/Plugins/EventTicketsPlus.php:92
-#: src/Environment/Plugins/EventTicketsPlus.php:101
-#: src/Environment/Plugins/EventTicketsPlus.php:110
+#: src/Environment/Plugins/EventTickets.php:106
+#: src/Environment/Plugins/EventTickets.php:115
+#: src/Environment/Plugins/EventTickets.php:125
+#: src/Environment/Plugins/EventTickets.php:135
+#: src/Environment/Plugins/EventTickets.php:144
+#: src/Environment/Plugins/EventTickets.php:153
+#: src/Environment/Plugins/EventTickets.php:163
+#: src/Environment/Plugins/EventTickets.php:173
+#: src/Environment/Plugins/EventTickets.php:183
+#: src/Environment/Plugins/EventTicketsPlus.php:103
+#: src/Environment/Plugins/EventTicketsPlus.php:112
+#: src/Environment/Plugins/EventTicketsPlus.php:121
 #: src/Environment/Plugins/FestingerVault.php:65
 #: src/Environment/Plugins/FestingerVault.php:72
 #: src/Environment/Plugins/FestingerVault.php:80
@@ -515,34 +515,34 @@ msgstr "Geïnstalleerde plugins"
 #: src/Environment/Plugins/Nobuna.php:65
 #: src/Environment/Plugins/ReaderExperience.php:68
 #: src/Environment/Plugins/RedisCache.php:66
-#: src/Environment/Plugins/SenseiLms.php:66
-#: src/Environment/Plugins/SenseiLms.php:73
-#: src/Environment/Plugins/SenseiLms.php:80
-#: src/Environment/Plugins/SenseiLms.php:87
-#: src/Environment/Plugins/SenseiLms.php:94
-#: src/Environment/Plugins/SenseiLms.php:101
-#: src/Environment/Plugins/SenseiLms.php:109
-#: src/Environment/Plugins/SenseiLms.php:116
-#: src/Environment/Plugins/SenseiLms.php:123
-#: src/Environment/Plugins/SenseiLms.php:130
-#: src/Environment/Plugins/SenseiLms.php:138
-#: src/Environment/Plugins/SenseiLms.php:146
-#: src/Environment/Plugins/SenseiLms.php:154
-#: src/Environment/Plugins/SenseiLms.php:162
-#: src/Environment/Plugins/SenseiLms.php:170
-#: src/Environment/Plugins/SenseiLms.php:177
-#: src/Environment/Plugins/SenseiLms.php:184
-#: src/Environment/Plugins/SenseiLms.php:191
-#: src/Environment/Plugins/SenseiLms.php:198
-#: src/Environment/Plugins/SenseiLms.php:205
-#: src/Environment/Plugins/SenseiLms.php:212
-#: src/Environment/Plugins/SenseiLms.php:219
-#: src/Environment/Plugins/SenseiLms.php:226
-#: src/Environment/Plugins/SenseiLms.php:233
-#: src/Environment/Plugins/SenseiLms.php:240
-#: src/Environment/Plugins/SenseiLms.php:247
-#: src/Environment/Plugins/SenseiLms.php:254
-#: src/Environment/Plugins/SenseiLms.php:261
+#: src/Environment/Plugins/SenseiLms.php:77
+#: src/Environment/Plugins/SenseiLms.php:84
+#: src/Environment/Plugins/SenseiLms.php:91
+#: src/Environment/Plugins/SenseiLms.php:98
+#: src/Environment/Plugins/SenseiLms.php:105
+#: src/Environment/Plugins/SenseiLms.php:112
+#: src/Environment/Plugins/SenseiLms.php:120
+#: src/Environment/Plugins/SenseiLms.php:127
+#: src/Environment/Plugins/SenseiLms.php:134
+#: src/Environment/Plugins/SenseiLms.php:141
+#: src/Environment/Plugins/SenseiLms.php:149
+#: src/Environment/Plugins/SenseiLms.php:157
+#: src/Environment/Plugins/SenseiLms.php:165
+#: src/Environment/Plugins/SenseiLms.php:173
+#: src/Environment/Plugins/SenseiLms.php:181
+#: src/Environment/Plugins/SenseiLms.php:188
+#: src/Environment/Plugins/SenseiLms.php:195
+#: src/Environment/Plugins/SenseiLms.php:202
+#: src/Environment/Plugins/SenseiLms.php:209
+#: src/Environment/Plugins/SenseiLms.php:216
+#: src/Environment/Plugins/SenseiLms.php:223
+#: src/Environment/Plugins/SenseiLms.php:230
+#: src/Environment/Plugins/SenseiLms.php:237
+#: src/Environment/Plugins/SenseiLms.php:244
+#: src/Environment/Plugins/SenseiLms.php:251
+#: src/Environment/Plugins/SenseiLms.php:258
+#: src/Environment/Plugins/SenseiLms.php:265
+#: src/Environment/Plugins/SenseiLms.php:272
 #: src/Environment/Plugins/SeoRedirectionPremium.php:65
 #: src/Environment/Plugins/SeoRedirectionPremium.php:72
 #: src/Environment/Plugins/SharedCounts.php:65
@@ -560,101 +560,101 @@ msgstr "Geïnstalleerde plugins"
 #: src/Environment/Plugins/SpectraLegacy.php:100
 #: src/Environment/Plugins/SpectraLegacy.php:108
 #: src/Environment/Plugins/SpectraLegacy.php:116
-#: src/Environment/Plugins/TheEventsCalendar.php:82
-#: src/Environment/Plugins/TheEventsCalendar.php:91
-#: src/Environment/Plugins/TheEventsCalendar.php:99
-#: src/Environment/Plugins/TheEventsCalendar.php:107
-#: src/Environment/Plugins/TheEventsCalendar.php:115
-#: src/Environment/Plugins/TheEventsCalendar.php:124
-#: src/Environment/Plugins/TheEventsCalendar.php:134
-#: src/Environment/Plugins/TheEventsCalendar.php:141
-#: src/Environment/Plugins/TheEventsCalendar.php:150
-#: src/Environment/Plugins/TheEventsCalendar.php:160
-#: src/Environment/Plugins/TheEventsCalendar.php:170
-#: src/Environment/Plugins/TheEventsCalendar.php:180
-#: src/Environment/Plugins/TheEventsCalendar.php:189
-#: src/Environment/Plugins/TheEventsCalendar.php:199
-#: src/Environment/Plugins/TheEventsCalendar.php:209
-#: src/Environment/Plugins/TheEventsCalendar.php:218
-#: src/Environment/Plugins/TheEventsCalendar.php:228
-#: src/Environment/Plugins/TheEventsCalendar.php:238
-#: src/Environment/Plugins/TheEventsCalendar.php:248
-#: src/Environment/Plugins/TheEventsCalendar.php:258
-#: src/Environment/Plugins/TheEventsCalendar.php:268
-#: src/Environment/Plugins/TheEventsCalendar.php:278
-#: src/Environment/Plugins/TheEventsCalendar.php:288
-#: src/Environment/Plugins/TheEventsCalendar.php:298
-#: src/Environment/Plugins/TheEventsCalendar.php:308
-#: src/Environment/Plugins/TheEventsCalendar.php:318
-#: src/Environment/Plugins/TheEventsCalendar.php:328
-#: src/Environment/Plugins/TheEventsCalendar.php:338
-#: src/Environment/Plugins/TheEventsCalendar.php:348
-#: src/Environment/Plugins/TheEventsCalendar.php:358
-#: src/Environment/Plugins/TheEventsCalendar.php:368
-#: src/Environment/Plugins/TheEventsCalendar.php:378
-#: src/Environment/Plugins/TheEventsCalendar.php:388
-#: src/Environment/Plugins/TheEventsCalendar.php:398
-#: src/Environment/Plugins/TheEventsCalendarPro.php:92
-#: src/Environment/Plugins/TheEventsCalendarPro.php:101
-#: src/Environment/Plugins/TheEventsCalendarPro.php:111
-#: src/Environment/Plugins/TheEventsCalendarPro.php:121
-#: src/Environment/Plugins/TheEventsCalendarPro.php:131
-#: src/Environment/Plugins/TheEventsCalendarPro.php:141
-#: src/Environment/Plugins/TheEventsCalendarPro.php:151
-#: src/Environment/Plugins/TheEventsCalendarPro.php:161
-#: src/Environment/Plugins/TheEventsCalendarPro.php:171
-#: src/Environment/Plugins/TheEventsCalendarPro.php:181
-#: src/Environment/Plugins/TheEventsCalendarPro.php:191
+#: src/Environment/Plugins/TheEventsCalendar.php:93
+#: src/Environment/Plugins/TheEventsCalendar.php:102
+#: src/Environment/Plugins/TheEventsCalendar.php:110
+#: src/Environment/Plugins/TheEventsCalendar.php:118
+#: src/Environment/Plugins/TheEventsCalendar.php:126
+#: src/Environment/Plugins/TheEventsCalendar.php:135
+#: src/Environment/Plugins/TheEventsCalendar.php:145
+#: src/Environment/Plugins/TheEventsCalendar.php:152
+#: src/Environment/Plugins/TheEventsCalendar.php:161
+#: src/Environment/Plugins/TheEventsCalendar.php:171
+#: src/Environment/Plugins/TheEventsCalendar.php:181
+#: src/Environment/Plugins/TheEventsCalendar.php:191
+#: src/Environment/Plugins/TheEventsCalendar.php:200
+#: src/Environment/Plugins/TheEventsCalendar.php:210
+#: src/Environment/Plugins/TheEventsCalendar.php:220
+#: src/Environment/Plugins/TheEventsCalendar.php:229
+#: src/Environment/Plugins/TheEventsCalendar.php:239
+#: src/Environment/Plugins/TheEventsCalendar.php:249
+#: src/Environment/Plugins/TheEventsCalendar.php:259
+#: src/Environment/Plugins/TheEventsCalendar.php:269
+#: src/Environment/Plugins/TheEventsCalendar.php:279
+#: src/Environment/Plugins/TheEventsCalendar.php:289
+#: src/Environment/Plugins/TheEventsCalendar.php:299
+#: src/Environment/Plugins/TheEventsCalendar.php:309
+#: src/Environment/Plugins/TheEventsCalendar.php:319
+#: src/Environment/Plugins/TheEventsCalendar.php:329
+#: src/Environment/Plugins/TheEventsCalendar.php:339
+#: src/Environment/Plugins/TheEventsCalendar.php:349
+#: src/Environment/Plugins/TheEventsCalendar.php:359
+#: src/Environment/Plugins/TheEventsCalendar.php:369
+#: src/Environment/Plugins/TheEventsCalendar.php:379
+#: src/Environment/Plugins/TheEventsCalendar.php:389
+#: src/Environment/Plugins/TheEventsCalendar.php:399
+#: src/Environment/Plugins/TheEventsCalendar.php:409
+#: src/Environment/Plugins/TheEventsCalendarPro.php:103
+#: src/Environment/Plugins/TheEventsCalendarPro.php:112
+#: src/Environment/Plugins/TheEventsCalendarPro.php:122
+#: src/Environment/Plugins/TheEventsCalendarPro.php:132
+#: src/Environment/Plugins/TheEventsCalendarPro.php:142
+#: src/Environment/Plugins/TheEventsCalendarPro.php:152
+#: src/Environment/Plugins/TheEventsCalendarPro.php:162
+#: src/Environment/Plugins/TheEventsCalendarPro.php:172
+#: src/Environment/Plugins/TheEventsCalendarPro.php:182
+#: src/Environment/Plugins/TheEventsCalendarPro.php:192
+#: src/Environment/Plugins/TheEventsCalendarPro.php:202
 #: src/Environment/Plugins/UpdraftPlus.php:65
 #: src/Environment/Plugins/UpdraftPlus.php:72
-#: src/Environment/Plugins/Woocommerce.php:78
-#: src/Environment/Plugins/Woocommerce.php:86
-#: src/Environment/Plugins/Woocommerce.php:93
-#: src/Environment/Plugins/Woocommerce.php:101
-#: src/Environment/Plugins/Woocommerce.php:109
-#: src/Environment/Plugins/Woocommerce.php:117
-#: src/Environment/Plugins/Woocommerce.php:126
-#: src/Environment/Plugins/Woocommerce.php:133
-#: src/Environment/Plugins/Woocommerce.php:141
-#: src/Environment/Plugins/Woocommerce.php:150
-#: src/Environment/Plugins/Woocommerce.php:159
-#: src/Environment/Plugins/Woocommerce.php:168
-#: src/Environment/Plugins/Woocommerce.php:177
-#: src/Environment/Plugins/Woocommerce.php:185
-#: src/Environment/Plugins/Woocommerce.php:192
-#: src/Environment/Plugins/Woocommerce.php:200
-#: src/Environment/Plugins/Woocommerce.php:207
-#: src/Environment/Plugins/Woocommerce.php:215
-#: src/Environment/Plugins/Woocommerce.php:223
-#: src/Environment/Plugins/Woocommerce.php:231
-#: src/Environment/Plugins/Woocommerce.php:239
-#: src/Environment/Plugins/Woocommerce.php:247
-#: src/Environment/Plugins/Woocommerce.php:255
-#: src/Environment/Plugins/Woocommerce.php:263
-#: src/Environment/Plugins/Woocommerce.php:271
-#: src/Environment/Plugins/Woocommerce.php:279
-#: src/Environment/Plugins/Woocommerce.php:287
-#: src/Environment/Plugins/Woocommerce.php:295
-#: src/Environment/Plugins/Woocommerce.php:303
-#: src/Environment/Plugins/Woocommerce.php:311
-#: src/Environment/Plugins/Woocommerce.php:319
-#: src/Environment/Plugins/Woocommerce.php:327
-#: src/Environment/Plugins/Woocommerce.php:335
-#: src/Environment/Plugins/Woocommerce.php:343
-#: src/Environment/Plugins/Woocommerce.php:351
-#: src/Environment/Plugins/Woocommerce.php:359
-#: src/Environment/Plugins/Woocommerce.php:367
-#: src/Environment/Plugins/Woocommerce.php:375
-#: src/Environment/Plugins/Woocommerce.php:382
-#: src/Environment/Plugins/Woocommerce.php:390
-#: src/Environment/Plugins/Woocommerce.php:398
-#: src/Environment/Plugins/Woocommerce.php:406
-#: src/Environment/Plugins/Woocommerce.php:414
-#: src/Environment/Plugins/Woocommerce.php:422
-#: src/Environment/Plugins/Woocommerce.php:430
-#: src/Environment/Plugins/Woocommerce.php:438
-#: src/Environment/Plugins/Woocommerce.php:446
-#: src/Environment/Plugins/Woocommerce.php:475
+#: src/Environment/Plugins/Woocommerce.php:89
+#: src/Environment/Plugins/Woocommerce.php:97
+#: src/Environment/Plugins/Woocommerce.php:104
+#: src/Environment/Plugins/Woocommerce.php:112
+#: src/Environment/Plugins/Woocommerce.php:120
+#: src/Environment/Plugins/Woocommerce.php:128
+#: src/Environment/Plugins/Woocommerce.php:137
+#: src/Environment/Plugins/Woocommerce.php:144
+#: src/Environment/Plugins/Woocommerce.php:152
+#: src/Environment/Plugins/Woocommerce.php:161
+#: src/Environment/Plugins/Woocommerce.php:170
+#: src/Environment/Plugins/Woocommerce.php:179
+#: src/Environment/Plugins/Woocommerce.php:188
+#: src/Environment/Plugins/Woocommerce.php:196
+#: src/Environment/Plugins/Woocommerce.php:203
+#: src/Environment/Plugins/Woocommerce.php:211
+#: src/Environment/Plugins/Woocommerce.php:218
+#: src/Environment/Plugins/Woocommerce.php:226
+#: src/Environment/Plugins/Woocommerce.php:234
+#: src/Environment/Plugins/Woocommerce.php:242
+#: src/Environment/Plugins/Woocommerce.php:250
+#: src/Environment/Plugins/Woocommerce.php:258
+#: src/Environment/Plugins/Woocommerce.php:266
+#: src/Environment/Plugins/Woocommerce.php:274
+#: src/Environment/Plugins/Woocommerce.php:282
+#: src/Environment/Plugins/Woocommerce.php:290
+#: src/Environment/Plugins/Woocommerce.php:298
+#: src/Environment/Plugins/Woocommerce.php:306
+#: src/Environment/Plugins/Woocommerce.php:314
+#: src/Environment/Plugins/Woocommerce.php:322
+#: src/Environment/Plugins/Woocommerce.php:330
+#: src/Environment/Plugins/Woocommerce.php:338
+#: src/Environment/Plugins/Woocommerce.php:346
+#: src/Environment/Plugins/Woocommerce.php:354
+#: src/Environment/Plugins/Woocommerce.php:362
+#: src/Environment/Plugins/Woocommerce.php:370
+#: src/Environment/Plugins/Woocommerce.php:378
+#: src/Environment/Plugins/Woocommerce.php:386
+#: src/Environment/Plugins/Woocommerce.php:393
+#: src/Environment/Plugins/Woocommerce.php:401
+#: src/Environment/Plugins/Woocommerce.php:409
+#: src/Environment/Plugins/Woocommerce.php:417
+#: src/Environment/Plugins/Woocommerce.php:425
+#: src/Environment/Plugins/Woocommerce.php:433
+#: src/Environment/Plugins/Woocommerce.php:441
+#: src/Environment/Plugins/Woocommerce.php:449
+#: src/Environment/Plugins/Woocommerce.php:457
+#: src/Environment/Plugins/Woocommerce.php:486
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:72
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:79
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:87
@@ -691,164 +691,164 @@ msgstr "Geïnstalleerde plugins"
 msgid "Link to"
 msgstr "Link naar"
 
-#: src/Environment/Core/WordPress.php:115
+#: src/Environment/Core/WordPress.php:127
 msgid "Installed"
 msgstr "Geïnstalleerd"
 
-#: src/Environment/Core/WordPress.php:120
+#: src/Environment/Core/WordPress.php:132
 #: src/Environment/Plugins/FestingerVault.php:74
 msgid "Updates"
 msgstr "Updates"
 
-#: src/Environment/Core/WordPress.php:122
+#: src/Environment/Core/WordPress.php:134
 msgid "Plugins & Themes Updates"
 msgstr "Updates van plugins en thema's"
 
-#: src/Environment/Core/WordPress.php:128
-#: src/Environment/Core/WordPress.php:130
+#: src/Environment/Core/WordPress.php:140
+#: src/Environment/Core/WordPress.php:142
 msgid "Add Plugin"
 msgstr "Plugin toevoegen"
 
-#: src/Environment/Core/WordPress.php:132
-#: src/Environment/Core/WordPress.php:208
-#: src/Environment/Core/WordPress.php:251
-#: src/Environment/Core/WordPress.php:269
+#: src/Environment/Core/WordPress.php:144
+#: src/Environment/Core/WordPress.php:220
+#: src/Environment/Core/WordPress.php:263
+#: src/Environment/Core/WordPress.php:281
 msgid "New"
 msgstr "Nieuw"
 
-#: src/Environment/Core/WordPress.php:137
-#: src/Environment/Core/WordPress.php:139
+#: src/Environment/Core/WordPress.php:149
+#: src/Environment/Core/WordPress.php:151
 msgid "Active Plugins"
 msgstr "Actieve plugins"
 
-#: src/Environment/Core/WordPress.php:141
+#: src/Environment/Core/WordPress.php:153
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:455
 msgid "Active"
 msgstr "Actief"
 
-#: src/Environment/Core/WordPress.php:150
-#: src/Environment/Core/WordPress.php:152
+#: src/Environment/Core/WordPress.php:162
+#: src/Environment/Core/WordPress.php:164
 msgid "Customizer"
 msgstr "Customizer"
 
-#: src/Environment/Core/WordPress.php:158
-#: src/Environment/Core/WordPress.php:160
+#: src/Environment/Core/WordPress.php:170
+#: src/Environment/Core/WordPress.php:172
 msgid "Widgets"
 msgstr "Widgets"
 
-#: src/Environment/Core/WordPress.php:166
-#: src/Environment/Core/WordPress.php:168
+#: src/Environment/Core/WordPress.php:178
+#: src/Environment/Core/WordPress.php:180
 msgid "Menus"
 msgstr "Menu's"
 
-#: src/Environment/Core/WordPress.php:174
-#: src/Environment/Core/WordPress.php:176
+#: src/Environment/Core/WordPress.php:186
+#: src/Environment/Core/WordPress.php:188
 #: src/Environment/Plugins/FestingerVault.php:88
 #: src/Environment/Plugins/FestingerVault.php:90
 #: src/Environment/Plugins/LocoTranslate.php:82
 msgid "Themes"
 msgstr "Thema's"
 
-#: src/Environment/Core/WordPress.php:186
-#: src/Environment/Core/WordPress.php:188
+#: src/Environment/Core/WordPress.php:198
+#: src/Environment/Core/WordPress.php:200
 msgid "View Posts"
 msgstr "Berichten bekijken"
 
-#: src/Environment/Core/WordPress.php:190
-#: src/Environment/Plugins/SenseiLms.php:164
+#: src/Environment/Core/WordPress.php:202
+#: src/Environment/Plugins/SenseiLms.php:175
 msgid "View"
 msgstr "Bekijken"
 
-#: src/Environment/Core/WordPress.php:195
+#: src/Environment/Core/WordPress.php:207
 msgid "Posts"
 msgstr "Berichten"
 
-#: src/Environment/Core/WordPress.php:197
+#: src/Environment/Core/WordPress.php:209
 msgid "Edit Posts"
 msgstr "Berichten bewerken"
 
-#: src/Environment/Core/WordPress.php:199
-#: src/Environment/Core/WordPress.php:242
-#: src/Environment/Plugins/TheEventsCalendar.php:84
+#: src/Environment/Core/WordPress.php:211
+#: src/Environment/Core/WordPress.php:254
+#: src/Environment/Plugins/TheEventsCalendar.php:95
 msgid "Edit"
 msgstr "Bewerken"
 
-#: src/Environment/Core/WordPress.php:204
-#: src/Environment/Core/WordPress.php:206
+#: src/Environment/Core/WordPress.php:216
+#: src/Environment/Core/WordPress.php:218
 msgid "New Post"
 msgstr "Nieuw bericht"
 
-#: src/Environment/Core/WordPress.php:213
+#: src/Environment/Core/WordPress.php:225
 msgid "Post Categories"
 msgstr "Berichtcategorieën"
 
-#: src/Environment/Core/WordPress.php:215
-#: src/Environment/Core/WordPress.php:217
+#: src/Environment/Core/WordPress.php:227
+#: src/Environment/Core/WordPress.php:229
 #: src/Environment/Plugins/BeaverBuilder.php:118
-#: src/Environment/Plugins/SenseiLms.php:103
-#: src/Environment/Plugins/TheEventsCalendar.php:117
-#: src/Environment/Plugins/TheEventsCalendarPro.php:103
-#: src/Environment/Plugins/TheEventsCalendarPro.php:113
-#: src/Environment/Plugins/Woocommerce.php:103
+#: src/Environment/Plugins/SenseiLms.php:114
+#: src/Environment/Plugins/TheEventsCalendar.php:128
+#: src/Environment/Plugins/TheEventsCalendarPro.php:114
+#: src/Environment/Plugins/TheEventsCalendarPro.php:124
+#: src/Environment/Plugins/Woocommerce.php:114
 msgid "Categories"
 msgstr "Categorieën"
 
-#: src/Environment/Core/WordPress.php:222
+#: src/Environment/Core/WordPress.php:234
 msgid "Post Tags"
 msgstr "Berichttags"
 
-#: src/Environment/Core/WordPress.php:224
-#: src/Environment/Core/WordPress.php:226
-#: src/Environment/Plugins/TheEventsCalendar.php:162
+#: src/Environment/Core/WordPress.php:236
+#: src/Environment/Core/WordPress.php:238
+#: src/Environment/Plugins/TheEventsCalendar.php:173
 msgid "Tags"
 msgstr "Tags"
 
-#: src/Environment/Core/WordPress.php:231
-#: src/Environment/Core/WordPress.php:233
+#: src/Environment/Core/WordPress.php:243
+#: src/Environment/Core/WordPress.php:245
 msgid "Reusable blocks"
 msgstr "Herbruikbare blokken"
 
-#: src/Environment/Core/WordPress.php:238
-#: src/Environment/Core/WordPress.php:240
+#: src/Environment/Core/WordPress.php:250
+#: src/Environment/Core/WordPress.php:252
 msgid "Pages"
 msgstr "Pagina's"
 
-#: src/Environment/Core/WordPress.php:247
-#: src/Environment/Core/WordPress.php:249
+#: src/Environment/Core/WordPress.php:259
+#: src/Environment/Core/WordPress.php:261
 msgid "New Page"
 msgstr "Nieuwe pagina"
 
-#: src/Environment/Core/WordPress.php:256
-#: src/Environment/Core/WordPress.php:258
+#: src/Environment/Core/WordPress.php:268
+#: src/Environment/Core/WordPress.php:270
 msgid "Media Library"
 msgstr "Mediabibliotheek"
 
-#: src/Environment/Core/WordPress.php:260
+#: src/Environment/Core/WordPress.php:272
 msgid "Library"
 msgstr "Bibliotheek"
 
-#: src/Environment/Core/WordPress.php:265
-#: src/Environment/Core/WordPress.php:267
+#: src/Environment/Core/WordPress.php:277
+#: src/Environment/Core/WordPress.php:279
 msgid "Add Media File"
 msgstr "Nieuw mediabestand"
 
-#: src/Environment/Core/WordPress.php:274
-#: src/Environment/Core/WordPress.php:276
+#: src/Environment/Core/WordPress.php:286
+#: src/Environment/Core/WordPress.php:288
 msgid "Comments"
 msgstr "Reacties"
 
-#: src/Environment/Core/WordPress.php:281
-#: src/Environment/Core/WordPress.php:283
+#: src/Environment/Core/WordPress.php:293
+#: src/Environment/Core/WordPress.php:295
 msgid "Users"
 msgstr "Gebruikers"
 
-#: src/Environment/Core/WordPress.php:293
-#: src/Environment/Core/WordPress.php:295
+#: src/Environment/Core/WordPress.php:305
+#: src/Environment/Core/WordPress.php:307
 msgid "Frontpage"
 msgstr "Voorpagina"
 
-#: src/Environment/Core/WordPress.php:300
-#: src/Environment/Core/WordPress.php:302
+#: src/Environment/Core/WordPress.php:312
+#: src/Environment/Core/WordPress.php:314
 msgid "Testimonials"
 msgstr "Ervaringen"
 
@@ -951,7 +951,7 @@ msgid "AutomateWoo Reports"
 msgstr "AutomateWoo-rapporten"
 
 #: src/Environment/Plugins/Automatewoo.php:140
-#: src/Environment/Plugins/Woocommerce.php:209
+#: src/Environment/Plugins/Woocommerce.php:220
 msgid "Reports"
 msgstr "Rapporten"
 
@@ -976,10 +976,10 @@ msgstr "AutomateWoo-instellingen: Algemeen"
 
 #. translators: %s: title of the page or settings tab.
 #: src/Environment/Plugins/Automatewoo.php:165
-#: src/Environment/Plugins/TheEventsCalendar.php:228
-#: src/Environment/Plugins/TheEventsCalendar.php:230
-#: src/Environment/Plugins/Woocommerce.php:233
-#: src/Environment/Plugins/Woocommerce.php:249
+#: src/Environment/Plugins/TheEventsCalendar.php:239
+#: src/Environment/Plugins/TheEventsCalendar.php:241
+#: src/Environment/Plugins/Woocommerce.php:244
+#: src/Environment/Plugins/Woocommerce.php:260
 msgid "General"
 msgstr "Algemeen"
 
@@ -1039,7 +1039,7 @@ msgid "AutomateWoo Settings: Status"
 msgstr "AutomateWoo-instellingen: Status"
 
 #: src/Environment/Plugins/Automatewoo.php:221
-#: src/Environment/Plugins/Woocommerce.php:217
+#: src/Environment/Plugins/Woocommerce.php:228
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:371
 msgid "Status"
 msgstr "Status"
@@ -1124,7 +1124,7 @@ msgid "Beaver Builder: Add New Template"
 msgstr "Beaver Builder: nieuw sjabloon toevoegen"
 
 #: src/Environment/Plugins/BeaverBuilder.php:126
-#: src/Environment/Plugins/TheEventsCalendar.php:152
+#: src/Environment/Plugins/TheEventsCalendar.php:163
 msgid "Add New"
 msgstr "Nieuw toevoegen"
 
@@ -1133,7 +1133,7 @@ msgstr "Nieuw toevoegen"
 msgid "Broken Links Checker"
 msgstr ""
 
-#: src/Environment/Plugins/CoreFunctionality.php:109
+#: src/Environment/Plugins/CoreFunctionality.php:120
 msgid "Core functionality settings"
 msgstr "Instellingen Core Functionality"
 
@@ -1150,143 +1150,143 @@ msgstr "Diagnose Debug Toolkit"
 msgid "VAT Compliance"
 msgstr "BTW-naleving"
 
-#: src/Environment/Plugins/EventTickets.php:82
+#: src/Environment/Plugins/EventTickets.php:93
 msgid "Event Tickets"
 msgstr ""
 
-#: src/Environment/Plugins/EventTickets.php:84
-#: src/Environment/Plugins/EventTicketsPlus.php:82
+#: src/Environment/Plugins/EventTickets.php:95
+#: src/Environment/Plugins/EventTicketsPlus.php:93
 msgid "Event Tickets Settings"
 msgstr "Instellingen Event Tickets"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:92
-#: src/Environment/Plugins/EventTickets.php:95
+#: src/Environment/Plugins/EventTickets.php:103
+#: src/Environment/Plugins/EventTickets.php:106
 msgid "Tickets"
 msgstr "Tickets"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:95
-#: src/Environment/Plugins/EventTickets.php:104
-#: src/Environment/Plugins/EventTickets.php:114
-#: src/Environment/Plugins/EventTickets.php:124
-#: src/Environment/Plugins/EventTickets.php:133
-#: src/Environment/Plugins/EventTickets.php:142
-#: src/Environment/Plugins/EventTickets.php:152
-#: src/Environment/Plugins/EventTickets.php:162
-#: src/Environment/Plugins/EventTickets.php:172
+#: src/Environment/Plugins/EventTickets.php:106
+#: src/Environment/Plugins/EventTickets.php:115
+#: src/Environment/Plugins/EventTickets.php:125
+#: src/Environment/Plugins/EventTickets.php:135
+#: src/Environment/Plugins/EventTickets.php:144
+#: src/Environment/Plugins/EventTickets.php:153
+#: src/Environment/Plugins/EventTickets.php:163
+#: src/Environment/Plugins/EventTickets.php:173
+#: src/Environment/Plugins/EventTickets.php:183
 #, php-format
 msgid "Event Tickets: %s"
 msgstr "Event Tickets: %s"
 
-#: src/Environment/Plugins/EventTickets.php:101
+#: src/Environment/Plugins/EventTickets.php:112
 msgid "Tickets Home"
 msgstr "Tickets-home"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:104
-#: src/Environment/Plugins/EventTickets.php:106
-#: src/Environment/Plugins/Woocommerce.php:194
+#: src/Environment/Plugins/EventTickets.php:115
+#: src/Environment/Plugins/EventTickets.php:117
+#: src/Environment/Plugins/Woocommerce.php:205
 msgid "Home"
 msgstr "Home"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:111
-#: src/Environment/Plugins/EventTickets.php:114
+#: src/Environment/Plugins/EventTickets.php:122
+#: src/Environment/Plugins/EventTickets.php:125
 msgid "All Tickets"
 msgstr "Alle tickets"
 
-#: src/Environment/Plugins/EventTickets.php:116
+#: src/Environment/Plugins/EventTickets.php:127
 msgid "Overview"
 msgstr "Overzicht"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:121
-#: src/Environment/Plugins/EventTickets.php:124
+#: src/Environment/Plugins/EventTickets.php:132
+#: src/Environment/Plugins/EventTickets.php:135
 msgid "Attendees"
 msgstr "Deelnemers"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:130
-#: src/Environment/Plugins/EventTickets.php:133
+#: src/Environment/Plugins/EventTickets.php:141
+#: src/Environment/Plugins/EventTickets.php:144
 msgid "Coupons & Fees"
 msgstr "Waardebonnen & vergoedingen"
 
-#: src/Environment/Plugins/EventTickets.php:139
+#: src/Environment/Plugins/EventTickets.php:150
 msgid "Ticket Orders"
 msgstr "Ticketbestellingen"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:142
-#: src/Environment/Plugins/EventTickets.php:144
-#: src/Environment/Plugins/Woocommerce.php:80
-#: src/Environment/Plugins/Woocommerce.php:143
+#: src/Environment/Plugins/EventTickets.php:153
+#: src/Environment/Plugins/EventTickets.php:155
+#: src/Environment/Plugins/Woocommerce.php:91
+#: src/Environment/Plugins/Woocommerce.php:154
 msgid "Orders"
 msgstr "Bestellingen"
 
-#: src/Environment/Plugins/EventTickets.php:149
+#: src/Environment/Plugins/EventTickets.php:160
 msgid "Tickets Help"
 msgstr "Help bij tickets"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:152
-#: src/Environment/Plugins/EventTickets.php:154
-#: src/Environment/Plugins/TheEventsCalendar.php:189
-#: src/Environment/Plugins/TheEventsCalendar.php:191
+#: src/Environment/Plugins/EventTickets.php:163
+#: src/Environment/Plugins/EventTickets.php:165
+#: src/Environment/Plugins/TheEventsCalendar.php:200
+#: src/Environment/Plugins/TheEventsCalendar.php:202
 msgid "Help"
 msgstr "Help"
 
-#: src/Environment/Plugins/EventTickets.php:159
+#: src/Environment/Plugins/EventTickets.php:170
 msgid "Tickets Troubleshooting"
 msgstr "Probleemoplossing tickets"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:162
-#: src/Environment/Plugins/EventTickets.php:164
-#: src/Environment/Plugins/TheEventsCalendar.php:199
-#: src/Environment/Plugins/TheEventsCalendar.php:201
+#: src/Environment/Plugins/EventTickets.php:173
+#: src/Environment/Plugins/EventTickets.php:175
+#: src/Environment/Plugins/TheEventsCalendar.php:210
+#: src/Environment/Plugins/TheEventsCalendar.php:212
 msgid "Troubleshooting"
 msgstr "Probleemoplossing"
 
-#: src/Environment/Plugins/EventTickets.php:169
+#: src/Environment/Plugins/EventTickets.php:180
 msgid "Tickets Setup Guide"
 msgstr "Setup-gids tickets"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTickets.php:172
-#: src/Environment/Plugins/EventTickets.php:174
-#: src/Environment/Plugins/TheEventsCalendar.php:218
-#: src/Environment/Plugins/TheEventsCalendar.php:220
+#: src/Environment/Plugins/EventTickets.php:183
+#: src/Environment/Plugins/EventTickets.php:185
+#: src/Environment/Plugins/TheEventsCalendar.php:229
+#: src/Environment/Plugins/TheEventsCalendar.php:231
 msgid "Setup Guide"
 msgstr "Setup-gids"
 
-#: src/Environment/Plugins/EventTicketsPlus.php:80
+#: src/Environment/Plugins/EventTicketsPlus.php:91
 msgid "Event Tickets Plus"
 msgstr ""
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTicketsPlus.php:89
-#: src/Environment/Plugins/EventTicketsPlus.php:92
+#: src/Environment/Plugins/EventTicketsPlus.php:100
+#: src/Environment/Plugins/EventTicketsPlus.php:103
 msgid "Purchase Rules"
 msgstr "Aankoopregels"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTicketsPlus.php:92
-#: src/Environment/Plugins/EventTicketsPlus.php:101
-#: src/Environment/Plugins/EventTicketsPlus.php:110
+#: src/Environment/Plugins/EventTicketsPlus.php:103
+#: src/Environment/Plugins/EventTicketsPlus.php:112
+#: src/Environment/Plugins/EventTicketsPlus.php:121
 #, php-format
 msgid "Event Tickets Plus: %s"
 msgstr "Event Tickets Plus: %s"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTicketsPlus.php:98
-#: src/Environment/Plugins/EventTicketsPlus.php:101
+#: src/Environment/Plugins/EventTicketsPlus.php:109
+#: src/Environment/Plugins/EventTicketsPlus.php:112
 msgid "Waitlist Subscribers"
 msgstr "Wachtlijst-inschrijvingen"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/EventTicketsPlus.php:107
-#: src/Environment/Plugins/EventTicketsPlus.php:110
+#: src/Environment/Plugins/EventTicketsPlus.php:118
+#: src/Environment/Plugins/EventTicketsPlus.php:121
 msgid "Ticket Fieldsets"
 msgstr "Ticketveldsets"
 
@@ -1529,216 +1529,216 @@ msgstr ""
 msgid "Redis Cache Settings"
 msgstr "Instellingen Redis Cache"
 
-#: src/Environment/Plugins/SenseiLms.php:64
-#: src/Environment/Plugins/SenseiLms.php:168
-#: src/Environment/Plugins/Woocommerce.php:174
+#: src/Environment/Plugins/SenseiLms.php:75
+#: src/Environment/Plugins/SenseiLms.php:179
+#: src/Environment/Plugins/Woocommerce.php:185
 msgid "Courses"
 msgstr "Cursussen"
 
-#: src/Environment/Plugins/SenseiLms.php:66
-#: src/Environment/Plugins/SenseiLms.php:87
-#: src/Environment/Plugins/SenseiLms.php:162
-#: src/Environment/Plugins/SenseiLms.php:170
+#: src/Environment/Plugins/SenseiLms.php:77
+#: src/Environment/Plugins/SenseiLms.php:98
+#: src/Environment/Plugins/SenseiLms.php:173
+#: src/Environment/Plugins/SenseiLms.php:181
 msgid "Sensei LMS Courses"
 msgstr "Sensei LMS-cursussen"
 
-#: src/Environment/Plugins/SenseiLms.php:71
+#: src/Environment/Plugins/SenseiLms.php:82
 msgid "Grading"
 msgstr "Beoordelen"
 
-#: src/Environment/Plugins/SenseiLms.php:73
+#: src/Environment/Plugins/SenseiLms.php:84
 msgid "Sensei LMS Grading"
 msgstr "Sensei LMS: beoordelen"
 
-#: src/Environment/Plugins/SenseiLms.php:78
+#: src/Environment/Plugins/SenseiLms.php:89
 msgid "Student Management"
 msgstr "Cursistenbeheer"
 
-#: src/Environment/Plugins/SenseiLms.php:80
+#: src/Environment/Plugins/SenseiLms.php:91
 msgid "Sensei LMS Student Management"
 msgstr "Sensei LMS: cursistenbeheer"
 
-#: src/Environment/Plugins/SenseiLms.php:85
+#: src/Environment/Plugins/SenseiLms.php:96
 msgid "Edit Courses"
 msgstr "Cursussen bewerken"
 
-#: src/Environment/Plugins/SenseiLms.php:92
-#: src/Environment/Plugins/SenseiLms.php:224
+#: src/Environment/Plugins/SenseiLms.php:103
+#: src/Environment/Plugins/SenseiLms.php:235
 msgid "Lessons"
 msgstr "Lessen"
 
-#: src/Environment/Plugins/SenseiLms.php:94
-#: src/Environment/Plugins/SenseiLms.php:226
+#: src/Environment/Plugins/SenseiLms.php:105
+#: src/Environment/Plugins/SenseiLms.php:237
 msgid "Sensei LMS Lessons"
 msgstr "Sensei LMS-lessen"
 
-#: src/Environment/Plugins/SenseiLms.php:99
+#: src/Environment/Plugins/SenseiLms.php:110
 msgid "Course Categories"
 msgstr "Cursuscategorieën"
 
-#: src/Environment/Plugins/SenseiLms.php:101
+#: src/Environment/Plugins/SenseiLms.php:112
 msgid "Sensei LMS Course Categories"
 msgstr "Sensei LMS-cursuscategorieën"
 
-#: src/Environment/Plugins/SenseiLms.php:107
+#: src/Environment/Plugins/SenseiLms.php:118
 msgid "Modules"
 msgstr "Modules"
 
-#: src/Environment/Plugins/SenseiLms.php:109
+#: src/Environment/Plugins/SenseiLms.php:120
 msgid "Sensei LMS Modules"
 msgstr "Sensei LMS-modules"
 
-#: src/Environment/Plugins/SenseiLms.php:114
+#: src/Environment/Plugins/SenseiLms.php:125
 msgid "Module Order"
 msgstr "Volgorde modules"
 
-#: src/Environment/Plugins/SenseiLms.php:116
+#: src/Environment/Plugins/SenseiLms.php:127
 msgid "Sensei LMS Module Order"
 msgstr "Sensei LMS: volgorde modules"
 
-#: src/Environment/Plugins/SenseiLms.php:121
+#: src/Environment/Plugins/SenseiLms.php:132
 msgid "Lesson Tags"
 msgstr "Lestags"
 
-#: src/Environment/Plugins/SenseiLms.php:123
+#: src/Environment/Plugins/SenseiLms.php:134
 msgid "Sensei LMS Lesson Tags"
 msgstr "Sensei LMS-lestags"
 
-#: src/Environment/Plugins/SenseiLms.php:128
+#: src/Environment/Plugins/SenseiLms.php:139
 msgid "Quiz Questions"
 msgstr "Quizvragen"
 
-#: src/Environment/Plugins/SenseiLms.php:130
+#: src/Environment/Plugins/SenseiLms.php:141
 msgid "Sensei LMS Questions"
 msgstr "Sensei LMS-vragen"
 
-#: src/Environment/Plugins/SenseiLms.php:132
+#: src/Environment/Plugins/SenseiLms.php:143
 msgid "Questions"
 msgstr "Vragen"
 
-#: src/Environment/Plugins/SenseiLms.php:136
+#: src/Environment/Plugins/SenseiLms.php:147
 msgid "Course Messages"
 msgstr "Cursusberichten"
 
-#: src/Environment/Plugins/SenseiLms.php:138
-#: src/Environment/Plugins/SenseiLms.php:254
+#: src/Environment/Plugins/SenseiLms.php:149
+#: src/Environment/Plugins/SenseiLms.php:265
 msgid "Sensei LMS Messages"
 msgstr "Sensei LMS-berichten"
 
-#: src/Environment/Plugins/SenseiLms.php:140
-#: src/Environment/Plugins/SenseiLms.php:252
+#: src/Environment/Plugins/SenseiLms.php:151
+#: src/Environment/Plugins/SenseiLms.php:263
 msgid "Messages"
 msgstr "Berichten"
 
-#: src/Environment/Plugins/SenseiLms.php:144
+#: src/Environment/Plugins/SenseiLms.php:155
 msgid "Sensei Settings"
 msgstr "Sensei-instellingen"
 
-#: src/Environment/Plugins/SenseiLms.php:146
+#: src/Environment/Plugins/SenseiLms.php:157
 msgid "Sensei LMS Settings"
 msgstr "Sensei LMS-instellingen"
 
-#: src/Environment/Plugins/SenseiLms.php:152
+#: src/Environment/Plugins/SenseiLms.php:163
 msgid "Course Analytics"
 msgstr "Cursusanalyse"
 
-#: src/Environment/Plugins/SenseiLms.php:154
+#: src/Environment/Plugins/SenseiLms.php:165
 msgid "Sensei LMS Analytics"
 msgstr "Sensei LMS-analyse"
 
-#: src/Environment/Plugins/SenseiLms.php:156
+#: src/Environment/Plugins/SenseiLms.php:167
 msgid "Analytics"
 msgstr "Analyse"
 
-#: src/Environment/Plugins/SenseiLms.php:160
+#: src/Environment/Plugins/SenseiLms.php:171
 msgid "View Courses"
 msgstr "Cursussen bekijken"
 
-#: src/Environment/Plugins/SenseiLms.php:175
+#: src/Environment/Plugins/SenseiLms.php:186
 msgid "Course List"
 msgstr "Cursuslijst"
 
-#: src/Environment/Plugins/SenseiLms.php:177
+#: src/Environment/Plugins/SenseiLms.php:188
 msgid "Sensei LMS Course List"
 msgstr "Sensei LMS-cursuslijst"
 
-#: src/Environment/Plugins/SenseiLms.php:182
+#: src/Environment/Plugins/SenseiLms.php:193
 msgid "Course-category: Mediumschap"
 msgstr "Cursuscategorie: Mediumschap"
 
-#: src/Environment/Plugins/SenseiLms.php:184
+#: src/Environment/Plugins/SenseiLms.php:195
 msgid "Sensei LMS Course-category: Mediumschap"
 msgstr "Sensei LMS-cursuscategorie: Mediumschap"
 
-#: src/Environment/Plugins/SenseiLms.php:189
+#: src/Environment/Plugins/SenseiLms.php:200
 msgid "My Courses"
 msgstr "Mijn cursussen"
 
-#: src/Environment/Plugins/SenseiLms.php:191
+#: src/Environment/Plugins/SenseiLms.php:202
 msgid "Sensei LMS My Courses"
 msgstr "Sensei LMS: mijn cursussen"
 
-#: src/Environment/Plugins/SenseiLms.php:196
+#: src/Environment/Plugins/SenseiLms.php:207
 msgid "Learners Profile"
 msgstr "Cursistenprofiel"
 
-#: src/Environment/Plugins/SenseiLms.php:198
+#: src/Environment/Plugins/SenseiLms.php:209
 msgid "Sensei LMS Learners Profile"
 msgstr "Sensei LMS-cursistenprofiel"
 
-#: src/Environment/Plugins/SenseiLms.php:203
+#: src/Environment/Plugins/SenseiLms.php:214
 msgid "Course: Basis Mediumschap"
 msgstr "Cursus: Basis Mediumschap"
 
-#: src/Environment/Plugins/SenseiLms.php:205
+#: src/Environment/Plugins/SenseiLms.php:216
 msgid "Sensei LMS Course: Basis Mediumschap"
 msgstr "Sensei LMS-cursus: Basis Mediumschap"
 
-#: src/Environment/Plugins/SenseiLms.php:210
+#: src/Environment/Plugins/SenseiLms.php:221
 msgid "Course results"
 msgstr "Cursusresultaten"
 
-#: src/Environment/Plugins/SenseiLms.php:212
+#: src/Environment/Plugins/SenseiLms.php:223
 msgid "Sensei LMS Course results"
 msgstr "Sensei LMS-cursusresultaten"
 
-#: src/Environment/Plugins/SenseiLms.php:217
+#: src/Environment/Plugins/SenseiLms.php:228
 msgid "Module: Orakelen als een orakel"
 msgstr "Module: Orakelen als een orakel"
 
-#: src/Environment/Plugins/SenseiLms.php:219
+#: src/Environment/Plugins/SenseiLms.php:230
 msgid "Sensei LMS Module: Orakelen als een orakel"
 msgstr "Sensei LMS-module: Orakelen als een orakel"
 
-#: src/Environment/Plugins/SenseiLms.php:231
+#: src/Environment/Plugins/SenseiLms.php:242
 msgid "Lesson-tag: Aura"
 msgstr "Lestag: Aura"
 
-#: src/Environment/Plugins/SenseiLms.php:233
+#: src/Environment/Plugins/SenseiLms.php:244
 msgid "Sensei LMS Lesson-tag: Aura"
 msgstr "Sensei LMS-lestag: Aura"
 
-#: src/Environment/Plugins/SenseiLms.php:238
+#: src/Environment/Plugins/SenseiLms.php:249
 msgid "Lesson: Aura Reading"
 msgstr "Les: Aura Reading"
 
-#: src/Environment/Plugins/SenseiLms.php:240
+#: src/Environment/Plugins/SenseiLms.php:251
 msgid "Sensei LMS Lesson: Aura Reading"
 msgstr "Sensei LMS-les: Aura Reading"
 
-#: src/Environment/Plugins/SenseiLms.php:245
+#: src/Environment/Plugins/SenseiLms.php:256
 msgid "Quiz: The History of My Psychic Ability"
 msgstr "Quiz: De geschiedenis van mijn paranormale gave"
 
-#: src/Environment/Plugins/SenseiLms.php:247
+#: src/Environment/Plugins/SenseiLms.php:258
 msgid "Sensei LMS Quiz: The History of My Psychic Ability"
 msgstr "Sensei LMS-quiz: De geschiedenis van mijn paranormale gave"
 
-#: src/Environment/Plugins/SenseiLms.php:259
+#: src/Environment/Plugins/SenseiLms.php:270
 msgid "Message: I have some questions"
 msgstr "Bericht: Ik heb een paar vragen"
 
-#: src/Environment/Plugins/SenseiLms.php:261
+#: src/Environment/Plugins/SenseiLms.php:272
 msgid "Sensei LMS Message: I have some questions"
 msgstr "Sensei LMS-bericht: Ik heb een paar vragen"
 
@@ -1850,415 +1850,415 @@ msgstr "Leren over Spectra Legacy"
 msgid "Spectra Legacy Learn"
 msgstr "Leren over Spectra Legacy"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:80
-#: src/Environment/Plugins/TheEventsCalendar.php:82
 #: src/Environment/Plugins/TheEventsCalendar.php:91
-#: src/Environment/Plugins/TheEventsCalendar.php:132
+#: src/Environment/Plugins/TheEventsCalendar.php:93
+#: src/Environment/Plugins/TheEventsCalendar.php:102
+#: src/Environment/Plugins/TheEventsCalendar.php:143
 #: src/Modules/Events/Events.php:43
 msgid "Events"
 msgstr "Evenementen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:89
+#: src/Environment/Plugins/TheEventsCalendar.php:100
 msgid "All Events"
 msgstr "Alle evenementen"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:97
-#: src/Environment/Plugins/TheEventsCalendarPro.php:121
-#: src/Environment/Plugins/TheEventsCalendarPro.php:123
+#: src/Environment/Plugins/TheEventsCalendar.php:108
+#: src/Environment/Plugins/TheEventsCalendarPro.php:132
+#: src/Environment/Plugins/TheEventsCalendarPro.php:134
 msgid "Organizers"
 msgstr "Organisatoren"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:99
+#: src/Environment/Plugins/TheEventsCalendar.php:110
 msgid "Event Organizers"
 msgstr "Organisatoren evenementen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:105
+#: src/Environment/Plugins/TheEventsCalendar.php:116
 msgid "Venues"
 msgstr "Locaties"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:107
+#: src/Environment/Plugins/TheEventsCalendar.php:118
 msgid "Event Venues"
 msgstr "Locaties evenementen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:113
-#: src/Environment/Plugins/TheEventsCalendar.php:115
+#: src/Environment/Plugins/TheEventsCalendar.php:124
+#: src/Environment/Plugins/TheEventsCalendar.php:126
 msgid "Event Categories"
 msgstr "Evenementcategorieën"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:122
+#: src/Environment/Plugins/TheEventsCalendar.php:133
 msgid "Event Settings"
 msgstr "Evenementinstellingen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:124
+#: src/Environment/Plugins/TheEventsCalendar.php:135
 msgid "Events Calendar Settings"
 msgstr "Instellingen evenementenkalender"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:134
+#: src/Environment/Plugins/TheEventsCalendar.php:145
 msgid "The Events Calendar"
 msgstr ""
 
-#: src/Environment/Plugins/TheEventsCalendar.php:139
-#: src/Environment/Plugins/TheEventsCalendar.php:141
+#: src/Environment/Plugins/TheEventsCalendar.php:150
+#: src/Environment/Plugins/TheEventsCalendar.php:152
 msgid "Family Constellations"
 msgstr "Familieopstellingen"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:147
-#: src/Environment/Plugins/TheEventsCalendar.php:150
+#: src/Environment/Plugins/TheEventsCalendar.php:158
+#: src/Environment/Plugins/TheEventsCalendar.php:161
 msgid "Add Event"
 msgstr "Evenement toevoegen"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:150
-#: src/Environment/Plugins/TheEventsCalendar.php:160
-#: src/Environment/Plugins/TheEventsCalendar.php:170
-#: src/Environment/Plugins/TheEventsCalendar.php:180
-#: src/Environment/Plugins/TheEventsCalendar.php:189
-#: src/Environment/Plugins/TheEventsCalendar.php:199
-#: src/Environment/Plugins/TheEventsCalendar.php:209
-#: src/Environment/Plugins/TheEventsCalendar.php:218
-#: src/Environment/Plugins/TheEventsCalendar.php:228
-#: src/Environment/Plugins/TheEventsCalendar.php:238
-#: src/Environment/Plugins/TheEventsCalendar.php:248
-#: src/Environment/Plugins/TheEventsCalendar.php:258
-#: src/Environment/Plugins/TheEventsCalendar.php:268
-#: src/Environment/Plugins/TheEventsCalendar.php:278
-#: src/Environment/Plugins/TheEventsCalendar.php:288
-#: src/Environment/Plugins/TheEventsCalendar.php:298
-#: src/Environment/Plugins/TheEventsCalendar.php:308
-#: src/Environment/Plugins/TheEventsCalendar.php:318
-#: src/Environment/Plugins/TheEventsCalendar.php:328
-#: src/Environment/Plugins/TheEventsCalendar.php:338
-#: src/Environment/Plugins/TheEventsCalendar.php:348
-#: src/Environment/Plugins/TheEventsCalendar.php:358
-#: src/Environment/Plugins/TheEventsCalendar.php:368
-#: src/Environment/Plugins/TheEventsCalendar.php:378
-#: src/Environment/Plugins/TheEventsCalendar.php:388
-#: src/Environment/Plugins/TheEventsCalendar.php:398
+#: src/Environment/Plugins/TheEventsCalendar.php:161
+#: src/Environment/Plugins/TheEventsCalendar.php:171
+#: src/Environment/Plugins/TheEventsCalendar.php:181
+#: src/Environment/Plugins/TheEventsCalendar.php:191
+#: src/Environment/Plugins/TheEventsCalendar.php:200
+#: src/Environment/Plugins/TheEventsCalendar.php:210
+#: src/Environment/Plugins/TheEventsCalendar.php:220
+#: src/Environment/Plugins/TheEventsCalendar.php:229
+#: src/Environment/Plugins/TheEventsCalendar.php:239
+#: src/Environment/Plugins/TheEventsCalendar.php:249
+#: src/Environment/Plugins/TheEventsCalendar.php:259
+#: src/Environment/Plugins/TheEventsCalendar.php:269
+#: src/Environment/Plugins/TheEventsCalendar.php:279
+#: src/Environment/Plugins/TheEventsCalendar.php:289
+#: src/Environment/Plugins/TheEventsCalendar.php:299
+#: src/Environment/Plugins/TheEventsCalendar.php:309
+#: src/Environment/Plugins/TheEventsCalendar.php:319
+#: src/Environment/Plugins/TheEventsCalendar.php:329
+#: src/Environment/Plugins/TheEventsCalendar.php:339
+#: src/Environment/Plugins/TheEventsCalendar.php:349
+#: src/Environment/Plugins/TheEventsCalendar.php:359
+#: src/Environment/Plugins/TheEventsCalendar.php:369
+#: src/Environment/Plugins/TheEventsCalendar.php:379
+#: src/Environment/Plugins/TheEventsCalendar.php:389
+#: src/Environment/Plugins/TheEventsCalendar.php:399
+#: src/Environment/Plugins/TheEventsCalendar.php:409
 #, php-format
 msgid "The Events Calendar: %s"
 msgstr "The Events Calendar: %s"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:157
-#: src/Environment/Plugins/TheEventsCalendar.php:160
+#: src/Environment/Plugins/TheEventsCalendar.php:168
+#: src/Environment/Plugins/TheEventsCalendar.php:171
 msgid "Event Tags"
 msgstr "Evenement-tags"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:167
+#: src/Environment/Plugins/TheEventsCalendar.php:178
 msgid "Event Import"
 msgstr "Evenementen importeren"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:170
-#: src/Environment/Plugins/TheEventsCalendar.php:172
-#: src/Environment/Plugins/TheEventsCalendar.php:388
-#: src/Environment/Plugins/TheEventsCalendar.php:390
+#: src/Environment/Plugins/TheEventsCalendar.php:181
+#: src/Environment/Plugins/TheEventsCalendar.php:183
+#: src/Environment/Plugins/TheEventsCalendar.php:399
+#: src/Environment/Plugins/TheEventsCalendar.php:401
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:499
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:507
 msgid "Import"
 msgstr "Importeren"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:177
-#: src/Environment/Plugins/TheEventsCalendar.php:180
+#: src/Environment/Plugins/TheEventsCalendar.php:188
+#: src/Environment/Plugins/TheEventsCalendar.php:191
 msgid "Calendar Embeds"
 msgstr "Kalenderinsluitingen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:186
+#: src/Environment/Plugins/TheEventsCalendar.php:197
 msgid "Events Help"
 msgstr "Help bij evenementen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:196
+#: src/Environment/Plugins/TheEventsCalendar.php:207
 msgid "Events Troubleshooting"
 msgstr "Probleemoplossing evenementen"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:206
-#: src/Environment/Plugins/TheEventsCalendar.php:209
+#: src/Environment/Plugins/TheEventsCalendar.php:217
+#: src/Environment/Plugins/TheEventsCalendar.php:220
 msgid "Event Add-Ons"
 msgstr "Event Add-Ons"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:215
+#: src/Environment/Plugins/TheEventsCalendar.php:226
 msgid "Events Setup Guide"
 msgstr "Setup-gids evenementen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:225
+#: src/Environment/Plugins/TheEventsCalendar.php:236
 msgid "Event Settings: General"
 msgstr "Evenementinstellingen: Algemeen"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:235
+#: src/Environment/Plugins/TheEventsCalendar.php:246
 msgid "Event Settings: Viewing"
 msgstr "Evenementinstellingen: Bekijken"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:238
-#: src/Environment/Plugins/TheEventsCalendar.php:240
+#: src/Environment/Plugins/TheEventsCalendar.php:249
+#: src/Environment/Plugins/TheEventsCalendar.php:251
 msgid "Viewing"
 msgstr "Bekijken"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:245
+#: src/Environment/Plugins/TheEventsCalendar.php:256
 msgid "Event Settings: Editing"
 msgstr "Evenementinstellingen: Bewerken"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:248
-#: src/Environment/Plugins/TheEventsCalendar.php:250
+#: src/Environment/Plugins/TheEventsCalendar.php:259
+#: src/Environment/Plugins/TheEventsCalendar.php:261
 msgid "Editing"
 msgstr "Bewerken"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:255
+#: src/Environment/Plugins/TheEventsCalendar.php:266
 msgid "Event Settings: Maintenance"
 msgstr "Evenementinstellingen: Onderhoud"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:258
-#: src/Environment/Plugins/TheEventsCalendar.php:260
+#: src/Environment/Plugins/TheEventsCalendar.php:269
+#: src/Environment/Plugins/TheEventsCalendar.php:271
 msgid "Maintenance"
 msgstr "Onderhoud"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:265
+#: src/Environment/Plugins/TheEventsCalendar.php:276
 msgid "Event Settings: Debugging"
 msgstr "Evenementinstellingen: Debugging"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:268
-#: src/Environment/Plugins/TheEventsCalendar.php:270
+#: src/Environment/Plugins/TheEventsCalendar.php:279
+#: src/Environment/Plugins/TheEventsCalendar.php:281
 msgid "Debugging"
 msgstr "Debugging"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:275
+#: src/Environment/Plugins/TheEventsCalendar.php:286
 msgid "Event Settings: Display"
 msgstr "Evenementinstellingen: Weergave"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:278
-#: src/Environment/Plugins/TheEventsCalendar.php:280
+#: src/Environment/Plugins/TheEventsCalendar.php:289
+#: src/Environment/Plugins/TheEventsCalendar.php:291
 msgid "Display"
 msgstr "Weergave"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:285
+#: src/Environment/Plugins/TheEventsCalendar.php:296
 msgid "Event Settings: Calendar"
 msgstr "Evenementinstellingen: Kalender"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:288
-#: src/Environment/Plugins/TheEventsCalendar.php:290
+#: src/Environment/Plugins/TheEventsCalendar.php:299
+#: src/Environment/Plugins/TheEventsCalendar.php:301
 msgid "Calendar"
 msgstr "Kalender"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:295
+#: src/Environment/Plugins/TheEventsCalendar.php:306
 msgid "Event Settings: Date & Time"
 msgstr "Evenementinstellingen: Datum & tijd"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:298
-#: src/Environment/Plugins/TheEventsCalendar.php:300
+#: src/Environment/Plugins/TheEventsCalendar.php:309
+#: src/Environment/Plugins/TheEventsCalendar.php:311
 msgid "Date & Time"
 msgstr "Datum & tijd"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:305
+#: src/Environment/Plugins/TheEventsCalendar.php:316
 msgid "Event Settings: Currency"
 msgstr "Evenementinstellingen: Valuta"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:308
-#: src/Environment/Plugins/TheEventsCalendar.php:310
+#: src/Environment/Plugins/TheEventsCalendar.php:319
+#: src/Environment/Plugins/TheEventsCalendar.php:321
 msgid "Currency"
 msgstr "Valuta"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:315
+#: src/Environment/Plugins/TheEventsCalendar.php:326
 msgid "Event Settings: Maps"
 msgstr "Evenementinstellingen: Kaarten"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:318
-#: src/Environment/Plugins/TheEventsCalendar.php:320
+#: src/Environment/Plugins/TheEventsCalendar.php:329
+#: src/Environment/Plugins/TheEventsCalendar.php:331
 msgid "Maps"
 msgstr "Kaarten"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:325
+#: src/Environment/Plugins/TheEventsCalendar.php:336
 msgid "Event Settings: Additional Content"
 msgstr "Evenementinstellingen: Extra inhoud"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:328
-#: src/Environment/Plugins/TheEventsCalendar.php:330
+#: src/Environment/Plugins/TheEventsCalendar.php:339
+#: src/Environment/Plugins/TheEventsCalendar.php:341
 msgid "Additional Content"
 msgstr "Extra inhoud"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:335
+#: src/Environment/Plugins/TheEventsCalendar.php:346
 msgid "Event Settings: Category Colors"
 msgstr "Evenementinstellingen: Categoriekleuren"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:338
-#: src/Environment/Plugins/TheEventsCalendar.php:340
+#: src/Environment/Plugins/TheEventsCalendar.php:349
+#: src/Environment/Plugins/TheEventsCalendar.php:351
 msgid "Category Colors"
 msgstr "Categoriekleuren"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:345
+#: src/Environment/Plugins/TheEventsCalendar.php:356
 msgid "Event Settings: SEO & URLs"
 msgstr "Evenementinstellingen: SEO & URL's"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:348
-#: src/Environment/Plugins/TheEventsCalendar.php:350
+#: src/Environment/Plugins/TheEventsCalendar.php:359
+#: src/Environment/Plugins/TheEventsCalendar.php:361
 msgid "SEO & URLs"
 msgstr "SEO & URL's"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:355
+#: src/Environment/Plugins/TheEventsCalendar.php:366
 msgid "Event Settings: Licenses"
 msgstr "Evenementinstellingen: Licenties"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:358
-#: src/Environment/Plugins/TheEventsCalendar.php:360
+#: src/Environment/Plugins/TheEventsCalendar.php:369
+#: src/Environment/Plugins/TheEventsCalendar.php:371
 msgid "Licenses"
 msgstr "Licenties"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:365
+#: src/Environment/Plugins/TheEventsCalendar.php:376
 msgid "Event Settings: Integrations"
 msgstr "Evenementinstellingen: Integraties"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:368
-#: src/Environment/Plugins/TheEventsCalendar.php:370
+#: src/Environment/Plugins/TheEventsCalendar.php:379
+#: src/Environment/Plugins/TheEventsCalendar.php:381
 msgid "Integrations"
 msgstr "Integraties"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:375
+#: src/Environment/Plugins/TheEventsCalendar.php:386
 msgid "Event Settings: Google Maps"
 msgstr "Evenementinstellingen: Google Maps"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:380
+#: src/Environment/Plugins/TheEventsCalendar.php:391
 msgid "Google Maps"
 msgstr "Google Maps"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:385
+#: src/Environment/Plugins/TheEventsCalendar.php:396
 msgid "Event Settings: Import"
 msgstr "Evenementinstellingen: Importeren"
 
-#: src/Environment/Plugins/TheEventsCalendar.php:395
+#: src/Environment/Plugins/TheEventsCalendar.php:406
 msgid "Event Settings: Imports"
 msgstr "Evenementinstellingen: Imports"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:398
-#: src/Environment/Plugins/TheEventsCalendar.php:400
+#: src/Environment/Plugins/TheEventsCalendar.php:409
+#: src/Environment/Plugins/TheEventsCalendar.php:411
 msgid "Imports"
 msgstr "Imports"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:80
+#: src/Environment/Plugins/TheEventsCalendarPro.php:91
 msgid "Events Calendar Pro"
 msgstr ""
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:82
+#: src/Environment/Plugins/TheEventsCalendarPro.php:93
 msgid "The Events Calendar Pro Settings"
 msgstr "Instellingen The Events Calendar Pro"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:89
-#: src/Environment/Plugins/TheEventsCalendarPro.php:92
+#: src/Environment/Plugins/TheEventsCalendarPro.php:100
+#: src/Environment/Plugins/TheEventsCalendarPro.php:103
 msgid "Series"
 msgstr "Series"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:92
-#: src/Environment/Plugins/TheEventsCalendarPro.php:101
-#: src/Environment/Plugins/TheEventsCalendarPro.php:111
-#: src/Environment/Plugins/TheEventsCalendarPro.php:121
-#: src/Environment/Plugins/TheEventsCalendarPro.php:131
-#: src/Environment/Plugins/TheEventsCalendarPro.php:141
-#: src/Environment/Plugins/TheEventsCalendarPro.php:151
-#: src/Environment/Plugins/TheEventsCalendarPro.php:161
-#: src/Environment/Plugins/TheEventsCalendarPro.php:171
-#: src/Environment/Plugins/TheEventsCalendarPro.php:181
-#: src/Environment/Plugins/TheEventsCalendarPro.php:191
+#: src/Environment/Plugins/TheEventsCalendarPro.php:103
+#: src/Environment/Plugins/TheEventsCalendarPro.php:112
+#: src/Environment/Plugins/TheEventsCalendarPro.php:122
+#: src/Environment/Plugins/TheEventsCalendarPro.php:132
+#: src/Environment/Plugins/TheEventsCalendarPro.php:142
+#: src/Environment/Plugins/TheEventsCalendarPro.php:152
+#: src/Environment/Plugins/TheEventsCalendarPro.php:162
+#: src/Environment/Plugins/TheEventsCalendarPro.php:172
+#: src/Environment/Plugins/TheEventsCalendarPro.php:182
+#: src/Environment/Plugins/TheEventsCalendarPro.php:192
+#: src/Environment/Plugins/TheEventsCalendarPro.php:202
 #, php-format
 msgid "Events Calendar Pro: %s"
 msgstr "Events Calendar Pro: %s"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:98
-#: src/Environment/Plugins/TheEventsCalendarPro.php:101
+#: src/Environment/Plugins/TheEventsCalendarPro.php:109
+#: src/Environment/Plugins/TheEventsCalendarPro.php:112
 msgid "Venue Categories"
 msgstr "Locatiecategorieën"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:108
-#: src/Environment/Plugins/TheEventsCalendarPro.php:111
+#: src/Environment/Plugins/TheEventsCalendarPro.php:119
+#: src/Environment/Plugins/TheEventsCalendarPro.php:122
 msgid "Organizer Categories"
 msgstr "Organisatorcategorieën"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:118
+#: src/Environment/Plugins/TheEventsCalendarPro.php:129
 msgid "Event Settings: Organizers"
 msgstr "Evenementinstellingen: Organisatoren"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:128
+#: src/Environment/Plugins/TheEventsCalendarPro.php:139
 msgid "Event Settings: Default Content"
 msgstr "Evenementinstellingen: Standaardinhoud"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:131
-#: src/Environment/Plugins/TheEventsCalendarPro.php:133
+#: src/Environment/Plugins/TheEventsCalendarPro.php:142
+#: src/Environment/Plugins/TheEventsCalendarPro.php:144
 msgid "Default Content"
 msgstr "Standaardinhoud"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:138
+#: src/Environment/Plugins/TheEventsCalendarPro.php:149
 msgid "Event Settings: Default Venue"
 msgstr "Evenementinstellingen: Standaardlocatie"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:141
-#: src/Environment/Plugins/TheEventsCalendarPro.php:143
+#: src/Environment/Plugins/TheEventsCalendarPro.php:152
+#: src/Environment/Plugins/TheEventsCalendarPro.php:154
 msgid "Default Venue"
 msgstr "Standaardlocatie"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:148
+#: src/Environment/Plugins/TheEventsCalendarPro.php:159
 msgid "Event Settings: Default Organizer"
 msgstr "Evenementinstellingen: Standaardorganisator"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:151
-#: src/Environment/Plugins/TheEventsCalendarPro.php:153
+#: src/Environment/Plugins/TheEventsCalendarPro.php:162
+#: src/Environment/Plugins/TheEventsCalendarPro.php:164
 msgid "Default Organizer"
 msgstr "Standaardorganisator"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:158
+#: src/Environment/Plugins/TheEventsCalendarPro.php:169
 msgid "Event Settings: Additional Fields"
 msgstr "Evenementinstellingen: Extra velden"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:161
-#: src/Environment/Plugins/TheEventsCalendarPro.php:163
+#: src/Environment/Plugins/TheEventsCalendarPro.php:172
+#: src/Environment/Plugins/TheEventsCalendarPro.php:174
 msgid "Additional Fields"
 msgstr "Extra velden"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:168
+#: src/Environment/Plugins/TheEventsCalendarPro.php:179
 msgid "Event Settings: Meetings"
 msgstr "Evenementinstellingen: Meetings"
 
 #. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendarPro.php:171
-#: src/Environment/Plugins/TheEventsCalendarPro.php:173
+#: src/Environment/Plugins/TheEventsCalendarPro.php:182
+#: src/Environment/Plugins/TheEventsCalendarPro.php:184
 msgid "Meetings"
 msgstr "Meetings"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:178
+#: src/Environment/Plugins/TheEventsCalendarPro.php:189
 msgid "Event Settings: Power Automate"
 msgstr "Evenementinstellingen: Power Automate"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:183
+#: src/Environment/Plugins/TheEventsCalendarPro.php:194
 msgid "Power Automate"
 msgstr "Power Automate"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:188
+#: src/Environment/Plugins/TheEventsCalendarPro.php:199
 msgid "Event Settings: Zapier"
 msgstr "Evenementinstellingen: Zapier"
 
-#: src/Environment/Plugins/TheEventsCalendarPro.php:193
+#: src/Environment/Plugins/TheEventsCalendarPro.php:204
 msgid "Zapier"
 msgstr "Zapier"
 
@@ -2269,408 +2269,408 @@ msgstr "Zapier"
 msgid "Updraft Backups"
 msgstr "Updraft-back-ups"
 
-#: src/Environment/Plugins/Woocommerce.php:76
+#: src/Environment/Plugins/Woocommerce.php:87
 msgid "Shop Orders"
 msgstr "Winkelbestellingen"
 
-#: src/Environment/Plugins/Woocommerce.php:78
+#: src/Environment/Plugins/Woocommerce.php:89
 msgid "WooCommerce Orders"
 msgstr "WooCommerce-bestellingen"
 
-#: src/Environment/Plugins/Woocommerce.php:84
-#: src/Environment/Plugins/Woocommerce.php:241
+#: src/Environment/Plugins/Woocommerce.php:95
+#: src/Environment/Plugins/Woocommerce.php:252
 msgid "Products"
 msgstr "Producten"
 
-#: src/Environment/Plugins/Woocommerce.php:86
+#: src/Environment/Plugins/Woocommerce.php:97
 msgid "WooCommerce Products"
 msgstr "WooCommerce-producten"
 
-#: src/Environment/Plugins/Woocommerce.php:91
+#: src/Environment/Plugins/Woocommerce.php:102
 msgid "Shop Coupons"
 msgstr "Winkelkortingsbonnen"
 
-#: src/Environment/Plugins/Woocommerce.php:93
+#: src/Environment/Plugins/Woocommerce.php:104
 msgid "WooCommerce Coupons"
 msgstr "WooCommerce-kortingsbonnen"
 
-#: src/Environment/Plugins/Woocommerce.php:95
+#: src/Environment/Plugins/Woocommerce.php:106
 msgid "Coupons"
 msgstr "Kortingsbonnen"
 
-#: src/Environment/Plugins/Woocommerce.php:99
+#: src/Environment/Plugins/Woocommerce.php:110
 msgid "Product Categories"
 msgstr "Productcategorieën"
 
-#: src/Environment/Plugins/Woocommerce.php:101
+#: src/Environment/Plugins/Woocommerce.php:112
 msgid "WooCommerce Product Categories"
 msgstr "WooCommerce-productcategorieën"
 
-#: src/Environment/Plugins/Woocommerce.php:107
+#: src/Environment/Plugins/Woocommerce.php:118
 msgid "Shop Statistics"
 msgstr "Winkelstatistieken"
 
-#: src/Environment/Plugins/Woocommerce.php:109
+#: src/Environment/Plugins/Woocommerce.php:120
 msgid "WooCommerce Sales Statistics"
 msgstr "WooCommerce-verkoopstatistieken"
 
-#: src/Environment/Plugins/Woocommerce.php:111
+#: src/Environment/Plugins/Woocommerce.php:122
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: src/Environment/Plugins/Woocommerce.php:115
-#: src/Environment/Plugins/Woocommerce.php:117
+#: src/Environment/Plugins/Woocommerce.php:126
+#: src/Environment/Plugins/Woocommerce.php:128
 msgid "WooCommerce Settings"
 msgstr "WooCommerce-instellingen"
 
-#: src/Environment/Plugins/Woocommerce.php:124
+#: src/Environment/Plugins/Woocommerce.php:135
 msgid "Shop"
 msgstr "Winkel"
 
-#: src/Environment/Plugins/Woocommerce.php:125
+#: src/Environment/Plugins/Woocommerce.php:136
 msgid "/shop"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:126
+#: src/Environment/Plugins/Woocommerce.php:137
 msgid "WooCommerce Shop"
 msgstr "WooCommerce-winkel"
 
-#: src/Environment/Plugins/Woocommerce.php:131
-#: src/Environment/Plugins/Woocommerce.php:133
+#: src/Environment/Plugins/Woocommerce.php:142
+#: src/Environment/Plugins/Woocommerce.php:144
 msgid "My Account"
 msgstr "Mijn account"
 
-#: src/Environment/Plugins/Woocommerce.php:132
+#: src/Environment/Plugins/Woocommerce.php:143
 msgid "/myaccount"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:139
-#: src/Environment/Plugins/Woocommerce.php:141
+#: src/Environment/Plugins/Woocommerce.php:150
+#: src/Environment/Plugins/Woocommerce.php:152
 msgid "My Account: Orders"
 msgstr "Mijn account: bestellingen"
 
-#: src/Environment/Plugins/Woocommerce.php:140
+#: src/Environment/Plugins/Woocommerce.php:151
 msgid "/myaccount/orders/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:148
-#: src/Environment/Plugins/Woocommerce.php:150
+#: src/Environment/Plugins/Woocommerce.php:159
+#: src/Environment/Plugins/Woocommerce.php:161
 msgid "My Account: Downloads"
 msgstr "Mijn account: downloads"
 
-#: src/Environment/Plugins/Woocommerce.php:149
+#: src/Environment/Plugins/Woocommerce.php:160
 msgid "/myaccount/downloads/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:152
+#: src/Environment/Plugins/Woocommerce.php:163
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/Environment/Plugins/Woocommerce.php:157
-#: src/Environment/Plugins/Woocommerce.php:159
+#: src/Environment/Plugins/Woocommerce.php:168
+#: src/Environment/Plugins/Woocommerce.php:170
 msgid "My Account: Addresses"
 msgstr "Mijn account: adressen"
 
-#: src/Environment/Plugins/Woocommerce.php:158
+#: src/Environment/Plugins/Woocommerce.php:169
 msgid "/myaccount/edit-address/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:161
+#: src/Environment/Plugins/Woocommerce.php:172
 msgid "Addresses"
 msgstr "Adressen"
 
-#: src/Environment/Plugins/Woocommerce.php:166
-#: src/Environment/Plugins/Woocommerce.php:168
+#: src/Environment/Plugins/Woocommerce.php:177
+#: src/Environment/Plugins/Woocommerce.php:179
 msgid "My Account: Account details"
 msgstr "Mijn account: accountgegevens"
 
-#: src/Environment/Plugins/Woocommerce.php:167
+#: src/Environment/Plugins/Woocommerce.php:178
 msgid "/myaccount/edit-account/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:170
+#: src/Environment/Plugins/Woocommerce.php:181
 msgid "Account details"
 msgstr "Accountgegevens"
 
-#: src/Environment/Plugins/Woocommerce.php:176
+#: src/Environment/Plugins/Woocommerce.php:187
 msgid "cursus-opleiding"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:177
+#: src/Environment/Plugins/Woocommerce.php:188
 msgid "WooCommerce Courses"
 msgstr "WooCommerce-cursussen"
 
-#: src/Environment/Plugins/Woocommerce.php:190
-#: src/Environment/Plugins/Woocommerce.php:192
+#: src/Environment/Plugins/Woocommerce.php:201
+#: src/Environment/Plugins/Woocommerce.php:203
 msgid "WooCommerce Home"
 msgstr "WooCommerce Home"
 
-#: src/Environment/Plugins/Woocommerce.php:198
-#: src/Environment/Plugins/Woocommerce.php:200
+#: src/Environment/Plugins/Woocommerce.php:209
+#: src/Environment/Plugins/Woocommerce.php:211
 msgid "Customers"
 msgstr "Klanten"
 
-#: src/Environment/Plugins/Woocommerce.php:205
-#: src/Environment/Plugins/Woocommerce.php:207
+#: src/Environment/Plugins/Woocommerce.php:216
+#: src/Environment/Plugins/Woocommerce.php:218
 msgid "Shop Reports"
 msgstr "Winkelrapporten"
 
-#: src/Environment/Plugins/Woocommerce.php:213
-#: src/Environment/Plugins/Woocommerce.php:215
+#: src/Environment/Plugins/Woocommerce.php:224
+#: src/Environment/Plugins/Woocommerce.php:226
 msgid "WooCommerce Status"
 msgstr "WooCommerce-status"
 
-#: src/Environment/Plugins/Woocommerce.php:221
-#: src/Environment/Plugins/Woocommerce.php:223
+#: src/Environment/Plugins/Woocommerce.php:232
+#: src/Environment/Plugins/Woocommerce.php:234
 msgid "WooCommerce Extensions"
 msgstr "WooCommerce-extensies"
 
-#: src/Environment/Plugins/Woocommerce.php:225
+#: src/Environment/Plugins/Woocommerce.php:236
 msgid "Extensions"
 msgstr "Extensies"
 
-#: src/Environment/Plugins/Woocommerce.php:229
-#: src/Environment/Plugins/Woocommerce.php:231
+#: src/Environment/Plugins/Woocommerce.php:240
+#: src/Environment/Plugins/Woocommerce.php:242
 msgid "WooCommerce Settings: General"
 msgstr "WooCommerce-instellingen: Algemeen"
 
-#: src/Environment/Plugins/Woocommerce.php:237
-#: src/Environment/Plugins/Woocommerce.php:239
+#: src/Environment/Plugins/Woocommerce.php:248
+#: src/Environment/Plugins/Woocommerce.php:250
 msgid "WooCommerce Settings: Products"
 msgstr "WooCommerce-instellingen: Producten"
 
-#: src/Environment/Plugins/Woocommerce.php:245
-#: src/Environment/Plugins/Woocommerce.php:247
+#: src/Environment/Plugins/Woocommerce.php:256
+#: src/Environment/Plugins/Woocommerce.php:258
 msgid "Product Settings: General"
 msgstr "Productinstellingen: Algemeen"
 
-#: src/Environment/Plugins/Woocommerce.php:253
-#: src/Environment/Plugins/Woocommerce.php:255
+#: src/Environment/Plugins/Woocommerce.php:264
+#: src/Environment/Plugins/Woocommerce.php:266
 msgid "Product Settings: Inventory"
 msgstr "Productinstellingen: Voorraad"
 
-#: src/Environment/Plugins/Woocommerce.php:257
+#: src/Environment/Plugins/Woocommerce.php:268
 msgid "Inventory"
 msgstr "Voorraad"
 
-#: src/Environment/Plugins/Woocommerce.php:261
-#: src/Environment/Plugins/Woocommerce.php:263
+#: src/Environment/Plugins/Woocommerce.php:272
+#: src/Environment/Plugins/Woocommerce.php:274
 msgid "Product Settings: Downloadable Products"
 msgstr "Productinstellingen: Downloadbare producten"
 
-#: src/Environment/Plugins/Woocommerce.php:265
+#: src/Environment/Plugins/Woocommerce.php:276
 msgid "Downloadable Products"
 msgstr "Downloadbare producten"
 
-#: src/Environment/Plugins/Woocommerce.php:269
-#: src/Environment/Plugins/Woocommerce.php:271
+#: src/Environment/Plugins/Woocommerce.php:280
+#: src/Environment/Plugins/Woocommerce.php:282
 msgid "Product Settings: Approved Download Directories"
 msgstr "Productinstellingen: Goedgekeurde downloadmappen"
 
-#: src/Environment/Plugins/Woocommerce.php:273
+#: src/Environment/Plugins/Woocommerce.php:284
 msgid "Approved Download Directories"
 msgstr "Goedgekeurde downloadmappen"
 
-#: src/Environment/Plugins/Woocommerce.php:277
-#: src/Environment/Plugins/Woocommerce.php:279
+#: src/Environment/Plugins/Woocommerce.php:288
+#: src/Environment/Plugins/Woocommerce.php:290
 msgid "Product Settings: Advanced"
 msgstr "Productinstellingen: Geavanceerd"
 
-#: src/Environment/Plugins/Woocommerce.php:281
-#: src/Environment/Plugins/Woocommerce.php:400
+#: src/Environment/Plugins/Woocommerce.php:292
+#: src/Environment/Plugins/Woocommerce.php:411
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: src/Environment/Plugins/Woocommerce.php:285
-#: src/Environment/Plugins/Woocommerce.php:287
+#: src/Environment/Plugins/Woocommerce.php:296
+#: src/Environment/Plugins/Woocommerce.php:298
 msgid "WooCommerce Settings: Tax"
 msgstr "WooCommerce-instellingen: Belasting"
 
-#: src/Environment/Plugins/Woocommerce.php:289
+#: src/Environment/Plugins/Woocommerce.php:300
 msgid "Tax"
 msgstr "Belasting"
 
-#: src/Environment/Plugins/Woocommerce.php:293
-#: src/Environment/Plugins/Woocommerce.php:295
+#: src/Environment/Plugins/Woocommerce.php:304
+#: src/Environment/Plugins/Woocommerce.php:306
 msgid "Tax Settings: Options"
 msgstr "Belastinginstellingen: Opties"
 
-#: src/Environment/Plugins/Woocommerce.php:297
+#: src/Environment/Plugins/Woocommerce.php:308
 msgid "Tax Options"
 msgstr "Belastingopties"
 
-#: src/Environment/Plugins/Woocommerce.php:301
-#: src/Environment/Plugins/Woocommerce.php:303
+#: src/Environment/Plugins/Woocommerce.php:312
+#: src/Environment/Plugins/Woocommerce.php:314
 msgid "Tax Settings: Standard Rates"
 msgstr "Belastinginstellingen: Standaardtarieven"
 
-#: src/Environment/Plugins/Woocommerce.php:305
+#: src/Environment/Plugins/Woocommerce.php:316
 msgid "Standard Rates"
 msgstr "Standaardtarieven"
 
-#: src/Environment/Plugins/Woocommerce.php:309
-#: src/Environment/Plugins/Woocommerce.php:311
+#: src/Environment/Plugins/Woocommerce.php:320
+#: src/Environment/Plugins/Woocommerce.php:322
 msgid "WooCommerce Settings: Shipping"
 msgstr "WooCommerce-instellingen: Verzending"
 
-#: src/Environment/Plugins/Woocommerce.php:313
+#: src/Environment/Plugins/Woocommerce.php:324
 msgid "Shipping"
 msgstr "Verzending"
 
-#: src/Environment/Plugins/Woocommerce.php:317
-#: src/Environment/Plugins/Woocommerce.php:319
+#: src/Environment/Plugins/Woocommerce.php:328
+#: src/Environment/Plugins/Woocommerce.php:330
 msgid "Shipping Settings: Zones"
 msgstr "Verzendinstellingen: Zones"
 
-#: src/Environment/Plugins/Woocommerce.php:321
+#: src/Environment/Plugins/Woocommerce.php:332
 msgid "Shipping Zones"
 msgstr "Verzendzones"
 
-#: src/Environment/Plugins/Woocommerce.php:325
-#: src/Environment/Plugins/Woocommerce.php:327
+#: src/Environment/Plugins/Woocommerce.php:336
+#: src/Environment/Plugins/Woocommerce.php:338
 msgid "Shipping Settings: Options"
 msgstr "Verzendinstellingen: Opties"
 
-#: src/Environment/Plugins/Woocommerce.php:329
+#: src/Environment/Plugins/Woocommerce.php:340
 msgid "Shipping Options"
 msgstr "Verzendinstellingen"
 
-#: src/Environment/Plugins/Woocommerce.php:333
-#: src/Environment/Plugins/Woocommerce.php:335
+#: src/Environment/Plugins/Woocommerce.php:344
+#: src/Environment/Plugins/Woocommerce.php:346
 msgid "Shipping Settings: Classes"
 msgstr "Verzendinstellingen: Klassen"
 
-#: src/Environment/Plugins/Woocommerce.php:337
+#: src/Environment/Plugins/Woocommerce.php:348
 msgid "Classes"
 msgstr "Klassen"
 
-#: src/Environment/Plugins/Woocommerce.php:341
-#: src/Environment/Plugins/Woocommerce.php:343
+#: src/Environment/Plugins/Woocommerce.php:352
+#: src/Environment/Plugins/Woocommerce.php:354
 msgid "WooCommerce Settings: Payments"
 msgstr "WooCommerce-instellingen: Betalingen"
 
-#: src/Environment/Plugins/Woocommerce.php:345
+#: src/Environment/Plugins/Woocommerce.php:356
 msgid "Payments"
 msgstr "Betalingen"
 
-#: src/Environment/Plugins/Woocommerce.php:349
-#: src/Environment/Plugins/Woocommerce.php:351
+#: src/Environment/Plugins/Woocommerce.php:360
+#: src/Environment/Plugins/Woocommerce.php:362
 msgid "WooCommerce Settings: Accounts & Privacy"
 msgstr "WooCommerce-instellingen: Accounts en privacy"
 
-#: src/Environment/Plugins/Woocommerce.php:353
+#: src/Environment/Plugins/Woocommerce.php:364
 msgid "Accounts & Privacy"
 msgstr "Accounts en privacy"
 
-#: src/Environment/Plugins/Woocommerce.php:357
-#: src/Environment/Plugins/Woocommerce.php:359
+#: src/Environment/Plugins/Woocommerce.php:368
+#: src/Environment/Plugins/Woocommerce.php:370
 msgid "WooCommerce Settings: Emails"
 msgstr "WooCommerce-instellingen: E-mails"
 
-#: src/Environment/Plugins/Woocommerce.php:361
+#: src/Environment/Plugins/Woocommerce.php:372
 msgid "Emails"
 msgstr "E-mails"
 
-#: src/Environment/Plugins/Woocommerce.php:365
-#: src/Environment/Plugins/Woocommerce.php:367
+#: src/Environment/Plugins/Woocommerce.php:376
+#: src/Environment/Plugins/Woocommerce.php:378
 msgid "WooCommerce Settings: Integration"
 msgstr "WooCommerce-instellingen: Integratie"
 
-#: src/Environment/Plugins/Woocommerce.php:369
+#: src/Environment/Plugins/Woocommerce.php:380
 msgid "Integration"
 msgstr "Integratie"
 
-#: src/Environment/Plugins/Woocommerce.php:373
-#: src/Environment/Plugins/Woocommerce.php:375
+#: src/Environment/Plugins/Woocommerce.php:384
+#: src/Environment/Plugins/Woocommerce.php:386
 msgid "MaxMind Geolocation"
 msgstr "MaxMind geolocatie"
 
-#: src/Environment/Plugins/Woocommerce.php:380
-#: src/Environment/Plugins/Woocommerce.php:382
+#: src/Environment/Plugins/Woocommerce.php:391
+#: src/Environment/Plugins/Woocommerce.php:393
 msgid "WooCommerce Settings: Site Visibility"
 msgstr "WooCommerce-instellingen: Site-zichtbaarheid"
 
-#: src/Environment/Plugins/Woocommerce.php:384
+#: src/Environment/Plugins/Woocommerce.php:395
 msgid "Site Visibility"
 msgstr "Site-zichtbaarheid"
 
-#: src/Environment/Plugins/Woocommerce.php:388
-#: src/Environment/Plugins/Woocommerce.php:390
+#: src/Environment/Plugins/Woocommerce.php:399
+#: src/Environment/Plugins/Woocommerce.php:401
 msgid "WooCommerce Settings: Point of Sale"
 msgstr "WooCommerce-instellingen: Verkooppunt"
 
-#: src/Environment/Plugins/Woocommerce.php:392
+#: src/Environment/Plugins/Woocommerce.php:403
 msgid "Point of Sale"
 msgstr "Verkooppunt"
 
-#: src/Environment/Plugins/Woocommerce.php:396
-#: src/Environment/Plugins/Woocommerce.php:398
+#: src/Environment/Plugins/Woocommerce.php:407
+#: src/Environment/Plugins/Woocommerce.php:409
 msgid "WooCommerce Settings: Advanced"
 msgstr "WooCommerce-instellingen: Geavanceerd"
 
-#: src/Environment/Plugins/Woocommerce.php:404
-#: src/Environment/Plugins/Woocommerce.php:406
+#: src/Environment/Plugins/Woocommerce.php:415
+#: src/Environment/Plugins/Woocommerce.php:417
 msgid "WooCommerce Advanced: Page Setup"
 msgstr "WooCommerce geavanceerd: Paginasetup"
 
-#: src/Environment/Plugins/Woocommerce.php:408
+#: src/Environment/Plugins/Woocommerce.php:419
 msgid "Page Setup"
 msgstr "Paginasetup"
 
-#: src/Environment/Plugins/Woocommerce.php:412
-#: src/Environment/Plugins/Woocommerce.php:414
+#: src/Environment/Plugins/Woocommerce.php:423
+#: src/Environment/Plugins/Woocommerce.php:425
 msgid "WooCommerce Advanced: REST API"
 msgstr "WooCommerce geavanceerd: REST API"
 
-#: src/Environment/Plugins/Woocommerce.php:416
+#: src/Environment/Plugins/Woocommerce.php:427
 msgid "REST API"
 msgstr "REST API"
 
-#: src/Environment/Plugins/Woocommerce.php:420
-#: src/Environment/Plugins/Woocommerce.php:422
+#: src/Environment/Plugins/Woocommerce.php:431
+#: src/Environment/Plugins/Woocommerce.php:433
 msgid "WooCommerce Advanced: Webhooks"
 msgstr "WooCommerce geavanceerd: Webhooks"
 
-#: src/Environment/Plugins/Woocommerce.php:424
+#: src/Environment/Plugins/Woocommerce.php:435
 msgid "Webhooks"
 msgstr "Webhooks"
 
-#: src/Environment/Plugins/Woocommerce.php:428
-#: src/Environment/Plugins/Woocommerce.php:430
+#: src/Environment/Plugins/Woocommerce.php:439
+#: src/Environment/Plugins/Woocommerce.php:441
 msgid "WooCommerce Advanced: WooCommerce.com"
 msgstr "WooCommerce geavanceerd: WooCommerce.com"
 
-#: src/Environment/Plugins/Woocommerce.php:432
+#: src/Environment/Plugins/Woocommerce.php:443
 msgid "WooCommerce.com"
 msgstr "WooCommerce.com"
 
-#: src/Environment/Plugins/Woocommerce.php:436
-#: src/Environment/Plugins/Woocommerce.php:438
+#: src/Environment/Plugins/Woocommerce.php:447
+#: src/Environment/Plugins/Woocommerce.php:449
 msgid "WooCommerce Advanced: Blueprint"
 msgstr "WooCommerce geavanceerd: Blauwdruk"
 
-#: src/Environment/Plugins/Woocommerce.php:440
+#: src/Environment/Plugins/Woocommerce.php:451
 msgid "Blueprint"
 msgstr "Blauwdruk"
 
-#: src/Environment/Plugins/Woocommerce.php:444
-#: src/Environment/Plugins/Woocommerce.php:446
+#: src/Environment/Plugins/Woocommerce.php:455
+#: src/Environment/Plugins/Woocommerce.php:457
 msgid "WooCommerce Advanced: Features"
 msgstr "WooCommerce geavanceerd: Functies"
 
-#: src/Environment/Plugins/Woocommerce.php:448
+#: src/Environment/Plugins/Woocommerce.php:459
 msgid "Features"
 msgstr "Functies"
 
 #. translators: %s: name of a tax class.
-#: src/Environment/Plugins/Woocommerce.php:472
-#: src/Environment/Plugins/Woocommerce.php:475
+#: src/Environment/Plugins/Woocommerce.php:483
+#: src/Environment/Plugins/Woocommerce.php:486
 #, php-format
 msgid "Tax Settings: %s Rates"
 msgstr "Belastinginstellingen: %s tarieven"
 
 #. translators: %s: name of a tax class.
-#: src/Environment/Plugins/Woocommerce.php:478
+#: src/Environment/Plugins/Woocommerce.php:489
 #, php-format
 msgid "%s Rates"
 msgstr "%s tarieven"
@@ -3768,8 +3768,8 @@ msgstr "De vorige versie kon niet worden teruggezet. Er is niets gewijzigd."
 msgid "The previous version is restored; the replaced version is now the previous one."
 msgstr "De vorige versie is teruggezet; de vervangen versie is nu de vorige."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:283
-#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:275
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:329
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:373
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:517
 msgid "Save"
@@ -4085,12 +4085,12 @@ msgstr "Instellingen Duplicate Post"
 
 #: src/Environment/Plugins/DuplicatePost.php:71
 #: src/Modules/DuplicatePost/DuplicatePost.php:45
-#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:110
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:114
 msgid "Duplicate Post"
 msgstr "Duplicate Post"
 
 #: src/Modules/AiAccess/AiAccess.php:46
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:104
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:105
 msgid "AI Access"
 msgstr "AI-toegang"
 
@@ -4184,23 +4184,23 @@ msgstr "Inhoud bewerken"
 msgid "Finding, reading and writing drafts of site content."
 msgstr "Concepten van de inhoud van de site zoeken, lezen en schrijven."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:115
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:116
 msgid "What an AI assistant (for example Claude through the MCP Adapter) may do with the content of this site. It works with the rights of the user it logs in as, writes drafts only and never publishes or deletes."
 msgstr "Wat een AI-assistent (bijvoorbeeld Claude via de MCP Adapter) met de inhoud van deze site mag doen. Hij werkt met de rechten van de gebruiker waarmee hij inlogt, schrijft alleen concepten en publiceert of verwijdert nooit."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:199
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:203
 msgid "Content type"
 msgstr "Inhoudstype"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:200
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:204
 msgid "AI may use it"
 msgstr "AI mag het gebruiken"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:201
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:205
 msgid "Change published items in a copy"
 msgstr "Gepubliceerde items aanpassen in een kopie"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:202
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:206
 msgid "A copy (Rewrite & Republish of Yoast Duplicate Post) replaces the original only when you publish it. Switch it on per type only after testing that the type's own data (tickets, dates, course structure) survives."
 msgstr "Een kopie (Herschrijven & Opnieuw publiceren van Yoast Duplicate Post) vervangt het origineel pas als jij die publiceert. Zet dit per type pas aan na een test dat de eigen gegevens van dat type (tickets, datums, cursusstructuur) heel blijven."
 
@@ -4374,17 +4374,8 @@ msgid "Adjustments to Yoast Duplicate Post."
 msgstr "Aanpassingen aan Yoast Duplicate Post."
 
 #: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplication.php:63
-#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:194
 msgid "Own duplication"
 msgstr "Eigen duplicatie"
-
-#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplication.php:64
-msgid "Duplicate Post shows no links for the content types whose own plugin duplicates them (by default events, tickets, courses and lessons), chosen on a settings tab."
-msgstr "Duplicate Post toont geen links bij de inhoudstypes die hun eigen plugin dupliceert (standaard evenementen, tickets, cursussen en lessen), te kiezen op een instellingentabblad."
-
-#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:121
-msgid "Content types whose own plugin duplicates them, taking care of what belongs to them (such as the ticket products of an event or the lessons of a course). Duplicate Post shows no links for these, so there is one way to duplicate them. Duplicate Post itself stays enabled for them. Types without an admin screen (such as tickets) come from the defaults file."
-msgstr "Inhoudstypes die hun eigen plugin dupliceert, inclusief wat erbij hoort (zoals de ticketproducten van een evenement of de lessen van een cursus). Duplicate Post toont hier geen links bij, zodat er één manier is om ze te dupliceren. Duplicate Post zelf blijft voor deze types ingeschakeld. Types zonder beheerscherm (zoals tickets) komen uit het defaults-bestand."
 
 #: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:53
 msgid "Sensei message labels"
@@ -4409,3 +4400,23 @@ msgstr "Sensei LMS"
 #: src/Modules/Sensei/Sensei.php:46
 msgid "Adjustments to Sensei LMS."
 msgstr "Aanpassingen aan Sensei LMS."
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:237
+msgid "Other"
+msgstr "Overig"
+
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplication.php:64
+msgid "Duplicate Post shows no links for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab."
+msgstr "Duplicate Post toont geen links bij de plugins die hun inhoud zelf dupliceren (standaard The Events Calendar, Event Tickets en Sensei), te kiezen op een instellingentabblad."
+
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:125
+msgid "Content types whose own plugin duplicates them, taking care of what belongs to them (such as the ticket products of an event or the lessons of a course). Duplicate Post shows no links for these, so there is one way to duplicate them. Duplicate Post itself stays enabled for them. Choose a plugin and all its content types follow, also those without an admin screen (such as tickets)."
+msgstr "Inhoudstypes die hun eigen plugin dupliceert, inclusief wat erbij hoort (zoals de ticketproducten van een evenement of de lessen van een cursus). Duplicate Post toont hier geen links bij, zodat er één manier is om ze te dupliceren. Duplicate Post zelf blijft voor deze types ingeschakeld. Kies je een plugin, dan volgen al zijn inhoudstypes, ook die zonder beheerscherm (zoals tickets)."
+
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:231
+msgid "Per plugin"
+msgstr "Per plugin"
+
+#: src/Modules/DuplicatePost/Features/OwnDuplication/OwnDuplicationSettings.php:233
+msgid "Other content types"
+msgstr "Overige inhoudstypes"
