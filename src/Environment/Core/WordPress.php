@@ -17,6 +17,7 @@ use DeWittePrins\CoreFunctionality\Enums\Orientation;
 use DeWittePrins\CoreFunctionality\DTO\AdminMenuBlock;
 use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use DeWittePrins\CoreFunctionality\Environment\Interfaces\EnvironmentInterface;
+use DeWittePrins\CoreFunctionality\Environment\Interfaces\PostTypeProviderInterface;
 use DeWittePrins\CoreFunctionality\Environment\Interfaces\ToolbarProviderInterface;
 use DeWittePrins\CoreFunctionality\Environment\Registers\AdminMenuRegister;
 use Override;
@@ -35,7 +36,18 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class WordPress implements EnvironmentInterface, ToolbarProviderInterface {
+class WordPress implements EnvironmentInterface, ToolbarProviderInterface, PostTypeProviderInterface {
+
+	/**
+	 * Returns the content post types of WordPress itself.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array( 'post', 'page' );
+	}
 
 	/**
 	 * Unique identifier token for this specific ecosystem component.

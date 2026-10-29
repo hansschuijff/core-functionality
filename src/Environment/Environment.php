@@ -22,8 +22,10 @@ use DeWittePrins\CoreFunctionality\Plugin;
 use DeWittePrins\CoreFunctionality\Enums\ProviderStatus;
 use DeWittePrins\CoreFunctionality\Environment\Core\WordPress;
 use DeWittePrins\CoreFunctionality\Environment\Interfaces\DependencyInterface;
+use DeWittePrins\CoreFunctionality\Environment\Interfaces\ToolbarProviderInterface;
 use DeWittePrins\CoreFunctionality\Environment\Plugins\Interfaces\PluginInterface;
 use DeWittePrins\CoreFunctionality\Environment\Registers\AdminToolbarRegister;
+use DeWittePrins\CoreFunctionality\Environment\Registers\PostTypeRegister;
 use DeWittePrins\CoreFunctionality\Environment\Services\PreflightRestructurer;
 use DeWittePrins\CoreFunctionality\Environment\Themes\Interfaces\ThemeInterface;
 use DeWittePrins\CoreFunctionality\Services\ClassParser;
@@ -102,9 +104,17 @@ class Environment {
 	private array $reported_unknown = array();
 
 	/**
+	 * The status of each provider, once found: both catalogues need it.
+	 *
+	 * @var array<string, ProviderStatus>
+	 */
+	private array $provider_statuses = array();
+
+	/**
 	 * Environment Class Constructor.
 	 *
-	 * Purely passive initialization: the toolbar catalogue is only filled when it is first asked for.
+	 * Purely passive initialization: the toolbar and post type catalogues are only filled when they are
+	 * first asked for.
 	 *
 	 * @since 1.0.0
 	 * @param Plugin $plugin The main plugin instance.
@@ -113,6 +123,7 @@ class Environment {
 		$this->lookup = new EnvironmentLookup( $this->plugin );
 
 		AdminToolbarRegister::set_loader( array( $this, 'load_toolbar_catalogue' ) );
+		PostTypeRegister::set_loader( array( $this, 'load_post_type_catalogue' ) );
 	}
 
 	/**
@@ -319,6 +330,48 @@ class Environment {
 				continue;
 			}
 
+			// The name as a closure: a plugin's name comes from its header, read only when asked for.
+			AdminToolbarRegister::register( $guard->get_id(), $guard->get_toolbar_nodes(), $this->get_provider_status( $dependency_id, $guard ), $guard->get_name( ... ) );
+		}
+	}
+
+	/**
+	 * Fills the post type catalogue with the post types of the core and every known plugin.
+	 *
+	 * Each provider is registered with its status, like the toolbar catalogue, so a settings tab can
+	 * leave inactive plugins out. Called by PostTypeRegister on first use.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function load_post_type_catalogue(): void {
+		$core = $this->get_wordpress();
+		PostTypeRegister::register( $core->get_id(), $core->get_post_types(), ProviderStatus::ACTIVE, $core->get_name() );
+
+		foreach ( $this->get_known_guard_ids() as $dependency_id ) {
+			if ( ClassParser::is_theme_id( $dependency_id ) ) {
+				continue;
+			}
+
+			$guard = $this->get_plugin( $dependency_id );
+			if ( null === $guard || array() === $guard->get_post_types() ) {
+				continue;
+			}
+
+			PostTypeRegister::register( $guard->get_id(), $guard->get_post_types(), $this->get_provider_status( $dependency_id, $guard ), $guard->get_name( ... ) );
+		}
+	}
+
+	/**
+	 * Returns whether a provider is active, inactive or not installed, found once per request.
+	 *
+	 * @since  1.0.0
+	 * @param  string                   $dependency_id The id of the plugin or theme.
+	 * @param  ToolbarProviderInterface $guard         Its guard.
+	 * @return ProviderStatus The status.
+	 */
+	private function get_provider_status( string $dependency_id, ToolbarProviderInterface $guard ): ProviderStatus {
+		if ( ! isset( $this->provider_statuses[ $dependency_id ] ) ) {
 			$status = ProviderStatus::NOT_INSTALLED;
 			if ( $this->is_ready( $dependency_id ) ) {
 				$status = ProviderStatus::ACTIVE;
@@ -326,9 +379,10 @@ class Environment {
 				$status = ProviderStatus::INACTIVE;
 			}
 
-			// The name as a closure: a plugin's name comes from its header, read only when asked for.
-			AdminToolbarRegister::register( $guard->get_id(), $guard->get_toolbar_nodes(), $status, $guard->get_name( ... ) );
+			$this->provider_statuses[ $dependency_id ] = $status;
 		}
+
+		return $this->provider_statuses[ $dependency_id ];
 	}
 
 	/**

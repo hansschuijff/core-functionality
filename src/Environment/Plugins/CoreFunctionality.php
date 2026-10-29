@@ -50,6 +50,17 @@ class CoreFunctionality implements PluginInterface {
 	}
 
 	/**
+	 * Returns the post types this plugin registers (none).
+	 *
+	 * @since  1.0.0
+	 * @return string[] Empty array.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array();
+	}
+
+	/**
 	 * Always ready: this plugin runs.
 	 *
 	 * @since  1.0.0

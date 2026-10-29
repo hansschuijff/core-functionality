@@ -117,6 +117,17 @@ abstract class AbstractPlugin implements PluginInterface {
 	}
 
 	/**
+	 * Returns the post types this plugin registers; none unless a guard says so.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array();
+	}
+
+	/**
 	 * Default fallback proof of life check for plugins using the structured DTO.
 	 *
 	 * Child classes should override get_proof_requirements() to provide defensive criteria.
