@@ -40,6 +40,17 @@ class SenseiLms extends AbstractPlugin {
 	}
 
 	/**
+	 * Returns the post types Sensei LMS registers.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array( 'course', 'lesson', 'quiz', 'question', 'multiple_question', 'sensei_message', 'sensei_email' );
+	}
+
+	/**
 	 * Returns what must exist to prove the plugin has started.
 	 *
 	 * @since  1.0.0

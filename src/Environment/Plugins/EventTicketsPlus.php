@@ -49,6 +49,17 @@ class EventTicketsPlus extends AbstractPlugin {
 	}
 
 	/**
+	 * Returns the post types Event Tickets Plus registers (WooCommerce tickets and fieldsets).
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array( 'tribe_wooticket', 'ticket-meta-fieldset' );
+	}
+
+	/**
 	 * Declares the specific technical proof criteria required for Event Tickets Plus verification.
 	 *
 	 * Defensively tests the explicit Plus core class and handles the negative version conflict check.

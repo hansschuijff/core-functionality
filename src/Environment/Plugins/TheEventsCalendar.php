@@ -49,6 +49,17 @@ class TheEventsCalendar extends AbstractPlugin {
 	}
 
 	/**
+	 * Returns the post types The Events Calendar registers.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array( 'tribe_events', 'tribe_venue', 'tribe_organizer', 'tec_calendar_embed', 'tribe-ea-record', 'deleted_event' );
+	}
+
+	/**
 	 * Declares the extensive defensive proof criteria required for verification.
 	 *
 	 * Fills the declarative requirements. Single values do not need array wrappers.

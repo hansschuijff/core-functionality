@@ -33,6 +33,17 @@ class SenseiPro extends SenseiLms {
 	}
 
 	/**
+	 * Returns no post types: the course post types belong to Sensei LMS, which this guard extends.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Empty array.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array();
+	}
+
+	/**
 	 * Returns what must exist to prove the plugin has started.
 	 *
 	 * @since  1.0.0

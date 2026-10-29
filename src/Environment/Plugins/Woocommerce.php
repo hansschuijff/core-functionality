@@ -48,6 +48,17 @@ class Woocommerce extends AbstractPlugin {
 	}
 
 	/**
+	 * Returns the post types WooCommerce registers.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array( 'product', 'product_variation', 'shop_order', 'shop_order_refund', 'shop_order_placehold', 'shop_coupon' );
+	}
+
+	/**
 	 * Returns what must exist to prove the plugin has started.
 	 *
 	 * @since  1.0.0

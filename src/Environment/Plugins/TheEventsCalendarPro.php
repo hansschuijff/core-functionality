@@ -49,6 +49,17 @@ class TheEventsCalendarPro extends AbstractPlugin {
 	}
 
 	/**
+	 * Returns the post types Events Calendar Pro registers.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array( 'tribe_event_series' );
+	}
+
+	/**
 	 * Declares the extensive defensive proof criteria required for Pro verification.
 	 *
 	 * Fills the declarative requirements matrix including specialized Pro functions and core classes.

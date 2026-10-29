@@ -51,6 +51,17 @@ class EventTickets extends AbstractPlugin {
 	}
 
 	/**
+	 * Returns the post types Event Tickets registers (Tickets Commerce and RSVP).
+	 *
+	 * @since  1.0.0
+	 * @return string[] Post type names.
+	 */
+	#[Override]
+	public function get_post_types(): array {
+		return array( 'tec_tc_ticket', 'tec_tc_order', 'tec_tc_attendee', 'tribe_rsvp_tickets', 'tribe_rsvp_attendees' );
+	}
+
+	/**
 	 * Declares the specific technical proof criteria required for Event Tickets core verification.
 	 *
 	 * Matches the core class string layout and attaches the defensive version conflict firewall.
