@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\SettingsExplanation;
 use DeWittePrins\CoreFunctionality\Environment\Registers\PostTypeRegister;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\AiAccess;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Interfaces\ContentTypeProfileInterface;
@@ -34,6 +35,7 @@ use function get_post_type_object;
 use function implode;
 use function is_array;
 use function is_string;
+use function plugins_url;
 use function sanitize_key;
 use function wp_unslash;
 
@@ -113,7 +115,7 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_description(): string {
-		return __( 'What an AI assistant (for example Claude through the MCP Adapter) may do with the content of this site. It works with the rights of the user it logs in as, writes drafts only and never publishes or deletes.', 'core-functionality' );
+		return __( 'Choose per content type what an AI assistant (such as Claude) may do on this site. It never publishes or deletes: you decide what goes live.', 'core-functionality' );
 	}
 
 	/**
@@ -128,14 +130,16 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Returns the scripts this tab needs (none).
+	 * Returns the scripts this tab needs: the one that keeps the levels of a row in steps.
 	 *
 	 * @since  1.0.0
-	 * @return array Empty array.
+	 * @return array The scripts to enqueue.
 	 */
 	#[Override]
 	public static function get_scripts(): array {
-		return array();
+		return array(
+			'dwp-cf-ai-access-settings-js' => plugins_url( 'assets/js/ai-access-settings.js', __FILE__ ),
+		);
 	}
 
 	/**
@@ -225,6 +229,8 @@ class ContentEditingSettings implements SettingsSectionInterface {
 			}
 		}
 
+		echo $this->render_explanation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
+
 		$heading_type    = esc_html__( 'Content type', 'core-functionality' );
 		$heading_read    = esc_html__( 'Read', 'core-functionality' );
 		$heading_write   = esc_html__( 'Make and change drafts', 'core-functionality' );
@@ -233,6 +239,27 @@ class ContentEditingSettings implements SettingsSectionInterface {
 		echo '<table class="widefat striped dwp-cf-ai-levels" role="presentation"><thead><tr>';
 		echo '<th scope="col">' . $heading_type . '</th><th scope="col">' . $heading_read . '</th><th scope="col">' . $heading_write . '</th><th scope="col">' . $heading_rewrite . '</th>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
 		echo '</tr></thead><tbody>' . implode( '', $rows ) . '</tbody></table>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
+	}
+
+	/**
+	 * Returns the collapsed explanation of the tab: what each level allows, and why published
+	 * content is changed in a copy.
+	 *
+	 * @since  1.0.0
+	 * @return string The explanation (HTML).
+	 */
+	private function render_explanation(): string {
+		return SettingsExplanation::render(
+			__( 'Explanation', 'core-functionality' ),
+			array(
+				__( 'These options let an AI assistant help you make the content of this site. The assistant logs in as a WordPress user with an application password and never has more rights than that user. What you switch on below narrows that down to these content types and these actions.', 'core-functionality' ),
+				__( 'Read: the assistant may find and read items of the type, published ones too, for example as a source for a new text.', 'core-functionality' ),
+				__( 'Make and change drafts: the assistant may make new drafts, change drafts and items pending review, and put them up for review. This covers everything that belongs to making content: text, layout in blocks, terms and fields. It never publishes and never deletes: you check, change and publish a draft, or throw it away.', 'core-functionality' ),
+				__( 'Change published content: the assistant may change an item that is already published, in a copy (Rewrite & Republish of Yoast Duplicate Post). The original stays unchanged and online. Only when you publish the copy does it replace the original; until then you can still change the copy or throw it away.', 'core-functionality' ),
+				__( 'Although changing published content this way should be safe, check that it works well for your content before you switch it on. When in doubt, have the assistant write a new draft and paste it into the existing content yourself.', 'core-functionality' ),
+				__( 'The levels are steps: a level includes the ones before it.', 'core-functionality' ),
+			)
+		);
 	}
 
 	/**
