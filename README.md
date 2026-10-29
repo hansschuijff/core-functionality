@@ -155,6 +155,7 @@ abilities with the hooks below.
 | `core-functionality/ai-access-content-summary` | filter | Id, type, status, title, dates, links | `array $summary`, `WP_Post $post` | `add_filter( 'core-functionality/ai-access-content-summary', fn ( $s, $p ) => $s + array( 'author' => $p->post_author ), 10, 2 );` |
 | `core-functionality/ai-access-editable-statuses` | filter | `draft`, `pending` (publishing statuses are always refused) | `string[] $statuses`, `WP_Post $post` | `add_filter( 'core-functionality/ai-access-editable-statuses', fn ( $s ) => array( 'draft' ) );` |
 | `core-functionality/ai-access-rewrite-available` | filter | `false`; `true` with the Rewrite Copies feature | `bool $available` | `add_filter( 'core-functionality/ai-access-rewrite-available', '__return_false' );` |
+| `core-functionality/duplicate-post-own-duplication-types` | filter | The post types chosen on the Duplicate Post tab | `string[] $post_types` | `add_filter( 'core-functionality/duplicate-post-own-duplication-types', fn ( $t ) => array_merge( $t, array( 'product' ) ) );` |
 
 To run code from another plugin once Core Functionality has started, whether or not that already
 happened:

@@ -326,6 +326,20 @@ the refusals (published item, unknown term or module, a protected block left out
 Rewrite copies are on by default for posts and pages only; events, courses and lessons get them after a
 test that their own data survives copying and merging (Hans, October 2026).
 
+### Duplicate Post
+
+The module `DuplicatePost` (dependency: the `duplicate-post` guard) adjusts Yoast Duplicate Post. Feature
+`OwnDuplication` hides its links (list rows, admin toolbar, editor, through `duplicate_post_show_link`) and
+bulk actions for the post types whose own plugin duplicates them, such as events (new ticket products per
+copy) and Sensei courses (the lessons come along). A plain copy of post and meta would share those and mix
+up two items; one duplicate link per item also avoids confusion (Hans, October 2026). The post types stay
+enabled in Duplicate Post, so code (the AI Access rewrite copies) can still use it. The list is chosen per
+post type on the "Duplicate Post" tab (`duplicate-post-settings`, defaults in
+`settings/modules/duplicate-post/`: events, series, the three ticket types, courses, lessons, quizzes and
+questions). Types without an admin screen (tickets) are not on the tab and are kept when it is saved;
+the filter `core-functionality/duplicate-post-own-duplication-types` adjusts the list in code. Choosing per
+plugin instead of per post type could come later, if guards learn which post types belong to their plugin.
+
 ## Settings and options
 
 - **Settings files** (`settings/`) hold defaults and site data as PHP files returning arrays. General files
@@ -385,6 +399,7 @@ ids in the error log and as an admin notice.
 | `core-functionality/ai-access-content-summary` | filter | The summary of an item the abilities return |
 | `core-functionality/ai-access-editable-statuses` | filter | Statuses in which an AI assistant may change an item |
 | `core-functionality/ai-access-rewrite-available` | filter | Whether Rewrite & Republish copies can be made |
+| `core-functionality/duplicate-post-own-duplication-types` | filter | Post types for which Duplicate Post shows no links |
 
 ## Decisions
 
