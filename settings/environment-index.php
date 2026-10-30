@@ -7,7 +7,7 @@
  * to their physical active WordPress plugin directory and file basenames.
  *
  * @return array{
- *     plugins: array<string, string>,                             // array<plugin_id, basename>
+ *     plugins: array<string, string|string[]>,                    // array<plugin_id, basename or basenames>
  *     themes: array<string, array{name: string, author?: string}> // array<theme_id, array{name, author(optioneel)}>
  * }
  *
@@ -25,6 +25,7 @@ return array(
 	'plugins' => array(
 		// Every key equals the get_id() of a guard class in src/Environment/Plugins/ (the class name in
 		// kebab-case). Basenames marked "confirm" are not installed on the local site and are unverified.
+		// A plugin whose folder name differs between sites gets a list; the installed one is used.
 
 		// Core & Common Utilities.
 		'yoast-seo'                               => 'wordpress-seo/wp-seo.php',
@@ -33,7 +34,7 @@ return array(
 		'carbon-fields'                           => 'carbon-fields/carbon-fields.php',
 		'carbon-fields-helper'                    => 'carbon-fields-helper/carbon-fields-helper.php',
 		'searchwp'                                => 'searchwp/searchwp.php',
-		'debug-toolkit'                           => '__debug-toolkit/debug-toolkit.php',
+		'debug-toolkit'                           => array( '__debug-toolkit/debug-toolkit.php', '_debug-toolkit/debug-toolkit.php' ),
 		'broken-link-checker'                     => 'broken-link-checker/broken-link-checker.php',
 		'fluent-smtp'                             => 'fluent-smtp/fluent-smtp.php',
 		'loco-translate'                          => 'loco-translate/loco.php',
@@ -95,7 +96,7 @@ return array(
 		// Genesis Utility Plugins.
 		'display-featured-image-genesis'          => 'display-featured-image-genesis/display-featured-image-genesis.php',
 		'genesis-simple-faq'                      => 'genesis-simple-faq/genesis-simple-faq.php',
-		'be-like-content'                         => 'be-like-content/be-like-content.php',
+		'be-like-content'                         => array( 'be-like-content/be-like-content.php', 'BE-Like-Content/be-like-content.php' ),
 	),
 	'themes'  => array(
 		'any-genesis' => array(

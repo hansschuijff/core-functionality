@@ -18,12 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Services\InterDependenciesGuard;
 use DeWittePrins\CoreFunctionality\Environment\Environment;
+use DeWittePrins\CoreFunctionality\Environment\EnvironmentLookup;
 use DeWittePrins\CoreFunctionality\Services\ComponentsRegister;
 use DeWittePrins\CoreFunctionality\Environment\Themes\Services\ThemeInspector;
 
 // Import global functions.
 use function is_array;
-use function array_flip;
 use function array_merge;
 use function array_key_exists;
 use function apply_filters;
@@ -180,7 +180,7 @@ class Kernel {
 	 * Returns the ids of the indexed plugins that are activated.
 	 *
 	 * @since  1.0.0
-	 * @param  mixed $plugin_index Plugin id => plugin basename.
+	 * @param  mixed $plugin_index Plugin id => plugin basename (or a list of basenames).
 	 * @return string[] Active plugin ids.
 	 */
 	private function get_active_plugin_ids( mixed $plugin_index ): array {
@@ -193,8 +193,14 @@ class Kernel {
 			return array();
 		}
 
-		$ids_by_basename = array_flip( $plugin_index );
-		$active_ids      = array();
+		$ids_by_basename = array();
+		foreach ( $plugin_index as $id => $entry ) {
+			foreach ( EnvironmentLookup::to_basenames( $entry ) as $basename ) {
+				$ids_by_basename[ $basename ] = $id;
+			}
+		}
+
+		$active_ids = array();
 
 		foreach ( $active_plugins as $basename ) {
 			if ( array_key_exists( $basename, $ids_by_basename ) ) {

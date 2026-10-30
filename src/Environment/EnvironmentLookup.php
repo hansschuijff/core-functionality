@@ -16,7 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Plugin;
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
+use DeWittePrins\CoreFunctionality\Environment\Plugins\Services\PluginInspector;
 
+use function is_string;
 use function sanitize_key;
 use function sanitize_text_field;
 use function wp_get_environment_type;
@@ -38,9 +40,10 @@ use function wp_get_environment_type;
 class EnvironmentLookup {
 
 	/**
-	 * Centralized register containing token-to-plugin_basename strings.
+	 * Centralized register containing token-to-plugin_basename strings. A plugin whose folder name differs
+	 * between sites has a list of basenames instead.
 	 *
-	 * @var array<string, string>
+	 * @var array<string, string|string[]>
 	 */
 	private array $plugins_register = array();
 
@@ -64,12 +67,43 @@ class EnvironmentLookup {
 	/**
 	 * Translates an abstract plugin ID into a physical active plugin basename string.
 	 *
+	 * When the index lists several basenames (the folder name differs between sites), the first one
+	 * that is installed here wins, or else the first one.
+	 *
 	 * @since 1.0.0
 	 * @param string $id The abstract plugin id/key (e.g. 'the-events-calendar').
 	 * @return string The basename of the corresponding plugin, or '' if not found.
 	 */
 	public function get_plugin_basename( string $id ): string {
-		return $this->plugins_register[ $id ] ?? '';
+		$basenames = self::to_basenames( $this->plugins_register[ $id ] ?? '' );
+
+		foreach ( $basenames as $basename ) {
+			if ( PluginInspector::is_plugin_installed( $basename ) ) {
+				return $basename;
+			}
+		}
+
+		return $basenames[0] ?? '';
+	}
+
+	/**
+	 * Returns the basenames of an index entry as a list: one basename, or several when the plugin's
+	 * folder name differs between sites.
+	 *
+	 * @since  1.0.0
+	 * @param  mixed $entry The index entry: a basename or a list of basenames.
+	 * @return string[] The basenames, empty ones left out.
+	 */
+	public static function to_basenames( mixed $entry ): array {
+		$basenames = array();
+
+		foreach ( (array) $entry as $basename ) {
+			if ( is_string( $basename ) && '' !== $basename ) {
+				$basenames[] = $basename;
+			}
+		}
+
+		return $basenames;
 	}
 
 	/**
