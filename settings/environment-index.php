@@ -48,6 +48,27 @@ return array(
 		'wp-server-stats'                         => 'wp-server-stats/wp-server-stats.php',
 		'reader-experience'                       => 'reader-experience/reader-experience.php',
 		'duplicate-post'                          => 'duplicate-post/duplicate-post.php',
+		'akismet'                                 => 'akismet/akismet.php',
+		'ai'                                      => 'ai/ai.php',
+		'site-kit'                                => 'google-site-kit/google-site-kit.php',
+		'cookie-yes'                              => 'cookie-law-info/cookie-law-info.php',
+		'tablepress'                              => 'tablepress/tablepress.php',
+		'code-snippets'                           => array( 'code-snippets-pro/code-snippets.php', 'code-snippets/code-snippets.php' ),
+		'wp-crontrol'                             => 'wp-crontrol/wp-crontrol.php',
+		'action-scheduler'                        => 'action-scheduler/action-scheduler.php',
+		'wp-rocket'                               => 'wp-rocket/wp-rocket.php',
+		'yoast-seo-premium'                       => 'wordpress-seo-premium/wp-seo-premium.php',
+		'fluent-crm'                              => 'fluent-crm/fluent-crm.php',
+		'users-insights'                          => 'users-insights/users-insights.php',
+		'temporary-login'                         => 'temporary-login-without-password/temporary-login-without-password.php',
+		'username-updater'                        => 'username-updater/init.php',
+		'countdown-timer'                         => 'countdown-time/plugin.php',
+		'top-ten'                                 => 'top-10/top-10.php',
+		'yarpp'                                   => 'yet-another-related-posts-plugin/yarpp.php',
+		'simple-comment-editing'                  => 'simple-comment-editing/index.php',
+		'add-anchor-links'                        => 'add-anchor-links/add-anchor-links.php',
+		'footable'                                => 'footable/footable.php',
+		'otter-blocks'                            => 'otter-blocks/otter-blocks.php',
 
 		// Updates and licences.
 		'git-updater'                             => 'git-updater/git-updater.php',
@@ -74,6 +95,7 @@ return array(
 		'aelia-foundation-classes'                => 'wc-aelia-foundation-classes/wc-aelia-foundation-classes.php',
 		'eu-vat-compliance'                       => 'woocommerce-eu-vat-compliance/eu-vat-compliance.php', // The free version.
 		'wp-menu-cart'                            => 'woocommerce-menu-bar-cart/wp-menu-cart.php',
+		'extended-coupon-features'                => 'woocommerce-auto-added-coupons/woocommerce-jos-autocoupon.php',
 
 		// The Events Calendar Stack.
 		'the-events-calendar'                     => 'the-events-calendar/the-events-calendar.php',
@@ -87,6 +109,15 @@ return array(
 		'sensei-pro'                              => 'woothemes-sensei/woothemes-sensei.php', // Sensei Pro (WC Paid Courses).
 		'sensei-content-drip'                     => 'sensei-content-drip/sensei-content-drip.php',
 		'sensei-paid-courses'                     => 'sensei-paid-courses/sensei-paid-courses.php',
+		'sensei-certificates'                     => 'sensei-certificates/woothemes-sensei-certificates.php',
+		'sensei-post-to-course'                   => 'sensei-post-to-course/sensei-post-to-course.php',
+
+		// Media and images.
+		'instant-images'                          => 'instant-images/instant-images.php',
+		'tiny-png'                                => 'tiny-compress-images/tiny-compress-images.php',
+		'quick-featured-images'                   => 'quick-featured-images/quick-featured-images.php',
+		'regenerate-thumbnails'                   => 'regenerate-thumbnails/regenerate-thumbnails.php',
+		'wp-original-media-path'                  => 'wp-original-media-path/wp_original_media_path.php',
 
 		// Social & Feeds.
 		'scriptless-social-sharing'               => 'scriptless-social-sharing/scriptless-social-sharing.php',
@@ -97,6 +128,7 @@ return array(
 		'display-featured-image-genesis'          => 'display-featured-image-genesis/display-featured-image-genesis.php',
 		'genesis-simple-faq'                      => 'genesis-simple-faq/genesis-simple-faq.php',
 		'be-like-content'                         => array( 'be-like-content/be-like-content.php', 'BE-Like-Content/be-like-content.php' ),
+		'genesis-blocks-pro'                      => 'genesis-page-builder/genesis-page-builder.php',
 	),
 	'themes'  => array(
 		'any-genesis' => array(
