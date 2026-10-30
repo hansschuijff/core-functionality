@@ -240,9 +240,9 @@ class WordPress implements EnvironmentInterface, ToolbarProviderInterface, PostT
 			),
 			new ToolbarShortcut(
 				id:      'cf-wordpress-reusable-blocks',
-				title:   __( 'Reusable blocks', 'core-functionality' ),
+				title:   __( 'Patterns', 'core-functionality' ),
 				href:    admin_url( 'edit.php?post_type=wp_block' ),
-				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Reusable blocks', 'core-functionality' ),
+				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Patterns', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
 			),
 			new ToolbarShortcut(
@@ -317,7 +317,81 @@ class WordPress implements EnvironmentInterface, ToolbarProviderInterface, PostT
 		);
 
 		// Merge all localized data clusters into a unified master array tree cleanly.
-		return array_merge( $plugin_nodes, $appearance_nodes, $content_nodes, $system_nodes );
+		return array_merge(
+			$plugin_nodes,
+			$appearance_nodes,
+			$content_nodes,
+			$system_nodes,
+			$this->get_admin_menu_page_nodes()
+		);
+	}
+
+	/**
+	 * Returns the other pages of the WordPress admin menu, per group: the same group lets an item show
+	 * its short title under a parent of that group. The pages of Patterns and Users keep the default
+	 * group (WordPress), the group of their menu heads, so "New" shows under Users; existing nodes keep
+	 * their group, since a changed group would change titles in saved menus.
+	 *
+	 * @since  1.0.0
+	 * @return ToolbarShortcut[] The menu items.
+	 */
+	private function get_admin_menu_page_nodes(): array {
+		$pages = array(
+			'dashboard'  => array(
+				'cf-wordpress-dashboard' => array( __( 'Dashboard', 'core-functionality' ), 'index.php', '' ),
+			),
+			'plugins'    => array(
+				'cf-wordpress-plugins-must-use'        => array( __( 'Must-Use Plugins', 'core-functionality' ), 'plugins.php?plugin_status=mustuse', __( 'Must-Use', 'core-functionality' ) ),
+				'cf-wordpress-plugins-upgrade'         => array( __( 'Plugins with Updates', 'core-functionality' ), 'plugins.php?plugin_status=upgrade', __( 'With Updates', 'core-functionality' ) ),
+				'cf-wordpress-plugins-recently-active' => array( __( 'Recently Active Plugins', 'core-functionality' ), 'plugins.php?plugin_status=recently_activated', __( 'Recently Active', 'core-functionality' ) ),
+				'cf-wordpress-plugins-inactive'        => array( __( 'Inactive Plugins', 'core-functionality' ), 'plugins.php?plugin_status=inactive', __( 'Inactive', 'core-functionality' ) ),
+				'cf-wordpress-plugins-editor'          => array( __( 'Plugin File Editor', 'core-functionality' ), 'plugin-editor.php', __( 'File Editor', 'core-functionality' ) ),
+			),
+			'appearance' => array(
+				'cf-wordpress-fonts'        => array( __( 'Fonts', 'core-functionality' ), 'font-library.php', '' ),
+				'cf-wordpress-header'       => array( __( 'Header', 'core-functionality' ), 'themes.php?page=custom-header', '' ),
+				'cf-wordpress-theme-editor' => array( __( 'Theme File Editor', 'core-functionality' ), 'theme-editor.php', __( 'File Editor', 'core-functionality' ) ),
+			),
+			''           => array(
+				'cf-wordpress-pattern-new'        => array( __( 'New Pattern', 'core-functionality' ), 'post-new.php?post_type=wp_block', __( 'New', 'core-functionality' ) ),
+				'cf-wordpress-pattern-categories' => array( __( 'Pattern Categories', 'core-functionality' ), 'edit-tags.php?taxonomy=wp_pattern_category&post_type=wp_block', __( 'Categories', 'core-functionality' ) ),
+				'cf-wordpress-user-new'           => array( __( 'New User', 'core-functionality' ), 'user-new.php', __( 'New', 'core-functionality' ) ),
+				'cf-wordpress-profile'            => array( __( 'Profile', 'core-functionality' ), 'profile.php', '' ),
+			),
+			'tools'      => array(
+				'cf-wordpress-tools'                => array( __( 'Tools', 'core-functionality' ), 'tools.php', '' ),
+				'cf-wordpress-import'               => array( __( 'Import', 'core-functionality' ), 'import.php', '' ),
+				'cf-wordpress-export'               => array( __( 'Export', 'core-functionality' ), 'export.php', '' ),
+				'cf-wordpress-site-health'          => array( __( 'Site Health', 'core-functionality' ), 'site-health.php', '' ),
+				'cf-wordpress-export-personal-data' => array( __( 'Export Personal Data', 'core-functionality' ), 'export-personal-data.php', '' ),
+				'cf-wordpress-erase-personal-data'  => array( __( 'Erase Personal Data', 'core-functionality' ), 'erase-personal-data.php', '' ),
+			),
+			'settings'   => array(
+				'cf-wordpress-settings-general'    => array( __( 'General Settings', 'core-functionality' ), 'options-general.php', __( 'General', 'core-functionality' ) ),
+				'cf-wordpress-settings-connectors' => array( __( 'Connectors', 'core-functionality' ), 'options-connectors.php', '' ),
+				'cf-wordpress-settings-writing'    => array( __( 'Writing Settings', 'core-functionality' ), 'options-writing.php', __( 'Writing', 'core-functionality' ) ),
+				'cf-wordpress-settings-reading'    => array( __( 'Reading Settings', 'core-functionality' ), 'options-reading.php', __( 'Reading', 'core-functionality' ) ),
+				'cf-wordpress-settings-discussion' => array( __( 'Discussion Settings', 'core-functionality' ), 'options-discussion.php', __( 'Discussion', 'core-functionality' ) ),
+				'cf-wordpress-settings-media'      => array( __( 'Media Settings', 'core-functionality' ), 'options-media.php', __( 'Media', 'core-functionality' ) ),
+				'cf-wordpress-settings-permalinks' => array( __( 'Permalink Settings', 'core-functionality' ), 'options-permalink.php', __( 'Permalinks', 'core-functionality' ) ),
+				'cf-wordpress-settings-privacy'    => array( __( 'Privacy Settings', 'core-functionality' ), 'options-privacy.php', __( 'Privacy', 'core-functionality' ) ),
+			),
+		);
+
+		$nodes = array();
+		foreach ( $pages as $group => $group_pages ) {
+			foreach ( $group_pages as $id => list( $title, $path, $short_title ) ) {
+				$nodes[] = ToolbarShortcut::to_admin_page(
+					id:          $id,
+					title:       $title,
+					path:        $path,
+					short_title: $short_title,
+					group:       $group
+				);
+			}
+		}
+
+		return $nodes;
 	}
 
 	/**
