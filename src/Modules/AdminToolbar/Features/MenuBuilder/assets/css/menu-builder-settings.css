@@ -122,10 +122,14 @@
 	padding: 0 6px;
 }
 
+/* WordPress gives icons in buttons a line height and offset of their own; reset them to center it. */
 .dwp-mb-filter .dashicons {
 	font-size: 18px;
 	width: 18px;
 	height: 18px;
+	margin: 0;
+	line-height: 18px;
+	vertical-align: middle;
 }
 
 .dwp-mb-filter[aria-pressed="true"],
