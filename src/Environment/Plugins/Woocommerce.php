@@ -25,6 +25,8 @@ use function method_exists;
 use function rawurlencode;
 use function sanitize_key;
 use function sprintf;
+use function wc_get_cart_url;
+use function wc_get_checkout_url;
 use function wc_get_page_permalink;
 use function get_term_by;
 use function get_term_link;
@@ -457,9 +459,139 @@ class Woocommerce extends AbstractPlugin {
 				orientation: Orientation::ADMIN,
 				short_title: __( 'Features', 'core-functionality' ),
 			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-scheduled-actions',
+				title:       __( 'Scheduled Actions', 'core-functionality' ),
+				path:        'tools.php?page=action-scheduler',
+			),
 		);
 
-		return array_merge( $nodes, $this->get_tax_class_nodes() );
+		return array_merge(
+			$nodes,
+			$this->get_tax_class_nodes(),
+			$this->get_product_nodes(),
+			$this->get_analytics_nodes(),
+			$this->get_marketing_nodes(),
+			$this->get_checkout_nodes()
+		);
+	}
+
+	/**
+	 * Returns the pages of the Products menu besides the product list and categories.
+	 *
+	 * @since  1.0.0
+	 * @return ToolbarShortcut[] The menu items.
+	 */
+	private function get_product_nodes(): array {
+		return array(
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-product-new',
+				title:       __( 'New Product', 'core-functionality' ),
+				path:        'post-new.php?post_type=product',
+				short_title: __( 'New', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-product-brands',
+				title:       __( 'Product Brands', 'core-functionality' ),
+				path:        'edit-tags.php?taxonomy=product_brand&post_type=product',
+				short_title: __( 'Brands', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-product-tags',
+				title:       __( 'Product Tags', 'core-functionality' ),
+				path:        'edit-tags.php?taxonomy=product_tag&post_type=product',
+				short_title: __( 'Tags', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-product-attributes',
+				title:       __( 'Product Attributes', 'core-functionality' ),
+				path:        'edit.php?post_type=product&page=product_attributes',
+				short_title: __( 'Attributes', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-product-reviews',
+				title:       __( 'Product Reviews', 'core-functionality' ),
+				path:        'edit.php?post_type=product&page=product-reviews',
+				short_title: __( 'Reviews', 'core-functionality' ),
+			),
+		);
+	}
+
+	/**
+	 * Returns the reports of WooCommerce Analytics; "Shop Statistics" (cf-woocommerce-analytics) opens
+	 * the revenue report.
+	 *
+	 * @since  1.0.0
+	 * @return ToolbarShortcut[] The menu items.
+	 */
+	private function get_analytics_nodes(): array {
+		$reports = array(
+			'overview'   => array( __( 'Shop Statistics: Overview', 'core-functionality' ), __( 'Overview', 'core-functionality' ) ),
+			'products'   => array( __( 'Shop Statistics: Products', 'core-functionality' ), __( 'Products', 'core-functionality' ) ),
+			'revenue'    => array( __( 'Shop Statistics: Revenue', 'core-functionality' ), __( 'Revenue', 'core-functionality' ) ),
+			'orders'     => array( __( 'Shop Statistics: Orders', 'core-functionality' ), __( 'Orders', 'core-functionality' ) ),
+			'variations' => array( __( 'Shop Statistics: Variations', 'core-functionality' ), __( 'Variations', 'core-functionality' ) ),
+			'categories' => array( __( 'Shop Statistics: Categories', 'core-functionality' ), __( 'Categories', 'core-functionality' ) ),
+			'coupons'    => array( __( 'Shop Statistics: Coupons', 'core-functionality' ), __( 'Coupons', 'core-functionality' ) ),
+			'taxes'      => array( __( 'Shop Statistics: Taxes', 'core-functionality' ), __( 'Taxes', 'core-functionality' ) ),
+			'downloads'  => array( __( 'Shop Statistics: Downloads', 'core-functionality' ), __( 'Downloads', 'core-functionality' ) ),
+			'stock'      => array( __( 'Shop Statistics: Stock', 'core-functionality' ), __( 'Stock', 'core-functionality' ) ),
+			'settings'   => array( __( 'Shop Statistics: Settings', 'core-functionality' ), __( 'Statistics Settings', 'core-functionality' ) ),
+		);
+
+		$nodes = array();
+		foreach ( $reports as $report => list( $title, $short_title ) ) {
+			$nodes[] = ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-analytics-' . $report,
+				title:       $title,
+				path:        'admin.php?page=wc-admin&path=/analytics/' . $report,
+				short_title: $short_title,
+			);
+		}
+
+		return $nodes;
+	}
+
+	/**
+	 * Returns the Marketing menu of WooCommerce (its coupons are cf-woocommerce-coupons).
+	 *
+	 * @since  1.0.0
+	 * @return ToolbarShortcut[] The menu items.
+	 */
+	private function get_marketing_nodes(): array {
+		return array(
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-woocommerce-marketing',
+				title:       __( 'Shop Marketing', 'core-functionality' ),
+				path:        'admin.php?page=wc-admin&path=/marketing',
+				short_title: __( 'Marketing', 'core-functionality' ),
+			),
+		);
+	}
+
+	/**
+	 * Returns the cart and checkout pages on the site (the shop and my account are in the main list).
+	 *
+	 * @since  1.0.0
+	 * @return ToolbarShortcut[] The menu items.
+	 */
+	private function get_checkout_nodes(): array {
+		return array(
+			new ToolbarShortcut(
+				id:          'cf-woocommerce-view-cart',
+				title:       __( 'Cart', 'core-functionality' ),
+				href:        fn() => function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home_url( __( '/cart', 'core-functionality' ) ),
+				label:       __( 'Link to', 'core-functionality' ) . ' ' . __( 'WooCommerce Cart', 'core-functionality' ),
+				orientation: Orientation::FRONTEND,
+			),
+			new ToolbarShortcut(
+				id:          'cf-woocommerce-view-checkout',
+				title:       __( 'Checkout', 'core-functionality' ),
+				href:        fn() => function_exists( 'wc_get_checkout_url' ) ? wc_get_checkout_url() : home_url( __( '/checkout', 'core-functionality' ) ),
+				label:       __( 'Link to', 'core-functionality' ) . ' ' . __( 'WooCommerce Checkout', 'core-functionality' ),
+				orientation: Orientation::FRONTEND,
+			),
+		);
 	}
 
 	/**
