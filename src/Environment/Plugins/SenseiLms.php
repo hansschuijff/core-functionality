@@ -86,9 +86,9 @@ class SenseiLms extends AbstractPlugin {
 			),
 			new ToolbarShortcut(
 				id:      'cf-sensei-lms-student-management',
-				title:   __( 'Student Management', 'core-functionality' ),
+				title:   __( 'Students', 'core-functionality' ),
 				href:    admin_url( 'admin.php?page=sensei_learners' ),
-				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Student Management', 'core-functionality' ),
+				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Students', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
 			),
 			new ToolbarShortcut(
@@ -116,7 +116,7 @@ class SenseiLms extends AbstractPlugin {
 			new ToolbarShortcut(
 				id:      'cf-sensei-lms-modules',
 				title:   __( 'Modules', 'core-functionality' ),
-				href:    admin_url( 'edit-tags.php?taxonomy=module' ),
+				href:    admin_url( 'edit-tags.php?taxonomy=module&post_type=course' ),
 				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Modules', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
 			),
@@ -144,11 +144,10 @@ class SenseiLms extends AbstractPlugin {
 			),
 			new ToolbarShortcut(
 				id:      'cf-sensei-lms-messages',
-				title:   __( 'Course Messages', 'core-functionality' ),
+				title:   __( 'Student Contact', 'core-functionality' ),
 				href:    admin_url( 'edit.php?post_type=sensei_message' ),
 				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Messages', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
-				short_title: __( 'Messages', 'core-functionality' ),
 			),
 			new ToolbarShortcut(
 				id:      'cf-sensei-lms-settings',
@@ -160,11 +159,27 @@ class SenseiLms extends AbstractPlugin {
 			),
 			new ToolbarShortcut(
 				id:      'cf-sensei-lms-analytics',
-				title:   __( 'Course Analytics', 'core-functionality' ),
-				href:    admin_url( 'admin.php?page=sensei_analysis' ),
-				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Analytics', 'core-functionality' ),
+				title:   __( 'Course Reports', 'core-functionality' ),
+				href:    admin_url( 'admin.php?page=sensei_reports' ),
+				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Reports', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
-				short_title: __( 'Analytics', 'core-functionality' ),
+				short_title: __( 'Reports', 'core-functionality' ),
+			),
+			new ToolbarShortcut(
+				id:      'cf-sensei-lms-home',
+				title:   __( 'Sensei Home', 'core-functionality' ),
+				href:    admin_url( 'admin.php?page=sensei' ),
+				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Home', 'core-functionality' ),
+				orientation: Orientation::ADMIN,
+				short_title: __( 'Home', 'core-functionality' ),
+			),
+			new ToolbarShortcut(
+				id:      'cf-sensei-lms-tools',
+				title:   __( 'Sensei Tools', 'core-functionality' ),
+				href:    admin_url( 'admin.php?page=sensei-tools' ),
+				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Sensei LMS Tools', 'core-functionality' ),
+				orientation: Orientation::ADMIN,
+				short_title: __( 'Tools', 'core-functionality' ),
 			),
 			new ToolbarShortcut(
 				id:      'cf-sensei-lms-view',
