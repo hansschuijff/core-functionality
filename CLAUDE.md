@@ -71,6 +71,8 @@ new modules and features for Hans's own sites.
   `AbstractPlugin`, also this plugin's own guard (`Plugins\CoreFunctionality`, which only overrides
   `is_ready()` and the like). Only `Core\WordPress` implements its interfaces directly and needs every new
   interface method itself: check it first, a missing one is a fatal (Hans, October 2026).
+- Admin page nodes use `ToolbarShortcut::to_admin_page()`; leave out upsell and hidden pages. Do not change
+  the `group` of a node that is already in the catalogue (saved menus derive titles from it).
 - A guard's proof must hold when the Kernel boots (`init` priority 0): use a constant, function or class
   that the plugin defines once it has started, verified in its source or on the local site. Proofs use
   `class_exists( $class, false )`, so a class that is only autoloaded on first use does not count.

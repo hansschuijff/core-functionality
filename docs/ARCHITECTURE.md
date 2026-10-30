@@ -113,7 +113,9 @@ A dependency is an id. `Environment` turns it into a guard class by convention: 
 (Hans's preference); the key in `environment-index.php` is the id without the `-theme` suffix. Plugin guards extend
 `AbstractPlugin` and prove the plugin is alive with a `ProofRequirement` (classes, functions, actions);
 results are cached per request. `settings/environment-index.php` maps plugin ids to plugin basenames and
-theme ids to theme name and author. `get_dependencies()` returns one id or an `and` / `or` array of ids.
+theme ids to theme name and author. A plugin whose folder name differs between sites gets a list of
+basenames (Debug Toolkit: `__debug-toolkit` locally, `_debug-toolkit` on production; BE Like Content); the
+first one installed is used (`EnvironmentLookup::get_plugin_basename()`), and the Kernel accepts all of them. `get_dependencies()` returns one id or an `and` / `or` array of ids.
 
 `Environment` creates each guard once per request: `get_plugin( $id )` and `get_theme( $id )` keep the
 instances per kind (plugins and themes are registered separately), `get_wordpress()` the core guard.
@@ -179,7 +181,8 @@ to move and indent, Space to select, Ctrl+Space or Ctrl-click for a node with it
 Esc); "Keyboard shortcuts" (or ?) shows the overview. When the columns fit side by side, the builder fills
 the visible part of the settings page, so only the lists scroll. Branches and the explanations above the
 pool and the menu start collapsed (one "Explanation" button above either column opens both). The pool's
-controls are one row: search, a filter switch for "only active" and Add; selecting a whole source goes
+controls are one row: a filter switch for "only active", search (with a × inside the field that empties
+it) and Add; selecting a whole source goes
 with the checkbox in its heading. A collapsed branch that receives a node is opened, and depths at the end of the
 menu follow the last visible node, so nothing disappears into a closed branch. Every change can be undone
 and redone (Ctrl+Z / Ctrl+Y, up to 50 steps; serialize() records the state before each change).
@@ -223,6 +226,19 @@ source alone is its menu head (`cf-automatewoo`), and `view-` marks a page on th
 (`cf-woocommerce-view-my-account`). Saved menus store these ids, so renaming one means converting the
 saved menus too (done once, in October 2026, while the plugin ran on the development site only). Each
 guard names its source (`get_name()`), shown in the pool.
+
+**Catalogue contents.** In October 2026 the catalogue was brought in line with the admin menu of
+tinekevanurk.nl (Hans's list in `Naslag/adminmenu-tinekevanurk.txt`; the guards' own list, regenerated from
+the code, is `Naslag/adminmenu-catalogus-guards.txt`). Rules followed: upsell pages ("Upgrade", "Free vs
+Pro", "Contact us") and hidden pages are left out; each page belongs to the plugin that registers it
+(WooCommerce core vs. its extensions, TEC vs. ECP vs. Event Tickets (Plus), Yoast free vs. Premium, Sensei
+LMS vs. Sensei Pro's glossary and groups); a new guard only gets a proof checked in the plugin's source, so
+plugins not installed locally wait (Bloom, Ultimate Blocks, Yoast Local SEO and WooCommerce SEO, Google for
+WooCommerce, Jetpack Boost, Genesis Dambuster, Genesis Simple Sidebars, ActiveCampaign subscription forms).
+Most admin pages are made with `ToolbarShortcut::to_admin_page()`. A node's group is not changed once it is
+in use: a custom submenu takes the group its items share, so a changed group changes titles in saved menus.
+Dutch labels: coupons are "Waardebonnen" (WooCommerce's own term), Sensei's students "cursisten", and
+settings pages name the subject first ("Duplicate Post-instellingen", "Waardebon instellingen", Hans).
 
 Cleanup point (minor): the catalogue holds some duplicate links (the same URL from two sources, such as
 Sensei Pro repeating Sensei LMS, a menu head equal to its first item, or two WooCommerce links with `#`).
