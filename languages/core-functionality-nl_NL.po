@@ -860,7 +860,7 @@ msgstr "Aelia"
 #: src/Environment/Plugins/AutocompleteWoocommerceOrders.php:76
 #: src/Environment/Plugins/AutocompleteWoocommerceOrders.php:78
 msgid "Autocomplete Orders Settings"
-msgstr "Instellingen Autocomplete Orders"
+msgstr "Autocomplete Orders-instellingen"
 
 #: src/Environment/Plugins/AutocompleteWoocommerceOrders.php:80
 msgid "Autocomplete Orders"
@@ -2279,15 +2279,15 @@ msgstr "WooCommerce-producten"
 
 #: src/Environment/Plugins/Woocommerce.php:101
 msgid "Shop Coupons"
-msgstr "Winkelkortingsbonnen"
+msgstr "Waardebonnen"
 
 #: src/Environment/Plugins/Woocommerce.php:103
 msgid "WooCommerce Coupons"
-msgstr "WooCommerce-kortingsbonnen"
+msgstr "WooCommerce-waardebonnen"
 
 #: src/Environment/Plugins/Woocommerce.php:105
 msgid "Coupons"
-msgstr "Kortingsbonnen"
+msgstr "Waardebonnen"
 
 #: src/Environment/Plugins/Woocommerce.php:109
 msgid "Product Categories"
@@ -2686,19 +2686,19 @@ msgstr "WooCommerce: geavanceerde ActiveWoo-instellingen"
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:91
 msgid "Recover Cart Settings"
-msgstr "Instellingen verlaten winkelwagens"
+msgstr "Verlaten winkelwagens instellingen"
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:93
 msgid "WooCommerce ActiveWoo Recover Cart Settings"
-msgstr "WooCommerce: ActiveWoo-instellingen verlaten winkelwagens"
+msgstr "WooCommerce: ActiveWoo, verlaten winkelwagens instellingen"
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:98
 msgid "Coupons Settings"
-msgstr "Instellingen kortingsbonnen"
+msgstr "Waardebon instellingen"
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:100
 msgid "WooCommerce ActiveWoo Coupons Settings"
-msgstr "WooCommerce: ActiveWoo-instellingen kortingsbonnen"
+msgstr "WooCommerce: ActiveWoo, waardebon instellingen"
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:106
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:108
@@ -2758,7 +2758,7 @@ msgstr "Pre-order-instellingen"
 #: src/Environment/Plugins/WoocommerceProductAddons.php:58
 #: src/Environment/Plugins/WoocommerceProductAddons.php:60
 msgid "Product Add-ons"
-msgstr "Productopties"
+msgstr "Extra productopties"
 
 #: src/Environment/Plugins/WoocommerceProductAddons.php:60
 #: src/Modules/WooCommerce/WooCommerce.php:43
@@ -4075,7 +4075,7 @@ msgstr "Settings->get_options() aanroepen is niet toegestaan. Gebruik Settings->
 #: src/Environment/Plugins/DuplicatePost.php:67
 #: src/Environment/Plugins/DuplicatePost.php:69
 msgid "Duplicate Post Settings"
-msgstr "Instellingen Duplicate Post"
+msgstr "Duplicate Post-instellingen"
 
 #: src/Environment/Plugins/DuplicatePost.php:71
 #: src/Modules/DuplicatePost/DuplicatePost.php:45
