@@ -61,8 +61,57 @@
 	margin-bottom: 10px;
 }
 
-.dwp-mb-search {
+/* The search field holds a clear button (×) at its right, like a web search box. */
+.dwp-mb-search-field {
+	position: relative;
+	display: flex;
 	flex: 1 1 160px;
+}
+
+.dwp-mb-search-field .dwp-mb-search {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding-right: 28px;
+}
+
+/* The browser's own clear button would show next to ours. */
+.dwp-mb-search::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.dwp-mb-search-field .dwp-mb-search-clear {
+	position: absolute;
+	top: 50%;
+	right: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: #646970;
+	cursor: pointer;
+	transform: translateY(-50%);
+}
+
+.dwp-mb-search-field .dwp-mb-search-clear[hidden] {
+	display: none;
+}
+
+.dwp-mb-search-field .dwp-mb-search-clear:hover,
+.dwp-mb-search-field .dwp-mb-search-clear:focus {
+	background: #f0f0f1;
+	color: #1d2327;
+}
+
+.dwp-mb-search-clear .dashicons {
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
 }
 
 /* "Only active" as a switch with a filter icon; pressed when it filters. */

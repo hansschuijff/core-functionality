@@ -431,6 +431,7 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 			'selectBelow'           => __( 'Include items below', 'core-functionality' ),
 			'selectBelowTip'        => __( 'Also select the items below the selected items (Ctrl-click selects an item with the items below it).', 'core-functionality' ),
 			'search'                => __( 'Search', 'core-functionality' ),
+			'clearSearch'           => __( 'Clear search', 'core-functionality' ),
 			'onlyActive'            => __( 'Only menu items of active plugins and themes', 'core-functionality' ),
 			'collapse'              => __( 'Collapse', 'core-functionality' ),
 			'expand'                => __( 'Expand', 'core-functionality' ),

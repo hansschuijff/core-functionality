@@ -299,9 +299,29 @@
 		searchInput.type = 'search';
 		searchInput.placeholder = t.search;
 		searchInput.setAttribute('aria-label', t.search);
-		searchInput.addEventListener('input', filterPool);
+		searchInput.addEventListener('input', function () {
+			clearButton.hidden = '' === searchInput.value;
+			filterPool();
+		});
 
-		// One row: search, a filter switch for "only active" and Add (for what is checked).
+		// A small × inside the search field empties it, shown only when there is something to clear.
+		const clearButton = el('button', 'dwp-mb-search-clear');
+		clearButton.type = 'button';
+		clearButton.hidden = true;
+		clearButton.title = t.clearSearch;
+		clearButton.setAttribute('aria-label', t.clearSearch);
+		clearButton.appendChild(el('span', 'dashicons dashicons-no-alt'));
+		clearButton.addEventListener('click', function () {
+			searchInput.value = '';
+			clearButton.hidden = true;
+			filterPool();
+			searchInput.focus();
+		});
+
+		const searchField = el('span', 'dwp-mb-search-field');
+		searchField.append(searchInput, clearButton);
+
+		// One row: a filter switch for "only active", search and Add (for what is checked).
 		const activeButton = el('button', 'button dwp-mb-filter');
 		activeButton.type = 'button';
 		activeButton.title = t.onlyActive;
@@ -321,7 +341,7 @@
 		addButton.type = 'button';
 		addButton.title = t.addSelectedTip;
 
-		tools.append(searchInput, activeButton, addButton);
+		tools.append(activeButton, searchField, addButton);
 
 		// With exactly one node selected in the menu, new nodes go below it: inside it when it is a
 		// submenu without a link of its own, otherwise after its branch. Without one, at the end.
