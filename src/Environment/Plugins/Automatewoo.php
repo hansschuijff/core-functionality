@@ -65,15 +65,15 @@ class Automatewoo extends AbstractPlugin {
 	 */
 	#[Override]
 	public function get_toolbar_nodes(): array {
-		// The first node is the menu head and goes to the workflows, like AutomateWoo's own menu
+		// The first node is the menu head and goes to the dashboard, like AutomateWoo's own menu
 		// head; its id is in saved menus, so it keeps the old name. The others follow
-		// AutomateWoo's own admin menu.
+		// AutomateWoo's own admin menu, then its reports under WooCommerce Analytics.
 		return array(
 			new ToolbarShortcut(
 				id:          'cf-automatewoo',
 				title:       __( 'AutomateWoo', 'core-functionality' ),
-				href:        admin_url( 'edit.php?post_type=aw_workflow' ),
-				label:       __( 'Link to', 'core-functionality' ) . ' ' . __( 'AutomateWoo Workflows', 'core-functionality' ),
+				href:        admin_url( 'admin.php?page=automatewoo-dashboard' ),
+				label:       __( 'Link to', 'core-functionality' ) . ' ' . __( 'AutomateWoo', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
 			),
 			new ToolbarShortcut(
@@ -242,6 +242,24 @@ class Automatewoo extends AbstractPlugin {
 				href:        admin_url( 'admin.php?page=wc-admin&path=/automatewoo/manual-workflow-runner' ),
 				label:       __( 'Link to', 'core-functionality' ) . ' ' . __( 'AutomateWoo Manual Workflow Runner', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-automatewoo-analytics-runs',
+				title:       __( 'AutomateWoo Statistics: Workflows', 'core-functionality' ),
+				path:        'admin.php?page=wc-admin&path=/analytics/automatewoo-runs-by-date',
+				short_title: __( 'Workflow Statistics', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-automatewoo-analytics-email-tracking',
+				title:       __( 'AutomateWoo Statistics: Email and SMS Tracking', 'core-functionality' ),
+				path:        'admin.php?page=wc-admin&path=/analytics/automatewoo-email-tracking',
+				short_title: __( 'Email and SMS Tracking', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-automatewoo-analytics-conversions',
+				title:       __( 'AutomateWoo Statistics: Conversions', 'core-functionality' ),
+				path:        'admin.php?page=wc-admin&path=/analytics/automatewoo-conversions',
+				short_title: __( 'Conversions', 'core-functionality' ),
 			),
 		);
 	}

@@ -12,13 +12,16 @@ declare( strict_types=1 );
 
 namespace DeWittePrins\CoreFunctionality\Environment\Plugins;
 
+use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use DeWittePrins\CoreFunctionality\Environment\DTO\ProofRequirement;
 use Override;
+
+use function __;
 
 /**
  * Class SendImagesToRss
  *
- * Reports whether Send Images to RSS is active and loaded. Supplies no admin links yet.
+ * Reports whether Send Images to RSS is active and loaded. Supplies its admin links.
  *
  * @since 1.0.0
  */
@@ -54,6 +57,12 @@ class SendImagesToRss extends AbstractPlugin {
 	 */
 	#[Override]
 	public function get_toolbar_nodes(): array {
-		return array();
+		return array(
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-send-images-to-rss-settings',
+				title:       __( 'Send Images to RSS Settings', 'core-functionality' ),
+				path:        'options-general.php?page=sendimagesrss',
+			),
+		);
 	}
 }

@@ -65,6 +65,12 @@ class FluentSmtp extends AbstractPlugin {
 				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'FluentSMTP', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
 			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-fluent-smtp-settings',
+				title:       __( 'FluentSMTP Settings', 'core-functionality' ),
+				path:        'options-general.php?page=fluent-mail',
+				short_title: __( 'Settings', 'core-functionality' ),
+			),
 		);
 	}
 }

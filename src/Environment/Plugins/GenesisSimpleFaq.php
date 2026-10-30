@@ -12,13 +12,16 @@ declare( strict_types=1 );
 
 namespace DeWittePrins\CoreFunctionality\Environment\Plugins;
 
+use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use DeWittePrins\CoreFunctionality\Environment\DTO\ProofRequirement;
 use Override;
+
+use function __;
 
 /**
  * Class GenesisSimpleFaq
  *
- * Reports whether Genesis Simple FAQ is active and loaded. Supplies no admin links yet.
+ * Reports whether Genesis Simple FAQ is active and loaded. Supplies its admin links.
  *
  * @since 1.0.0
  */
@@ -54,6 +57,25 @@ class GenesisSimpleFaq extends AbstractPlugin {
 	 */
 	#[Override]
 	public function get_toolbar_nodes(): array {
-		return array();
+		return array(
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-genesis-simple-faq',
+				title:       __( 'FAQs', 'core-functionality' ),
+				path:        'edit.php?post_type=gs_faq',
+				label:       __( 'Genesis Simple FAQ', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-genesis-simple-faq-new',
+				title:       __( 'New FAQ', 'core-functionality' ),
+				path:        'post-new.php?post_type=gs_faq',
+				short_title: __( 'New', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-genesis-simple-faq-categories',
+				title:       __( 'FAQ Categories', 'core-functionality' ),
+				path:        'edit-tags.php?taxonomy=gs_faq_categories&post_type=gs_faq',
+				short_title: __( 'Categories', 'core-functionality' ),
+			),
+		);
 	}
 }

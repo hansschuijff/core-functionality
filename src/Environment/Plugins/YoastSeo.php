@@ -79,6 +79,42 @@ class YoastSeo extends AbstractPlugin {
 				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Yoast SEO Dashboard', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
 			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-yoast-seo-settings',
+				title:       __( 'Yoast SEO Settings', 'core-functionality' ),
+				path:        'admin.php?page=wpseo_page_settings',
+				short_title: __( 'Settings', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-yoast-seo-integrations',
+				title:       __( 'Yoast SEO Integrations', 'core-functionality' ),
+				path:        'admin.php?page=wpseo_integrations',
+				short_title: __( 'Integrations', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-yoast-seo-tools',
+				title:       __( 'Yoast SEO Tools', 'core-functionality' ),
+				path:        'admin.php?page=wpseo_tools',
+				short_title: __( 'Tools', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-yoast-seo-academy',
+				title:       __( 'Yoast SEO Academy', 'core-functionality' ),
+				path:        'admin.php?page=wpseo_page_academy',
+				short_title: __( 'Academy', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-yoast-seo-subscriptions',
+				title:       __( 'Yoast SEO Subscriptions', 'core-functionality' ),
+				path:        'admin.php?page=wpseo_licenses',
+				short_title: __( 'Subscriptions', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-yoast-seo-support',
+				title:       __( 'Yoast SEO Support', 'core-functionality' ),
+				path:        'admin.php?page=wpseo_page_support',
+				short_title: __( 'Support', 'core-functionality' ),
+			),
 		);
 	}
 }

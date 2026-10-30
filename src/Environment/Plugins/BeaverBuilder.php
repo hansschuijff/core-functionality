@@ -125,6 +125,12 @@ class BeaverBuilder extends AbstractPlugin {
 				orientation: Orientation::ADMIN,
 				short_title: __( 'Add New', 'core-functionality' ),
 			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-beaver-builder-settings',
+				title:       __( 'Beaver Builder Settings', 'core-functionality' ),
+				path:        'options-general.php?page=fl-builder-settings',
+				short_title: __( 'Settings', 'core-functionality' ),
+			),
 		);
 	}
 }

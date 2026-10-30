@@ -65,6 +65,48 @@ class GravityForms extends AbstractPlugin {
 				label:   __( 'Link to', 'core-functionality' ) . ' ' . __( 'Gravity Forms', 'core-functionality' ),
 				orientation: Orientation::ADMIN,
 			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-gravity-forms-new',
+				title:       __( 'New Form', 'core-functionality' ),
+				path:        'admin.php?page=gf_new_form',
+				short_title: __( 'New', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-gravity-forms-entries',
+				title:       __( 'Form Entries', 'core-functionality' ),
+				path:        'admin.php?page=gf_entries',
+				short_title: __( 'Entries', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-gravity-forms-settings',
+				title:       __( 'Gravity Forms Settings', 'core-functionality' ),
+				path:        'admin.php?page=gf_settings',
+				short_title: __( 'Settings', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-gravity-forms-import-export',
+				title:       __( 'Gravity Forms Import/Export', 'core-functionality' ),
+				path:        'admin.php?page=gf_export',
+				short_title: __( 'Import/Export', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-gravity-forms-add-ons',
+				title:       __( 'Gravity Forms Add-ons', 'core-functionality' ),
+				path:        'admin.php?page=gf_addons',
+				short_title: __( 'Add-ons', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-gravity-forms-system-status',
+				title:       __( 'Gravity Forms System Status', 'core-functionality' ),
+				path:        'admin.php?page=gf_system_status',
+				short_title: __( 'System Status', 'core-functionality' ),
+			),
+			ToolbarShortcut::to_admin_page(
+				id:          'cf-gravity-forms-help',
+				title:       __( 'Gravity Forms Help', 'core-functionality' ),
+				path:        'admin.php?page=gf_help',
+				short_title: __( 'Help', 'core-functionality' ),
+			),
 		);
 	}
 }
