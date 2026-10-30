@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T21:04:58+01:00\n"
+"POT-Creation-Date: 2026-10-30T17:22:02+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -46,18 +46,34 @@ msgstr ""
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:353
 #: src/Environment/Plugins/Automatewoo.php:156
+#: src/Environment/Plugins/BeaverBuilder.php:132
+#: src/Environment/Plugins/CodeSnippets.php:94
+#: src/Environment/Plugins/CookieYes.php:82
 #: src/Environment/Plugins/EventTickets.php:96
 #: src/Environment/Plugins/FestingerVault.php:111
 #: src/Environment/Plugins/FestingerVault.php:113
+#: src/Environment/Plugins/FluentCrm.php:141
+#: src/Environment/Plugins/FluentSmtp.php:72
+#: src/Environment/Plugins/GenesisBlocksPro.php:70
 #: src/Environment/Plugins/GitUpdater.php:74
+#: src/Environment/Plugins/GravityForms.php:84
+#: src/Environment/Plugins/InstantImages.php:70
+#: src/Environment/Plugins/Jetpack.php:115
 #: src/Environment/Plugins/LocoTranslate.php:114
-#: src/Environment/Plugins/SenseiLms.php:159
+#: src/Environment/Plugins/QuickFeaturedImages.php:83
+#: src/Environment/Plugins/SenseiLms.php:158
+#: src/Environment/Plugins/SiteKit.php:81
 #: src/Environment/Plugins/SpectraBlocks.php:110
 #: src/Environment/Plugins/SpectraLegacy.php:110
+#: src/Environment/Plugins/Tablepress.php:89
 #: src/Environment/Plugins/TheEventsCalendar.php:136
-#: src/Environment/Plugins/Woocommerce.php:129
+#: src/Environment/Plugins/TinyPng.php:83
+#: src/Environment/Plugins/TopTen.php:98
+#: src/Environment/Plugins/UsersInsights.php:87
+#: src/Environment/Plugins/Woocommerce.php:131
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:80
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:482
+#: src/Environment/Plugins/YoastSeo.php:86
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:483
 msgid "Settings"
 msgstr ""
 
@@ -383,33 +399,9 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
-#: src/Enums/DependencyType.php:39
-msgid "Plugin"
-msgstr ""
-
-#: src/Enums/DependencyType.php:40
-msgid "Theme"
-msgstr ""
-
-#: src/Enums/Deployment.php:40
-msgid "🧪 Development"
-msgstr ""
-
-#: src/Enums/Deployment.php:41
-msgid "🔬 Staging"
-msgstr ""
-
-#: src/Enums/Deployment.php:42
-msgid "🌐 Production"
-msgstr ""
-
-#: src/Environment/Core/WordPress.php:123
-#: src/Environment/Core/WordPress.php:125
-msgid "Installed Plugins"
-msgstr ""
-
 #. translators: %s: title of the page or settings tab.
 #. translators: %s: name of a tax class.
+#: src/DTO/ToolbarShortcut.php:74
 #: src/Environment/Core/WordPress.php:125
 #: src/Environment/Core/WordPress.php:134
 #: src/Environment/Core/WordPress.php:142
@@ -523,23 +515,27 @@ msgstr ""
 #: src/Environment/Plugins/SenseiLms.php:134
 #: src/Environment/Plugins/SenseiLms.php:141
 #: src/Environment/Plugins/SenseiLms.php:149
-#: src/Environment/Plugins/SenseiLms.php:157
-#: src/Environment/Plugins/SenseiLms.php:165
-#: src/Environment/Plugins/SenseiLms.php:173
-#: src/Environment/Plugins/SenseiLms.php:181
+#: src/Environment/Plugins/SenseiLms.php:156
+#: src/Environment/Plugins/SenseiLms.php:164
+#: src/Environment/Plugins/SenseiLms.php:172
+#: src/Environment/Plugins/SenseiLms.php:180
 #: src/Environment/Plugins/SenseiLms.php:188
-#: src/Environment/Plugins/SenseiLms.php:195
-#: src/Environment/Plugins/SenseiLms.php:202
-#: src/Environment/Plugins/SenseiLms.php:209
-#: src/Environment/Plugins/SenseiLms.php:216
-#: src/Environment/Plugins/SenseiLms.php:223
-#: src/Environment/Plugins/SenseiLms.php:230
-#: src/Environment/Plugins/SenseiLms.php:237
-#: src/Environment/Plugins/SenseiLms.php:244
-#: src/Environment/Plugins/SenseiLms.php:251
-#: src/Environment/Plugins/SenseiLms.php:258
-#: src/Environment/Plugins/SenseiLms.php:265
-#: src/Environment/Plugins/SenseiLms.php:272
+#: src/Environment/Plugins/SenseiLms.php:196
+#: src/Environment/Plugins/SenseiLms.php:203
+#: src/Environment/Plugins/SenseiLms.php:210
+#: src/Environment/Plugins/SenseiLms.php:217
+#: src/Environment/Plugins/SenseiLms.php:224
+#: src/Environment/Plugins/SenseiLms.php:231
+#: src/Environment/Plugins/SenseiLms.php:238
+#: src/Environment/Plugins/SenseiLms.php:245
+#: src/Environment/Plugins/SenseiLms.php:252
+#: src/Environment/Plugins/SenseiLms.php:259
+#: src/Environment/Plugins/SenseiLms.php:266
+#: src/Environment/Plugins/SenseiLms.php:273
+#: src/Environment/Plugins/SenseiLms.php:280
+#: src/Environment/Plugins/SenseiLms.php:287
+#: src/Environment/Plugins/SenseiPro.php:79
+#: src/Environment/Plugins/SenseiPro.php:86
 #: src/Environment/Plugins/SeoRedirectionPremium.php:65
 #: src/Environment/Plugins/SeoRedirectionPremium.php:72
 #: src/Environment/Plugins/SharedCounts.php:65
@@ -604,54 +600,56 @@ msgstr ""
 #: src/Environment/Plugins/TheEventsCalendarPro.php:201
 #: src/Environment/Plugins/UpdraftPlus.php:65
 #: src/Environment/Plugins/UpdraftPlus.php:72
-#: src/Environment/Plugins/Woocommerce.php:88
-#: src/Environment/Plugins/Woocommerce.php:96
-#: src/Environment/Plugins/Woocommerce.php:103
-#: src/Environment/Plugins/Woocommerce.php:111
-#: src/Environment/Plugins/Woocommerce.php:119
-#: src/Environment/Plugins/Woocommerce.php:127
-#: src/Environment/Plugins/Woocommerce.php:136
-#: src/Environment/Plugins/Woocommerce.php:143
-#: src/Environment/Plugins/Woocommerce.php:151
-#: src/Environment/Plugins/Woocommerce.php:160
-#: src/Environment/Plugins/Woocommerce.php:169
-#: src/Environment/Plugins/Woocommerce.php:178
-#: src/Environment/Plugins/Woocommerce.php:187
-#: src/Environment/Plugins/Woocommerce.php:195
-#: src/Environment/Plugins/Woocommerce.php:202
-#: src/Environment/Plugins/Woocommerce.php:210
-#: src/Environment/Plugins/Woocommerce.php:217
-#: src/Environment/Plugins/Woocommerce.php:225
-#: src/Environment/Plugins/Woocommerce.php:233
-#: src/Environment/Plugins/Woocommerce.php:241
-#: src/Environment/Plugins/Woocommerce.php:249
-#: src/Environment/Plugins/Woocommerce.php:257
-#: src/Environment/Plugins/Woocommerce.php:265
-#: src/Environment/Plugins/Woocommerce.php:273
-#: src/Environment/Plugins/Woocommerce.php:281
-#: src/Environment/Plugins/Woocommerce.php:289
-#: src/Environment/Plugins/Woocommerce.php:297
-#: src/Environment/Plugins/Woocommerce.php:305
-#: src/Environment/Plugins/Woocommerce.php:313
-#: src/Environment/Plugins/Woocommerce.php:321
-#: src/Environment/Plugins/Woocommerce.php:329
-#: src/Environment/Plugins/Woocommerce.php:337
-#: src/Environment/Plugins/Woocommerce.php:345
-#: src/Environment/Plugins/Woocommerce.php:353
-#: src/Environment/Plugins/Woocommerce.php:361
-#: src/Environment/Plugins/Woocommerce.php:369
-#: src/Environment/Plugins/Woocommerce.php:377
-#: src/Environment/Plugins/Woocommerce.php:385
-#: src/Environment/Plugins/Woocommerce.php:392
-#: src/Environment/Plugins/Woocommerce.php:400
-#: src/Environment/Plugins/Woocommerce.php:408
-#: src/Environment/Plugins/Woocommerce.php:416
-#: src/Environment/Plugins/Woocommerce.php:424
-#: src/Environment/Plugins/Woocommerce.php:432
-#: src/Environment/Plugins/Woocommerce.php:440
-#: src/Environment/Plugins/Woocommerce.php:448
-#: src/Environment/Plugins/Woocommerce.php:456
-#: src/Environment/Plugins/Woocommerce.php:485
+#: src/Environment/Plugins/Woocommerce.php:90
+#: src/Environment/Plugins/Woocommerce.php:98
+#: src/Environment/Plugins/Woocommerce.php:105
+#: src/Environment/Plugins/Woocommerce.php:113
+#: src/Environment/Plugins/Woocommerce.php:121
+#: src/Environment/Plugins/Woocommerce.php:129
+#: src/Environment/Plugins/Woocommerce.php:138
+#: src/Environment/Plugins/Woocommerce.php:145
+#: src/Environment/Plugins/Woocommerce.php:153
+#: src/Environment/Plugins/Woocommerce.php:162
+#: src/Environment/Plugins/Woocommerce.php:171
+#: src/Environment/Plugins/Woocommerce.php:180
+#: src/Environment/Plugins/Woocommerce.php:189
+#: src/Environment/Plugins/Woocommerce.php:197
+#: src/Environment/Plugins/Woocommerce.php:204
+#: src/Environment/Plugins/Woocommerce.php:212
+#: src/Environment/Plugins/Woocommerce.php:219
+#: src/Environment/Plugins/Woocommerce.php:227
+#: src/Environment/Plugins/Woocommerce.php:235
+#: src/Environment/Plugins/Woocommerce.php:243
+#: src/Environment/Plugins/Woocommerce.php:251
+#: src/Environment/Plugins/Woocommerce.php:259
+#: src/Environment/Plugins/Woocommerce.php:267
+#: src/Environment/Plugins/Woocommerce.php:275
+#: src/Environment/Plugins/Woocommerce.php:283
+#: src/Environment/Plugins/Woocommerce.php:291
+#: src/Environment/Plugins/Woocommerce.php:299
+#: src/Environment/Plugins/Woocommerce.php:307
+#: src/Environment/Plugins/Woocommerce.php:315
+#: src/Environment/Plugins/Woocommerce.php:323
+#: src/Environment/Plugins/Woocommerce.php:331
+#: src/Environment/Plugins/Woocommerce.php:339
+#: src/Environment/Plugins/Woocommerce.php:347
+#: src/Environment/Plugins/Woocommerce.php:355
+#: src/Environment/Plugins/Woocommerce.php:363
+#: src/Environment/Plugins/Woocommerce.php:371
+#: src/Environment/Plugins/Woocommerce.php:379
+#: src/Environment/Plugins/Woocommerce.php:387
+#: src/Environment/Plugins/Woocommerce.php:394
+#: src/Environment/Plugins/Woocommerce.php:402
+#: src/Environment/Plugins/Woocommerce.php:410
+#: src/Environment/Plugins/Woocommerce.php:418
+#: src/Environment/Plugins/Woocommerce.php:426
+#: src/Environment/Plugins/Woocommerce.php:434
+#: src/Environment/Plugins/Woocommerce.php:442
+#: src/Environment/Plugins/Woocommerce.php:450
+#: src/Environment/Plugins/Woocommerce.php:458
+#: src/Environment/Plugins/Woocommerce.php:584
+#: src/Environment/Plugins/Woocommerce.php:591
+#: src/Environment/Plugins/Woocommerce.php:617
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:71
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:78
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:86
@@ -688,6 +686,31 @@ msgstr ""
 msgid "Link to"
 msgstr ""
 
+#: src/Enums/DependencyType.php:39
+msgid "Plugin"
+msgstr ""
+
+#: src/Enums/DependencyType.php:40
+msgid "Theme"
+msgstr ""
+
+#: src/Enums/Deployment.php:40
+msgid "🧪 Development"
+msgstr ""
+
+#: src/Enums/Deployment.php:41
+msgid "🔬 Staging"
+msgstr ""
+
+#: src/Enums/Deployment.php:42
+msgid "🌐 Production"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:123
+#: src/Environment/Core/WordPress.php:125
+msgid "Installed Plugins"
+msgstr ""
+
 #: src/Environment/Core/WordPress.php:127
 msgid "Installed"
 msgstr ""
@@ -710,6 +733,15 @@ msgstr ""
 #: src/Environment/Core/WordPress.php:220
 #: src/Environment/Core/WordPress.php:263
 #: src/Environment/Core/WordPress.php:281
+#: src/Environment/Core/WordPress.php:356
+#: src/Environment/Core/WordPress.php:358
+#: src/Environment/Plugins/CodeSnippets.php:82
+#: src/Environment/Plugins/GenesisBlocksPro.php:81
+#: src/Environment/Plugins/GenesisSimpleFaq.php:71
+#: src/Environment/Plugins/GravityForms.php:72
+#: src/Environment/Plugins/SenseiCertificates.php:71
+#: src/Environment/Plugins/Tablepress.php:71
+#: src/Environment/Plugins/Woocommerce.php:491
 msgid "New"
 msgstr ""
 
@@ -719,7 +751,7 @@ msgid "Active Plugins"
 msgstr ""
 
 #: src/Environment/Core/WordPress.php:153
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:455
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:456
 msgid "Active"
 msgstr ""
 
@@ -752,7 +784,7 @@ msgid "View Posts"
 msgstr ""
 
 #: src/Environment/Core/WordPress.php:202
-#: src/Environment/Plugins/SenseiLms.php:175
+#: src/Environment/Plugins/SenseiLms.php:190
 msgid "View"
 msgstr ""
 
@@ -781,12 +813,15 @@ msgstr ""
 
 #: src/Environment/Core/WordPress.php:227
 #: src/Environment/Core/WordPress.php:229
+#: src/Environment/Core/WordPress.php:357
 #: src/Environment/Plugins/BeaverBuilder.php:118
+#: src/Environment/Plugins/GenesisSimpleFaq.php:77
 #: src/Environment/Plugins/SenseiLms.php:114
 #: src/Environment/Plugins/TheEventsCalendar.php:127
 #: src/Environment/Plugins/TheEventsCalendarPro.php:113
 #: src/Environment/Plugins/TheEventsCalendarPro.php:123
-#: src/Environment/Plugins/Woocommerce.php:113
+#: src/Environment/Plugins/Woocommerce.php:115
+#: src/Environment/Plugins/Woocommerce.php:534
 msgid "Categories"
 msgstr ""
 
@@ -796,13 +831,15 @@ msgstr ""
 
 #: src/Environment/Core/WordPress.php:236
 #: src/Environment/Core/WordPress.php:238
+#: src/Environment/Plugins/FluentCrm.php:97
 #: src/Environment/Plugins/TheEventsCalendar.php:172
+#: src/Environment/Plugins/Woocommerce.php:503
 msgid "Tags"
 msgstr ""
 
 #: src/Environment/Core/WordPress.php:243
 #: src/Environment/Core/WordPress.php:245
-msgid "Reusable blocks"
+msgid "Patterns"
 msgstr ""
 
 #: src/Environment/Core/WordPress.php:250
@@ -849,6 +886,198 @@ msgstr ""
 msgid "Testimonials"
 msgstr ""
 
+#: src/Environment/Core/WordPress.php:341
+#: src/Environment/Plugins/Automatewoo.php:85
+#: src/Environment/Plugins/SpectraBlocks.php:78
+#: src/Environment/Plugins/SpectraLegacy.php:78
+msgid "Dashboard"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:344
+msgid "Must-Use Plugins"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:344
+msgid "Must-Use"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:345
+msgid "Plugins with Updates"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:345
+msgid "With Updates"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:346
+msgid "Recently Active Plugins"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:346
+msgid "Recently Active"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:347
+msgid "Inactive Plugins"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:347
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:457
+msgid "Inactive"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:348
+msgid "Plugin File Editor"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:348
+#: src/Environment/Core/WordPress.php:353
+msgid "File Editor"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:351
+msgid "Fonts"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:352
+msgid "Header"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:353
+msgid "Theme File Editor"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:356
+msgid "New Pattern"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:357
+msgid "Pattern Categories"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:358
+msgid "New User"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:359
+msgid "Profile"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:362
+#: src/Environment/Plugins/Automatewoo.php:148
+#: src/Environment/Plugins/SenseiLms.php:182
+#: src/Environment/Plugins/TopTen.php:92
+#: src/Environment/Plugins/YoastSeo.php:98
+msgid "Tools"
+msgstr ""
+
+#. translators: %s: title of the page or settings tab.
+#: src/Environment/Core/WordPress.php:363
+#: src/Environment/Plugins/CodeSnippets.php:88
+#: src/Environment/Plugins/Tablepress.php:77
+#: src/Environment/Plugins/TheEventsCalendar.php:180
+#: src/Environment/Plugins/TheEventsCalendar.php:182
+#: src/Environment/Plugins/TheEventsCalendar.php:398
+#: src/Environment/Plugins/TheEventsCalendar.php:400
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:500
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:508
+msgid "Import"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:364
+#: src/Environment/Plugins/Tablepress.php:83
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:497
+msgid "Export"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:365
+msgid "Site Health"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:366
+msgid "Export Personal Data"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:367
+msgid "Erase Personal Data"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:370
+#: src/Environment/Plugins/WpServerStats.php:74
+msgid "General Settings"
+msgstr ""
+
+#. translators: %s: title of the page or settings tab.
+#: src/Environment/Core/WordPress.php:370
+#: src/Environment/Plugins/Automatewoo.php:165
+#: src/Environment/Plugins/TheEventsCalendar.php:238
+#: src/Environment/Plugins/TheEventsCalendar.php:240
+#: src/Environment/Plugins/Woocommerce.php:245
+#: src/Environment/Plugins/Woocommerce.php:261
+msgid "General"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:371
+msgid "Connectors"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:372
+msgid "Writing Settings"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:372
+msgid "Writing"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:373
+msgid "Reading Settings"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:373
+msgid "Reading"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:374
+msgid "Discussion Settings"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:374
+msgid "Discussion"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:375
+msgid "Media Settings"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:375
+msgid "Media"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:376
+msgid "Permalink Settings"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:376
+msgid "Permalinks"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:377
+msgid "Privacy Settings"
+msgstr ""
+
+#: src/Environment/Core/WordPress.php:377
+msgid "Privacy"
+msgstr ""
+
+#: src/Environment/Plugins/ActionScheduler.php:63
+#: src/Environment/Plugins/Woocommerce.php:464
+msgid "Scheduled Actions"
+msgstr ""
+
+#: src/Environment/Plugins/AddAnchorLinks.php:63
+msgid "Add Anchor Links Settings"
+msgstr ""
+
 #: src/Environment/Plugins/AeliaEuVatAssistant.php:76
 #: src/Environment/Plugins/AeliaEuVatAssistant.php:78
 msgid "EU VAT Assistant"
@@ -863,6 +1092,14 @@ msgstr ""
 msgid "Aelia"
 msgstr ""
 
+#: src/Environment/Plugins/Ai.php:74
+msgid "AI Settings"
+msgstr ""
+
+#: src/Environment/Plugins/Akismet.php:74
+msgid "Akismet Anti-spam"
+msgstr ""
+
 #: src/Environment/Plugins/AutocompleteWoocommerceOrders.php:76
 #: src/Environment/Plugins/AutocompleteWoocommerceOrders.php:78
 msgid "Autocomplete Orders Settings"
@@ -873,12 +1110,8 @@ msgid "Autocomplete Orders"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:74
-msgid "AutomateWoo"
-msgstr ""
-
 #: src/Environment/Plugins/Automatewoo.php:76
-#: src/Environment/Plugins/Automatewoo.php:91
-msgid "AutomateWoo Workflows"
+msgid "AutomateWoo"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:81
@@ -886,14 +1119,12 @@ msgstr ""
 msgid "AutomateWoo Dashboard"
 msgstr ""
 
-#: src/Environment/Plugins/Automatewoo.php:85
-#: src/Environment/Plugins/SpectraBlocks.php:78
-#: src/Environment/Plugins/SpectraLegacy.php:78
-msgid "Dashboard"
-msgstr ""
-
 #: src/Environment/Plugins/Automatewoo.php:89
 msgid "Workflows"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:91
+msgid "AutomateWoo Workflows"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:96
@@ -948,17 +1179,16 @@ msgid "AutomateWoo Reports"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:140
-#: src/Environment/Plugins/Woocommerce.php:219
+#: src/Environment/Plugins/FluentCrm.php:135
+#: src/Environment/Plugins/SenseiLms.php:166
+#: src/Environment/Plugins/UsersInsights.php:81
+#: src/Environment/Plugins/Woocommerce.php:221
 msgid "Reports"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:144
 #: src/Environment/Plugins/Automatewoo.php:146
 msgid "AutomateWoo Tools"
-msgstr ""
-
-#: src/Environment/Plugins/Automatewoo.php:148
-msgid "Tools"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:152
@@ -969,15 +1199,6 @@ msgstr ""
 #: src/Environment/Plugins/Automatewoo.php:161
 #: src/Environment/Plugins/Automatewoo.php:163
 msgid "AutomateWoo Settings: General"
-msgstr ""
-
-#. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/Automatewoo.php:165
-#: src/Environment/Plugins/TheEventsCalendar.php:238
-#: src/Environment/Plugins/TheEventsCalendar.php:240
-#: src/Environment/Plugins/Woocommerce.php:243
-#: src/Environment/Plugins/Woocommerce.php:259
-msgid "General"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:169
@@ -1036,7 +1257,7 @@ msgid "AutomateWoo Settings: Status"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:221
-#: src/Environment/Plugins/Woocommerce.php:227
+#: src/Environment/Plugins/Woocommerce.php:229
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:371
 msgid "Status"
 msgstr ""
@@ -1047,7 +1268,7 @@ msgid "AutomateWoo Preview"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:229
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:444
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:445
 msgid "Preview"
 msgstr ""
 
@@ -1066,6 +1287,30 @@ msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:243
 msgid "AutomateWoo Manual Workflow Runner"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:248
+msgid "AutomateWoo Statistics: Workflows"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:250
+msgid "Workflow Statistics"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:254
+msgid "AutomateWoo Statistics: Email and SMS Tracking"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:256
+msgid "Email and SMS Tracking"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:260
+msgid "AutomateWoo Statistics: Conversions"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:262
+msgid "Conversions"
 msgstr ""
 
 #: src/Environment/Plugins/BeaverBuilder.php:81
@@ -1125,13 +1370,81 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
+#: src/Environment/Plugins/BeaverBuilder.php:130
+msgid "Beaver Builder Settings"
+msgstr ""
+
 #: src/Environment/Plugins/BrokenLinkChecker.php:63
 #: src/Environment/Plugins/BrokenLinkChecker.php:65
 msgid "Broken Links Checker"
 msgstr ""
 
+#: src/Environment/Plugins/CodeSnippets.php:74
+msgid "Snippets"
+msgstr ""
+
+#: src/Environment/Plugins/CodeSnippets.php:76
+msgid "Code Snippets"
+msgstr ""
+
+#: src/Environment/Plugins/CodeSnippets.php:80
+msgid "New Snippet"
+msgstr ""
+
+#: src/Environment/Plugins/CodeSnippets.php:86
+msgid "Import Snippets"
+msgstr ""
+
+#: src/Environment/Plugins/CodeSnippets.php:92
+msgid "Code Snippets Settings"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:74
+msgid "Cookie Consent"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:76
+msgid "CookieYes"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:80
+msgid "Cookie Consent Settings"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:86
+msgid "Cookie List"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:91
+msgid "Cookie Categories"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:96
+msgid "Cookie Scanner"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:101
+msgid "Cookie Policy Generator"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:103
+msgid "Policy Generator"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:107
+msgid "Script Blocker"
+msgstr ""
+
+#: src/Environment/Plugins/CookieYes.php:112
+msgid "Privacy Overview"
+msgstr ""
+
 #: src/Environment/Plugins/CoreFunctionality.php:109
 msgid "Core functionality settings"
+msgstr ""
+
+#: src/Environment/Plugins/CountdownTimer.php:63
+msgid "Countdown Timer"
 msgstr ""
 
 #: src/Environment/Plugins/DebugToolkit.php:75
@@ -1193,7 +1506,8 @@ msgstr ""
 #. translators: %s: title of the page or settings tab.
 #: src/Environment/Plugins/EventTickets.php:114
 #: src/Environment/Plugins/EventTickets.php:116
-#: src/Environment/Plugins/Woocommerce.php:204
+#: src/Environment/Plugins/SenseiLms.php:174
+#: src/Environment/Plugins/Woocommerce.php:206
 msgid "Home"
 msgstr ""
 
@@ -1204,6 +1518,7 @@ msgid "All Tickets"
 msgstr ""
 
 #: src/Environment/Plugins/EventTickets.php:126
+#: src/Environment/Plugins/Woocommerce.php:529
 msgid "Overview"
 msgstr ""
 
@@ -1226,8 +1541,9 @@ msgstr ""
 #. translators: %s: title of the page or settings tab.
 #: src/Environment/Plugins/EventTickets.php:152
 #: src/Environment/Plugins/EventTickets.php:154
-#: src/Environment/Plugins/Woocommerce.php:90
-#: src/Environment/Plugins/Woocommerce.php:153
+#: src/Environment/Plugins/Woocommerce.php:92
+#: src/Environment/Plugins/Woocommerce.php:155
+#: src/Environment/Plugins/Woocommerce.php:532
 msgid "Orders"
 msgstr ""
 
@@ -1238,6 +1554,7 @@ msgstr ""
 #. translators: %s: title of the page or settings tab.
 #: src/Environment/Plugins/EventTickets.php:162
 #: src/Environment/Plugins/EventTickets.php:164
+#: src/Environment/Plugins/GravityForms.php:108
 #: src/Environment/Plugins/TheEventsCalendar.php:199
 #: src/Environment/Plugins/TheEventsCalendar.php:201
 msgid "Help"
@@ -1295,6 +1612,10 @@ msgstr ""
 #: src/Environment/Plugins/EventTicketsPlus.php:117
 #: src/Environment/Plugins/EventTicketsPlus.php:120
 msgid "Ticket Fieldsets"
+msgstr ""
+
+#: src/Environment/Plugins/ExtendedCouponFeatures.php:74
+msgid "Extended Coupon Features"
 msgstr ""
 
 #: src/Environment/Plugins/FestingerVault.php:63
@@ -1359,7 +1680,85 @@ msgid "support"
 msgstr ""
 
 #: src/Environment/Plugins/FestingerVault.php:121
+#: src/Environment/Plugins/YoastSeo.php:116
 msgid "Support"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:74
+msgid "FluentCRM"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:79
+msgid "Contacts"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:84
+msgid "Companies"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:89
+msgid "Contact Lists"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:91
+msgid "Lists"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:95
+msgid "Contact Tags"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:101
+msgid "Email Campaigns"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:103
+msgid "Campaigns"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:107
+msgid "Recurring Campaigns"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:112
+msgid "Email Sequences"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:117
+msgid "Email Templates"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:122
+msgid "FluentCRM Forms"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:124
+#: src/Environment/Plugins/GravityForms.php:63
+#: src/Environment/Plugins/Jetpack.php:94
+#: src/Environment/Plugins/WpForms.php:63
+msgid "Forms"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:128
+msgid "Automations"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:133
+msgid "FluentCRM Reports"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:139
+msgid "FluentCRM Settings"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:145
+msgid "FluentCRM Add-ons"
+msgstr ""
+
+#: src/Environment/Plugins/FluentCrm.php:147
+#: src/Environment/Plugins/GravityForms.php:96
+#: src/Environment/Plugins/WoocommerceProductAddons.php:70
+msgid "Add-ons"
 msgstr ""
 
 #: src/Environment/Plugins/FluentSmtp.php:63
@@ -1370,9 +1769,53 @@ msgstr ""
 msgid "FluentSMTP"
 msgstr ""
 
+#: src/Environment/Plugins/FluentSmtp.php:70
+msgid "FluentSMTP Settings"
+msgstr ""
+
+#: src/Environment/Plugins/Footable.php:63
+msgid "FooTable Settings"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisBlocksPro.php:63
+msgid "Genesis Blocks"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisBlocksPro.php:68
+msgid "Genesis Blocks Settings"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisBlocksPro.php:74
+msgid "Portfolio Items"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisBlocksPro.php:79
+msgid "New Portfolio Item"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisBlocksPro.php:85
+msgid "Portfolio Types"
+msgstr ""
+
 #: src/Environment/Plugins/GenesisConnectWoocommerce.php:76
 #: src/Environment/Plugins/GenesisConnectWoocommerce.php:78
 msgid "Genesis Connect Add-ons"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisSimpleFaq.php:63
+msgid "FAQs"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisSimpleFaq.php:65
+msgid "Genesis Simple FAQ"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisSimpleFaq.php:69
+msgid "New FAQ"
+msgstr ""
+
+#: src/Environment/Plugins/GenesisSimpleFaq.php:75
+msgid "FAQ Categories"
 msgstr ""
 
 #: src/Environment/Plugins/GitRemoteUpdater.php:64
@@ -1423,13 +1866,115 @@ msgstr ""
 msgid "Git Updater: Remote Management"
 msgstr ""
 
-#: src/Environment/Plugins/GravityForms.php:63
-#: src/Environment/Plugins/WpForms.php:63
-msgid "Forms"
-msgstr ""
-
 #: src/Environment/Plugins/GravityForms.php:65
 msgid "Gravity Forms"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:70
+msgid "New Form"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:76
+msgid "Form Entries"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:78
+msgid "Entries"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:82
+msgid "Gravity Forms Settings"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:88
+msgid "Gravity Forms Import/Export"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:90
+#: src/Environment/Plugins/TopTen.php:86
+#: src/Environment/Themes/AnyGenesis.php:102
+msgid "Import/Export"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:94
+msgid "Gravity Forms Add-ons"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:100
+msgid "Gravity Forms System Status"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:102
+msgid "System Status"
+msgstr ""
+
+#: src/Environment/Plugins/GravityForms.php:106
+msgid "Gravity Forms Help"
+msgstr ""
+
+#: src/Environment/Plugins/InstantImages.php:63
+msgid "Instant Images"
+msgstr ""
+
+#: src/Environment/Plugins/InstantImages.php:68
+msgid "Instant Images Settings"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:63
+msgid "Jetpack"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:65
+msgid "My Jetpack"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:69
+msgid "Jetpack Statistics"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:71
+#: src/Environment/Plugins/Woocommerce.php:123
+msgid "Statistics"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:75
+msgid "Sharing Settings"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:77
+msgid "Sharing"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:81
+msgid "Activity Log"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:86
+msgid "Jetpack Backup"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:88
+msgid "Backup"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:92
+msgid "Jetpack Forms"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:98
+msgid "Jetpack AI"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:103
+msgid "Newsletter"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:108
+msgid "Blaze Ads"
+msgstr ""
+
+#: src/Environment/Plugins/Jetpack.php:113
+msgid "Jetpack Settings"
 msgstr ""
 
 #: src/Environment/Plugins/LocoTranslate.php:66
@@ -1519,6 +2064,55 @@ msgstr ""
 msgid "Nobuna Plugins"
 msgstr ""
 
+#: src/Environment/Plugins/OtterBlocks.php:74
+msgid "Otter Blocks"
+msgstr ""
+
+#: src/Environment/Plugins/OtterBlocks.php:79
+msgid "Otter Blocks: Blocks"
+msgstr ""
+
+#: src/Environment/Plugins/OtterBlocks.php:81
+#: src/Environment/Plugins/SpectraLegacy.php:86
+msgid "Blocks"
+msgstr ""
+
+#: src/Environment/Plugins/OtterBlocks.php:85
+msgid "Form Submissions"
+msgstr ""
+
+#: src/Environment/Plugins/OtterBlocks.php:87
+msgid "Submissions"
+msgstr ""
+
+#: src/Environment/Plugins/QuickFeaturedImages.php:63
+msgid "Featured Images"
+msgstr ""
+
+#: src/Environment/Plugins/QuickFeaturedImages.php:65
+msgid "Quick Featured Images"
+msgstr ""
+
+#: src/Environment/Plugins/QuickFeaturedImages.php:69
+msgid "Bulk Edit Featured Images"
+msgstr ""
+
+#: src/Environment/Plugins/QuickFeaturedImages.php:71
+msgid "Bulk Edit"
+msgstr ""
+
+#: src/Environment/Plugins/QuickFeaturedImages.php:75
+msgid "Default Featured Images"
+msgstr ""
+
+#: src/Environment/Plugins/QuickFeaturedImages.php:77
+msgid "Default Images"
+msgstr ""
+
+#: src/Environment/Plugins/QuickFeaturedImages.php:81
+msgid "Quick Featured Images Settings"
+msgstr ""
+
 #: src/Environment/Plugins/ReaderExperience.php:66
 #: src/Environment/Plugins/ReaderExperience.php:68
 msgid "Reader Feedback"
@@ -1536,16 +2130,44 @@ msgstr ""
 msgid "Redis Cache Settings"
 msgstr ""
 
+#: src/Environment/Plugins/RegenerateThumbnails.php:63
+msgid "Regenerate Thumbnails"
+msgstr ""
+
+#: src/Environment/Plugins/SendImagesToRss.php:63
+msgid "Send Images to RSS Settings"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiCertificates.php:63
+msgid "Certificates"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiCertificates.php:65
+msgid "Sensei LMS Certificates"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiCertificates.php:69
+msgid "New Certificate"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiCertificates.php:75
+msgid "Certificate Templates"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiCertificates.php:77
+msgid "Templates"
+msgstr ""
+
 #: src/Environment/Plugins/SenseiLms.php:75
-#: src/Environment/Plugins/SenseiLms.php:179
-#: src/Environment/Plugins/Woocommerce.php:184
+#: src/Environment/Plugins/SenseiLms.php:194
+#: src/Environment/Plugins/Woocommerce.php:186
 msgid "Courses"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:77
 #: src/Environment/Plugins/SenseiLms.php:98
-#: src/Environment/Plugins/SenseiLms.php:173
-#: src/Environment/Plugins/SenseiLms.php:181
+#: src/Environment/Plugins/SenseiLms.php:188
+#: src/Environment/Plugins/SenseiLms.php:196
 msgid "Sensei LMS Courses"
 msgstr ""
 
@@ -1558,11 +2180,11 @@ msgid "Sensei LMS Grading"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:89
-msgid "Student Management"
+msgid "Students"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:91
-msgid "Sensei LMS Student Management"
+msgid "Sensei LMS Students"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:96
@@ -1570,12 +2192,12 @@ msgid "Edit Courses"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:103
-#: src/Environment/Plugins/SenseiLms.php:235
+#: src/Environment/Plugins/SenseiLms.php:250
 msgid "Lessons"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:105
-#: src/Environment/Plugins/SenseiLms.php:237
+#: src/Environment/Plugins/SenseiLms.php:252
 msgid "Sensei LMS Lessons"
 msgstr ""
 
@@ -1624,132 +2246,168 @@ msgid "Questions"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:147
-msgid "Course Messages"
+msgid "Student Contact"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:149
-#: src/Environment/Plugins/SenseiLms.php:265
+#: src/Environment/Plugins/SenseiLms.php:280
 msgid "Sensei LMS Messages"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:151
-#: src/Environment/Plugins/SenseiLms.php:263
-msgid "Messages"
-msgstr ""
-
-#: src/Environment/Plugins/SenseiLms.php:155
+#: src/Environment/Plugins/SenseiLms.php:154
 msgid "Sensei Settings"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:157
+#: src/Environment/Plugins/SenseiLms.php:156
 msgid "Sensei LMS Settings"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:163
-msgid "Course Analytics"
+#: src/Environment/Plugins/SenseiLms.php:162
+msgid "Course Reports"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:165
-msgid "Sensei LMS Analytics"
+#: src/Environment/Plugins/SenseiLms.php:164
+msgid "Sensei LMS Reports"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:167
-msgid "Analytics"
+#: src/Environment/Plugins/SenseiLms.php:170
+msgid "Sensei Home"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:171
-msgid "View Courses"
+#: src/Environment/Plugins/SenseiLms.php:172
+msgid "Sensei LMS Home"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiLms.php:178
+msgid "Sensei Tools"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiLms.php:180
+msgid "Sensei LMS Tools"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiLms.php:186
+msgid "View Courses"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiLms.php:201
 msgid "Course List"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:188
+#: src/Environment/Plugins/SenseiLms.php:203
 msgid "Sensei LMS Course List"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:193
+#: src/Environment/Plugins/SenseiLms.php:208
 msgid "Course-category: Mediumschap"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:195
+#: src/Environment/Plugins/SenseiLms.php:210
 msgid "Sensei LMS Course-category: Mediumschap"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:200
+#: src/Environment/Plugins/SenseiLms.php:215
 msgid "My Courses"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:202
+#: src/Environment/Plugins/SenseiLms.php:217
 msgid "Sensei LMS My Courses"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:207
+#: src/Environment/Plugins/SenseiLms.php:222
 msgid "Learners Profile"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:209
+#: src/Environment/Plugins/SenseiLms.php:224
 msgid "Sensei LMS Learners Profile"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:214
+#: src/Environment/Plugins/SenseiLms.php:229
 msgid "Course: Basis Mediumschap"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:216
+#: src/Environment/Plugins/SenseiLms.php:231
 msgid "Sensei LMS Course: Basis Mediumschap"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:221
+#: src/Environment/Plugins/SenseiLms.php:236
 msgid "Course results"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:223
+#: src/Environment/Plugins/SenseiLms.php:238
 msgid "Sensei LMS Course results"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:228
+#: src/Environment/Plugins/SenseiLms.php:243
 msgid "Module: Orakelen als een orakel"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:230
+#: src/Environment/Plugins/SenseiLms.php:245
 msgid "Sensei LMS Module: Orakelen als een orakel"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:242
+#: src/Environment/Plugins/SenseiLms.php:257
 msgid "Lesson-tag: Aura"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:244
+#: src/Environment/Plugins/SenseiLms.php:259
 msgid "Sensei LMS Lesson-tag: Aura"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:249
+#: src/Environment/Plugins/SenseiLms.php:264
 msgid "Lesson: Aura Reading"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:251
+#: src/Environment/Plugins/SenseiLms.php:266
 msgid "Sensei LMS Lesson: Aura Reading"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:256
+#: src/Environment/Plugins/SenseiLms.php:271
 msgid "Quiz: The History of My Psychic Ability"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:258
+#: src/Environment/Plugins/SenseiLms.php:273
 msgid "Sensei LMS Quiz: The History of My Psychic Ability"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:270
+#: src/Environment/Plugins/SenseiLms.php:278
+msgid "Messages"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiLms.php:285
 msgid "Message: I have some questions"
 msgstr ""
 
-#: src/Environment/Plugins/SenseiLms.php:272
+#: src/Environment/Plugins/SenseiLms.php:287
 msgid "Sensei LMS Message: I have some questions"
 msgstr ""
 
+#: src/Environment/Plugins/SenseiPostToCourse.php:63
+msgid "Post to Course Creator"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiPro.php:77
+msgid "Glossary"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiPro.php:79
+msgid "Sensei Pro Glossary"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiPro.php:84
+msgid "Student Groups"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiPro.php:86
+msgid "Sensei Pro Groups"
+msgstr ""
+
+#: src/Environment/Plugins/SenseiPro.php:88
+msgid "Groups"
+msgstr ""
+
 #: src/Environment/Plugins/SeoRedirectionPremium.php:63
+#: src/Environment/Plugins/YoastSeoPremium.php:63
 msgid "Redirects"
 msgstr ""
 
@@ -1765,6 +2423,18 @@ msgstr ""
 #: src/Environment/Plugins/SharedCounts.php:63
 #: src/Environment/Plugins/SharedCounts.php:65
 msgid "Shared Counts"
+msgstr ""
+
+#: src/Environment/Plugins/SimpleCommentEditing.php:63
+msgid "Simple Comment Editing Settings"
+msgstr ""
+
+#: src/Environment/Plugins/SiteKit.php:74
+msgid "Site Kit"
+msgstr ""
+
+#: src/Environment/Plugins/SiteKit.php:79
+msgid "Site Kit Settings"
 msgstr ""
 
 #: src/Environment/Plugins/SpectraBlocks.php:69
@@ -1830,10 +2500,6 @@ msgstr ""
 msgid "Spectra Legacy Blocks"
 msgstr ""
 
-#: src/Environment/Plugins/SpectraLegacy.php:86
-msgid "Blocks"
-msgstr ""
-
 #: src/Environment/Plugins/SpectraLegacy.php:90
 #: src/Environment/Plugins/SpectraLegacy.php:92
 msgid "Spectra Legacy Popup Builder"
@@ -1855,6 +2521,38 @@ msgstr ""
 
 #: src/Environment/Plugins/SpectraLegacy.php:116
 msgid "Spectra Legacy Learn"
+msgstr ""
+
+#: src/Environment/Plugins/Tablepress.php:63
+msgid "Tables"
+msgstr ""
+
+#: src/Environment/Plugins/Tablepress.php:65
+msgid "TablePress"
+msgstr ""
+
+#: src/Environment/Plugins/Tablepress.php:69
+msgid "New Table"
+msgstr ""
+
+#: src/Environment/Plugins/Tablepress.php:75
+msgid "Import Table"
+msgstr ""
+
+#: src/Environment/Plugins/Tablepress.php:81
+msgid "Export Table"
+msgstr ""
+
+#: src/Environment/Plugins/Tablepress.php:87
+msgid "TablePress Settings"
+msgstr ""
+
+#: src/Environment/Plugins/Tablepress.php:93
+msgid "About TablePress"
+msgstr ""
+
+#: src/Environment/Plugins/TemporaryLogin.php:63
+msgid "Temporary Logins"
 msgstr ""
 
 #: src/Environment/Plugins/TheEventsCalendar.php:90
@@ -1955,16 +2653,6 @@ msgstr ""
 
 #: src/Environment/Plugins/TheEventsCalendar.php:177
 msgid "Event Import"
-msgstr ""
-
-#. translators: %s: title of the page or settings tab.
-#: src/Environment/Plugins/TheEventsCalendar.php:180
-#: src/Environment/Plugins/TheEventsCalendar.php:182
-#: src/Environment/Plugins/TheEventsCalendar.php:398
-#: src/Environment/Plugins/TheEventsCalendar.php:400
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:499
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:507
-msgid "Import"
 msgstr ""
 
 #. translators: %s: title of the page or settings tab.
@@ -2132,6 +2820,7 @@ msgstr ""
 #. translators: %s: title of the page or settings tab.
 #: src/Environment/Plugins/TheEventsCalendar.php:378
 #: src/Environment/Plugins/TheEventsCalendar.php:380
+#: src/Environment/Plugins/YoastSeo.php:92
 msgid "Integrations"
 msgstr ""
 
@@ -2269,6 +2958,42 @@ msgstr ""
 msgid "Zapier"
 msgstr ""
 
+#: src/Environment/Plugins/TinyPng.php:74
+msgid "Bulk Image Optimization"
+msgstr ""
+
+#: src/Environment/Plugins/TinyPng.php:76
+msgid "Bulk Optimization"
+msgstr ""
+
+#: src/Environment/Plugins/TinyPng.php:77
+msgid "TinyPNG Bulk Optimization"
+msgstr ""
+
+#: src/Environment/Plugins/TinyPng.php:81
+msgid "TinyPNG Settings"
+msgstr ""
+
+#: src/Environment/Plugins/TopTen.php:74
+msgid "Top 10"
+msgstr ""
+
+#: src/Environment/Plugins/TopTen.php:79
+msgid "Popular Posts"
+msgstr ""
+
+#: src/Environment/Plugins/TopTen.php:84
+msgid "Top 10 Import/Export"
+msgstr ""
+
+#: src/Environment/Plugins/TopTen.php:90
+msgid "Top 10 Tools"
+msgstr ""
+
+#: src/Environment/Plugins/TopTen.php:96
+msgid "Top 10 Settings"
+msgstr ""
+
 #: src/Environment/Plugins/UpdraftPlus.php:63
 #: src/Environment/Plugins/UpdraftPlus.php:65
 #: src/Environment/Plugins/UpdraftPlus.php:70
@@ -2276,408 +3001,563 @@ msgstr ""
 msgid "Updraft Backups"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:86
-msgid "Shop Orders"
+#: src/Environment/Plugins/UsernameUpdater.php:63
+msgid "Username Updater"
+msgstr ""
+
+#: src/Environment/Plugins/UsersInsights.php:63
+msgid "Users Insights"
+msgstr ""
+
+#: src/Environment/Plugins/UsersInsights.php:68
+msgid "User Groups"
+msgstr ""
+
+#: src/Environment/Plugins/UsersInsights.php:73
+msgid "User Custom Fields"
+msgstr ""
+
+#: src/Environment/Plugins/UsersInsights.php:75
+msgid "Custom Fields"
+msgstr ""
+
+#: src/Environment/Plugins/UsersInsights.php:79
+msgid "User Reports"
+msgstr ""
+
+#: src/Environment/Plugins/UsersInsights.php:85
+msgid "Users Insights Settings"
 msgstr ""
 
 #: src/Environment/Plugins/Woocommerce.php:88
+msgid "Shop Orders"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:90
 msgid "WooCommerce Orders"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:94
-#: src/Environment/Plugins/Woocommerce.php:251
+#: src/Environment/Plugins/Woocommerce.php:96
+#: src/Environment/Plugins/Woocommerce.php:253
+#: src/Environment/Plugins/Woocommerce.php:530
 msgid "Products"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:96
+#: src/Environment/Plugins/Woocommerce.php:98
 msgid "WooCommerce Products"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:101
+#: src/Environment/Plugins/Woocommerce.php:103
 msgid "Shop Coupons"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:103
+#: src/Environment/Plugins/Woocommerce.php:105
 msgid "WooCommerce Coupons"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:105
+#: src/Environment/Plugins/Woocommerce.php:107
+#: src/Environment/Plugins/Woocommerce.php:535
 msgid "Coupons"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:109
+#: src/Environment/Plugins/Woocommerce.php:111
 msgid "Product Categories"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:111
+#: src/Environment/Plugins/Woocommerce.php:113
 msgid "WooCommerce Product Categories"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:117
+#: src/Environment/Plugins/Woocommerce.php:119
 msgid "Shop Statistics"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:119
+#: src/Environment/Plugins/Woocommerce.php:121
 msgid "WooCommerce Sales Statistics"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:121
-msgid "Statistics"
-msgstr ""
-
-#: src/Environment/Plugins/Woocommerce.php:125
 #: src/Environment/Plugins/Woocommerce.php:127
+#: src/Environment/Plugins/Woocommerce.php:129
 msgid "WooCommerce Settings"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:134
+#: src/Environment/Plugins/Woocommerce.php:136
 msgid "Shop"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:135
+#: src/Environment/Plugins/Woocommerce.php:137
 msgid "/shop"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:136
+#: src/Environment/Plugins/Woocommerce.php:138
 msgid "WooCommerce Shop"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:141
 #: src/Environment/Plugins/Woocommerce.php:143
+#: src/Environment/Plugins/Woocommerce.php:145
 msgid "My Account"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:142
+#: src/Environment/Plugins/Woocommerce.php:144
 msgid "/myaccount"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:149
 #: src/Environment/Plugins/Woocommerce.php:151
+#: src/Environment/Plugins/Woocommerce.php:153
 msgid "My Account: Orders"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:150
+#: src/Environment/Plugins/Woocommerce.php:152
 msgid "/myaccount/orders/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:158
 #: src/Environment/Plugins/Woocommerce.php:160
+#: src/Environment/Plugins/Woocommerce.php:162
 msgid "My Account: Downloads"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:159
+#: src/Environment/Plugins/Woocommerce.php:161
 msgid "/myaccount/downloads/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:162
+#: src/Environment/Plugins/Woocommerce.php:164
+#: src/Environment/Plugins/Woocommerce.php:537
 msgid "Downloads"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:167
 #: src/Environment/Plugins/Woocommerce.php:169
+#: src/Environment/Plugins/Woocommerce.php:171
 msgid "My Account: Addresses"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:168
+#: src/Environment/Plugins/Woocommerce.php:170
 msgid "/myaccount/edit-address/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:171
+#: src/Environment/Plugins/Woocommerce.php:173
 msgid "Addresses"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:176
 #: src/Environment/Plugins/Woocommerce.php:178
+#: src/Environment/Plugins/Woocommerce.php:180
 msgid "My Account: Account details"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:177
+#: src/Environment/Plugins/Woocommerce.php:179
 msgid "/myaccount/edit-account/"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:180
+#: src/Environment/Plugins/Woocommerce.php:182
 msgid "Account details"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:186
+#: src/Environment/Plugins/Woocommerce.php:188
 msgid "cursus-opleiding"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:187
+#: src/Environment/Plugins/Woocommerce.php:189
 msgid "WooCommerce Courses"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:200
 #: src/Environment/Plugins/Woocommerce.php:202
+#: src/Environment/Plugins/Woocommerce.php:204
 msgid "WooCommerce Home"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:208
 #: src/Environment/Plugins/Woocommerce.php:210
+#: src/Environment/Plugins/Woocommerce.php:212
 msgid "Customers"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:215
 #: src/Environment/Plugins/Woocommerce.php:217
+#: src/Environment/Plugins/Woocommerce.php:219
 msgid "Shop Reports"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:223
 #: src/Environment/Plugins/Woocommerce.php:225
+#: src/Environment/Plugins/Woocommerce.php:227
 msgid "WooCommerce Status"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:231
 #: src/Environment/Plugins/Woocommerce.php:233
+#: src/Environment/Plugins/Woocommerce.php:235
 msgid "WooCommerce Extensions"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:235
+#: src/Environment/Plugins/Woocommerce.php:237
 msgid "Extensions"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:239
 #: src/Environment/Plugins/Woocommerce.php:241
+#: src/Environment/Plugins/Woocommerce.php:243
 msgid "WooCommerce Settings: General"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:247
 #: src/Environment/Plugins/Woocommerce.php:249
+#: src/Environment/Plugins/Woocommerce.php:251
 msgid "WooCommerce Settings: Products"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:255
 #: src/Environment/Plugins/Woocommerce.php:257
+#: src/Environment/Plugins/Woocommerce.php:259
 msgid "Product Settings: General"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:263
 #: src/Environment/Plugins/Woocommerce.php:265
+#: src/Environment/Plugins/Woocommerce.php:267
 msgid "Product Settings: Inventory"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:267
+#: src/Environment/Plugins/Woocommerce.php:269
 msgid "Inventory"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:271
 #: src/Environment/Plugins/Woocommerce.php:273
+#: src/Environment/Plugins/Woocommerce.php:275
 msgid "Product Settings: Downloadable Products"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:275
+#: src/Environment/Plugins/Woocommerce.php:277
 msgid "Downloadable Products"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:279
 #: src/Environment/Plugins/Woocommerce.php:281
+#: src/Environment/Plugins/Woocommerce.php:283
 msgid "Product Settings: Approved Download Directories"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:283
+#: src/Environment/Plugins/Woocommerce.php:285
 msgid "Approved Download Directories"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:287
 #: src/Environment/Plugins/Woocommerce.php:289
+#: src/Environment/Plugins/Woocommerce.php:291
 msgid "Product Settings: Advanced"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:291
-#: src/Environment/Plugins/Woocommerce.php:410
+#: src/Environment/Plugins/Woocommerce.php:293
+#: src/Environment/Plugins/Woocommerce.php:412
 msgid "Advanced"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:295
 #: src/Environment/Plugins/Woocommerce.php:297
+#: src/Environment/Plugins/Woocommerce.php:299
 msgid "WooCommerce Settings: Tax"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:299
+#: src/Environment/Plugins/Woocommerce.php:301
 msgid "Tax"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:303
 #: src/Environment/Plugins/Woocommerce.php:305
+#: src/Environment/Plugins/Woocommerce.php:307
 msgid "Tax Settings: Options"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:307
+#: src/Environment/Plugins/Woocommerce.php:309
 msgid "Tax Options"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:311
 #: src/Environment/Plugins/Woocommerce.php:313
+#: src/Environment/Plugins/Woocommerce.php:315
 msgid "Tax Settings: Standard Rates"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:315
+#: src/Environment/Plugins/Woocommerce.php:317
 msgid "Standard Rates"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:319
 #: src/Environment/Plugins/Woocommerce.php:321
+#: src/Environment/Plugins/Woocommerce.php:323
 msgid "WooCommerce Settings: Shipping"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:323
+#: src/Environment/Plugins/Woocommerce.php:325
 msgid "Shipping"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:327
 #: src/Environment/Plugins/Woocommerce.php:329
+#: src/Environment/Plugins/Woocommerce.php:331
 msgid "Shipping Settings: Zones"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:331
+#: src/Environment/Plugins/Woocommerce.php:333
 msgid "Shipping Zones"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:335
 #: src/Environment/Plugins/Woocommerce.php:337
+#: src/Environment/Plugins/Woocommerce.php:339
 msgid "Shipping Settings: Options"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:339
+#: src/Environment/Plugins/Woocommerce.php:341
 msgid "Shipping Options"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:343
 #: src/Environment/Plugins/Woocommerce.php:345
+#: src/Environment/Plugins/Woocommerce.php:347
 msgid "Shipping Settings: Classes"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:347
+#: src/Environment/Plugins/Woocommerce.php:349
 msgid "Classes"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:351
 #: src/Environment/Plugins/Woocommerce.php:353
+#: src/Environment/Plugins/Woocommerce.php:355
 msgid "WooCommerce Settings: Payments"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:355
+#: src/Environment/Plugins/Woocommerce.php:357
 msgid "Payments"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:359
 #: src/Environment/Plugins/Woocommerce.php:361
+#: src/Environment/Plugins/Woocommerce.php:363
 msgid "WooCommerce Settings: Accounts & Privacy"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:363
+#: src/Environment/Plugins/Woocommerce.php:365
 msgid "Accounts & Privacy"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:367
 #: src/Environment/Plugins/Woocommerce.php:369
+#: src/Environment/Plugins/Woocommerce.php:371
 msgid "WooCommerce Settings: Emails"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:371
+#: src/Environment/Plugins/Woocommerce.php:373
 msgid "Emails"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:375
 #: src/Environment/Plugins/Woocommerce.php:377
+#: src/Environment/Plugins/Woocommerce.php:379
 msgid "WooCommerce Settings: Integration"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:379
+#: src/Environment/Plugins/Woocommerce.php:381
 msgid "Integration"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:383
 #: src/Environment/Plugins/Woocommerce.php:385
+#: src/Environment/Plugins/Woocommerce.php:387
 msgid "MaxMind Geolocation"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:390
 #: src/Environment/Plugins/Woocommerce.php:392
+#: src/Environment/Plugins/Woocommerce.php:394
 msgid "WooCommerce Settings: Site Visibility"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:394
+#: src/Environment/Plugins/Woocommerce.php:396
 msgid "Site Visibility"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:398
 #: src/Environment/Plugins/Woocommerce.php:400
+#: src/Environment/Plugins/Woocommerce.php:402
 msgid "WooCommerce Settings: Point of Sale"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:402
+#: src/Environment/Plugins/Woocommerce.php:404
 msgid "Point of Sale"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:406
 #: src/Environment/Plugins/Woocommerce.php:408
+#: src/Environment/Plugins/Woocommerce.php:410
 msgid "WooCommerce Settings: Advanced"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:414
 #: src/Environment/Plugins/Woocommerce.php:416
+#: src/Environment/Plugins/Woocommerce.php:418
 msgid "WooCommerce Advanced: Page Setup"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:418
+#: src/Environment/Plugins/Woocommerce.php:420
 msgid "Page Setup"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:422
 #: src/Environment/Plugins/Woocommerce.php:424
+#: src/Environment/Plugins/Woocommerce.php:426
 msgid "WooCommerce Advanced: REST API"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:426
+#: src/Environment/Plugins/Woocommerce.php:428
 msgid "REST API"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:430
 #: src/Environment/Plugins/Woocommerce.php:432
+#: src/Environment/Plugins/Woocommerce.php:434
 msgid "WooCommerce Advanced: Webhooks"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:434
+#: src/Environment/Plugins/Woocommerce.php:436
 msgid "Webhooks"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:438
 #: src/Environment/Plugins/Woocommerce.php:440
+#: src/Environment/Plugins/Woocommerce.php:442
 msgid "WooCommerce Advanced: WooCommerce.com"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:442
+#: src/Environment/Plugins/Woocommerce.php:444
 msgid "WooCommerce.com"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:446
 #: src/Environment/Plugins/Woocommerce.php:448
+#: src/Environment/Plugins/Woocommerce.php:450
 msgid "WooCommerce Advanced: Blueprint"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:450
+#: src/Environment/Plugins/Woocommerce.php:452
 msgid "Blueprint"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:454
 #: src/Environment/Plugins/Woocommerce.php:456
+#: src/Environment/Plugins/Woocommerce.php:458
 msgid "WooCommerce Advanced: Features"
 msgstr ""
 
-#: src/Environment/Plugins/Woocommerce.php:458
+#: src/Environment/Plugins/Woocommerce.php:460
 msgid "Features"
 msgstr ""
 
+#: src/Environment/Plugins/Woocommerce.php:489
+msgid "New Product"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:495
+msgid "Product Brands"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:497
+msgid "Brands"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:501
+msgid "Product Tags"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:507
+msgid "Product Attributes"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:509
+msgid "Attributes"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:513
+msgid "Product Reviews"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:515
+msgid "Reviews"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:529
+msgid "Shop Statistics: Overview"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:530
+msgid "Shop Statistics: Products"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:531
+msgid "Shop Statistics: Revenue"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:531
+msgid "Revenue"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:532
+msgid "Shop Statistics: Orders"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:533
+msgid "Shop Statistics: Variations"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:533
+msgid "Variations"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:534
+msgid "Shop Statistics: Categories"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:535
+msgid "Shop Statistics: Coupons"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:536
+msgid "Shop Statistics: Taxes"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:536
+msgid "Taxes"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:537
+msgid "Shop Statistics: Downloads"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:538
+msgid "Shop Statistics: Stock"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:538
+msgid "Stock"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:539
+msgid "Shop Statistics: Settings"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:539
+msgid "Statistics Settings"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:565
+msgid "Shop Marketing"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:567
+msgid "Marketing"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:582
+msgid "Cart"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:583
+msgid "/cart"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:584
+msgid "WooCommerce Cart"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:589
+msgid "Checkout"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:590
+msgid "/checkout"
+msgstr ""
+
+#: src/Environment/Plugins/Woocommerce.php:591
+msgid "WooCommerce Checkout"
+msgstr ""
+
 #. translators: %s: name of a tax class.
-#: src/Environment/Plugins/Woocommerce.php:482
-#: src/Environment/Plugins/Woocommerce.php:485
+#: src/Environment/Plugins/Woocommerce.php:614
+#: src/Environment/Plugins/Woocommerce.php:617
 #, php-format
 msgid "Tax Settings: %s Rates"
 msgstr ""
 
 #. translators: %s: name of a tax class.
-#: src/Environment/Plugins/Woocommerce.php:488
+#: src/Environment/Plugins/Woocommerce.php:620
 #, php-format
 msgid "%s Rates"
 msgstr ""
@@ -2786,10 +3666,6 @@ msgstr ""
 msgid "Product Settings: Add-ons"
 msgstr ""
 
-#: src/Environment/Plugins/WoocommerceProductAddons.php:70
-msgid "Add-ons"
-msgstr ""
-
 #: src/Environment/Plugins/WoocommerceSmartCoupons.php:59
 #: src/Environment/Plugins/WoocommerceSmartCoupons.php:61
 msgid "My Account: Smart Coupons"
@@ -2806,6 +3682,7 @@ msgstr ""
 #: src/Environment/Plugins/WoocommerceSubscriptions.php:64
 #: src/Environment/Plugins/WoocommerceSubscriptions.php:76
 #: src/Environment/Plugins/WoocommerceSubscriptions.php:93
+#: src/Environment/Plugins/YoastSeo.php:110
 msgid "Subscriptions"
 msgstr ""
 
@@ -2839,6 +3716,34 @@ msgstr ""
 msgid "Subscription Settings"
 msgstr ""
 
+#: src/Environment/Plugins/WpCrontrol.php:63
+msgid "Cron Events"
+msgstr ""
+
+#: src/Environment/Plugins/WpCrontrol.php:65
+msgid "WP Crontrol"
+msgstr ""
+
+#: src/Environment/Plugins/WpCrontrol.php:69
+msgid "Cron Logs"
+msgstr ""
+
+#: src/Environment/Plugins/WpCrontrol.php:74
+msgid "Cron Insights"
+msgstr ""
+
+#: src/Environment/Plugins/WpCrontrol.php:79
+msgid "Cron Alerts"
+msgstr ""
+
+#: src/Environment/Plugins/WpCrontrol.php:84
+msgid "Cron AI"
+msgstr ""
+
+#: src/Environment/Plugins/WpCrontrol.php:89
+msgid "Cron Schedules"
+msgstr ""
+
 #: src/Environment/Plugins/WpForms.php:65
 msgid "WPForms"
 msgstr ""
@@ -2848,12 +3753,20 @@ msgstr ""
 msgid "Menu Cart"
 msgstr ""
 
-#: src/Environment/Plugins/WpServerStats.php:69
-msgid "WP Server Stats"
+#: src/Environment/Plugins/WpOriginalMediaPath.php:63
+msgid "Media Path Settings"
 msgstr ""
 
-#: src/Environment/Plugins/WpServerStats.php:74
-msgid "General Settings"
+#: src/Environment/Plugins/WpOriginalMediaPath.php:65
+msgid "WP Original Media Path"
+msgstr ""
+
+#: src/Environment/Plugins/WpRocket.php:63
+msgid "WP Rocket"
+msgstr ""
+
+#: src/Environment/Plugins/WpServerStats.php:69
+msgid "WP Server Stats"
 msgstr ""
 
 #: src/Environment/Plugins/WpServerStats.php:76
@@ -2870,12 +3783,60 @@ msgstr ""
 msgid "Database Information"
 msgstr ""
 
+#: src/Environment/Plugins/Yarpp.php:74
+msgid "Related Posts (YARPP)"
+msgstr ""
+
 #: src/Environment/Plugins/YoastSeo.php:77
 msgid "Yoast SEO"
 msgstr ""
 
 #: src/Environment/Plugins/YoastSeo.php:79
 msgid "Yoast SEO Dashboard"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeo.php:84
+msgid "Yoast SEO Settings"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeo.php:90
+msgid "Yoast SEO Integrations"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeo.php:96
+msgid "Yoast SEO Tools"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeo.php:102
+msgid "Yoast SEO Academy"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeo.php:104
+msgid "Academy"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeo.php:108
+msgid "Yoast SEO Subscriptions"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeo.php:114
+msgid "Yoast SEO Support"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeoPremium.php:65
+msgid "Yoast SEO Redirects"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeoPremium.php:69
+msgid "SEO Workouts"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeoPremium.php:71
+msgid "Workouts"
+msgstr ""
+
+#: src/Environment/Plugins/YoastSeoPremium.php:75
+msgid "AI Brand Insights"
 msgstr ""
 
 #: src/Environment/Themes/AnyBlockTheme.php:107
@@ -2906,10 +3867,6 @@ msgstr ""
 #: src/Environment/Themes/AnyGenesis.php:98
 #: src/Environment/Themes/AnyGenesis.php:100
 msgid "Genesis Import/Export"
-msgstr ""
-
-#: src/Environment/Themes/AnyGenesis.php:102
-msgid "Import/Export"
 msgstr ""
 
 #: src/Environment/Themes/AnyGenesis.php:106
@@ -3069,7 +4026,7 @@ msgid "A parent for other menu items, or a link of your own"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:361
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:458
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:459
 msgid "Unknown"
 msgstr ""
 
@@ -3110,395 +4067,391 @@ msgid "Search"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:434
-msgid "Only menu items of active plugins and themes"
+msgid "Clear search"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:435
-msgid "Collapse"
+msgid "Only menu items of active plugins and themes"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:436
-msgid "Expand"
+msgid "Collapse"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:437
-msgid "Collapse all"
+msgid "Expand"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:438
-msgid "Expand all"
+msgid "Collapse all"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:439
+msgid "Expand all"
+msgstr ""
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
 msgid "Explanation"
 msgstr ""
 
 #. translators: %s: name of a plugin, theme or WordPress.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:441
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:442
 #, php-format
 msgid "Select all menu items of %s"
 msgstr ""
 
 #. translators: %s: name of a plugin or theme
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:443
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:444
 #, php-format
 msgid "Drag into the menu for a submenu with the menu items of %s"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:445
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:446
 msgid "Preview of the toolbar menu"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:446
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:447
 msgid "On admin pages"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:447
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:448
 msgid "On the site"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:448
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:449
 msgid "Only active items"
 msgstr ""
 
 #. translators: %d: number of menu items shown.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:450
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:451
 #, php-format
 msgid "The menu currently holds %d items. Hold the pointer over an item to see its full URL."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:451
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:452
 msgid "Nothing of the menu is shown here."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:452
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:453
 msgid "Undo (Ctrl+Z)"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:453
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:454
 msgid "Redo (Ctrl+Y)"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:454
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:455
 msgid "Adds below the item selected in the menu (inside it when it is a submenu without a link), or at the end."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:456
-msgid "Inactive"
-msgstr ""
-
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:457
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:458
 msgid "Not installed"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:459
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:460
 msgid "Admin"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:460
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:461
 msgid "Front"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:461
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:462
 msgid "Links to an admin page"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:462
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:463
 msgid "Links to a page on the site"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:463
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:464
 msgid "Only on admin pages"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:464
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:465
 msgid "Only on the front end"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:465
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:466
 msgid "On admin pages and the front end"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:466
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:467
 msgid "Both"
 msgstr ""
 
 #. translators: %s: Admin or Front, the node's own visibility.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:468
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:469
 #, php-format
 msgid "Its own setting (%s) conflicts with a parent, so this menu item is never shown."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:469
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:470
 msgid "Show"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:470
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:471
 msgid "Add"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:471
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:472
 msgid "Select at least one menu item first."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:472
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:473
 msgid "The menu is empty. Add menu items from the list."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:473
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:474
 msgid "Title"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:474
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:475
 msgid "Leave empty to use the menu item's own title, which follows the translation."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:475
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:642
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:476
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:643
 msgid "Submenu"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:476
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:477
 msgid "URL"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:477
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:478
 msgid "Leave empty for a submenu without a link of its own; it is hidden when none of its items is shown."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:478
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:479
 msgid "Copy"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:479
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:480
 msgid "Copied"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:480
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:481
 msgid "Move out (one level up)"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:481
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:482
 msgid "Move in (one level down)"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:483
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:484
 msgid "Remove"
 msgstr ""
 
 #. translators: %d: number of items below the node.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:485
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:486
 #, php-format
 msgid "This menu item has %d items below it. Remove it together with those items?"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:486
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:487
 msgid "Shown once this plugin or theme is active."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:487
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:488
 msgid "Select (Shift-click: a range, Ctrl-click: with the items below)"
 msgstr ""
 
 #. translators: %d: number of selected items.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:489
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:490
 #, php-format
 msgid "%d selected"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:490
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:491
 msgid "Reset titles"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:491
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:492
 msgid "Use the menu items' own titles again, which follow the translation."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:492
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:493
 msgid "Clear selection"
 msgstr ""
 
 #. translators: %d: number of items that will be removed.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:494
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:495
 #, php-format
 msgid "Remove %d items (the selected items and the items below them)?"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:495
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:496
 msgid "Import or export the menu"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:496
-msgid "Export"
-msgstr ""
-
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:497
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:498
 msgid "Download the current admin toolbar menu (including changes not saved yet) as a JSON file, for a later import on this or another website."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:498
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:499
 msgid "Download JSON"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:500
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:501
 msgid "Source"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:501
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:502
 msgid "Restore the default menu"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:502
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:503
 msgid "There is no default yet."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:503
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:504
 msgid "Import a JSON file"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:504
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:505
 msgid "Processing"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:505
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:506
 msgid "Renew the whole menu"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:506
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:507
 msgid "Keep the current menu and add to it from the import"
 msgstr ""
 
 #. translators: %d: number of menu items.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:509
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:510
 #, php-format
 msgid "Imported: %d items. Nothing is saved yet: check the menu, then \"Save menu\". Undo takes the previous menu back."
 msgstr ""
 
 #. translators: %d: number of menu items added.
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:511
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:512
 #, php-format
 msgid "Merged: %d items added. Nothing is saved yet: check the menu, then \"Save menu\". Undo takes the previous menu back."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:512
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:513
 msgid "Choose a JSON file first."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:513
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:514
 msgid "This file does not hold a toolbar menu."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:524
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:525
 msgid "Space"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:527
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:528
 msgid "Move the focus to the previous or next item"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:528
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:529
 msgid "Move the focus to the first or last item"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:529
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:530
 msgid "Move the focus and select along"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:530
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:531
 msgid "Select or deselect the item"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:531
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:532
 msgid "Select from the last selected item to here"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:532
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:533
 msgid "Select or deselect the item with the items below it"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:533
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:534
 msgid "Move up or down, past the neighbouring item; the first or last item under a parent moves out of it"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:534
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:535
 msgid "Move out or in one level"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:535
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:536
 msgid "Collapse or expand; on an item without children, ← goes to its parent"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:536
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:537
 msgid "Open or close the settings of the item"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:537
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:538
 msgid "Remove, with the items below it"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:538
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:539
 msgid "Clear the selection"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:539
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:540
 msgid "Undo the last change to the menu"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:540
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:541
 msgid "Redo it (also Ctrl + Shift + Z)"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:541
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:542
 msgid "Show this overview"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:567
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:568
 msgid "Critical Error: You do not have sufficient permissions to modify the Admin Menu Builder settings."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:575
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:576
 msgid "Save Aborted: No changes detected or serialization data stream is empty."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:581
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:582
 msgid "Save Failed: Transmitted layout configuration matrix map is corrupt."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:592
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:593
 msgid "The toolbar menu has been saved. It is the default that comes with the plugin, so this site follows that default."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:606
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:607
 msgid "The menu is saved, but not as the default: the settings folder of the plugin cannot be written on this site."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:613
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:614
 msgid "The menu has been saved as the default (settings/modules/admin-toolbar/menu-builder.php). Commit that file to take the menu along with the next release."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:616
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:617
 msgid "The toolbar menu has been saved."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:681
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:682
 msgid "Save menu"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:690
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:691
 msgid "Save as default"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:691
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:692
 msgid "Saves the menu and writes it into the plugin as the default for other sites."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:699
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:700
 msgid "Import / export…"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:700
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:701
 msgid "Take the default or a JSON file into the editor (replace or merge), or download the menu as JSON."
 msgstr ""
 
