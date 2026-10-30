@@ -115,15 +115,16 @@
 }
 
 /* "Only active" as a switch with a filter icon; pressed when it filters. */
-.dwp-mb-filter.button {
+.wp-core-ui .dwp-mb-filter.button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	padding: 0 6px;
 }
 
-/* WordPress gives icons in buttons a line height and offset of their own; reset them to center it. */
-.dwp-mb-filter .dashicons {
+/* WordPress gives icons in buttons a line height of their own (.wp-core-ui .button .dashicons, 1.9),
+   which pushes the icon down; reset it, with a selector that outweighs WordPress's, to center it. */
+.wp-core-ui .dwp-mb-filter.button .dashicons {
 	font-size: 18px;
 	width: 18px;
 	height: 18px;
