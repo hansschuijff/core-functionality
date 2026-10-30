@@ -11,6 +11,8 @@ namespace DeWittePrins\CoreFunctionality\DTO;
 
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 
+use function __;
+use function admin_url;
 use function is_callable;
 
 /**
@@ -45,6 +47,37 @@ readonly class ToolbarShortcut {
 		public string $short_title = '',
 		public string $group = ''
 	) {}
+
+	/**
+	 * Creates a shortcut to an admin page, the most common kind; keeps the many guard nodes short.
+	 *
+	 * @since  1.0.0
+	 * @param  string $id          Unique sub-identifier (`cf-<source>-<page>`).
+	 * @param  string $title       The full title.
+	 * @param  string $path        The admin path, such as 'admin.php?page=loco'; made absolute here.
+	 * @param  string $short_title The title under a parent of the same group; empty: always the full title.
+	 * @param  string $label       What the link leads to, for the settings page; empty: the title.
+	 * @param  string $group       What the shortcut is about; empty: its provider.
+	 * @return self The shortcut.
+	 */
+	public static function to_admin_page(
+		string $id,
+		string $title,
+		string $path,
+		string $short_title = '',
+		string $label = '',
+		string $group = ''
+	): self {
+		return new self(
+			id:          $id,
+			title:       $title,
+			label:       __( 'Link to', 'core-functionality' ) . ' ' . ( '' !== $label ? $label : $title ),
+			orientation: Orientation::ADMIN,
+			href:        admin_url( $path ),
+			short_title: $short_title,
+			group:       $group
+		);
+	}
 
 	/**
 	 * Returns the title for a place in the menu: the short title under a parent of the same group,
