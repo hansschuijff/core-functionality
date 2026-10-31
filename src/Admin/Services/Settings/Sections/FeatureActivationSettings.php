@@ -195,8 +195,7 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 		$module_enabled = $reset_to_defaults
 			? $this->default_enabled_setting
 			: $this->plugin->components_register->is_enabled( $module_fqcn );
-		$module_class   = esc_attr( $module_fqcn );
-		$is_enabled     = checked( $module_enabled, true, false );
+		$checkbox       = $this->render_checkbox( $module_fqcn, 'js-dwp-module-toggle', $module_enabled );
 		$saved_running  = $this->get_saved_running_attr( $module_fqcn );
 		$awaiting_note  = $this->render_awaiting_confirmation_note( $module_fqcn );
 
@@ -204,7 +203,7 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 			<div class="dwp-module-card" style="border: 1px solid #ccd0d4; padding: 20px; margin-bottom: 20px; background: #fff; max-width: 800px;">
 				<!-- module -->
 				<label class="dwp-module-row" data-saved-running="{$saved_running}" style="font-size: 15px; font-weight: bold; display: block; margin-bottom: 5px;">
-					<input type="checkbox" class="js-dwp-module-toggle" name="dwp_active_classes[{$module_fqcn}]" value="{$module_class}" {$is_enabled} />
+					{$checkbox}
 					{$module_name}{$awaiting_note}
 				</label>
 				<?php
@@ -241,18 +240,64 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 		$feature_enabled = $reset_to_defaults
 			? $this->default_enabled_setting
 			: $this->plugin->components_register->is_enabled( $feature_fqcn );
-		$is_enabled      = checked( $feature_enabled, true, false );
+		$checkbox        = $this->render_checkbox( $feature_fqcn, 'js-dwp-feature-toggle', $feature_enabled );
 		$saved_running   = $this->get_saved_running_attr( $feature_fqcn );
 		$awaiting_note   = $this->render_awaiting_confirmation_note( $feature_fqcn );
-		$feature_fqcn    = esc_attr( $feature_fqcn );
 		$feature_name    = esc_html( $feature_name );
 
 		echo <<<HTML
 			<label class="dwp-feature-row" data-saved-running="{$saved_running}">
-				<input type="checkbox" class="js-dwp-feature-toggle" name="dwp_active_classes[{$feature_fqcn}]" value="{$feature_fqcn}" {$is_enabled} />
+				{$checkbox}
 				{$feature_name}{$awaiting_note}
 			</label>
 		HTML;
+	}
+
+	/**
+	 * Returns the checkbox of a module or feature.
+	 *
+	 * When the release decides for this environment (always active, always inactive, or not ready
+	 * yet), the checkbox is disabled and shows whether the component runs. A disabled checkbox is not
+	 * posted, so a hidden field keeps the saved choice for when the release lets go of it again.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn       Fully qualified class name of a module or feature.
+	 * @param  string $js_class   The class the script uses (module or feature toggle).
+	 * @param  bool   $is_enabled Whether the component is enabled in the settings.
+	 * @return string The checkbox (HTML).
+	 */
+	private function render_checkbox( string $fqcn, string $js_class, bool $is_enabled ): string {
+		$field_name = esc_attr( 'dwp_active_classes[' . $fqcn . ']' );
+		$value_attr = esc_attr( $fqcn );
+		$class_attr = esc_attr( $js_class );
+
+		if ( ! $this->is_decided_by_release( $fqcn ) ) {
+			$checked = checked( $is_enabled, true, false );
+
+			return "<input type=\"checkbox\" class=\"{$class_attr}\" name=\"{$field_name}\" value=\"{$value_attr}\" {$checked} />";
+		}
+
+		$checked      = checked( $this->plugin->components_register->is_switched_on( $fqcn ), true, false );
+		$hidden_field = $is_enabled
+			? "<input type=\"hidden\" name=\"{$field_name}\" value=\"{$value_attr}\" />"
+			: '';
+
+		return "{$hidden_field}<input type=\"checkbox\" class=\"{$class_attr}\" value=\"{$value_attr}\" {$checked} disabled />";
+	}
+
+	/**
+	 * Returns whether the release decides about a component here, so its checkbox has no say.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully qualified class name of a module or feature.
+	 * @return bool True when it is always active, always inactive or not ready for this environment.
+	 */
+	private function is_decided_by_release( string $fqcn ): bool {
+		$register = $this->plugin->components_register;
+
+		return $register->is_automatically_on( $fqcn )
+			|| EnvironmentRule::AUTO_OFF === $register->get_rule_here( $fqcn )
+			|| ! $register->is_available_here( $fqcn );
 	}
 
 	/**
@@ -299,11 +344,11 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 		$register = $this->plugin->components_register;
 
 		if ( $register->is_automatically_on( $fqcn ) ) {
-			return __( 'automatically on in this environment', 'core-functionality' );
+			return __( 'always active in this environment', 'core-functionality' );
 		}
 
 		if ( EnvironmentRule::AUTO_OFF === $register->get_rule_here( $fqcn ) ) {
-			return __( 'automatically off in this environment', 'core-functionality' );
+			return __( 'always inactive in this environment', 'core-functionality' );
 		}
 
 		if ( ! $register->is_available_here( $fqcn ) ) {

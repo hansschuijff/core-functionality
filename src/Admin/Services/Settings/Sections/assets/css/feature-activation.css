@@ -18,6 +18,13 @@
 	font-style: italic;
 }
 
+/* A component the release decides about here: its checkbox has no say. */
+.dwp-module-row:has(input:disabled),
+.dwp-feature-row:has(input:disabled) {
+	color: #646970;
+	cursor: default;
+}
+
 /* "Show only disabled": hide what runs as saved. */
 .dwp-modules-grid.is-showing-disabled-only .dwp-feature-row[data-saved-running="1"],
 .dwp-modules-grid.is-showing-disabled-only .dwp-module-card.is-filtered-out {

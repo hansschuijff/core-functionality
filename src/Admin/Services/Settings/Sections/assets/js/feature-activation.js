@@ -21,7 +21,8 @@ jQuery( document ).ready( function( $ ) {
 		var $button  = $( this );
 		var currentState = $button.attr( 'data-state' );
 		var $cards   = $moduleGrid.find( '.dwp-module-card' );
-		var $inputs  = $moduleGrid.find( 'input[type="checkbox"]' );
+		// Checkboxes the release decides about (disabled) keep their state.
+		var $inputs  = $moduleGrid.find( 'input[type="checkbox"]:not(:disabled)' );
 		var $containers = $moduleGrid.find( '.js-dwp-features-container' );
 
 		if ( 'select' === currentState ) {
@@ -56,13 +57,13 @@ jQuery( document ).ready( function( $ ) {
 			$features.slideDown( 150 );
 
 			// UX Service: Automatically activate underlying children features on parent boot.
-			$features.find( 'input[type="checkbox"]' ).prop( 'checked', true );
+			$features.find( 'input[type="checkbox"]:not(:disabled)' ).prop( 'checked', true );
 		} else {
 			$card.addClass( 'is-disabled' );
 			$features.slideUp( 150 );
 
 			// UX Service: Deactivate children configurations safely.
-			$features.find( 'input[type="checkbox"]' ).prop( 'checked', false );
+			$features.find( 'input[type="checkbox"]:not(:disabled)' ).prop( 'checked', false );
 		}
 
 		// Verify state of the master button after single interactions.
@@ -94,8 +95,8 @@ jQuery( document ).ready( function( $ ) {
 	 * Evaluates checked elements to dynamically correct the master button label.
 	 */
 	function updateMasterButtonState() {
-		var totalCheckboxes = $moduleGrid.find( 'input[type="checkbox"]' ).length;
-		var checkedCount    = $moduleGrid.find( 'input[type="checkbox"]:checked' ).length;
+		var totalCheckboxes = $moduleGrid.find( 'input[type="checkbox"]:not(:disabled)' ).length;
+		var checkedCount    = $moduleGrid.find( 'input[type="checkbox"]:not(:disabled):checked' ).length;
 
 		if ( checkedCount === 0 ) {
 			$toggleAllBtn.attr( 'data-state', 'select' ).text( 'Alles inschakelen' );
