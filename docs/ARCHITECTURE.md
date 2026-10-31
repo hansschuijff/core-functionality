@@ -36,7 +36,7 @@ New customizations are added as new features without touching the kernel.
    `PluginIntegrityWatch`.
 4. `init` priority 0 (filter `core-functionality/launch-timing`): `Kernel::boot()` does everything in one step. It lets
    every active environment guard register its admin menu nodes, takes the launchable components
-   from the `ComponentsRegister` (already filtered on activation, deployment tier and orientation), keeps
+   from the `ComponentsRegister` (already filtered on activation, status, environment rule and orientation), keeps
    those whose environment dependencies are ready, creates the modules and their features, drops features
    whose required features are missing (`uses_features()`), calls `launch()` on every instance, marks the
    plugin ready and fires `core-functionality/ready`. All plugins and the theme have loaded by then, so the guards see
@@ -56,7 +56,7 @@ core-functionality-oop/
 │   ├── Kernel.php                schedules on plugins_loaded, launches on init
 │   ├── Interfaces/               ModuleInterface, FeatureInterface, LoggerInterface
 │   ├── Abstracts/                AbstractModule, AbstractFeature, DescribedByMeta (getters from get_meta())
-│   ├── Enums/                    Orientation, Deployment, Register, RegisterSetting, ...
+│   ├── Enums/                    Orientation, Deployment, EnvironmentRule, Register, ...
 │   ├── DTO/                      AdminMenuBlock, ToolbarShortcut, ComponentMeta
 │   ├── ValueObjects/             module, feature and environment validators
 │   ├── Services/                 ComponentsRegister (+ ComponentsRegisterFiles), Settings (+ SettingsFiles,
@@ -84,16 +84,16 @@ site. It combines:
 
 - **what exists**: found by scanning `src/Modules/` (`rebuild()`), stored as module class → feature classes;
 - **what is switched on**: the Feature Activation tab of the settings page;
-- **server tier**: two values per component, and the lower one counts (`get_effective_deployment()`).
-  The **status** (`ComponentMeta::$status`, default development) is the development state of the code:
-  set by the release, a hard limit no site can raise. The **deployment** ("Draait op" on the Deployment
-  tab) is how far this site lets it run. A development server loads everything, staging loads staging and
-  production components, production loads only production components (`Deployment::allows()`);
+- **what the release decides** (`ReleaseRegister`, see "Release settings" below): the **status** (how far
+  the code is ready; a development server loads everything, staging loads staging and production
+  components, production only production components, `Deployment::allows()`) and the **rule** on this
+  environment (automatically on, freely adjustable, automatically off). `is_available_here()` combines
+  them; `is_switched_on()` adds the site's choice;
 - **orientation**: admin, front end or both (`get_orientation()`).
 
 The kernel then checks the environment dependencies of whatever passes. The registers are kept in the
 database through the options vault and also written to `kernel/components-register.php`,
-`components-enabled-register.php` and `components-deployment-register.php`; when the database has no value
+`components-enabled-register.php`; when the database has no value
 the files are read and copied into it (through `ComponentsRegisterFiles`, which knows which register lives
 in which file). The options are there for speed; the files are a fallback and are
 only written when the `kernel/` folder is writable (on production it often is not, and the option then
@@ -102,7 +102,7 @@ keeps the change).
 After a plugin update the components option would still describe the old version. The plugin version is
 therefore stored with the registers (`components-register-version`). On a different version, before
 anything reads the registers, the components option is removed so it is refilled from the new version's
-file; components that are new get their enabled state and deployment tier from the files, while the
+file; components that are new get their enabled state from the file, while the
 site's choices for existing components stay. An administrator gets a notice (on `admin_init`) listing
 what was added. During development the version does not change, so a rescan on the settings page is
 still how new code is picked up locally.
@@ -112,27 +112,47 @@ an update; that is the point (a new feature is welcome). A component whose `Comp
 `confirm_activation: true` is the exception, used when switching it on can clash with something the plugin
 cannot see, such as a snippet doing the same thing (Hans, October 2026). It does not launch until an
 administrator decided on it on this site, even when the register enables it: `filter()` skips it through
-`awaits_activation_confirmation()`, which also requires its deployment tier to allow this server. The
-question is a notice on every admin page (`Notifiers\ActivationQuestion`, `manage_options`) with
-"Aanzetten" and "Uit laten" per component; both answers are final and the notice has no close button, so it
-asks once and never nags. "Aanzetten" also switches the feature's module on. Saving the Feature Activation
+`awaits_activation_confirmation()`, which also requires that it may run here and that its rule leaves the
+choice to the site (automatically on asks nothing). The question is one notice on every admin page
+(`Notifiers\ActivationQuestion`, `manage_options`): a vertical list of the waiting components ("Feature
+(Module)"), "Mag ik ze voor je activeren?" with "Ja" and "Nee" for the whole list, and "Meer lezen" with the
+descriptions and where to activate them later. Choosing per component is what the Feature Activation tab
+is for. The notice has no close button and does not return once answered; only "Ja" gets a message, and
+the text avoids words like "final" that make a click feel risky (Hans, October 2026). "Ja" also switches a
+feature's module on. Saving the Feature Activation
 tab counts as the decision for every waiting component (they are marked there); the factory reset forgets
 all decisions, because it switches everything on. Decisions live only in the setting
 `components-activation-decided` (FQCN => true), never in the register files: they belong to one site.
 The flag is a safety net for now; whether it gets more uses or companions is open.
 
-**Deployment after an update.** The deployment values of the installed release are kept as a baseline
-(`components-deployment-release`). On a new version `follow_release_deployment()` compares, per
-component, the previous release, the new release and this site: a site value equal to the previous release
-was never changed here and follows the new release; a site value of its own stays, and when the release
-changed it too, an administrator (`manage_options` or `update_plugins`) gets a question
-(`Notifiers\DeploymentQuestion`, open questions in `components-deployment-questions`): "Release volgen"
-(the default) or "Eigen instelling houden". Until answered the site's value holds, so automatic updates
-never overrule a local choice; saving the Deployment tab answers all open questions (Hans, October 2026).
-The first update after this was built only stores the baseline.
+**Release settings.** Two different limit questions sit above a site's own choice (Hans, October 2026):
+how far is the code ready (the **status**), and does what the component does suit this kind of environment
+(the **rule**: an e-mail blocker belongs on development and never on production, the way the old
+`mu-plugins-cf` handled such plugins). Both are plugin management properties, not properties of the code,
+so they live in one release file, `settings/components-release.php` (FQCN => `status` plus a rule per
+environment: `auto-on`, `adjustable`, `auto-off`), which is committed and travels with the release. A
+component that is not in it has status development and is freely adjustable everywhere. The file is
+written by the Release Management tab (`ReleaseSettings`, section id `cf-release-management`), which is only
+registered on a development environment, so the sites that install the plugin do not get it.
+"Automatically on" runs a component without the site's choice and without the confirmation question, also
+after a database from another environment was restored; when its module is off, the module comes along
+with only such features. "Automatically off" is the friendly word for "not allowed here". The Feature
+Activation tab notes these cases behind the name.
+
+An installation adjusts the release without touching the plugin, in two layers that may raise a limit as
+well as lower it, as both are conscious choices by whoever may change its files:
+`wp-content/core-functionality/configuration.php` (same format, entries may be partial; a plugin update does
+not overwrite it and an organisation can roll one file out to many sites; path filter
+`core-functionality/configuration-file`), then the filter `core-functionality/release-settings`. The
+Release Management tab notes a component the configuration adjusts. No constant: Hans prefers filters and
+files to constants (October 2026).
+
+This replaced an earlier model with a status in `ComponentMeta` plus a per-site "Draait op" value, a
+question when a new release changed it, and a Deployment tab: a per-site value lives in the database,
+which is exactly what a restore from another environment overwrites, and it duplicated the status.
 
 **Newly available counts as new.** The components that may run on this server are kept in
-`components-available`. After an update or a deployment save (`components-availability-check`),
+`components-available`. After an update or a save of the release file (`components-availability-check`),
 `handle_newly_available_components()` (init -5: after the translations, before the Kernel) compares the list:
 a component that could not run here before and can now is switched on, or, with `confirm_activation`, its
 decision is forgotten so the question is asked. The first list only gets stored. On DDEV everything is
@@ -156,7 +176,7 @@ first one installed is used (`EnvironmentLookup::get_plugin_basename()`), and th
 
 `Environment` creates each guard once per request: `get_plugin( $id )` and `get_theme( $id )` keep the
 instances per kind (plugins and themes are registered separately), `get_wordpress()` the core guard.
-There are no server guards: the server tier is handled by the deployment tiers of the components, and
+There are no server guards: the server tier is handled by the release settings of the components, and
 switching plugins per server by a separate mu-plugin (the `-environment` guards were removed in October
 2026).
 
@@ -498,7 +518,7 @@ submenu item stays "Berichten": under the Sensei menu it is clear.
 ## Admin
 
 Settings → Core Functionality (`dwp-cf-settings`): one page with a sidebar of sections. Core sections:
-Feature Activation, Push Notices, Deployment, Options Management. Features add their own section on
+Feature Activation, Push Notices, Options Management, and on a development environment Release Management. Features add their own section on
 `core-functionality/register-settings-sections`. `PluginIntegrityWatch` reports structural problems such as duplicate
 ids in the error log and as an admin notice.
 
@@ -538,6 +558,8 @@ card per content type with its levels under each other.
 | `core-functionality/ready` | action | Everything is launched |
 | `core-functionality/register-settings-sections` | action | Add a section to the settings page (`AdminSettingsPage` argument) |
 | `core-functionality/launch-timing` | filter | `array( hook, priority )` on which the Kernel boots (default `init`, 0) |
+| `core-functionality/configuration-file` | filter | Path of the installation's configuration file that adjusts the release settings |
+| `core-functionality/release-settings` | filter | Status and rule per environment of every component, as they apply here |
 | `core-functionality/admin-menu-config-nodes` | filter | Admin menu nodes |
 | `core-functionality/admin-menu-removals` | filter | Admin menu items to remove |
 | `core-functionality/ai-access-content-types` | filter | Content type profiles an AI assistant may use |
@@ -557,7 +579,7 @@ card per content type with its levels under each other.
 | Discovery by folder | Scan `src/Modules/`, strict folder and namespace rules | Adding a feature is adding a folder |
 | Static metadata | Checks run before instantiation | Nothing loads that cannot run |
 | Runtime proof | Guard classes check classes, functions or actions | "Active" in the plugin list is not proof that a plugin loaded |
-| Deployment tiers | Status in the code (release, hard limit) plus "Draait op" per site; the lower counts | The code's maturity is the developer's call, which environments a site wants stays its own; an update never silently overrules a local choice |
+| Release settings | Status plus a rule per environment (automatically on, freely adjustable, automatically off) in one release file, written on a development environment; an installation adjusts it with a configuration file or a filter | The code's maturity and what suits an environment are the developer's call; a per-site database value would be lost on a restore, and the site keeps its own on/off within the limits |
 | Settings as files plus overrides | Files are the defaults and live in git, the database holds changes | Site data is versioned and can be reset to defaults |
 | Fail closed | Stop the whole plugin on corrupt settings | Half a kernel is worse than none |
 | One boot step on `init` 0 | Check, create and launch together | The register delivers a complete list; on `init` plugins and theme have loaded, so proofs can check what started |
@@ -587,12 +609,17 @@ Known issues:
   Transient Optimizer compared UTC expiry times with local time (transients removed up to two hours
   early), the WooCommerce category link always used an example slug, and two buttons were never
   translated.
-- Built (October 2026): status and deployment split, with the release question and "newly available counts
-  as new" (see Components register). Every built module and feature has status production, except the
-  AdminMenu module and its features, which stay at development (Hans, October 2026: they run well and do
-  nothing dangerous). Where they actually run is still each site's "Draait op". Testing a production target
+- Built (October 2026): the release settings (status and rule per environment in
+  `settings/components-release.php`, the Release Management tab on development, the configuration file and
+  filters) and "newly available counts as new" (see Components register). Every built module and feature
+  has status production, except the AdminMenu module and its feature, which stay at development (Hans,
+  October 2026: they run well and do nothing dangerous); every rule is still "freely adjustable". Tested
+  with a simulation of the three environments (DDEV is always development). Testing a production target
   before its status is production needs a development site that behaves like production; accepted for now
   (Hans).
+- Open: an info page where modules and features introduce themselves, for "Meer lezen" in the activation
+  question and for anyone who does not know them yet (Hans, October 2026). Until then "Meer lezen" shows
+  the descriptions.
 - Tested in a logged-in admin (October 2026): the "new components" notice after a simulated update, the
   integrity check and all settings tabs. The two issues found there (the toolbar Cleaner reading
   `$node->id` from an array, and feature names ending in a period) are fixed. The plugin is active again

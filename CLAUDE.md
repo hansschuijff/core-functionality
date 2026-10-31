@@ -85,9 +85,13 @@ new modules and features for Hans's own sites.
   new components start switched off after a rescan (after an update they follow the register file).
   Leave changes to these files uncommitted: they get their final content after the migration strategy
   (another session) and are only committed just before production (Hans, October 2026).
-- `status` in `ComponentMeta` (default development) is how far the code is ready to run: raise it to
-  staging or production in the code when Hans says a component is ready; a site cannot go beyond it. Where
-  a site lets it run is the Deployment tab ("Draait op"), not the code.
+- The status (how far the code is ready) and the rule per environment (automatically on, freely
+  adjustable, automatically off) of each module and feature live in `settings/components-release.php`,
+  written by the Release Management tab (only on a development environment) and committed; not in the
+  code. Raise a status only when Hans says a component is ready. A new component is development and freely
+  adjustable until it is in that file. See `docs/ARCHITECTURE.md`, Release settings.
+- Feature names are short within their module ("Menubouwer" under Admin-toolbar); where the module is not
+  shown around a name, use `ComponentsRegister::get_display_name()` ("Menubouwer (Admin-toolbar)").
 - A feature that can clash with code the plugin cannot see (it replaces a snippet or a legacy file that may
   still run) gets `confirm_activation: true` in its `ComponentMeta`: it then waits for an administrator's
   one-time answer before it runs. See `docs/ARCHITECTURE.md`, Components register.
