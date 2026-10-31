@@ -267,6 +267,26 @@ quantities, `?add-to-cart=101:1,102:3`, used by the ticket forms of Remote Ticke
 cart. Taken over from Remote Tickets Server Add-ons (`WooCartExtension`): while both are active, the
 feature removes that plugin's hook; the class can go from that plugin when CF goes live.
 
+Three admin features for the order list (legacy screen `edit-shop_order` and HPOS
+`woocommerce_page_wc-orders`; the speeltuin runs HPOS), so status changes need fewer clicks (Hans,
+October 2026):
+
+- `OrderPreviewCancel`: a "Cancelled" button among the status buttons of the order preview (eye icon),
+  through `woocommerce_admin_order_preview_actions` and WooCommerce's own `woocommerce_mark_order_status`
+  route. Shown for pending, on-hold, processing and completed: a completed order may need correcting after a
+  wrong click, and refunds go by bank transfer (not through Mollie), so cancelling a paid order is only a
+  status change. Red border plus a confirmation; for a subscription's parent order the button is filled
+  and the question says the subscription ends too (WooCommerce Subscriptions cancels it on
+  `woocommerce_order_status_cancelled`, which cannot be undone).
+- `OrderPreviewTotals`: the rows of `WC_Order::get_order_item_totals()` (as on the invoice, minus the
+  payment method) under the products, through `woocommerce_admin_order_preview_get_order_details` (key
+  `dwp_cf_totals_html`) and a placeholder on `woocommerce_admin_order_preview_end`. Its CSS also caps the
+  preview's content height so it scrolls and the footer buttons stay on screen.
+- `ShortBulkActionLabels`: the status bulk actions read as actions: "In behandeling nemen", "In de wacht
+  zetten", "Afronden", "Annuleren"; keys stay WooCommerce's own. WooCommerce has had its own
+  `mark_cancelled` bulk action for some time, so the legacy plugin's
+  `bulk-order-cancellation.php` is not ported.
+
 ### Events
 
 The module `Events` runs when The Events Calendar or Event Tickets is ready (an "or" dependency:
