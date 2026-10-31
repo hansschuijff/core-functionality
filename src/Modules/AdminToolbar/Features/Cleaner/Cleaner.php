@@ -22,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 use WP_Admin_Bar;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\Cleaner\CleanerSettings;
@@ -55,6 +56,7 @@ class Cleaner extends AbstractFeature {
 			id:            'admin_toolbar_cleaner',
 			name:          __( 'Admin Toolbar Cleaner Feature', 'core-functionality' ),
 			description:   __( 'Moves unwanted Admin Toolbar shortcuts to an overflow submenu, based on a negative-selection user matrix.', 'core-functionality' ),
+			status:        Deployment::PRODUCTION,
 		);
 	}
 

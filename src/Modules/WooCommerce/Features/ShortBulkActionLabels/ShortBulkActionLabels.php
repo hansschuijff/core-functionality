@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 use Override;
 
@@ -58,6 +59,7 @@ class ShortBulkActionLabels extends AbstractFeature {
 			name:        __( 'Short bulk actions for orders', 'core-functionality' ),
 			description: __( 'Short names for the status actions in the bulk action select of the order list: "Process", "Put on hold", "Complete" and "Cancel".', 'core-functionality' ),
 			orientation: Orientation::ADMIN,
+			status:      Deployment::PRODUCTION,
 		);
 	}
 

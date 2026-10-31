@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -85,6 +86,7 @@ class TemplateFallback extends AbstractFeature {
 			id:          'events_template_fallback',
 			name:        __( 'CF event templates', 'core-functionality' ),
 			description: __( 'Template overrides of The Events Calendar and Event Tickets kept for this site apart from the theme, used when the theme has no override of its own. Upload and download them as a zip on the settings page.', 'core-functionality' ),
+			status:      Deployment::PRODUCTION,
 		);
 	}
 

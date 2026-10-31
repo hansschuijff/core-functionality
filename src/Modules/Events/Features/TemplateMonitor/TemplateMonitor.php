@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Modules\Events\Features\TemplateFallback\CfTemplatesSettings;
 use DeWittePrins\CoreFunctionality\Modules\Events\Features\TemplateFallback\TemplateFallback;
 use DeWittePrins\CoreFunctionality\Modules\Events\Features\TemplateFallback\TemplateLocations;
@@ -114,6 +115,7 @@ class TemplateMonitor extends AbstractFeature {
 			id:          'events_template_monitor',
 			name:        __( 'Event template check', 'core-functionality' ),
 			description: __( 'Warns when a template override of The Events Calendar or Event Tickets is out of date or overrides a template the plugin no longer has.', 'core-functionality' ),
+			status:      Deployment::PRODUCTION,
 		);
 	}
 

@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 use Override;
 use WC_Order;
@@ -82,6 +83,7 @@ class OrderPreviewCancel extends AbstractFeature {
 			name:        __( 'Cancel button in the order preview', 'core-functionality' ),
 			description: __( 'Adds a button to cancel the order to the status buttons of the order preview (the eye icon in the order list), with a confirmation.', 'core-functionality' ),
 			orientation: Orientation::ADMIN,
+			status:      Deployment::PRODUCTION,
 		);
 	}
 

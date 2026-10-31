@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -45,6 +46,7 @@ class DuplicatePost extends AbstractModule {
 			name:         __( 'Duplicate Post', 'core-functionality' ),
 			description:  __( 'Adjustments to Yoast Duplicate Post.', 'core-functionality' ),
 			dependencies: 'duplicate-post',
+			status:       Deployment::PRODUCTION,
 		);
 	}
 }

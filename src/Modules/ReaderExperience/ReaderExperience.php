@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -43,6 +44,7 @@ class ReaderExperience extends AbstractModule {
 			name:         __( 'Reader Experience', 'core-functionality' ),
 			description:  __( 'Settings for the Reader Experience plugin: heading anchors, reading time and feedback.', 'core-functionality' ),
 			dependencies: 'reader-experience',
+			status:       Deployment::PRODUCTION,
 		);
 	}
 }

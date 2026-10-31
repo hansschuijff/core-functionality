@@ -17,6 +17,7 @@ namespace DeWittePrins\CoreFunctionality\Modules\Cleaner\Features\TransientOptim
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 // Import global PHP and WordPress core abstraction functions.
@@ -59,6 +60,7 @@ class TransientOptimizer extends AbstractFeature {
 			id:            'cleaner_transient_optimizer',
 			name:          __( 'Transient Optimizer Feature', 'core-functionality' ),
 			description:   __( 'Monitors, indexes, and flushes expired or orphaned core transients clusters using automated background crons to optimize the options table.', 'core-functionality' ),
+			status:        Deployment::PRODUCTION,
 		);
 	}
 

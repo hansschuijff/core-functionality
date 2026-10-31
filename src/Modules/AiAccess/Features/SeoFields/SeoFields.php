@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentEditing;
 use Override;
 
@@ -49,6 +50,7 @@ class SeoFields extends AbstractFeature {
 			description:   __( 'An AI assistant may write the SEO title and meta description of Yoast SEO.', 'core-functionality' ),
 			dependencies:  'yoast-seo',
 			uses_features: array( ContentEditing::class ),
+			status:        Deployment::PRODUCTION,
 		);
 	}
 

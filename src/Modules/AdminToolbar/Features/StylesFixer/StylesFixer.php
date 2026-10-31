@@ -45,7 +45,7 @@ class StylesFixer extends AbstractFeature {
 			id:            'fix_admin_bar_styles',
 			name:          __( 'Admin Toolbar Styles Fixer Feature', 'core-functionality' ),
 			description:   __( 'The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar.', 'core-functionality' ),
-			status:        Deployment::STAGING,
+			status:        Deployment::PRODUCTION,
 		);
 	}
 

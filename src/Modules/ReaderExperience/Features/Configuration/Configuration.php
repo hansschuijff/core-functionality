@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -51,6 +52,7 @@ class Configuration extends AbstractFeature {
 			id:          'reader_experience_configuration',
 			name:        __( 'Reader Experience Settings', 'core-functionality' ),
 			description: __( 'A settings tab for the Reader Experience plugin, which itself is steered by filters only.', 'core-functionality' ),
+			status:      Deployment::PRODUCTION,
 		);
 	}
 

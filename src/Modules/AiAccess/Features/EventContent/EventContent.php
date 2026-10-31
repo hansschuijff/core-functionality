@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentEditing;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentServices;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentTypeProfile;
@@ -69,6 +70,7 @@ class EventContent extends AbstractFeature {
 			description:   __( 'An AI assistant may write drafts of events (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone.', 'core-functionality' ),
 			dependencies:  'the-events-calendar',
 			uses_features: array( ContentEditing::class ),
+			status:        Deployment::PRODUCTION,
 		);
 	}
 

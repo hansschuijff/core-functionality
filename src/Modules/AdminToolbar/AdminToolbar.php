@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -38,6 +39,7 @@ class AdminToolbar extends AbstractModule {
 			id:            'admin_toolbar',
 			name:          __( 'Admin Toolbar', 'core-functionality' ),
 			description:   __( 'Provides advanced layout overrides, performance enhancements, and custom nodes filtering for the WordPress admin bar.', 'core-functionality' ),
+			status:        Deployment::PRODUCTION,
 		);
 	}
 }

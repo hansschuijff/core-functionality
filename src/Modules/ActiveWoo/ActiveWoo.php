@@ -41,7 +41,7 @@ class ActiveWoo extends AbstractModule {
 			id:            'active-woo',
 			name:          __( 'ActiveWoo', 'core-functionality' ),
 			description:   __( 'Customizations and adaptations for the ActiveWoo plugin.', 'core-functionality' ),
-			status:        Deployment::STAGING,
+			status:        Deployment::PRODUCTION,
 		);
 	}
 }

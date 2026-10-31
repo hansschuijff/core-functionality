@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 use WP_Post;
 
@@ -62,6 +63,7 @@ class HideLinks extends AbstractFeature {
 			id:          'duplicate_post_hide_links',
 			name:        __( 'Hide Yoast duplicate links', 'core-functionality' ),
 			description: __( 'Hides the duplicate links of Yoast Duplicate Post for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab.', 'core-functionality' ),
+			status:      Deployment::PRODUCTION,
 		);
 	}
 

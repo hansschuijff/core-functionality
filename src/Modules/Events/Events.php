@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -44,6 +45,7 @@ class Events extends AbstractModule {
 			description:  __( 'Additions to The Events Calendar and Event Tickets.', 'core-functionality' ),
 			// Either plugin: a list of lists is "or" (a flat list would be "and").
 			dependencies: array( 'or' => array( array( 'the-events-calendar' ), array( 'event-tickets' ) ) ),
+			status:       Deployment::PRODUCTION,
 		);
 	}
 }

@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Modules\ActiveWoo\ActiveWoo;
 use Override;
 use DeWittePrins\CoreFunctionality\Plugin;
@@ -50,6 +51,7 @@ class KeepLicenseAlive extends AbstractFeature {
 			id:            'active_woo_keep_license_alive',
 			name:          __( 'Keep ActiveWoo License Alive', 'core-functionality' ),
 			description:   __( 'Sustains a copy of the license in transient, so the plugin will keep thinking it is licensed.', 'core-functionality' ),
+			status:        Deployment::PRODUCTION,
 		);
 	}
 

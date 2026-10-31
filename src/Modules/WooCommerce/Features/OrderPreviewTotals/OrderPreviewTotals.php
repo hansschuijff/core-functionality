@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 use Override;
 use WC_Order;
@@ -82,6 +83,7 @@ class OrderPreviewTotals extends AbstractFeature {
 			name:        __( 'Totals in the order preview', 'core-functionality' ),
 			description: __( 'Shows subtotal, discount, shipping, tax and total under the products in the order preview (the eye icon in the order list), and lets the preview scroll so it fits on the screen.', 'core-functionality' ),
 			orientation: Orientation::ADMIN,
+			status:      Deployment::PRODUCTION,
 		);
 	}
 

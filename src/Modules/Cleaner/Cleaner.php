@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -40,6 +41,7 @@ class Cleaner extends AbstractModule {
 			id:            'cf-cleaner-module',
 			name:          __( 'WordPress Cleaner', 'core-functionality' ),
 			description:   __( 'Utilities that keep WordPress performing efficiently.', 'core-functionality' ),
+			status:        Deployment::PRODUCTION,
 		);
 	}
 }

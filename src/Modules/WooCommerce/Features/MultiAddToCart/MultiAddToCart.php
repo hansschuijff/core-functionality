@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -82,6 +83,7 @@ class MultiAddToCart extends AbstractFeature {
 			id:          'woocommerce_multi_add_to_cart',
 			name:        __( 'Several products in the cart at once', 'core-functionality' ),
 			description: __( 'One add-to-cart link adds several products with their own quantities: ?add-to-cart=101:1,102:3. Used by the ticket forms of Remote Tickets.', 'core-functionality' ),
+			status:      Deployment::PRODUCTION,
 		);
 	}
 
