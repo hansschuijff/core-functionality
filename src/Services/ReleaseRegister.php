@@ -18,11 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
+use DeWittePrins\CoreFunctionality\Enums\Register;
 use DeWittePrins\CoreFunctionality\Plugin;
 
 use function apply_filters;
 use function array_intersect_key;
 use function array_merge;
+use function in_array;
 use function is_array;
 use function is_string;
 
@@ -33,13 +35,14 @@ use function is_string;
  *
  * - its status: how far the code is ready (development, staging, production). It never runs on a
  *   higher environment than that.
- * - its rule per environment (EnvironmentRule): automatically on, freely adjustable or
- *   automatically off, based on what it does.
+ * - its rule per environment (EnvironmentRule): always active, adjustable or always inactive,
+ *   based on what it does.
  *
  * These are plugin management properties, not properties of the feature's code, so they live in one
  * file that travels with the release: settings/components-release.php, written by the Release
  * Management tab on a development environment (Hans, October 2026). A component that is not in the
- * file has status development and is freely adjustable everywhere.
+ * file has status development and is adjustable everywhere. A module with features is only their
+ * container: its entry is derived from theirs (see with_module_entries()).
  *
  * An installation can adjust them without touching the plugin, in two layers on top of the release:
  *
@@ -140,7 +143,7 @@ class ReleaseRegister {
 	 * @return bool True when the entry that applies differs from the release file.
 	 */
 	public function is_adjusted_here( string $fqcn ): bool {
-		$release_entry = $this->get_release_values()[ $fqcn ] ?? self::get_default_entry();
+		$release_entry = $this->with_module_entries( $this->get_release_values() )[ $fqcn ] ?? self::get_default_entry();
 
 		return $release_entry !== $this->get_entry( $fqcn );
 	}
@@ -218,14 +221,113 @@ class ReleaseRegister {
 		$filtered = apply_filters( 'core-functionality/release-settings', $settings );
 		$filtered = is_array( $filtered ) ? $filtered : $settings;
 
-		$this->settings = array();
+		$clean_settings = array();
 		foreach ( $filtered as $fqcn => $entry ) {
 			if ( is_string( $fqcn ) && is_array( $entry ) ) {
-				$this->settings[ $fqcn ] = $this->sanitize_entry( $entry );
+				$clean_settings[ $fqcn ] = $this->sanitize_entry( $entry );
 			}
 		}
 
+		$this->settings = $this->with_module_entries( $clean_settings );
+
 		return $this->settings;
+	}
+
+	/**
+	 * Returns the entries with the entry of each module derived from its features.
+	 *
+	 * A module is only a container (Hans, November 2026): it takes the widest setting of its
+	 * features, so it is there wherever one of them may run. Its status is the highest status of its
+	 * features; its rule on an environment is the widest rule of the features that may run there
+	 * (always active before adjustable before always inactive). A module without features keeps its
+	 * own entry.
+	 *
+	 * @since  1.0.0
+	 * @param  array<string, array<string, string>> $entries FQCN => entry (features as they apply).
+	 * @return array<string, array<string, string>> The entries, with the derived module entries.
+	 */
+	public function with_module_entries( array $entries ): array {
+		foreach ( $this->plugin->components_register->get_register( Register::COMPONENTS ) as $module_fqcn => $features_fqcn ) {
+			$feature_entries = array();
+			foreach ( (array) $features_fqcn as $feature_fqcn ) {
+				$feature_entries[] = $entries[ $feature_fqcn ] ?? self::get_default_entry();
+			}
+
+			if ( ! empty( $feature_entries ) ) {
+				$entries[ $module_fqcn ] = $this->derive_module_entry( $feature_entries );
+			}
+		}
+
+		return $entries;
+	}
+
+	/**
+	 * Returns the entry of a module from the entries of its features: the widest of each.
+	 *
+	 * @since  1.0.0
+	 * @param  array<int, array<string, string>> $feature_entries The (clean) entries of its features.
+	 * @return array<string, string> The entry of the module.
+	 */
+	private function derive_module_entry( array $feature_entries ): array {
+		$status = Deployment::DEVELOPMENT;
+		foreach ( $feature_entries as $feature_entry ) {
+			$feature_status = Deployment::from( $feature_entry[ self::STATUS_KEY ] );
+			if ( $feature_status->get_rank() > $status->get_rank() ) {
+				$status = $feature_status;
+			}
+		}
+
+		$module_entry = array( self::STATUS_KEY => $status->value );
+		foreach ( Deployment::cases() as $environment ) {
+			$module_entry[ $environment->value ] = $this->get_widest_rule( $feature_entries, $environment )->value;
+		}
+
+		return $module_entry;
+	}
+
+	/**
+	 * Returns the widest rule on an environment among the features that may run there.
+	 *
+	 * Features whose status does not reach the environment do not count; when none reaches it, the
+	 * module cannot run there either (its status is theirs), and the widest rule of all is used.
+	 *
+	 * @since  1.0.0
+	 * @param  array<int, array<string, string>> $feature_entries The (clean) entries of the features.
+	 * @param  Deployment                        $environment     The kind of environment.
+	 * @return EnvironmentRule The widest rule.
+	 */
+	private function get_widest_rule( array $feature_entries, Deployment $environment ): EnvironmentRule {
+		$rules = array();
+		foreach ( $feature_entries as $feature_entry ) {
+			if ( Deployment::from( $feature_entry[ self::STATUS_KEY ] )->allows( $environment ) ) {
+				$rules[] = EnvironmentRule::from( $feature_entry[ $environment->value ] );
+			}
+		}
+
+		if ( empty( $rules ) ) {
+			foreach ( $feature_entries as $feature_entry ) {
+				$rules[] = EnvironmentRule::from( $feature_entry[ $environment->value ] );
+			}
+		}
+
+		if ( in_array( EnvironmentRule::AUTO_ON, $rules, true ) ) {
+			return EnvironmentRule::AUTO_ON;
+		}
+
+		return in_array( EnvironmentRule::ADJUSTABLE, $rules, true )
+			? EnvironmentRule::ADJUSTABLE
+			: EnvironmentRule::AUTO_OFF;
+	}
+
+	/**
+	 * Whether the entry of a module is derived from its features (it has features).
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully Qualified Class Name of a module or feature.
+	 * @return bool True for a module with features.
+	 */
+	public function is_derived( string $fqcn ): bool {
+		return ! empty( $this->plugin->components_register->get_register( Register::COMPONENTS )[ $fqcn ] );
 	}
 
 	/**
