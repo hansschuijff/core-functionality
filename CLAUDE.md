@@ -85,6 +85,9 @@ new modules and features for Hans's own sites.
   new components start switched off after a rescan (after an update they follow the register file).
   Leave changes to these files uncommitted: they get their final content after the migration strategy
   (another session) and are only committed just before production (Hans, October 2026).
+- `status` in `ComponentMeta` (default development) is how far the code is ready to run: raise it to
+  staging or production in the code when Hans says a component is ready; a site cannot go beyond it. Where
+  a site lets it run is the Deployment tab ("Draait op"), not the code.
 - A feature that can clash with code the plugin cannot see (it replaces a snippet or a legacy file that may
   still run) gets `confirm_activation: true` in its `ComponentMeta`: it then waits for an administrator's
   one-time answer before it runs. See `docs/ARCHITECTURE.md`, Components register.

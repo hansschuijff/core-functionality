@@ -84,9 +84,11 @@ site. It combines:
 
 - **what exists**: found by scanning `src/Modules/` (`rebuild()`), stored as module class → feature classes;
 - **what is switched on**: the Feature Activation tab of the settings page;
-- **server tier**: each component has a deployment level (development, staging, production) set on the
-  Deployment tab. A development server loads everything, staging loads staging and production
-  components, production loads only production components;
+- **server tier**: two values per component, and the lower one counts (`get_effective_deployment()`).
+  The **status** (`ComponentMeta::$status`, default development) is the development state of the code:
+  set by the release, a hard limit no site can raise. The **deployment** ("Draait op" on the Deployment
+  tab) is how far this site lets it run. A development server loads everything, staging loads staging and
+  production components, production loads only production components (`Deployment::allows()`);
 - **orientation**: admin, front end or both (`get_orientation()`).
 
 The kernel then checks the environment dependencies of whatever passes. The registers are kept in the
@@ -118,6 +120,23 @@ tab counts as the decision for every waiting component (they are marked there); 
 all decisions, because it switches everything on. Decisions live only in the setting
 `components-activation-decided` (FQCN => true), never in the register files: they belong to one site.
 The flag is a safety net for now; whether it gets more uses or companions is open.
+
+**Deployment after an update.** The deployment values of the installed release are kept as a baseline
+(`components-deployment-release`). On a new version `follow_release_deployment()` compares, per
+component, the previous release, the new release and this site: a site value equal to the previous release
+was never changed here and follows the new release; a site value of its own stays, and when the release
+changed it too, an administrator (`manage_options` or `update_plugins`) gets a question
+(`Notifiers\DeploymentQuestion`, open questions in `components-deployment-questions`): "Release volgen"
+(the default) or "Eigen instelling houden". Until answered the site's value holds, so automatic updates
+never overrule a local choice; saving the Deployment tab answers all open questions (Hans, October 2026).
+The first update after this was built only stores the baseline.
+
+**Newly available counts as new.** The components that may run on this server are kept in
+`components-available`. After an update or a deployment save (`components-availability-check`),
+`handle_newly_available_components()` (init -5: after the translations, before the Kernel) compares the list:
+a component that could not run here before and can now is switched on, or, with `confirm_activation`, its
+decision is forgotten so the question is asked. The first list only gets stored. On DDEV everything is
+available (development), so this only shows on staging and production.
 
 The Feature Activation tab has a "Show only disabled" filter. It works on the saved state (a data
 attribute), not on the checkboxes, so a row stays while it is ticked; a component that waits for
@@ -538,7 +557,7 @@ card per content type with its levels under each other.
 | Discovery by folder | Scan `src/Modules/`, strict folder and namespace rules | Adding a feature is adding a folder |
 | Static metadata | Checks run before instantiation | Nothing loads that cannot run |
 | Runtime proof | Guard classes check classes, functions or actions | "Active" in the plugin list is not proof that a plugin loaded |
-| Deployment tiers | Per component, set in admin | Experimental features only on development or staging |
+| Deployment tiers | Status in the code (release, hard limit) plus "Draait op" per site; the lower counts | The code's maturity is the developer's call, which environments a site wants stays its own; an update never silently overrules a local choice |
 | Settings as files plus overrides | Files are the defaults and live in git, the database holds changes | Site data is versioned and can be reset to defaults |
 | Fail closed | Stop the whole plugin on corrupt settings | Half a kernel is worse than none |
 | One boot step on `init` 0 | Check, create and launch together | The register delivers a complete list; on `init` plugins and theme have loaded, so proofs can check what started |
@@ -568,12 +587,12 @@ Known issues:
   Transient Optimizer compared UTC expiry times with local time (transients removed up to two hours
   early), the WooCommerce category link always used an example slug, and two buttons were never
   translated.
-- Planned (Hans, October 2026): split the deployment tier in two. `status` in `get_meta()` is the
-  development state of the code, set by the release and a hard limit (not adjustable on a site);
-  `deployment` stays where a component may run (at most up to which tier), adjustable per site. On an update
-  a new component takes the release values; a site whose deployment differs from the previous release keeps
-  it until an administrator answers whether the new release value may apply (default: take it). A component
-  that becomes available on a server through this counts as new (on, or the confirmation question).
+- Built (October 2026): status and deployment split, with the release question and "newly available counts
+  as new" (see Components register). Visualizer, StylesFixer and the ActiveWoo module got
+  `status: Deployment::STAGING`, matching their deployment value, so they still run on staging; every other
+  component is at status development and does not run on staging or production until its status is
+  raised in the code (bevestig). Testing a production target before its status is production needs a
+  development site that behaves like production; accepted for now (Hans).
 - Tested in a logged-in admin (October 2026): the "new components" notice after a simulated update, the
   integrity check and all settings tabs. The two issues found there (the toolbar Cleaner reading
   `$node->id` from an array, and feature names ending in a period) are fixed. The plugin is active again
