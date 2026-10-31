@@ -1,0 +1,37 @@
+/**
+ * Order preview totals, and a preview that fits on the screen.
+ *
+ * @package DeWittePrins\CoreFunctionality
+ * @since   1.0.0
+ */
+
+/*
+ * The preview is centred on the screen and grows with its content; with totals it can become taller
+ * than the window, and then the buttons in its footer fall off the screen. The content scrolls
+ * instead: the window minus the admin bar, the header, the footer and some air.
+ */
+.wc-order-preview .wc-backbone-modal-content article {
+	max-height: calc(100vh - 32px - 220px);
+	overflow-y: auto;
+}
+
+/* Totals: right under the products, labels left like the product names, amounts right. */
+.wc-order-preview .dwp-cf-order-preview-totals.dwp-cf-order-preview-totals {
+	margin-top: -1.5em;
+}
+
+.wc-order-preview .dwp-cf-order-preview-totals .wc-order-preview-table th {
+	border-color: #eee;
+	font-weight: 400;
+	text-align: left;
+}
+
+.wc-order-preview .dwp-cf-order-preview-totals .wc-order-preview-table td {
+	text-align: right;
+}
+
+.wc-order-preview .dwp-cf-order-preview-totals .dwp-cf-total-order_total th,
+.wc-order-preview .dwp-cf-order-preview-totals .dwp-cf-total-order_total td {
+	border-top: 1px solid #ccc;
+	font-weight: 600;
+}
