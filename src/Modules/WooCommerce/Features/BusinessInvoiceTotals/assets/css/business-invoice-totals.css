@@ -1,0 +1,28 @@
+/**
+ * Business invoice totals: styles added to the PDF invoice of a business order.
+ *
+ * Printed inside the document's own style block (wpo_wcpdf_custom_styles), so these rules only reach
+ * the PDF documents, not the site.
+ *
+ * @package DeWittePrins\CoreFunctionality
+ * @since   1.0.0
+ */
+
+/*
+ * One heavy line above the amount excluding VAT, like the one above the total. The line sits on the
+ * cells themselves: on an element inside a cell it came on top of the cell's thin grey line.
+ */
+table.totals tr.dwp-cf-total-excl-tax th,
+table.totals tr.dwp-cf-total-excl-tax td {
+	border-top: 2px solid #000;
+}
+
+/* The reverse charge notice under the totals. */
+.dwp-cf-reverse-charge-notice {
+	margin-top: 1em;
+	font-weight: bold;
+}
+
+.dwp-cf-reverse-charge-notice p {
+	margin: 0 0 0.25em;
+}
