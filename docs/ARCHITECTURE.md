@@ -287,6 +287,29 @@ October 2026):
   `mark_cancelled` bulk action for some time, so the legacy plugin's
   `bulk-order-cancellation.php` is not ported.
 
+Feature `BusinessInvoiceTotals` (extra dependency: the `woocommerce-pdf-invoices` guard): PDF invoices
+of business orders meet the Dutch invoice requirements (art. 35a Wet OB; Hans, October 2026). An order
+is a business order when `wpo_wcpdf_get_order_customer_vat_number()` finds a customer VAT number (it
+knows the meta of EU VAT Assistant, `vat_number`, and EU VAT Compliance, `VAT Number`; tinekevanurk.nl
+runs both). Through `wpo_wcpdf_woocommerce_totals` (priority 20) the totals become: the order line rows,
+"Totaal exclusief btw" (total minus tax, so excl. + VAT = incl. to the cent), per rate the VAT with its
+percentage from the order's tax item ("BTW Hoog (21%)"), with more than one rate also each rate's amount
+excluding VAT (the products, shipping and fees that carry it), then "Totaal inclusief btw" and the payment
+method. The row keys are the template's row classes, so the heavy line above the excl. total is CSS on
+the row's cells (`assets/css`, printed through `wpo_wcpdf_custom_styles` for business documents only);
+the snippet's line on a span inside the cell gave an extra thin line. Reverse charge (EU customer outside
+the shop's country, no VAT, EU VAT Assistant did not reject the number): a "Btw 0%" row and a notice on
+`wpo_wcpdf_after_order_details`, "Intracommunautaire levering" (art. 138, goods) and/or "Btw verlegd"
+(art. 196, services: virtual products), with the customer's VAT number. Invoices of partly refunded
+orders keep the original amounts (the PDF plugin removes the refund rows); credit notes (`credit-note`,
+PDF Pro only) get the same layout with the refund's amounts and the parent order's VAT data. Shop prices
+stay as they are: production shows prices incl. VAT, so the line rows are incl. and the excl. total
+follows them. Takes over Hans's production snippet (`wpo_wcpdf_clean_b2b_invoice_totals`,
+`wpo_wcpdf_b2b_collapse_borders`) and the legacy `render_tax_exempt_notice()` from
+`pdf-invoice-customizations.php` by removing their hooks; the snippet can go once CF runs in production.
+Not ported yet from that legacy file: payment status / due date / paid date rows (they can show "Wacht op
+betaling" next to "Betaald op") and the customer notes after the order details.
+
 ### Events
 
 The module `Events` runs when The Events Calendar or Event Tickets is ready (an "or" dependency:
