@@ -85,8 +85,8 @@ new modules and features for Hans's own sites.
   new components start switched off after a rescan (after an update they follow the register file).
   Leave changes to these files uncommitted: they get their final content after the migration strategy
   (another session) and are only committed just before production (Hans, October 2026).
-- The status (how far the code is ready) and the rule per environment (automatically on, freely
-  adjustable, automatically off) of each module and feature live in `settings/components-release.php`,
+- The status (how far the code is ready) and the rule per environment (always active,
+  adjustable, always inactive) of each module and feature live in `settings/components-release.php`,
   written by the Release Management tab (only on a development environment) and committed; not in the
   code. Raise a status only when Hans says a component is ready. A new component is development and freely
   adjustable until it is in that file. See `docs/ARCHITECTURE.md`, Release settings.

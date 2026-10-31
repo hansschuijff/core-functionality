@@ -87,7 +87,7 @@ site. It combines:
 - **what the release decides** (`ReleaseRegister`, see "Release settings" below): the **status** (how far
   the code is ready; a development server loads everything, staging loads staging and production
   components, production only production components, `Deployment::allows()`) and the **rule** on this
-  environment (automatically on, freely adjustable, automatically off). `is_available_here()` combines
+  environment (always active, adjustable, always inactive). `is_available_here()` combines
   them; `is_switched_on()` adds the site's choice;
 - **orientation**: admin, front end or both (`get_orientation()`).
 
@@ -113,7 +113,7 @@ an update; that is the point (a new feature is welcome). A component whose `Comp
 cannot see, such as a snippet doing the same thing (Hans, October 2026). It does not launch until an
 administrator decided on it on this site, even when the register enables it: `filter()` skips it through
 `awaits_activation_confirmation()`, which also requires that it may run here and that its rule leaves the
-choice to the site (automatically on asks nothing). The question is one notice on every admin page
+choice to the site (always active asks nothing). The question is one notice on every admin page
 (`Notifiers\ActivationQuestion`, `manage_options`): a vertical list of the waiting components ("Feature
 (Module)"), "Mag ik ze voor je activeren?" with "Ja" and "Nee" for the whole list, and "Meer lezen" with the
 descriptions and where to activate them later. Choosing per component is what the Feature Activation tab
@@ -131,13 +131,21 @@ how far is the code ready (the **status**), and does what the component does sui
 `mu-plugins-cf` handled such plugins). Both are plugin management properties, not properties of the code,
 so they live in one release file, `settings/components-release.php` (FQCN => `status` plus a rule per
 environment: `auto-on`, `adjustable`, `auto-off`), which is committed and travels with the release. A
-component that is not in it has status development and is freely adjustable everywhere. The file is
+component that is not in it has status development and is adjustable everywhere. The file is
 written by the Release Management tab (`ReleaseSettings`, section id `cf-release-management`), which is only
 registered on a development environment, so the sites that install the plugin do not get it.
-"Automatically on" runs a component without the site's choice and without the confirmation question, also
+"Always active" runs a component without the site's choice and without the confirmation question, also
 after a database from another environment was restored; when its module is off, the module comes along
-with only such features. "Automatically off" is the friendly word for "not allowed here". The Feature
-Activation tab notes these cases behind the name.
+with only such features. "Always inactive" is the friendly word for "not allowed here". The Feature
+Activation tab notes these cases behind the name and disables their checkbox (a hidden field keeps the
+saved choice for when the release lets go). The tab's header shows the build status and, grouped, the
+activation per environment; its explanation for developers is collapsed (Hans, November 2026).
+
+Open (November 2026): how a module's rule relates to its features' rules. Options Hans raised: the
+module as ceiling (module always inactive makes its features irrelevant), an always-active feature forcing
+its module to always active, a module that is always active needing at least one (or every) always-active
+feature, or rules on features only with the module as a mere container. Until decided, the behaviour
+above stays.
 
 An installation adjusts the release without touching the plugin, in two layers that may raise a limit as
 well as lower it, as both are conscious choices by whoever may change its files:
@@ -579,7 +587,7 @@ card per content type with its levels under each other.
 | Discovery by folder | Scan `src/Modules/`, strict folder and namespace rules | Adding a feature is adding a folder |
 | Static metadata | Checks run before instantiation | Nothing loads that cannot run |
 | Runtime proof | Guard classes check classes, functions or actions | "Active" in the plugin list is not proof that a plugin loaded |
-| Release settings | Status plus a rule per environment (automatically on, freely adjustable, automatically off) in one release file, written on a development environment; an installation adjusts it with a configuration file or a filter | The code's maturity and what suits an environment are the developer's call; a per-site database value would be lost on a restore, and the site keeps its own on/off within the limits |
+| Release settings | Status plus a rule per environment (always active, adjustable, always inactive) in one release file, written on a development environment; an installation adjusts it with a configuration file or a filter | The code's maturity and what suits an environment are the developer's call; a per-site database value would be lost on a restore, and the site keeps its own on/off within the limits |
 | Settings as files plus overrides | Files are the defaults and live in git, the database holds changes | Site data is versioned and can be reset to defaults |
 | Fail closed | Stop the whole plugin on corrupt settings | Half a kernel is worse than none |
 | One boot step on `init` 0 | Check, create and launch together | The register delivers a complete list; on `init` plugins and theme have loaded, so proofs can check what started |
