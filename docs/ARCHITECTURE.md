@@ -325,6 +325,7 @@ stay as they are: production shows prices incl. VAT, so the line rows are incl. 
 follows them. Takes over Hans's production snippet (`wpo_wcpdf_clean_b2b_invoice_totals`,
 `wpo_wcpdf_b2b_collapse_borders`) and the legacy `render_tax_exempt_notice()` from
 `pdf-invoice-customizations.php` by removing their hooks; the snippet can go once CF runs in production.
+It sets `confirm_activation`, so each site's administrator switches it on once (Hans, October 2026).
 Not ported yet from that legacy file: payment status / due date / paid date rows (they can show "Wacht op
 betaling" next to "Betaald op") and the customer notes after the order details.
 
