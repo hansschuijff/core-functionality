@@ -129,19 +129,15 @@ msgstr "Validatie mislukt. Controleer je invoer."
 msgid "Settings saved successfully."
 msgstr "Instellingen opgeslagen."
 
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:94
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:96
 msgid "Deployment Management"
 msgstr "Deploymentbeheer"
 
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:104
-msgid "Here you can manage the deployment scope of modules and features. It gives allowance to be launched in the corresponding or lower environments (development, staging, production). Although you can set a feature to a higher deployment than the module it is part of, the feature will not be launched beyond the deployment scope of the parent module. Only if both module and feature are set to production deployment, the feature will be launched in a production environment."
-msgstr "Hier beheer je het deploymentniveau van modules en features. Het bepaalt in welke omgeving ze mogen starten: de bijbehorende of een lagere (development, staging, productie). Je kunt een feature een hoger niveau geven dan zijn module, maar de feature start nooit buiten het niveau van de module. Alleen als module en feature allebei op productie staan, start de feature in een productieomgeving."
-
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:359
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:434
 msgid "Critical Error: Failed to save the deployment states."
 msgstr "Kritieke fout: de deploymentniveaus konden niet worden opgeslagen."
 
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:363
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:441
 msgid "Release status settings saved successfully. Remember to commit changes in Git! 🚀"
 msgstr "Deploymentniveaus opgeslagen. Vergeet niet de wijzigingen in Git te committen! 🚀"
 
@@ -3563,7 +3559,7 @@ msgid "%s Rates"
 msgstr "%s tarieven"
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:69
-#: src/Modules/ActiveWoo/ActiveWoo.php:41
+#: src/Modules/ActiveWoo/ActiveWoo.php:42
 msgid "ActiveWoo"
 msgstr ""
 
@@ -3890,7 +3886,7 @@ msgstr ""
 msgid "Essence Pro Theme Customizer"
 msgstr "Customizer Essence Pro"
 
-#: src/Modules/ActiveWoo/ActiveWoo.php:42
+#: src/Modules/ActiveWoo/ActiveWoo.php:43
 msgid "Customizations and adaptations for the ActiveWoo plugin."
 msgstr "Aanpassingen voor de ActiveWoo-plugin."
 
@@ -4455,23 +4451,23 @@ msgstr "Importeren / exporteren…"
 msgid "Take the default or a JSON file into the editor (replace or merge), or download the menu as JSON."
 msgstr "Neem de standaard of een JSON-bestand over in de editor (vervangen of samenvoegen), of download het menu als JSON."
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:45
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
 msgid "Admin Toolbar Styles Fixer Feature"
 msgstr "Opmaakcorrecties admin-toolbar"
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:47
 msgid "The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar."
 msgstr "Lost een paar opmaakproblemen in de admin-toolbar op."
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:45
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
 msgid "Admin Toolbar Visualizer Feature"
 msgstr "Node-ID's in de admin-toolbar tonen"
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:47
 msgid "The Admin Toolbar Visualizer Feature Maps active runtime Node ID keys for development troubleshooting."
 msgstr "Toont de ID's van de onderdelen in de admin-toolbar, als hulp bij het ontwikkelen."
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:83
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:85
 msgid "Node ID's"
 msgstr "Node-id's"
 
@@ -5329,34 +5325,34 @@ msgstr "Totalen op zakelijke facturen"
 msgid "On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements)."
 msgstr "Op pdf-facturen van bestellingen met een btw-nummer van de klant: het totaal exclusief btw, de btw per tarief met het percentage en het totaal inclusief btw, plus een melding als de btw verlegd is (Nederlandse factuureisen)."
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:294
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:296
 msgid "Total excl. VAT"
 msgstr "Totaal exclusief btw"
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:302
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:304
 msgid "VAT 0%"
 msgstr "Btw 0%"
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:308
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:310
 msgid "Total incl. VAT"
 msgstr "Totaal inclusief btw"
 
 #. translators: %s: VAT rate, such as 21%.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:403
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:405
 #, php-format
 msgid "Amount excl. VAT %s"
 msgstr "Bedrag exclusief btw %s"
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:502
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:504
 msgid "Intra-Community supply, VAT 0% (article 138 of VAT Directive 2006/112/EC)."
 msgstr "Intracommunautaire levering, btw 0% (artikel 138 Btw-richtlijn 2006/112/EG)."
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:505
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:507
 msgid "VAT reverse-charged (article 196 of VAT Directive 2006/112/EC)."
 msgstr "Btw verlegd (artikel 196 Btw-richtlijn 2006/112/EG)."
 
 #. translators: %s: the customer's VAT number.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:509
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:511
 #, php-format
 msgid "Customer VAT number: %s"
 msgstr "Btw-nummer afnemer: %s"
@@ -5430,16 +5426,16 @@ msgid "The target private user or group chat ID window."
 msgstr "De ID van de privé- of groepschat waar de meldingen naartoe gaan."
 
 #. translators: 1: plugin version, 2: comma-separated list of module and feature names.
-#: src/Plugin.php:294
+#: src/Plugin.php:298
 #, php-format
 msgid "Core Functionality %1$s added: %2$s. Check under Settings → Core Functionality whether they should be enabled on this site."
 msgstr "Core Functionality %1$s heeft toegevoegd: %2$s. Kijk bij Instellingen → Core Functionality of ze op deze site aan moeten."
 
-#: src/Plugin.php:380
+#: src/Plugin.php:384
 msgid "De Witte Prins - Core Functionality has stopped!"
 msgstr "De Witte Prins - Core Functionality is gestopt!"
 
-#: src/Plugin.php:381
+#: src/Plugin.php:385
 msgid "The plugin stopped because its installation is damaged. The rest of the website works normally, but everything this plugin does is switched off."
 msgstr "De plugin is gestopt omdat de installatie beschadigd is. De rest van de website werkt gewoon, maar alles wat deze plugin doet staat uit."
 
@@ -5555,6 +5551,7 @@ msgstr "Uit laten"
 
 #. translators: 1: feature name, 2: module name.
 #: src/Notifiers/ActivationQuestion.php:208
+#: src/Notifiers/DeploymentQuestion.php:243
 #, php-format
 msgid "%1$s (module %2$s)"
 msgstr "%1$s (module %2$s)"
@@ -5570,3 +5567,59 @@ msgstr "%s staat aan."
 #, php-format
 msgid "%s stays off."
 msgstr "%s blijft uit."
+
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:106
+msgid "Here you set up to which environment (development, staging, production) each module and feature runs on this site. Its status is the development state of its code, set by the release: it never runs beyond that, whatever is chosen here. A feature also never runs beyond its module. On an update, a new release follows the values you did not change; where this site has its own value and the release changes it, you are asked first."
+msgstr "Hier stel je in tot welke omgeving (development, staging, productie) elke module en feature op deze site draait. De status is de ontwikkelstaat van de code, bepaald door de release: verder dan dat draait hij nooit, wat hier ook gekozen is. Een feature draait ook nooit verder dan zijn module. Bij een update volgt een nieuwe release de waarden die je niet hebt aangepast; heeft deze site een eigen waarde en verandert de release die, dan wordt het je eerst gevraagd."
+
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:282
+msgid "Runs on"
+msgstr "Draait op"
+
+#. translators: %s: status label, such as Development.
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:309
+#, php-format
+msgid "Status: %s. The code is not ready for more, so it runs up to there."
+msgstr "Status: %s. De code is nog niet klaar voor meer, dus hij draait tot daar."
+
+#. translators: %s: status label, such as Development.
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:311
+#, php-format
+msgid "Status: %s"
+msgstr "Status: %s"
+
+#. translators: %s: the tier the new release sets.
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:335
+#, php-format
+msgid "The new release sets %s; saving this tab keeps the value chosen here."
+msgstr "De nieuwe release zet %s; opslaan op dit tabblad houdt de waarde die hier gekozen is."
+
+#: src/Notifiers/DeploymentQuestion.php:169
+msgid "The new release changes where these modules and features may run, but this site has its own setting for them. Until you answer, this site's setting stays. Either answer is final; you can change it later under Settings → Core Functionality, Deployment Management."
+msgstr "De nieuwe release verandert waar deze modules en features mogen draaien, maar deze site heeft er een eigen instelling voor. Tot je antwoordt, blijft de instelling van deze site staan. Beide antwoorden zijn definitief; je kunt het later wijzigen onder Instellingen → Core Functionality, Deploymentbeheer."
+
+#. translators: 1: this site's tier, 2: the tier of the new release.
+#: src/Notifiers/DeploymentQuestion.php:200
+#, php-format
+msgid "runs on this site up to %1$s; the new release sets %2$s."
+msgstr "draait op deze site tot %1$s; de nieuwe release zet %2$s."
+
+#: src/Notifiers/DeploymentQuestion.php:205
+msgid "Follow the release"
+msgstr "Release volgen"
+
+#: src/Notifiers/DeploymentQuestion.php:206
+msgid "Keep this site's setting"
+msgstr "Eigen instelling houden"
+
+#. translators: %s: module or feature name.
+#: src/Notifiers/DeploymentQuestion.php:283
+#, php-format
+msgid "%s now follows the release."
+msgstr "%s volgt nu de release."
+
+#. translators: %s: module or feature name.
+#: src/Notifiers/DeploymentQuestion.php:285
+#, php-format
+msgid "%s keeps this site's setting."
+msgstr "%s houdt de eigen instelling van deze site."

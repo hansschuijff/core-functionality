@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T13:34:12+01:00\n"
+"POT-Creation-Date: 2026-10-31T19:34:05+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -129,19 +129,41 @@ msgstr ""
 msgid "Settings saved successfully."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:94
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:96
 msgid "Deployment Management"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:104
-msgid "Here you can manage the deployment scope of modules and features. It gives allowance to be launched in the corresponding or lower environments (development, staging, production). Although you can set a feature to a higher deployment than the module it is part of, the feature will not be launched beyond the deployment scope of the parent module. Only if both module and feature are set to production deployment, the feature will be launched in a production environment."
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:106
+msgid "Here you set up to which environment (development, staging, production) each module and feature runs on this site. Its status is the development state of its code, set by the release: it never runs beyond that, whatever is chosen here. A feature also never runs beyond its module. On an update, a new release follows the values you did not change; where this site has its own value and the release changes it, you are asked first."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:359
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:282
+msgid "Runs on"
+msgstr ""
+
+#. translators: %s: status label, such as Development.
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:309
+#, php-format
+msgid "Status: %s. The code is not ready for more, so it runs up to there."
+msgstr ""
+
+#. translators: %s: status label, such as Development.
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:311
+#, php-format
+msgid "Status: %s"
+msgstr ""
+
+#. translators: %s: the tier the new release sets.
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:335
+#, php-format
+msgid "The new release sets %s; saving this tab keeps the value chosen here."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:434
 msgid "Critical Error: Failed to save the deployment states."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:363
+#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:441
 msgid "Release status settings saved successfully. Remember to commit changes in Git! 🚀"
 msgstr ""
 
@@ -3579,7 +3601,7 @@ msgid "%s Rates"
 msgstr ""
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:69
-#: src/Modules/ActiveWoo/ActiveWoo.php:41
+#: src/Modules/ActiveWoo/ActiveWoo.php:42
 msgid "ActiveWoo"
 msgstr ""
 
@@ -3906,7 +3928,7 @@ msgstr ""
 msgid "Essence Pro Theme Customizer"
 msgstr ""
 
-#: src/Modules/ActiveWoo/ActiveWoo.php:42
+#: src/Modules/ActiveWoo/ActiveWoo.php:43
 msgid "Customizations and adaptations for the ActiveWoo plugin."
 msgstr ""
 
@@ -4471,23 +4493,23 @@ msgstr ""
 msgid "Take the default or a JSON file into the editor (replace or merge), or download the menu as JSON."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:45
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
 msgid "Admin Toolbar Styles Fixer Feature"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:47
 msgid "The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:45
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
 msgid "Admin Toolbar Visualizer Feature"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:47
 msgid "The Admin Toolbar Visualizer Feature Maps active runtime Node ID keys for development troubleshooting."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:83
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:85
 msgid "Node ID's"
 msgstr ""
 
@@ -5345,34 +5367,34 @@ msgstr ""
 msgid "On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements)."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:294
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:296
 msgid "Total excl. VAT"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:302
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:304
 msgid "VAT 0%"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:308
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:310
 msgid "Total incl. VAT"
 msgstr ""
 
 #. translators: %s: VAT rate, such as 21%.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:403
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:405
 #, php-format
 msgid "Amount excl. VAT %s"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:502
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:504
 msgid "Intra-Community supply, VAT 0% (article 138 of VAT Directive 2006/112/EC)."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:505
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:507
 msgid "VAT reverse-charged (article 196 of VAT Directive 2006/112/EC)."
 msgstr ""
 
 #. translators: %s: the customer's VAT number.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:509
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:511
 #, php-format
 msgid "Customer VAT number: %s"
 msgstr ""
@@ -5471,6 +5493,7 @@ msgstr ""
 
 #. translators: 1: feature name, 2: module name.
 #: src/Notifiers/ActivationQuestion.php:208
+#: src/Notifiers/DeploymentQuestion.php:243
 #, php-format
 msgid "%1$s (module %2$s)"
 msgstr ""
@@ -5485,6 +5508,36 @@ msgstr ""
 #: src/Notifiers/ActivationQuestion.php:250
 #, php-format
 msgid "%s stays off."
+msgstr ""
+
+#: src/Notifiers/DeploymentQuestion.php:169
+msgid "The new release changes where these modules and features may run, but this site has its own setting for them. Until you answer, this site's setting stays. Either answer is final; you can change it later under Settings → Core Functionality, Deployment Management."
+msgstr ""
+
+#. translators: 1: this site's tier, 2: the tier of the new release.
+#: src/Notifiers/DeploymentQuestion.php:200
+#, php-format
+msgid "runs on this site up to %1$s; the new release sets %2$s."
+msgstr ""
+
+#: src/Notifiers/DeploymentQuestion.php:205
+msgid "Follow the release"
+msgstr ""
+
+#: src/Notifiers/DeploymentQuestion.php:206
+msgid "Keep this site's setting"
+msgstr ""
+
+#. translators: %s: module or feature name.
+#: src/Notifiers/DeploymentQuestion.php:283
+#, php-format
+msgid "%s now follows the release."
+msgstr ""
+
+#. translators: %s: module or feature name.
+#: src/Notifiers/DeploymentQuestion.php:285
+#, php-format
+msgid "%s keeps this site's setting."
 msgstr ""
 
 #: src/Notifiers/Drivers/Pushover.php:86
@@ -5536,16 +5589,16 @@ msgid "The target private user or group chat ID window."
 msgstr ""
 
 #. translators: 1: plugin version, 2: comma-separated list of module and feature names.
-#: src/Plugin.php:294
+#: src/Plugin.php:298
 #, php-format
 msgid "Core Functionality %1$s added: %2$s. Check under Settings → Core Functionality whether they should be enabled on this site."
 msgstr ""
 
-#: src/Plugin.php:380
+#: src/Plugin.php:384
 msgid "De Witte Prins - Core Functionality has stopped!"
 msgstr ""
 
-#: src/Plugin.php:381
+#: src/Plugin.php:385
 msgid "The plugin stopped because its installation is damaged. The rest of the website works normally, but everything this plugin does is switched off."
 msgstr ""
 
