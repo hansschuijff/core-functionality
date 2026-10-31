@@ -4050,7 +4050,7 @@ msgstr "Alles inklappen"
 msgid "Expand all"
 msgstr "Alles uitklappen"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:170
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:172
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
@@ -5557,15 +5557,15 @@ msgstr "Berichtlabels"
 msgid "Release Management"
 msgstr "Releasebeheer"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:222
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:228
 msgid "Module and features"
 msgstr "Module en features"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:286
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:334
 msgid "This installation's configuration adjusts it."
 msgstr "De configuratie van deze installatie past dit aan."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:395
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:443
 msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
 msgstr "Het releasebestand kon niet worden geschreven. Controleer of de map settings van de plugin beschrijfbaar is."
 
@@ -5597,31 +5597,31 @@ msgstr "Optiekluis"
 msgid "For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment."
 msgstr "Voor de ontwikkelaars van deze plugin: hoe ver elke module en feature gebouwd is, en hoe vrij hij per omgeving geactiveerd mag worden."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:171
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:173
 msgid "This page is only for the developers of the modules and features in this plugin."
 msgstr "Deze pagina is alleen voor de ontwikkelaars van de modules en features in deze plugin."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:172
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
 msgid "The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment."
 msgstr "De bouwstatus zegt hoe ver een module of feature ontwikkeld is. Die komt overeen met de omgevingen waarin hij actief mag zijn, zodat een feature die nog niet klaar is voor productie nooit op een productieomgeving geactiveerd kan worden."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:173
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
 msgid "Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built."
 msgstr "Per omgeving kies je of een module of feature daar altijd actief is, altijd inactief, of instelbaar door de beheerder. Die keuze hangt meer af van het doel van de module of feature dan van hoe ver hij gebouwd is."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
 msgid "These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point."
 msgstr "Deze instellingen worden opgeslagen in een instellingenbestand dat met de release meegaat. Het legt de randvoorwaarden vast voor het gebruik van deze plugin op andere systemen, zodat de beheerders daar vanaf een veilig startpunt beginnen."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:224
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:230
 msgid "Activation per environment"
 msgstr "Activering per omgeving"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:329
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:377
 msgid "Build status"
 msgstr "Bouwstatus"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:399
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:447
 msgid "The settings are saved in settings/components-release.php. Remember to commit it."
 msgstr "De instellingen zijn opgeslagen in settings/components-release.php. Vergeet niet die te committen."
 
@@ -5636,3 +5636,11 @@ msgstr "Instelbaar"
 #: src/Enums/EnvironmentRule.php:47
 msgid "Always inactive"
 msgstr "Altijd inactief"
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
+msgid "A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active."
+msgstr "Een module is alleen de container van zijn features en volgt ze: hij neemt de ruimste instelling van zijn features over, zodat hij er is waar een van zijn features actief mag zijn."
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:292
+msgid "Follows its features."
+msgstr "Volgt zijn features."
