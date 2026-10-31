@@ -1,0 +1,25 @@
+/**
+ * Feature Activation tab.
+ *
+ * @package DeWittePrins\CoreFunctionality
+ * @since   1.0.0
+ */
+
+/* One feature checkbox (not inline, so the filter below can hide it). */
+.dwp-feature-row {
+	display: block;
+	margin-bottom: 8px;
+}
+
+/* A component that waits for an administrator's confirmation before it runs. */
+.dwp-awaiting-confirmation {
+	color: #996800;
+	font-weight: 400;
+	font-style: italic;
+}
+
+/* "Show only disabled": hide what runs as saved. */
+.dwp-modules-grid.is-showing-disabled-only .dwp-feature-row[data-saved-running="1"],
+.dwp-modules-grid.is-showing-disabled-only .dwp-module-card.is-filtered-out {
+	display: none;
+}

@@ -23,6 +23,7 @@ use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSe
 use function __;
 use function checked;
 use function esc_attr;
+use function esc_attr__;
 use function esc_html;
 use function esc_html__;
 use function esc_html_e;
@@ -97,10 +98,10 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_stylesheets(): array {
-		// $base_url = plugins_url( 'assets/css/', __FILE__ );
+		$base_url = plugins_url( 'assets/css/', __FILE__ );
 
 		return array(
-			// 'dwp-cf-feature-activation-css' => $base_url . 'feature-activation.css',
+			'dwp-cf-feature-activation-css' => $base_url . 'feature-activation.css',
 		);
 	}
 
@@ -163,12 +164,18 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	 */
 	private function render_section_start() {
 		$button_text_select_everything = esc_html__( 'Select all', 'core-functionality' );
+		$button_text_show_disabled     = esc_attr__( 'Show only disabled', 'core-functionality' );
+		$button_text_show_all          = esc_attr__( 'Show all', 'core-functionality' );
+		$text_nothing_disabled         = esc_html__( 'All modules and features are enabled.', 'core-functionality' );
+
 		echo <<<HTML
 			<div class="dewitteprins-global-actions" style="margin: 20px 0; display: flex; gap: 10px; align-items: center;">
 				<button type="button" class="button button-secondary js-dwp-toggle-all" data-state="select">
 					{$button_text_select_everything}
 				</button>
+				<button type="button" class="button button-secondary js-dwp-filter-disabled" aria-pressed="false" data-label-filter="{$button_text_show_disabled}" data-label-all="{$button_text_show_all}">{$button_text_show_disabled}</button>
 			</div>
+			<p class="dwp-nothing-disabled js-dwp-nothing-disabled" hidden>{$text_nothing_disabled}</p>
 			<div class="dwp-modules-grid">
 		HTML;
 	}
@@ -189,13 +196,15 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 			: $this->plugin->components_register->is_enabled( $module_fqcn );
 		$module_class   = esc_attr( $module_fqcn );
 		$is_enabled     = checked( $module_enabled, true, false );
+		$saved_running  = $this->get_saved_running_attr( $module_fqcn );
+		$awaiting_note  = $this->render_awaiting_confirmation_note( $module_fqcn );
 
 		echo <<<HTML
 			<div class="dwp-module-card" style="border: 1px solid #ccd0d4; padding: 20px; margin-bottom: 20px; background: #fff; max-width: 800px;">
 				<!-- module -->
-				<label style="font-size: 15px; font-weight: bold; display: block; margin-bottom: 5px;">
+				<label class="dwp-module-row" data-saved-running="{$saved_running}" style="font-size: 15px; font-weight: bold; display: block; margin-bottom: 5px;">
 					<input type="checkbox" class="js-dwp-module-toggle" name="dwp_active_classes[{$module_fqcn}]" value="{$module_class}" {$is_enabled} />
-					{$module_name}
+					{$module_name}{$awaiting_note}
 				</label>
 				<?php
 		HTML;
@@ -232,15 +241,50 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 			? $this->default_enabled_setting
 			: $this->plugin->components_register->is_enabled( $feature_fqcn );
 		$is_enabled      = checked( $feature_enabled, true, false );
+		$saved_running   = $this->get_saved_running_attr( $feature_fqcn );
+		$awaiting_note   = $this->render_awaiting_confirmation_note( $feature_fqcn );
 		$feature_fqcn    = esc_attr( $feature_fqcn );
 		$feature_name    = esc_html( $feature_name );
 
 		echo <<<HTML
-			<label style="display: block; margin-bottom: 8px;">
+			<label class="dwp-feature-row" data-saved-running="{$saved_running}">
 				<input type="checkbox" class="js-dwp-feature-toggle" name="dwp_active_classes[{$feature_fqcn}]" value="{$feature_fqcn}" {$is_enabled} />
-				{$feature_name}
+				{$feature_name}{$awaiting_note}
 			</label>
 		HTML;
+	}
+
+	/**
+	 * Returns the value of the data attribute that tells the filter whether a component runs as saved.
+	 *
+	 * The filter works on the saved state, not on the checkboxes, so a row does not vanish while it is
+	 * being ticked. A component that waits for confirmation does not run, so it counts as disabled.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully qualified class name of a module or feature.
+	 * @return string '1' when enabled and not waiting for confirmation, '0' otherwise.
+	 */
+	private function get_saved_running_attr( string $fqcn ): string {
+		$register = $this->plugin->components_register;
+
+		return $register->is_enabled( $fqcn ) && ! $register->awaits_activation_confirmation( $fqcn ) ? '1' : '0';
+	}
+
+	/**
+	 * Returns the note behind the name of a component that waits for an administrator's confirmation.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully qualified class name of a module or feature.
+	 * @return string The note (HTML), or '' when it does not wait.
+	 */
+	private function render_awaiting_confirmation_note( string $fqcn ): string {
+		if ( ! $this->plugin->components_register->awaits_activation_confirmation( $fqcn ) ) {
+			return '';
+		}
+
+		$note_text = esc_html__( 'awaits your confirmation: saving this tab confirms the choice', 'core-functionality' );
+
+		return ' <span class="dwp-awaiting-confirmation">(' . $note_text . ')</span>';
 	}
 
 	/**
@@ -317,7 +361,13 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 			$sanitized_classes[] = sanitize_text_field( $class_name );
 		}
 
-		$this->plugin->components_register->save( Register::ENABLED, $sanitized_classes );
+		$register = $this->plugin->components_register;
+
+		// Every component that waited for confirmation was shown on this tab, so saving it is the decision.
+		$awaiting_confirmation = $register->get_components_awaiting_confirmation();
+
+		$register->save( Register::ENABLED, $sanitized_classes );
+		$register->mark_activation_decided( $awaiting_confirmation );
 
 		return true;
 	}
@@ -333,6 +383,9 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 		$enabled_components = $this->get_initial_enabled_components_array();
 
 		$this->plugin->components_register->save( Register::ENABLED, $enabled_components );
+
+		// The reset switches everything on, so components that ask for confirmation ask again.
+		$this->plugin->components_register->reset_activation_decisions();
 
 		return __( 'All modules and features where reset to their default settings.', 'core-functionality' );
 	}

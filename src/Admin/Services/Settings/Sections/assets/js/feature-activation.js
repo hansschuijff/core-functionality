@@ -104,6 +104,40 @@ jQuery( document ).ready( function( $ ) {
 		}
 	}
 
+	// ==========================================================================
+	// 4. FILTER: SHOW ONLY DISABLED MODULES AND FEATURES
+	// ==========================================================================
+	// Works on the saved state (data-saved-running), so a row stays visible while it is ticked.
+	// Hidden checkboxes are still submitted, so filtering never changes what is saved.
+	var $filterBtn     = $( '.js-dwp-filter-disabled' );
+	var $nothingNotice = $( '.js-dwp-nothing-disabled' );
+
+	$filterBtn.on( 'click', function( e ) {
+		e.preventDefault();
+
+		var isFiltering = 'true' !== $filterBtn.attr( 'aria-pressed' );
+		var visibleCards = 0;
+
+		$moduleGrid.toggleClass( 'is-showing-disabled-only', isFiltering );
+
+		$moduleGrid.find( '.dwp-module-card' ).each( function() {
+			var $card          = $( this );
+			var moduleDisabled = '0' === $card.find( '.dwp-module-row' ).attr( 'data-saved-running' );
+			var hasDisabled    = $card.find( '.dwp-feature-row[data-saved-running="0"]' ).length > 0;
+			var filteredOut    = isFiltering && ! moduleDisabled && ! hasDisabled;
+
+			$card.toggleClass( 'is-filtered-out', filteredOut );
+			if ( ! filteredOut ) {
+				visibleCards++;
+			}
+		});
+
+		$nothingNotice.prop( 'hidden', ! isFiltering || visibleCards > 0 );
+		$filterBtn
+			.attr( 'aria-pressed', isFiltering ? 'true' : 'false' )
+			.text( $filterBtn.attr( isFiltering ? 'data-label-all' : 'data-label-filter' ) );
+	});
+
 	// Launch structural evaluations.
 	initFeatureActivationState();
 });
