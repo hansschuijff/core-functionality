@@ -101,6 +101,14 @@ interface ModuleInterface {
 	public static function uses_features(): array;
 
 	/**
+	 * Requests whether an administrator must confirm the module before it runs.
+	 *
+	 * @since  1.0.0
+	 * @return bool True when activation needs confirmation.
+	 */
+	public static function needs_activation_confirmation(): bool;
+
+	/**
 	 * Initiates the module base configuration layer.
 	 *
 	 * Executed exclusively by the central loader orchestrator once the module's

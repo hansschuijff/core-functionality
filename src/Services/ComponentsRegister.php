@@ -112,6 +112,22 @@ class ComponentsRegister {
 	private const NEW_COMPONENTS_TRANSIENT = 'dwp_cf_new_components';
 
 	/**
+	 * Settings token under which this site keeps the components whose activation an administrator decided on.
+	 *
+	 * Only in the database, never in the register files: a decision belongs to one site.
+	 *
+	 * @var string
+	 */
+	private const ACTIVATION_DECIDED_SETTING = 'components-activation-decided';
+
+	/**
+	 * Components whose activation was decided on this site (FQCN => true).
+	 *
+	 * @var array<string, bool>|null
+	 */
+	private ?array $activation_decided = null;
+
+	/**
 	 * ComponentsRegister Constructor.
 	 *
 	 * Hydrates all framework register matrices seamlessly using the unified
@@ -468,6 +484,7 @@ class ComponentsRegister {
 			if ( ! $this->is_enabled( $module_fqcn )
 			|| ! $this->current_orientation_allowed( $module_fqcn )
 			|| ! $this->current_deployment_allowed( $module_fqcn )
+			|| $this->awaits_activation_confirmation( $module_fqcn )
 			) {
 				continue;
 			}
@@ -478,6 +495,7 @@ class ComponentsRegister {
 				if ( ! $this->is_enabled( $feature_fqcn )
 				|| ! $this->current_orientation_allowed( $feature_fqcn )
 				|| ! $this->current_deployment_allowed( $feature_fqcn )
+				|| $this->awaits_activation_confirmation( $feature_fqcn )
 				) {
 					continue;
 				}
@@ -553,6 +571,141 @@ class ComponentsRegister {
 		}
 
 		return array_key_exists( $fqcn, $this->enabled_components );
+	}
+
+	/**
+	 * Checks if a module or feature waits for an administrator to confirm its activation.
+	 *
+	 * That is the case when it asks for confirmation (ComponentMeta::$confirm_activation), nobody
+	 * decided on it on this site yet, and its deployment tier lets it run on this server. Until then
+	 * it does not launch, even when the register enables it (as a register file from another site may do).
+	 * Reads the component's meta, so call it after init.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully Qualified Class Name of a module or feature.
+	 * @return bool         True if it waits for confirmation, false otherwise.
+	 */
+	public function awaits_activation_confirmation( string $fqcn ): bool {
+		if ( ! class_exists( $fqcn ) || ! method_exists( $fqcn, 'needs_activation_confirmation' ) ) {
+			return false;
+		}
+
+		return $fqcn::needs_activation_confirmation()
+			&& ! array_key_exists( $fqcn, $this->get_activation_decisions() )
+			&& $this->current_deployment_allowed( $fqcn );
+	}
+
+	/**
+	 * Returns the modules and features that wait for an administrator to confirm their activation.
+	 *
+	 * @since  1.0.0
+	 * @return string[] Fully qualified class names.
+	 */
+	public function get_components_awaiting_confirmation(): array {
+		$components = $this->get_register( Register::COMPONENTS );
+
+		return array_values(
+			array_filter(
+				$this->flatten_components( $components ),
+				array( $this, 'awaits_activation_confirmation' )
+			)
+		);
+	}
+
+	/**
+	 * Records an administrator's answer to the activation question of a module or feature.
+	 *
+	 * Switching a feature on switches its module on too, otherwise it still would not run.
+	 * Either answer is final: the question is not asked again.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn   Fully Qualified Class Name of a module or feature.
+	 * @param  bool   $enable True to switch it on, false to leave it off.
+	 * @return void
+	 */
+	public function decide_activation( string $fqcn, bool $enable ): void {
+		$enabled_components = $this->get_register( Register::ENABLED );
+
+		if ( $enable ) {
+			$enabled_components[ $fqcn ] = true;
+
+			$module_fqcn = $this->get_module_of_feature( $fqcn );
+			if ( false !== $module_fqcn ) {
+				$enabled_components[ $module_fqcn ] = true;
+			}
+		} else {
+			unset( $enabled_components[ $fqcn ] );
+		}
+
+		$this->save( Register::ENABLED, $enabled_components );
+		$this->mark_activation_decided( array( $fqcn ) );
+	}
+
+	/**
+	 * Records that the activation of the given modules and features was decided on, as their checkboxes
+	 * on the Feature Activation tab were saved.
+	 *
+	 * @since  1.0.0
+	 * @param  string[] $fqcns Fully qualified class names.
+	 * @return void
+	 */
+	public function mark_activation_decided( array $fqcns ): void {
+		if ( empty( $fqcns ) ) {
+			return;
+		}
+
+		$decisions = $this->get_activation_decisions();
+		foreach ( $fqcns as $fqcn ) {
+			$decisions[ $fqcn ] = true;
+		}
+
+		$this->plugin->settings->save( self::ACTIVATION_DECIDED_SETTING, $decisions );
+		$this->activation_decided = $decisions;
+	}
+
+	/**
+	 * Forgets every activation decision, so components that ask for confirmation ask again.
+	 *
+	 * Used by the factory reset, which switches everything on.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function reset_activation_decisions(): void {
+		$this->plugin->settings->delete( self::ACTIVATION_DECIDED_SETTING );
+		$this->activation_decided = array();
+	}
+
+	/**
+	 * Returns the components whose activation was decided on this site.
+	 *
+	 * @since  1.0.0
+	 * @return array<string, bool> FQCN => true.
+	 */
+	private function get_activation_decisions(): array {
+		if ( null === $this->activation_decided ) {
+			$decisions                = $this->plugin->settings->get( self::ACTIVATION_DECIDED_SETTING, default: array() );
+			$this->activation_decided = is_array( $decisions ) ? $decisions : array();
+		}
+
+		return $this->activation_decided;
+	}
+
+	/**
+	 * Returns the module a feature belongs to.
+	 *
+	 * @since  1.0.0
+	 * @param  string $feature_fqcn Fully Qualified Class Name of a feature.
+	 * @return string|false         The module's class name, or false for a module or an unknown class.
+	 */
+	public function get_module_of_feature( string $feature_fqcn ): string|false {
+		foreach ( $this->get_register( Register::COMPONENTS ) as $module_fqcn => $features_fqcn ) {
+			if ( in_array( $feature_fqcn, (array) $features_fqcn, true ) ) {
+				return $module_fqcn;
+			}
+		}
+
+		return false;
 	}
 
 	/**

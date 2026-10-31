@@ -110,4 +110,14 @@ trait DescribedByMeta {
 	public static function uses_features(): array {
 		return static::meta()->uses_features;
 	}
+
+	/**
+	 * Returns whether an administrator must confirm the module or feature before it runs.
+	 *
+	 * @since  1.0.0
+	 * @return bool True when activation needs confirmation.
+	 */
+	public static function needs_activation_confirmation(): bool {
+		return static::meta()->confirm_activation;
+	}
 }

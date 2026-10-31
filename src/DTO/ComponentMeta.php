@@ -35,6 +35,8 @@ readonly class ComponentMeta {
 	 * @param Orientation  $orientation   Where it runs: admin, front end or both.
 	 * @param string|array $dependencies  Environment id, or an and/or array of ids, that must be ready.
 	 * @param string[]     $uses_features Fully qualified class names of features it needs.
+	 * @param bool         $confirm_activation Whether an administrator must confirm it before it runs on a
+	 *                                         site, for example because it replaces code that may still run there.
 	 */
 	public function __construct(
 		public string $id,
@@ -43,5 +45,6 @@ readonly class ComponentMeta {
 		public Orientation $orientation = Orientation::BOTH,
 		public string|array $dependencies = array(),
 		public array $uses_features = array(),
+		public bool $confirm_activation = false,
 	) {}
 }

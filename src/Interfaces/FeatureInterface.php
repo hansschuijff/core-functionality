@@ -102,6 +102,14 @@ interface FeatureInterface {
 	public static function get_orientation(): Orientation;
 
 	/**
+	 * Requests whether an administrator must confirm the feature before it runs.
+	 *
+	 * @since  1.0.0
+	 * @return bool True when activation needs confirmation.
+	 */
+	public static function needs_activation_confirmation(): bool;
+
+	/**
 	 * Initiates the specific filters, action hooks, and layout alterations.
 	 *
 	 * @since  1.0.0
