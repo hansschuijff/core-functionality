@@ -115,3 +115,18 @@
 .dwp-release-table .dwp-release-module th {
 	padding-left: 10px;
 }
+
+/* A module with features follows them: its values are shown as text, not as selects. */
+.dwp-release-table .dwp-release-derived {
+	padding-left: 12px;
+	color: #50575e;
+}
+
+.dwp-release-derived-note {
+	display: block;
+	margin-top: 2px;
+	font-size: 12px;
+	font-weight: 400;
+	font-style: italic;
+	color: #646970;
+}
