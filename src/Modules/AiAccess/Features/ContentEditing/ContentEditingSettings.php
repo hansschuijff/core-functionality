@@ -104,7 +104,7 @@ class ContentEditingSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_name(): string {
-		return __( 'AI Access', 'core-functionality' );
+		return __( 'Settings', 'core-functionality' );
 	}
 
 	/**

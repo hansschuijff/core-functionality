@@ -50,7 +50,7 @@ class Configuration extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:          'reader_experience_configuration',
-			name:        __( 'Reader Experience Settings', 'core-functionality' ),
+			name:        __( 'Settings', 'core-functionality' ),
 			description: __( 'A settings tab for the Reader Experience plugin, which itself is steered by filters only.', 'core-functionality' ),
 			status:      Deployment::PRODUCTION,
 		);

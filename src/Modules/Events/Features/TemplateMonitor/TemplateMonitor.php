@@ -113,7 +113,7 @@ class TemplateMonitor extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:          'events_template_monitor',
-			name:        __( 'Event template check', 'core-functionality' ),
+			name:        __( 'Template check', 'core-functionality' ),
 			description: __( 'Warns when a template override of The Events Calendar or Event Tickets is out of date or overrides a template the plugin no longer has.', 'core-functionality' ),
 			status:      Deployment::PRODUCTION,
 		);

@@ -35,7 +35,7 @@ msgid "https://dewitteprins.nl"
 msgstr ""
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:163
-#: src/Admin/Services/Settings/AdminSettingsPage.php:515
+#: src/Admin/Services/Settings/AdminSettingsPage.php:516
 msgid "Core Functionality Settings"
 msgstr "Instellingen Core Functionality"
 
@@ -74,6 +74,9 @@ msgstr "Core Functionality"
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:80
 #: src/Environment/Plugins/YoastSeo.php:86
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:483
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:107
+#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
+#: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:130
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -85,27 +88,27 @@ msgstr "Deze sectie bestaat niet (meer). Kies een sectie in het menu."
 msgid "Type to search... (↑↓ to navigate, Enter)"
 msgstr "Typ om te zoeken… (↑↓ om te navigeren, Enter)"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:498
+#: src/Admin/Services/Settings/AdminSettingsPage.php:499
 msgid "Search... (/)"
 msgstr "Zoeken… (/)"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:499
+#: src/Admin/Services/Settings/AdminSettingsPage.php:500
 msgid "Collapse menu"
 msgstr "Menu inklappen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:531
+#: src/Admin/Services/Settings/AdminSettingsPage.php:532
 msgid "No items found"
 msgstr "Geen items gevonden"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:761
+#: src/Admin/Services/Settings/AdminSettingsPage.php:783
 msgid "Reset to Factory Defaults"
 msgstr "Terug naar fabrieksinstellingen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:762
+#: src/Admin/Services/Settings/AdminSettingsPage.php:784
 msgid "🚨 CRITICAL WARNING:\\n\\nAre you sure you want to trigger a settings reset for this section?"
 msgstr "🚨 BELANGRIJKE WAARSCHUWING:\\n\\nWeet je zeker dat je de instellingen van dit onderdeel wilt terugzetten?"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:778
+#: src/Admin/Services/Settings/AdminSettingsPage.php:800
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:400
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:405
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
@@ -113,19 +116,19 @@ msgstr "🚨 BELANGRIJKE WAARSCHUWING:\\n\\nWeet je zeker dat je de instellingen
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:813
+#: src/Admin/Services/Settings/AdminSettingsPage.php:835
 msgid "Security check failed. Please try again."
 msgstr "Beveiligingscontrole mislukt. Probeer het opnieuw."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:818
+#: src/Admin/Services/Settings/AdminSettingsPage.php:840
 msgid "You do not have sufficient permissions to update this settings."
 msgstr "Je hebt onvoldoende rechten om deze instellingen te wijzigen."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:840
+#: src/Admin/Services/Settings/AdminSettingsPage.php:862
 msgid "Validation failed. Please double-check your entries."
 msgstr "Validatie mislukt. Controleer je invoer."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:847
+#: src/Admin/Services/Settings/AdminSettingsPage.php:869
 msgid "Settings saved successfully."
 msgstr "Instellingen opgeslagen."
 
@@ -2151,6 +2154,7 @@ msgid "Certificate Templates"
 msgstr "Certificaatsjablonen"
 
 #: src/Environment/Plugins/SenseiCertificates.php:77
+#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:176
 msgid "Templates"
 msgstr "Sjablonen"
 
@@ -3890,10 +3894,6 @@ msgstr "Customizer Essence Pro"
 msgid "Customizations and adaptations for the ActiveWoo plugin."
 msgstr "Aanpassingen voor de ActiveWoo-plugin."
 
-#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:52
-msgid "Keep ActiveWoo License Alive"
-msgstr "ActiveWoo-licentie actief houden"
-
 #: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:53
 msgid "Sustains a copy of the license in transient, so the plugin will keep thinking it is licensed."
 msgstr "Bewaart een kopie van de licentie in een transient, zodat de plugin blijft denken dat hij gelicentieerd is."
@@ -3905,10 +3905,6 @@ msgstr "Adminmenu"
 #: src/Modules/AdminMenu/AdminMenu.php:41
 msgid "Provides advanced layout overrides, performance enhancements, and custom nodes filtering for the WordPress admin menu."
 msgstr "Aanpassingen in opmaak, snelheid en het filteren van onderdelen van het WordPress-adminmenu."
-
-#: src/Modules/AdminMenu/Features/AdminMenuArchitect/AdminMenuArchitect.php:41
-msgid "Admin Menu Architect"
-msgstr "Adminmenu indelen"
 
 #: src/Modules/AdminMenu/Features/AdminMenuArchitect/AdminMenuArchitect.php:42
 msgid "Architects, structures and cleans up the admin side navigation."
@@ -3922,10 +3918,6 @@ msgstr "Admin-toolbar"
 msgid "Provides advanced layout overrides, performance enhancements, and custom nodes filtering for the WordPress admin bar."
 msgstr "Aanpassingen in opmaak, snelheid en het filteren van onderdelen van de WordPress-admin-toolbar."
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
-msgid "Admin Toolbar Cleaner Feature"
-msgstr "Admin-toolbar opruimen"
-
 #: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:58
 msgid "Moves unwanted Admin Toolbar shortcuts to an overflow submenu, based on a negative-selection user matrix."
 msgstr "Verplaatst ongewenste snelkoppelingen in de admin-toolbar naar een submenu \"Meer\", op basis van wat je niet selecteert."
@@ -3933,10 +3925,6 @@ msgstr "Verplaatst ongewenste snelkoppelingen in de admin-toolbar naar een subme
 #: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:152
 msgid "More"
 msgstr "Meer"
-
-#: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:85
-msgid "Admin Toolbar Cleaner"
-msgstr "Admin-toolbar opruimen"
 
 #: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:96
 msgid "Configure your top bar visibility layout strategy. Top-level shortcut nodes left unchecked will be automatically filtered and evacuated into the central \"More\" overflow dropdown menu."
@@ -3958,17 +3946,9 @@ msgstr "In de hoofdbalk houden (zichtbaar)"
 msgid "Save Toolbar Visibility Filter"
 msgstr "Zichtbaarheid toolbar opslaan"
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
-msgid "Admin Toolbar Builder Feature"
-msgstr "Menubouwer admin-toolbar"
-
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:70
 msgid "The Admin Toolbar Builder Feature builds a navigation shortcuts menu in the admin toolbar."
 msgstr "Bouwt een eigen menu in de admin-toolbar."
-
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:116
-msgid "Admin Toolbar Menu Builder"
-msgstr "Menubouwer admin-toolbar"
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:127
 msgid "Compose the shortcuts menu of the admin toolbar from the links of all known plugins and themes. Links of plugins that are not active are kept, but only shown once the plugin is active."
@@ -4451,17 +4431,9 @@ msgstr "Importeren / exporteren…"
 msgid "Take the default or a JSON file into the editor (replace or merge), or download the menu as JSON."
 msgstr "Neem de standaard of een JSON-bestand over in de editor (vervangen of samenvoegen), of download het menu als JSON."
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
-msgid "Admin Toolbar Styles Fixer Feature"
-msgstr "Opmaakcorrecties admin-toolbar"
-
 #: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:47
 msgid "The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar."
 msgstr "Lost een paar opmaakproblemen in de admin-toolbar op."
-
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
-msgid "Admin Toolbar Visualizer Feature"
-msgstr "Node-ID's in de admin-toolbar tonen"
 
 #: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:47
 msgid "The Admin Toolbar Visualizer Feature Maps active runtime Node ID keys for development troubleshooting."
@@ -4472,7 +4444,6 @@ msgid "Node ID's"
 msgstr "Node-id's"
 
 #: src/Modules/AiAccess/AiAccess.php:47
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:107
 msgid "AI Access"
 msgstr "AI-toegang"
 
@@ -4905,7 +4876,6 @@ msgstr "Inhoudstype: %s"
 msgid "Additions to The Events Calendar and Event Tickets."
 msgstr "Aanvullingen op The Events Calendar en Event Tickets."
 
-#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:176
 #: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:362
 msgid "Event templates"
 msgstr "Evenementtemplates"
@@ -5094,17 +5064,9 @@ msgstr "De vorige versie kon niet worden teruggezet. Er is niets gewijzigd."
 msgid "The previous version is restored; the replaced version is now the previous one."
 msgstr "De vorige versie is teruggezet; de vervangen versie is nu de vorige."
 
-#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:87
-msgid "CF event templates"
-msgstr "CF-evenementtemplates"
-
 #: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:88
 msgid "Template overrides of The Events Calendar and Event Tickets kept for this site apart from the theme, used when the theme has no override of its own. Upload and download them as a zip on the settings page."
 msgstr "Eigen templates voor The Events Calendar en Event Tickets voor deze site, los van het thema, gebruikt als het thema geen eigen versie heeft. Upload en download ze als zip op de instellingenpagina."
-
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:116
-msgid "Event template check"
-msgstr "Controle evenementtemplates"
 
 #: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:117
 msgid "Warns when a template override of The Events Calendar or Event Tickets is out of date or overrides a template the plugin no longer has."
@@ -5158,15 +5120,10 @@ msgstr "%1$s: %2$s heeft v%3$s, de plugin heeft v%4$s"
 msgid "%1$s: %2$s has it, the plugin no longer does"
 msgstr "%1$s: %2$s heeft hem, de plugin niet meer"
 
-#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
-msgid "Reader Experience Settings"
-msgstr "Instellingen Reader Experience"
-
 #: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:54
 msgid "A settings tab for the Reader Experience plugin, which itself is steered by filters only."
 msgstr "Een instellingentabblad voor de plugin Reader Experience, die zelf alleen via filters wordt bestuurd."
 
-#: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:130
 #: src/Modules/ReaderExperience/ReaderExperience.php:44
 msgid "Reader Experience"
 msgstr "Reader Experience"
@@ -5292,10 +5249,6 @@ msgstr "Woorden per minuut moet een getal van %1$d tot %2$d zijn."
 #: src/Modules/ReaderExperience/ReaderExperience.php:45
 msgid "Settings for the Reader Experience plugin: heading anchors, reading time and feedback."
 msgstr "Instellingen voor de plugin Reader Experience: ankerlinks bij koppen, leestijd en feedback."
-
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
-msgid "Sensei message labels"
-msgstr "Labels van Sensei-berichten"
 
 #: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:55
 msgid "Calls Sensei's messages \"Sensei messages\", so they are not mixed up with posts (both \"Berichten\" in Dutch)."
@@ -5600,49 +5553,87 @@ msgid "%s keeps this site's setting."
 msgstr "%s houdt de eigen instelling van deze site."
 
 #. translators: %d: number of notices.
-#: src/Admin/Services/Settings/AdminSettingsPage.php:1045
+#: src/Admin/Services/Settings/AdminSettingsPage.php:1067
 #, php-format
 msgid "Notice from other plugins (%d)"
 msgid_plural "Notices from other plugins (%d)"
 msgstr[0] "Melding van andere plugins (%d)"
 msgstr[1] "Meldingen van andere plugins (%d)"
 
-#: src/Notifiers/ActivationQuestion.php:139
+#: src/Notifiers/ActivationQuestion.php:138
 msgid "The new feature is active."
 msgid_plural "The new features are active."
 msgstr[0] "De nieuwe functie is actief."
 msgstr[1] "De nieuwe functies zijn actief."
 
-#: src/Notifiers/ActivationQuestion.php:198
+#: src/Notifiers/ActivationQuestion.php:197
 msgid "Core Functionality has a new feature that is not active yet:"
 msgid_plural "Core Functionality has new features that are not active yet:"
 msgstr[0] "Core Functionality heeft een nieuwe functie die nog inactief is:"
 msgstr[1] "Core Functionality heeft nieuwe functies die nog inactief zijn:"
 
-#: src/Notifiers/ActivationQuestion.php:199
+#: src/Notifiers/ActivationQuestion.php:198
 msgid "May I activate it for you?"
 msgid_plural "May I activate them for you?"
 msgstr[0] "Mag ik deze voor je activeren?"
 msgstr[1] "Mag ik ze voor je activeren?"
 
-#: src/Notifiers/ActivationQuestion.php:201
+#: src/Notifiers/ActivationQuestion.php:200
 msgid "Yes"
 msgstr "Ja"
 
-#: src/Notifiers/ActivationQuestion.php:202
+#: src/Notifiers/ActivationQuestion.php:201
 msgid "No"
 msgstr "Nee"
 
-#: src/Notifiers/ActivationQuestion.php:244
+#: src/Notifiers/ActivationQuestion.php:243
 msgid "Read more"
 msgstr "Meer lezen"
 
-#: src/Notifiers/ActivationQuestion.php:245
+#: src/Notifiers/ActivationQuestion.php:244
 msgid "If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation."
 msgstr "Wil je de nieuwe functies nu nog niet gebruiken, dan kun je ze later alsnog activeren in de Instellingen, bij Core Functionality → Features activeren."
 
 #. translators: 1: feature name, 2: module name.
-#: src/Notifiers/ActivationQuestion.php:277
+#: src/Services/ComponentsRegister.php:971
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
+
+#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:52
+msgid "Keep License Alive"
+msgstr "Licentie actief houden"
+
+#: src/Modules/AdminMenu/Features/AdminMenuArchitect/AdminMenuArchitect.php:41
+msgid "Arrange"
+msgstr "Indelen"
+
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
+#: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:85
+msgid "Clean up"
+msgstr "Opruimen"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:116
+msgid "Menu Builder"
+msgstr "Menubouwer"
+
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
+msgid "Style Fixes"
+msgstr "Opmaakcorrecties"
+
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
+msgid "Show Node IDs"
+msgstr "Node-ID's tonen"
+
+#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:87
+msgid "Own templates"
+msgstr "Eigen templates"
+
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:116
+msgid "Template check"
+msgstr "Templatecontrole"
+
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
+msgid "Message labels"
+msgstr "Berichtlabels"

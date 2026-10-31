@@ -43,7 +43,7 @@ class StylesFixer extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:            'fix_admin_bar_styles',
-			name:          __( 'Admin Toolbar Styles Fixer Feature', 'core-functionality' ),
+			name:          __( 'Style Fixes', 'core-functionality' ),
 			description:   __( 'The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar.', 'core-functionality' ),
 			status:        Deployment::PRODUCTION,
 		);

@@ -424,6 +424,7 @@ class AdminSettingsPage {
 
 			<!-- STICKY HEADER AREA (Alleen voor de H1 Titel voor maximale ruimte) -->
 			<div class="dwp-gutenberg-sticky-header">
+				<?php $this->print_module_eyebrow( $section::class ); ?>
 				<h1>
 					<?php echo esc_html( $section::get_name() ); ?>
 				</h1>
@@ -581,6 +582,27 @@ class AdminSettingsPage {
 		}
 
 		return $module_fqcn::get_meta()->name;
+	}
+
+	/**
+	 * Prints the module name above the title of a feature's section, so a short title such as
+	 * "Menu Builder" keeps its context. Sections that are not part of a module print nothing.
+	 *
+	 * @since  1.0.0
+	 * @param  string $section_fqcn Fully Qualified Class Name of the section.
+	 * @return void
+	 */
+	private function print_module_eyebrow( string $section_fqcn ): void {
+		if ( ! $this->is_feature_section( $section_fqcn ) ) {
+			return;
+		}
+
+		$module_name = $this->get_module_name( $section_fqcn );
+		if ( null === $module_name ) {
+			return;
+		}
+
+		echo '<span class="dwp-gutenberg-eyebrow">' . esc_html( $module_name ) . '</span>';
 	}
 
 	/**

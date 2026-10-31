@@ -49,7 +49,7 @@ class KeepLicenseAlive extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:            'active_woo_keep_license_alive',
-			name:          __( 'Keep ActiveWoo License Alive', 'core-functionality' ),
+			name:          __( 'Keep License Alive', 'core-functionality' ),
 			description:   __( 'Sustains a copy of the license in transient, so the plugin will keep thinking it is licensed.', 'core-functionality' ),
 			status:        Deployment::PRODUCTION,
 		);

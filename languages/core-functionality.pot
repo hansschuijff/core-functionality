@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T22:43:52+01:00\n"
+"POT-Creation-Date: 2026-10-31T23:01:21+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -35,7 +35,7 @@ msgid "https://dewitteprins.nl"
 msgstr ""
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:163
-#: src/Admin/Services/Settings/AdminSettingsPage.php:515
+#: src/Admin/Services/Settings/AdminSettingsPage.php:516
 msgid "Core Functionality Settings"
 msgstr ""
 
@@ -74,6 +74,9 @@ msgstr ""
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:80
 #: src/Environment/Plugins/YoastSeo.php:86
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:483
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:107
+#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
+#: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:130
 msgid "Settings"
 msgstr ""
 
@@ -85,27 +88,27 @@ msgstr ""
 msgid "Type to search... (↑↓ to navigate, Enter)"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:498
+#: src/Admin/Services/Settings/AdminSettingsPage.php:499
 msgid "Search... (/)"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:499
+#: src/Admin/Services/Settings/AdminSettingsPage.php:500
 msgid "Collapse menu"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:531
+#: src/Admin/Services/Settings/AdminSettingsPage.php:532
 msgid "No items found"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:761
+#: src/Admin/Services/Settings/AdminSettingsPage.php:783
 msgid "Reset to Factory Defaults"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:762
+#: src/Admin/Services/Settings/AdminSettingsPage.php:784
 msgid "🚨 CRITICAL WARNING:\\n\\nAre you sure you want to trigger a settings reset for this section?"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:778
+#: src/Admin/Services/Settings/AdminSettingsPage.php:800
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:400
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:405
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
@@ -113,24 +116,24 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:813
+#: src/Admin/Services/Settings/AdminSettingsPage.php:835
 msgid "Security check failed. Please try again."
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:818
+#: src/Admin/Services/Settings/AdminSettingsPage.php:840
 msgid "You do not have sufficient permissions to update this settings."
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:840
+#: src/Admin/Services/Settings/AdminSettingsPage.php:862
 msgid "Validation failed. Please double-check your entries."
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:847
+#: src/Admin/Services/Settings/AdminSettingsPage.php:869
 msgid "Settings saved successfully."
 msgstr ""
 
 #. translators: %d: number of notices.
-#: src/Admin/Services/Settings/AdminSettingsPage.php:1045
+#: src/Admin/Services/Settings/AdminSettingsPage.php:1067
 #, php-format
 msgid "Notice from other plugins (%d)"
 msgid_plural "Notices from other plugins (%d)"
@@ -2201,6 +2204,7 @@ msgid "Certificate Templates"
 msgstr ""
 
 #: src/Environment/Plugins/SenseiCertificates.php:77
+#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:176
 msgid "Templates"
 msgstr ""
 
@@ -3941,7 +3945,7 @@ msgid "Customizations and adaptations for the ActiveWoo plugin."
 msgstr ""
 
 #: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:52
-msgid "Keep ActiveWoo License Alive"
+msgid "Keep License Alive"
 msgstr ""
 
 #: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:53
@@ -3957,7 +3961,7 @@ msgid "Provides advanced layout overrides, performance enhancements, and custom 
 msgstr ""
 
 #: src/Modules/AdminMenu/Features/AdminMenuArchitect/AdminMenuArchitect.php:41
-msgid "Admin Menu Architect"
+msgid "Arrange"
 msgstr ""
 
 #: src/Modules/AdminMenu/Features/AdminMenuArchitect/AdminMenuArchitect.php:42
@@ -3973,7 +3977,8 @@ msgid "Provides advanced layout overrides, performance enhancements, and custom 
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
-msgid "Admin Toolbar Cleaner Feature"
+#: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:85
+msgid "Clean up"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:58
@@ -3982,10 +3987,6 @@ msgstr ""
 
 #: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:152
 msgid "More"
-msgstr ""
-
-#: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:85
-msgid "Admin Toolbar Cleaner"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:96
@@ -4009,15 +4010,12 @@ msgid "Save Toolbar Visibility Filter"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
-msgid "Admin Toolbar Builder Feature"
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:116
+msgid "Menu Builder"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:70
 msgid "The Admin Toolbar Builder Feature builds a navigation shortcuts menu in the admin toolbar."
-msgstr ""
-
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:116
-msgid "Admin Toolbar Menu Builder"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:127
@@ -4502,7 +4500,7 @@ msgid "Take the default or a JSON file into the editor (replace or merge), or do
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
-msgid "Admin Toolbar Styles Fixer Feature"
+msgid "Style Fixes"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:47
@@ -4510,7 +4508,7 @@ msgid "The Admin Toolbar Styles Fixer Feature solves some styling issues in the 
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
-msgid "Admin Toolbar Visualizer Feature"
+msgid "Show Node IDs"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:47
@@ -4522,7 +4520,6 @@ msgid "Node ID's"
 msgstr ""
 
 #: src/Modules/AiAccess/AiAccess.php:47
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:107
 msgid "AI Access"
 msgstr ""
 
@@ -4955,11 +4952,6 @@ msgstr ""
 msgid "Additions to The Events Calendar and Event Tickets."
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:176
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:362
-msgid "Event templates"
-msgstr ""
-
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:187
 msgid "Here you can load custom templates that replace built-in templates of The Events Calendar and Event Tickets. It gives you a place to make changes independent of the theme. A template stored here is only loaded when the active theme does not have it built in. Make theme-specific changes the usual way in a parent or child theme; they take precedence."
 msgstr ""
@@ -5145,7 +5137,7 @@ msgid "The previous version is restored; the replaced version is now the previou
 msgstr ""
 
 #: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:87
-msgid "CF event templates"
+msgid "Own templates"
 msgstr ""
 
 #: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:88
@@ -5153,11 +5145,15 @@ msgid "Template overrides of The Events Calendar and Event Tickets kept for this
 msgstr ""
 
 #: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:116
-msgid "Event template check"
+msgid "Template check"
 msgstr ""
 
 #: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:117
 msgid "Warns when a template override of The Events Calendar or Event Tickets is out of date or overrides a template the plugin no longer has."
+msgstr ""
+
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:362
+msgid "Event templates"
 msgstr ""
 
 #: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:363
@@ -5208,17 +5204,8 @@ msgstr ""
 msgid "%1$s: %2$s has it, the plugin no longer does"
 msgstr ""
 
-#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
-msgid "Reader Experience Settings"
-msgstr ""
-
 #: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:54
 msgid "A settings tab for the Reader Experience plugin, which itself is steered by filters only."
-msgstr ""
-
-#: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:130
-#: src/Modules/ReaderExperience/ReaderExperience.php:44
-msgid "Reader Experience"
 msgstr ""
 
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:141
@@ -5339,12 +5326,16 @@ msgstr ""
 msgid "Words per minute must be a number from %1$d to %2$d."
 msgstr ""
 
+#: src/Modules/ReaderExperience/ReaderExperience.php:44
+msgid "Reader Experience"
+msgstr ""
+
 #: src/Modules/ReaderExperience/ReaderExperience.php:45
 msgid "Settings for the Reader Experience plugin: heading anchors, reading time and feedback."
 msgstr ""
 
 #: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
-msgid "Sensei message labels"
+msgid "Message labels"
 msgstr ""
 
 #: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:55
@@ -5487,44 +5478,38 @@ msgstr ""
 msgid "Additions to WooCommerce."
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:139
+#: src/Notifiers/ActivationQuestion.php:138
 msgid "The new feature is active."
 msgid_plural "The new features are active."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Notifiers/ActivationQuestion.php:198
+#: src/Notifiers/ActivationQuestion.php:197
 msgid "Core Functionality has a new feature that is not active yet:"
 msgid_plural "Core Functionality has new features that are not active yet:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Notifiers/ActivationQuestion.php:199
+#: src/Notifiers/ActivationQuestion.php:198
 msgid "May I activate it for you?"
 msgid_plural "May I activate them for you?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Notifiers/ActivationQuestion.php:201
+#: src/Notifiers/ActivationQuestion.php:200
 msgid "Yes"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:202
+#: src/Notifiers/ActivationQuestion.php:201
 msgid "No"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:244
+#: src/Notifiers/ActivationQuestion.php:243
 msgid "Read more"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:245
+#: src/Notifiers/ActivationQuestion.php:244
 msgid "If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation."
-msgstr ""
-
-#. translators: 1: feature name, 2: module name.
-#: src/Notifiers/ActivationQuestion.php:277
-#, php-format
-msgid "%1$s (%2$s)"
 msgstr ""
 
 #: src/Notifiers/DeploymentQuestion.php:169
@@ -5623,6 +5608,12 @@ msgstr ""
 
 #: src/Plugin.php:385
 msgid "The plugin stopped because its installation is damaged. The rest of the website works normally, but everything this plugin does is switched off."
+msgstr ""
+
+#. translators: 1: feature name, 2: module name.
+#: src/Services/ComponentsRegister.php:971
+#, php-format
+msgid "%1$s (%2$s)"
 msgstr ""
 
 #. translators: %1$s: path of the register file.

@@ -32,7 +32,6 @@ use function in_array;
 use function plugins_url;
 use function remove_query_arg;
 use function sanitize_key;
-use function sprintf;
 use function wp_doing_ajax;
 use function wp_enqueue_style;
 use function wp_nonce_url;
@@ -226,7 +225,7 @@ class ActivationQuestion {
 	private function render_component_list( array $awaiting ): string {
 		$items = '';
 		foreach ( $awaiting as $fqcn ) {
-			$name_html = esc_html( $this->get_component_label( $fqcn ) );
+			$name_html = esc_html( $this->plugin->components_register->get_display_name( $fqcn ) );
 			$items    .= "<li>{$name_html}</li>";
 		}
 
@@ -246,7 +245,7 @@ class ActivationQuestion {
 
 		$descriptions = '';
 		foreach ( $awaiting as $fqcn ) {
-			$name_html        = esc_html( $this->get_component_label( $fqcn ) );
+			$name_html        = esc_html( $this->plugin->components_register->get_display_name( $fqcn ) );
 			$description_html = esc_html( $fqcn::get_description() );
 			$descriptions    .= "<dt>{$name_html}</dt><dd>{$description_html}</dd>";
 		}
@@ -258,23 +257,6 @@ class ActivationQuestion {
 				<p>{$later_text}</p>
 			</details><!-- closes dwp-cf-question-more -->
 		HTML;
-	}
-
-	/**
-	 * Returns the name of a component, with its module for a feature.
-	 *
-	 * @since  1.0.0
-	 * @param  string $fqcn Class name of the module or feature.
-	 * @return string The label (not escaped).
-	 */
-	private function get_component_label( string $fqcn ): string {
-		$module_fqcn = $this->plugin->components_register->get_module_of_feature( $fqcn );
-		if ( false === $module_fqcn ) {
-			return $fqcn::get_name();
-		}
-
-		/* translators: 1: feature name, 2: module name. */
-		return sprintf( __( '%1$s (%2$s)', 'core-functionality' ), $fqcn::get_name(), $module_fqcn::get_name() );
 	}
 
 	/**

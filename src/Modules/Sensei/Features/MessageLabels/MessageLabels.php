@@ -51,7 +51,7 @@ class MessageLabels extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:          'sensei_message_labels',
-			name:        __( 'Sensei message labels', 'core-functionality' ),
+			name:        __( 'Message labels', 'core-functionality' ),
 			description: __( 'Calls Sensei\'s messages "Sensei messages", so they are not mixed up with posts (both "Berichten" in Dutch).', 'core-functionality' ),
 			status:      Deployment::PRODUCTION,
 		);

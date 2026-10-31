@@ -127,7 +127,7 @@ class ConfigurationSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_name(): string {
-		return __( 'Reader Experience', 'core-functionality' );
+		return __( 'Settings', 'core-functionality' );
 	}
 
 	/**

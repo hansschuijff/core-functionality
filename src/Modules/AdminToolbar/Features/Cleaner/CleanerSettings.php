@@ -82,7 +82,7 @@ class CleanerSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_name(): string {
-		return __( 'Admin Toolbar Cleaner', 'core-functionality' );
+		return __( 'Clean up', 'core-functionality' );
 	}
 
 	/**

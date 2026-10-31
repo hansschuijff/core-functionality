@@ -66,7 +66,7 @@ class MenuBuilder extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:            'admin_toolbar_builder',
-			name:          __( 'Admin Toolbar Builder Feature', 'core-functionality' ),
+			name:          __( 'Menu Builder', 'core-functionality' ),
 			description:   __( 'The Admin Toolbar Builder Feature builds a navigation shortcuts menu in the admin toolbar.', 'core-functionality' ),
 			status:        Deployment::PRODUCTION,
 		);

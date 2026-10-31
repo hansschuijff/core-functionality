@@ -288,7 +288,7 @@ class Plugin {
 
 		$names = array();
 		foreach ( $new_components as $fqcn ) {
-			$names[] = class_exists( $fqcn ) && method_exists( $fqcn, 'get_name' ) ? $fqcn::get_name() : $fqcn;
+			$names[] = $this->components_register->get_display_name( $fqcn );
 		}
 
 		$this->notices->add(

@@ -173,7 +173,7 @@ class CfTemplatesSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_name(): string {
-		return __( 'Event templates', 'core-functionality' );
+		return __( 'Templates', 'core-functionality' );
 	}
 
 	/**

@@ -113,7 +113,7 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_name(): string {
-		return __( 'Admin Toolbar Menu Builder', 'core-functionality' );
+		return __( 'Menu Builder', 'core-functionality' );
 	}
 
 	/**

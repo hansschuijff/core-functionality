@@ -946,6 +946,32 @@ class ComponentsRegister {
 	}
 
 	/**
+	 * Returns the name of a component for places where its module is not shown around it.
+	 *
+	 * Feature names are short and only complete within their module ("Menu Builder" under
+	 * Admin Toolbar), so outside that context a feature gets its module in brackets:
+	 * "Menu Builder (Admin Toolbar)". A module, or a class that is not a component, keeps its
+	 * own name.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully Qualified Class Name of a module or feature.
+	 * @return string The name (not escaped), or the class name when it has none.
+	 */
+	public function get_display_name( string $fqcn ): string {
+		if ( ! class_exists( $fqcn ) || ! method_exists( $fqcn, 'get_name' ) ) {
+			return $fqcn;
+		}
+
+		$module_fqcn = $this->get_module_of_feature( $fqcn );
+		if ( false === $module_fqcn ) {
+			return $fqcn::get_name();
+		}
+
+		/* translators: 1: feature name, 2: module name. */
+		return sprintf( __( '%1$s (%2$s)', 'core-functionality' ), $fqcn::get_name(), $module_fqcn::get_name() );
+	}
+
+	/**
 	 * Gets the component register runtime cache or hydrates the module memory registry
 	 * either from compiled cache or via disk iteration.
 	 *

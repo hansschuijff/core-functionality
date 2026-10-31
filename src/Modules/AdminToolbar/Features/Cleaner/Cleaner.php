@@ -54,7 +54,7 @@ class Cleaner extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:            'admin_toolbar_cleaner',
-			name:          __( 'Admin Toolbar Cleaner Feature', 'core-functionality' ),
+			name:          __( 'Clean up', 'core-functionality' ),
 			description:   __( 'Moves unwanted Admin Toolbar shortcuts to an overflow submenu, based on a negative-selection user matrix.', 'core-functionality' ),
 			status:        Deployment::PRODUCTION,
 		);

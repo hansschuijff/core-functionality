@@ -38,7 +38,7 @@ class AdminMenuArchitect extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:            'admin_menu_architect',
-			name:          __( 'Admin Menu Architect', 'core-functionality' ),
+			name:          __( 'Arrange', 'core-functionality' ),
 			description:   __( 'Architects, structures and cleans up the admin side navigation.', 'core-functionality' ),
 		);
 	}

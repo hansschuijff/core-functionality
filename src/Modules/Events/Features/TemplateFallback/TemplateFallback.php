@@ -84,7 +84,7 @@ class TemplateFallback extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:          'events_template_fallback',
-			name:        __( 'CF event templates', 'core-functionality' ),
+			name:        __( 'Own templates', 'core-functionality' ),
 			description: __( 'Template overrides of The Events Calendar and Event Tickets kept for this site apart from the theme, used when the theme has no override of its own. Upload and download them as a zip on the settings page.', 'core-functionality' ),
 			status:      Deployment::PRODUCTION,
 		);
