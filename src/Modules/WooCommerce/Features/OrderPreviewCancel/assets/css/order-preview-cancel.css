@@ -1,0 +1,34 @@
+/**
+ * Order preview cancel button.
+ *
+ * A red border marks cancelling as a change that is not easily taken back; for an order that
+ * started a subscription the button is also filled, because the subscription ends for good.
+ * Doubled class selectors so WordPress's .wp-core-ui .button does not win.
+ *
+ * @package DeWittePrins\CoreFunctionality
+ * @since   1.0.0
+ */
+
+.wc-order-preview .wc-action-button-cancel.wc-action-button-cancel,
+.wc-order-preview .wc-action-button-cancel-subscription.wc-action-button-cancel-subscription {
+	border-color: #d63638;
+	color: #d63638;
+}
+
+.wc-order-preview .wc-action-button-cancel-subscription.wc-action-button-cancel-subscription {
+	background: #fcf0f1;
+}
+
+.wc-order-preview .wc-action-button-cancel.wc-action-button-cancel:hover,
+.wc-order-preview .wc-action-button-cancel.wc-action-button-cancel:focus,
+.wc-order-preview .wc-action-button-cancel-subscription.wc-action-button-cancel-subscription:hover,
+.wc-order-preview .wc-action-button-cancel-subscription.wc-action-button-cancel-subscription:focus {
+	border-color: #b32d2e;
+	background: #fcf0f1;
+	color: #b32d2e;
+}
+
+.wc-order-preview .wc-action-button-cancel.wc-action-button-cancel:focus,
+.wc-order-preview .wc-action-button-cancel-subscription.wc-action-button-cancel-subscription:focus {
+	box-shadow: 0 0 0 1px #b32d2e;
+}
