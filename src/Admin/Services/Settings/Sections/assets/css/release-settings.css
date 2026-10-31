@@ -63,3 +63,55 @@
 	font-style: italic;
 	color: #996800;
 }
+
+/* The explanation above the tables, collapsed by default. */
+.dwp-release-explanation {
+	max-width: 75ch;
+	margin: 0 0 20px;
+}
+
+.dwp-release-explanation > summary {
+	width: max-content;
+	cursor: pointer;
+	color: #2271b1;
+}
+
+.dwp-release-explanation > summary:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+.dwp-release-explanation p {
+	margin: 10px 0 0;
+	line-height: 1.5;
+}
+
+/* The table needs its width; on a small screen the card scrolls instead of squeezing it. */
+.dwp-release-card {
+	overflow-x: auto;
+}
+
+.dwp-release-table {
+	min-width: 760px;
+}
+
+/* "Activation per environment" over the three environment columns. */
+.dwp-release-table thead .dwp-release-group-heading {
+	padding-bottom: 4px;
+	border-bottom: 1px solid #dcdcde;
+	text-align: center;
+}
+
+.dwp-release-table thead tr:first-child th[rowspan] {
+	vertical-align: bottom;
+}
+
+/* The module row: set it apart from its features with a light band. */
+.dwp-release-table .dwp-release-module th,
+.dwp-release-table .dwp-release-module td {
+	background: #f6f7f7;
+}
+
+.dwp-release-table .dwp-release-module th {
+	padding-left: 10px;
+}

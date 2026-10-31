@@ -28,6 +28,7 @@ use Override;
 
 use function __;
 use function array_key_exists;
+use function count;
 use function esc_attr;
 use function esc_html;
 use function esc_html__;
@@ -110,7 +111,7 @@ class ReleaseSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_description(): string {
-		return __( 'Set what the release decides about each module and feature. Its status is how far the code is ready: it never runs on a higher environment. Per environment you choose whether it is automatically on, freely adjustable or automatically off there. Saving writes the plugin\'s release file; commit it afterwards. This tab only exists on a development environment.', 'core-functionality' );
+		return __( 'For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment.', 'core-functionality' );
 	}
 
 	/**
@@ -149,13 +150,38 @@ class ReleaseSettings implements SettingsSectionInterface {
 		$components = $this->plugin->components_register->get_register( Register::COMPONENTS );
 		$release    = $this->plugin->release_register->get_release_values();
 
-		$html = '<div class="dwp-release-modules">';
+		$html  = $this->render_explanation();
+		$html .= '<div class="dwp-release-modules">';
 		foreach ( $components as $module_fqcn => $features_fqcn ) {
 			$html .= $this->render_module_table( $module_fqcn, (array) $features_fqcn, $release );
 		}
 		$html .= '</div><!-- closes dwp-release-modules -->';
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped while it is built.
+	}
+
+	/**
+	 * Returns the collapsed explanation of the page, written for its developers (Hans, November 2026).
+	 *
+	 * @since  1.0.0
+	 * @return string The explanation (HTML).
+	 */
+	private function render_explanation(): string {
+		$summary     = esc_html__( 'Explanation', 'core-functionality' );
+		$audience    = esc_html__( 'This page is only for the developers of the modules and features in this plugin.', 'core-functionality' );
+		$build       = esc_html__( 'The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment.', 'core-functionality' );
+		$activation  = esc_html__( 'Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built.', 'core-functionality' );
+		$destination = esc_html__( 'These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point.', 'core-functionality' );
+
+		return <<<HTML
+			<details class="dwp-release-explanation">
+				<summary>{$summary}</summary>
+				<p>{$audience}</p>
+				<p>{$build}</p>
+				<p>{$activation}</p>
+				<p>{$destination}</p>
+			</details><!-- closes dwp-release-explanation -->
+		HTML;
 	}
 
 	/**
@@ -186,14 +212,17 @@ class ReleaseSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Returns the header row: the name column, the status and the three environments.
+	 * Returns the header rows: the name and the build status, then the three environments grouped
+	 * under "Activation per environment".
 	 *
 	 * @since  1.0.0
-	 * @return string The row (HTML).
+	 * @return string The rows (HTML).
 	 */
 	private function render_header_row(): string {
-		$name_label   = esc_html__( 'Module and features', 'core-functionality' );
-		$status_label = esc_html__( 'Status', 'core-functionality' );
+		$name_label       = esc_html__( 'Module and features', 'core-functionality' );
+		$status_label     = esc_html( $this->get_column_label( ReleaseRegister::STATUS_KEY ) );
+		$activation_label = esc_html__( 'Activation per environment', 'core-functionality' );
+		$environments     = count( Deployment::cases() );
 
 		$environment_cells = '';
 		foreach ( Deployment::cases() as $environment ) {
@@ -202,8 +231,11 @@ class ReleaseSettings implements SettingsSectionInterface {
 
 		return <<<HTML
 			<tr>
-				<th scope="col" class="dwp-release-name-column">{$name_label}</th>
-				<th scope="col">{$status_label}</th>
+				<th scope="col" rowspan="2" class="dwp-release-name-column">{$name_label}</th>
+				<th scope="col" rowspan="2" class="dwp-release-status-column">{$status_label}</th>
+				<th scope="colgroup" colspan="{$environments}" class="dwp-release-group-heading">{$activation_label}</th>
+			</tr>
+			<tr>
 				{$environment_cells}
 			</tr>
 		HTML;
@@ -294,7 +326,7 @@ class ReleaseSettings implements SettingsSectionInterface {
 		$environment = Deployment::tryFrom( $key );
 
 		return null === $environment || ReleaseRegister::STATUS_KEY === $key
-			? __( 'Status', 'core-functionality' )
+			? __( 'Build status', 'core-functionality' )
 			: $environment->get_label();
 	}
 
@@ -364,7 +396,7 @@ class ReleaseSettings implements SettingsSectionInterface {
 			return false;
 		}
 
-		return __( 'The release file is saved. Remember to commit it.', 'core-functionality' );
+		return __( 'The settings are saved in settings/components-release.php. Remember to commit it.', 'core-functionality' );
 	}
 
 	/**
