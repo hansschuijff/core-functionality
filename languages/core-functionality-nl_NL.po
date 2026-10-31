@@ -1,5 +1,3 @@
-# Copyright (C) 2026 Hans Schuijff
-# This file is distributed under the GPL-2.0-only.
 msgid ""
 msgstr ""
 "Project-Id-Version: Core Functionality OOP 1.0.0\n"
@@ -147,35 +145,35 @@ msgstr "Kritieke fout: de deploymentniveaus konden niet worden opgeslagen."
 msgid "Release status settings saved successfully. Remember to commit changes in Git! 🚀"
 msgstr "Deploymentniveaus opgeslagen. Vergeet niet de wijzigingen in Git te committen! 🚀"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:79
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:80
 msgid "Feature Activation"
 msgstr "Features activeren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:89
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:90
 msgid "Here you can enable and disable the modules and features in this plugin. Refreshing this list, will perform a scan that automatically detect new modules and features if there are any. By default new modules and features will be disabled en need to be enabled to launch them."
 msgstr "Hier zet je de modules en features van deze plugin aan en uit. Vernieuwen voert een scan uit die nieuwe modules en features vindt. Nieuwe modules en features staan standaard uit en moeten eerst worden aangezet."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:165
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:166
 msgid "Select all"
 msgstr "Alles selecteren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:212
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:221
 msgid "Available features:"
 msgstr "Beschikbare features:"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:337
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:390
 msgid "All modules and features where reset to their default settings."
 msgstr "Alle modules en features zijn teruggezet naar hun standaardinstellingen."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:370
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:423
 msgid "Critical Error: Failed to find modules and features in scan. Is this correct?"
 msgstr "Kritieke fout: de scan vond geen modules en features. Klopt dat?"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:374
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:427
 msgid "Scan was succesful. All Modules and Features succesfully registered."
 msgstr "Scan geslaagd. Alle modules en features zijn geregistreerd."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:405
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:458
 msgid "Scan for new features"
 msgstr "Zoeken naar nieuwe features"
 
@@ -5432,16 +5430,16 @@ msgid "The target private user or group chat ID window."
 msgstr "De ID van de privé- of groepschat waar de meldingen naartoe gaan."
 
 #. translators: 1: plugin version, 2: comma-separated list of module and feature names.
-#: src/Plugin.php:290
+#: src/Plugin.php:294
 #, php-format
 msgid "Core Functionality %1$s added: %2$s. Check under Settings → Core Functionality whether they should be enabled on this site."
 msgstr "Core Functionality %1$s heeft toegevoegd: %2$s. Kijk bij Instellingen → Core Functionality of ze op deze site aan moeten."
 
-#: src/Plugin.php:376
+#: src/Plugin.php:380
 msgid "De Witte Prins - Core Functionality has stopped!"
 msgstr "De Witte Prins - Core Functionality is gestopt!"
 
-#: src/Plugin.php:377
+#: src/Plugin.php:381
 msgid "The plugin stopped because its installation is damaged. The rest of the website works normally, but everything this plugin does is switched off."
 msgstr "De plugin is gestopt omdat de installatie beschadigd is. De rest van de website werkt gewoon, maar alles wat deze plugin doet staat uit."
 
@@ -5526,3 +5524,49 @@ msgstr "Afronden"
 #: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:107
 msgid "Cancel"
 msgstr "Annuleren"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:167
+msgid "Show only disabled"
+msgstr "Alleen uitgeschakelde tonen"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:168
+msgid "Show all"
+msgstr "Alles tonen"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:169
+msgid "All modules and features are enabled."
+msgstr "Alle modules en features staan aan."
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:285
+msgid "awaits your confirmation: saving this tab confirms the choice"
+msgstr "wacht op je bevestiging: opslaan op dit tabblad bevestigt de keuze"
+
+#: src/Notifiers/ActivationQuestion.php:156
+msgid "These modules and features run only after you confirm them. Either answer is final; you can change it later under Settings → Core Functionality, Feature Activation."
+msgstr "Deze modules en features draaien pas als je ze bevestigt. Beide antwoorden zijn definitief; je kunt het later wijzigen bij Instellingen → Core Functionality, Features activeren."
+
+#: src/Notifiers/ActivationQuestion.php:183
+msgid "Switch on"
+msgstr "Aanzetten"
+
+#: src/Notifiers/ActivationQuestion.php:184
+msgid "Leave off"
+msgstr "Uit laten"
+
+#. translators: 1: feature name, 2: module name.
+#: src/Notifiers/ActivationQuestion.php:208
+#, php-format
+msgid "%1$s (module %2$s)"
+msgstr "%1$s (module %2$s)"
+
+#. translators: %s: module or feature name.
+#: src/Notifiers/ActivationQuestion.php:248
+#, php-format
+msgid "%s is switched on."
+msgstr "%s staat aan."
+
+#. translators: %s: module or feature name.
+#: src/Notifiers/ActivationQuestion.php:250
+#, php-format
+msgid "%s stays off."
+msgstr "%s blijft uit."
