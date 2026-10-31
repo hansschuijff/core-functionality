@@ -5323,6 +5323,46 @@ msgstr "Sensei LMS"
 msgid "Adjustments to Sensei LMS."
 msgstr "Aanpassingen aan Sensei LMS."
 
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:151
+msgid "Business invoice totals"
+msgstr "Totalen op zakelijke facturen"
+
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:152
+msgid "On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements)."
+msgstr "Op pdf-facturen van bestellingen met een btw-nummer van de klant: het totaal exclusief btw, de btw per tarief met het percentage en het totaal inclusief btw, plus een melding als de btw verlegd is (Nederlandse factuureisen)."
+
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:294
+msgid "Total excl. VAT"
+msgstr "Totaal exclusief btw"
+
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:302
+msgid "VAT 0%"
+msgstr "Btw 0%"
+
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:308
+msgid "Total incl. VAT"
+msgstr "Totaal inclusief btw"
+
+#. translators: %s: VAT rate, such as 21%.
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:403
+#, php-format
+msgid "Amount excl. VAT %s"
+msgstr "Bedrag exclusief btw %s"
+
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:502
+msgid "Intra-Community supply, VAT 0% (article 138 of VAT Directive 2006/112/EC)."
+msgstr "Intracommunautaire levering, btw 0% (artikel 138 Btw-richtlijn 2006/112/EG)."
+
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:505
+msgid "VAT reverse-charged (article 196 of VAT Directive 2006/112/EC)."
+msgstr "Btw verlegd (artikel 196 Btw-richtlijn 2006/112/EG)."
+
+#. translators: %s: the customer's VAT number.
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:509
+#, php-format
+msgid "Customer VAT number: %s"
+msgstr "Btw-nummer afnemer: %s"
+
 #: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:83
 msgid "Several products in the cart at once"
 msgstr "Meerdere producten tegelijk in de winkelwagen"
