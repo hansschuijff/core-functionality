@@ -15,6 +15,7 @@ namespace DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\StylesFix
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -44,6 +45,7 @@ class StylesFixer extends AbstractFeature {
 			id:            'fix_admin_bar_styles',
 			name:          __( 'Admin Toolbar Styles Fixer Feature', 'core-functionality' ),
 			description:   __( 'The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar.', 'core-functionality' ),
+			status:        Deployment::STAGING,
 		);
 	}
 

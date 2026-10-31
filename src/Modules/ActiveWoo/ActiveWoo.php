@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -40,6 +41,7 @@ class ActiveWoo extends AbstractModule {
 			id:            'active-woo',
 			name:          __( 'ActiveWoo', 'core-functionality' ),
 			description:   __( 'Customizations and adaptations for the ActiveWoo plugin.', 'core-functionality' ),
+			status:        Deployment::STAGING,
 		);
 	}
 }
