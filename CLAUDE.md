@@ -54,7 +54,8 @@ new modules and features for Hans's own sites.
   plugin's own functions only inside an href closure. Get guards through `Environment::get_plugin()` /
   `get_theme()`, which keep one instance per request.
 - A **module** is only a container: `src/Modules/<Module>/<Module>.php`, extends `AbstractModule` and
-  contains only `get_meta()`.
+  contains only `get_meta()`. Its release status and rules follow from its features (the widest), so it may
+  have no functionality of its own (Hans, November 2026).
 - A **feature** holds the functionality: `src/Modules/<Module>/Features/<Feature>/<Feature>.php`, extends
   `AbstractFeature`, contains `get_meta()` and `launch()` (where it adds its hooks) plus its own methods.
   `$this->module` and `$this->plugin` come from the base class. Its assets live next to it (`assets/css`,
@@ -86,7 +87,7 @@ new modules and features for Hans's own sites.
   Leave changes to these files uncommitted: they get their final content after the migration strategy
   (another session) and are only committed just before production (Hans, October 2026).
 - The status (how far the code is ready) and the rule per environment (always active,
-  adjustable, always inactive) of each module and feature live in `settings/components-release.php`,
+  adjustable, always inactive) of each feature (a module follows its features) live in `settings/components-release.php`,
   written by the Release Management tab (only on a development environment) and committed; not in the
   code. Raise a status only when Hans says a component is ready. A new component is development and freely
   adjustable until it is in that file. See `docs/ARCHITECTURE.md`, Release settings.

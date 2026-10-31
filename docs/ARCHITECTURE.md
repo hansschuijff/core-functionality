@@ -135,17 +135,21 @@ component that is not in it has status development and is adjustable everywhere.
 written by the Release Management tab (`ReleaseSettings`, section id `cf-release-management`), which is only
 registered on a development environment, so the sites that install the plugin do not get it.
 "Always active" runs a component without the site's choice and without the confirmation question, also
-after a database from another environment was restored; when its module is off, the module comes along
-with only such features. "Always inactive" is the friendly word for "not allowed here". The Feature
+after a database from another environment was restored. "Always inactive" is the friendly word for "not allowed here". The Feature
 Activation tab notes these cases behind the name and disables their checkbox (a hidden field keeps the
 saved choice for when the release lets go). The tab's header shows the build status and, grouped, the
 activation per environment; its explanation for developers is collapsed (Hans, November 2026).
 
-Open (November 2026): how a module's rule relates to its features' rules. Options Hans raised: the
-module as ceiling (module always inactive makes its features irrelevant), an always-active feature forcing
-its module to always active, a module that is always active needing at least one (or every) always-active
-feature, or rules on features only with the module as a mere container. Until decided, the behaviour
-above stays.
+**A module follows its features** (Hans, November 2026). A module is only the container of its features,
+so the release decides about features; a module with features gets no entry of its own
+(ReleaseRegister::with_module_entries()). It takes the widest setting of its features: the highest
+status, and per environment the widest rule among the features whose status reaches it (always active
+before adjustable before always inactive). So an always-active feature makes its module always active, and
+a module is always inactive only when all its features are. The Release Management tab shows the module
+row as text ("Follows its features") and saves only feature entries; a module without features keeps its
+own entry and selects. This hard-wires the rule that a module has no functionality of its own outside its
+features (CLAUDE.md: a module contains only get_meta()). Considered and dropped: the module as a
+ceiling with its own rule, which needed extra rules between module and feature rules.
 
 An installation adjusts the release without touching the plugin, in two layers that may raise a limit as
 well as lower it, as both are conscious choices by whoever may change its files:
