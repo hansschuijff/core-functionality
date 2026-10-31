@@ -30,8 +30,9 @@
 	text-align: right;
 }
 
-.wc-order-preview .dwp-cf-order-preview-totals .dwp-cf-total-order_total th,
-.wc-order-preview .dwp-cf-order-preview-totals .dwp-cf-total-order_total td {
+/* Outweighs WooCommerce's .wc-order-preview-table tr:last-child td { border: 0 }. */
+.wc-order-preview .dwp-cf-order-preview-totals .wc-order-preview-table tr.dwp-cf-total-order_total th,
+.wc-order-preview .dwp-cf-order-preview-totals .wc-order-preview-table tr.dwp-cf-total-order_total td {
 	border-top: 1px solid #ccc;
 	font-weight: 600;
 }
