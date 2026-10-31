@@ -83,6 +83,8 @@ new modules and features for Hans's own sites.
   settings page instead. On the speeltuin Claude rescans and switches new modules and features on itself, in
   the app's browser pane (Settings → Core Functionality, "Zoeken naar nieuwe features", then tick and save);
   new components start switched off after a rescan (after an update they follow the register file).
+  Leave changes to these files uncommitted: they get their final content after the migration strategy
+  (another session) and are only committed just before production (Hans, October 2026).
 - A feature that can clash with code the plugin cannot see (it replaces a snippet or a legacy file that may
   still run) gets `confirm_activation: true` in its `ComponentMeta`: it then waits for an administrator's
   one-time answer before it runs. See `docs/ARCHITECTURE.md`, Components register.
