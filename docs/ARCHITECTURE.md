@@ -105,6 +105,24 @@ site's choices for existing components stay. An administrator gets a notice (on 
 what was added. During development the version does not change, so a rescan on the settings page is
 still how new code is picked up locally.
 
+**Confirmation before activation.** New components follow the register file, so they are usually on after
+an update; that is the point (a new feature is welcome). A component whose `ComponentMeta` sets
+`confirm_activation: true` is the exception, used when switching it on can clash with something the plugin
+cannot see, such as a snippet doing the same thing (Hans, October 2026). It does not launch until an
+administrator decided on it on this site, even when the register enables it: `filter()` skips it through
+`awaits_activation_confirmation()`, which also requires its deployment tier to allow this server. The
+question is a notice on every admin page (`Notifiers\ActivationQuestion`, `manage_options`) with
+"Aanzetten" and "Uit laten" per component; both answers are final and the notice has no close button, so it
+asks once and never nags. "Aanzetten" also switches the feature's module on. Saving the Feature Activation
+tab counts as the decision for every waiting component (they are marked there); the factory reset forgets
+all decisions, because it switches everything on. Decisions live only in the setting
+`components-activation-decided` (FQCN => true), never in the register files: they belong to one site.
+The flag is a safety net for now; whether it gets more uses or companions is open.
+
+The Feature Activation tab has a "Show only disabled" filter. It works on the saved state (a data
+attribute), not on the checkboxes, so a row stays while it is ticked; a component that waits for
+confirmation counts as disabled.
+
 ## Environment
 
 A dependency is an id. `Environment` turns it into a guard class by convention: `woocommerce` →
@@ -529,6 +547,7 @@ card per content type with its levels under each other.
 | External contract | Only the ready moment (`core-functionality/ready`, `call_when_ready()`) is promised to other code | Internal timing may change |
 | Metadata in one DTO | A static `get_meta()` returns `ComponentMeta`; abstract base classes answer the getters | A feature class holds only its functionality (Hans's idea, October 2026) |
 | Version sync of the registers | Plugin version stored with the registers; on a new version the components option is rebuilt from the file and new components get file defaults | An update's new features appear without a manual rescan, and the site's choices stay |
+| Risky components ask first | `confirm_activation` in `ComponentMeta`; held back until an administrator answers once (no auto-on, no nagging) | New features stay welcome by default; only where a clash is possible the site decides (Hans, October 2026) |
 | Register files optional | Written only when `kernel/` is writable | They are a fallback for the database; production folders are often read-only |
 | Toolbar catalogue of all known plugins | The register holds the nodes of every guard with a provider status; the toolbar shows only active ones | A menu is set up once; installing or activating a plugin switches its links on and off |
 | Catalogue in memory only | Built per request on first use, not stored in the database | Hrefs can be closures and titles are translated; the cost is small |
@@ -548,6 +567,12 @@ Known issues:
   Transient Optimizer compared UTC expiry times with local time (transients removed up to two hours
   early), the WooCommerce category link always used an example slug, and two buttons were never
   translated.
+- Planned (Hans, October 2026): split the deployment tier in two. `status` in `get_meta()` is the
+  development state of the code, set by the release and a hard limit (not adjustable on a site);
+  `deployment` stays where a component may run (at most up to which tier), adjustable per site. On an update
+  a new component takes the release values; a site whose deployment differs from the previous release keeps
+  it until an administrator answers whether the new release value may apply (default: take it). A component
+  that becomes available on a server through this counts as new (on, or the confirmation question).
 - Tested in a logged-in admin (October 2026): the "new components" notice after a simulated update, the
   integrity check and all settings tabs. The two issues found there (the toolbar Cleaner reading
   `$node->id` from an array, and feature names ending in a period) are fixed. The plugin is active again
