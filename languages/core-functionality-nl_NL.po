@@ -5426,3 +5426,63 @@ msgstr "Ongeldige aanroep: FinderService->find_modules_and_features() mag alleen
 #: src/Services/Settings.php:314
 msgid "Calling Settings->get_options() is only allowed, use Settings->get(), Settings->save() or Settings->delete() instead. For getting unmanaged options, you can use Settings->get_unmanaged()."
 msgstr "Settings->get_options() aanroepen is niet toegestaan. Gebruik Settings->get(), Settings->save() of Settings->delete(). Voor opties buiten de kluis kun je Settings->get_unmanaged() gebruiken."
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:82
+msgid "Cancel button in the order preview"
+msgstr "Annuleerknop in het bestelvoorbeeld"
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:83
+msgid "Adds a button to cancel the order to the status buttons of the order preview (the eye icon in the order list), with a confirmation."
+msgstr "Voegt aan de statusknoppen van het bestelvoorbeeld (het oogje in de bestellijst) een knop toe om de bestelling te annuleren, met een bevestigingsvraag."
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:118
+msgid "Change status:"
+msgstr "Status wijzigen:"
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:146
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:147
+msgid "Change order status to cancelled"
+msgstr "Wijzig de status van de bestelling naar geannuleerd"
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:214
+msgid "Cancel this order?"
+msgstr "Deze bestelling annuleren?"
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:215
+msgid "Cancel this order? The subscription of this order will be cancelled as well, and that cannot be undone."
+msgstr "Deze bestelling annuleren? Het abonnement van deze bestelling wordt dan ook geannuleerd, en dat is niet terug te draaien."
+
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:82
+msgid "Totals in the order preview"
+msgstr "Totalen in het bestelvoorbeeld"
+
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:83
+msgid "Shows subtotal, discount, shipping, tax and total under the products in the order preview (the eye icon in the order list), and lets the preview scroll so it fits on the screen."
+msgstr "Toont subtotaal, korting, verzendkosten, btw en totaal onder de producten in het bestelvoorbeeld (het oogje in de bestellijst), en laat het voorbeeld scrollen zodat het op het scherm past."
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:58
+msgid "Short bulk actions for orders"
+msgstr "Korte bulkacties voor bestellingen"
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:59
+msgid "Short names for the status actions in the bulk action select of the order list: \"Process\", \"Put on hold\", \"Complete\" and \"Cancel\"."
+msgstr "Korte namen voor de statusacties in de bulkactiekeuze van de bestellijst: \"In behandeling nemen\", \"In de wacht zetten\", \"Afronden\" en \"Annuleren\"."
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:104
+msgid "Process"
+msgstr "In behandeling nemen"
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:105
+msgid "Put on hold"
+msgstr "In de wacht zetten"
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:106
+msgid "Complete"
+msgstr "Afronden"
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:107
+msgid "Cancel"
+msgstr "Annuleren"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-30T17:22:02+01:00\n"
+"POT-Creation-Date: 2026-10-31T10:41:39+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -5336,6 +5336,66 @@ msgid "The product with number %s could not be added. That product number does n
 msgid_plural "The products with numbers %s could not be added. Those product numbers do not exist."
 msgstr[0] ""
 msgstr[1] ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:82
+msgid "Cancel button in the order preview"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:83
+msgid "Adds a button to cancel the order to the status buttons of the order preview (the eye icon in the order list), with a confirmation."
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:118
+msgid "Change status:"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:146
+msgid "Cancelled"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:147
+msgid "Change order status to cancelled"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:214
+msgid "Cancel this order?"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:215
+msgid "Cancel this order? The subscription of this order will be cancelled as well, and that cannot be undone."
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:82
+msgid "Totals in the order preview"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:83
+msgid "Shows subtotal, discount, shipping, tax and total under the products in the order preview (the eye icon in the order list), and lets the preview scroll so it fits on the screen."
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:58
+msgid "Short bulk actions for orders"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:59
+msgid "Short names for the status actions in the bulk action select of the order list: \"Process\", \"Put on hold\", \"Complete\" and \"Cancel\"."
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:104
+msgid "Process"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:105
+msgid "Put on hold"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:106
+msgid "Complete"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:107
+msgid "Cancel"
+msgstr ""
 
 #: src/Modules/WooCommerce/WooCommerce.php:44
 msgid "Additions to WooCommerce."
