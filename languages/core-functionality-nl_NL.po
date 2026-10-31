@@ -5537,36 +5537,11 @@ msgstr "Alle modules en features staan aan."
 msgid "awaits your confirmation: saving this tab confirms the choice"
 msgstr "wacht op je bevestiging: opslaan op dit tabblad bevestigt de keuze"
 
-#: src/Notifiers/ActivationQuestion.php:156
-msgid "These modules and features run only after you confirm them. Either answer is final; you can change it later under Settings → Core Functionality, Feature Activation."
-msgstr "Deze modules en features draaien pas als je ze bevestigt. Beide antwoorden zijn definitief; je kunt het later wijzigen bij Instellingen → Core Functionality, Features activeren."
-
-#: src/Notifiers/ActivationQuestion.php:183
-msgid "Switch on"
-msgstr "Aanzetten"
-
-#: src/Notifiers/ActivationQuestion.php:184
-msgid "Leave off"
-msgstr "Uit laten"
-
 #. translators: 1: feature name, 2: module name.
-#: src/Notifiers/ActivationQuestion.php:208
 #: src/Notifiers/DeploymentQuestion.php:243
 #, php-format
 msgid "%1$s (module %2$s)"
 msgstr "%1$s (module %2$s)"
-
-#. translators: %s: module or feature name.
-#: src/Notifiers/ActivationQuestion.php:248
-#, php-format
-msgid "%s is switched on."
-msgstr "%s staat aan."
-
-#. translators: %s: module or feature name.
-#: src/Notifiers/ActivationQuestion.php:250
-#, php-format
-msgid "%s stays off."
-msgstr "%s blijft uit."
 
 #: src/Admin/Services/Settings/Sections/DeploymentSettings.php:106
 msgid "Here you set up to which environment (development, staging, production) each module and feature runs on this site. Its status is the development state of its code, set by the release: it never runs beyond that, whatever is chosen here. A feature also never runs beyond its module. On an update, a new release follows the values you did not change; where this site has its own value and the release changes it, you are asked first."
@@ -5631,3 +5606,43 @@ msgid "Notice from other plugins (%d)"
 msgid_plural "Notices from other plugins (%d)"
 msgstr[0] "Melding van andere plugins (%d)"
 msgstr[1] "Meldingen van andere plugins (%d)"
+
+#: src/Notifiers/ActivationQuestion.php:139
+msgid "The new feature is active."
+msgid_plural "The new features are active."
+msgstr[0] "De nieuwe functie is actief."
+msgstr[1] "De nieuwe functies zijn actief."
+
+#: src/Notifiers/ActivationQuestion.php:198
+msgid "Core Functionality has a new feature that is not active yet:"
+msgid_plural "Core Functionality has new features that are not active yet:"
+msgstr[0] "Core Functionality heeft een nieuwe functie die nog inactief is:"
+msgstr[1] "Core Functionality heeft nieuwe functies die nog inactief zijn:"
+
+#: src/Notifiers/ActivationQuestion.php:199
+msgid "May I activate it for you?"
+msgid_plural "May I activate them for you?"
+msgstr[0] "Mag ik deze voor je activeren?"
+msgstr[1] "Mag ik ze voor je activeren?"
+
+#: src/Notifiers/ActivationQuestion.php:201
+msgid "Yes"
+msgstr "Ja"
+
+#: src/Notifiers/ActivationQuestion.php:202
+msgid "No"
+msgstr "Nee"
+
+#: src/Notifiers/ActivationQuestion.php:244
+msgid "Read more"
+msgstr "Meer lezen"
+
+#: src/Notifiers/ActivationQuestion.php:245
+msgid "If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation."
+msgstr "Wil je de nieuwe functies nu nog niet gebruiken, dan kun je ze later alsnog activeren in de Instellingen, bij Core Functionality → Features activeren."
+
+#. translators: 1: feature name, 2: module name.
+#: src/Notifiers/ActivationQuestion.php:277
+#, php-format
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"

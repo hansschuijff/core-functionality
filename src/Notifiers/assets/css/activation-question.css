@@ -1,0 +1,70 @@
+/**
+ * Activation question notice: short lines, a real list and room around the buttons.
+ *
+ * @package DeWittePrins\CoreFunctionality
+ */
+
+.notice.dwp-cf-activation-question {
+	padding: 14px 18px 12px;
+}
+
+.dwp-cf-activation-question > * {
+	max-width: 65ch;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-title {
+	margin: 0 0 8px;
+	padding: 0;
+	font-size: 14px;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-list {
+	margin: 0 0 16px 20px;
+	list-style: disc;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-list li {
+	margin: 0 0 4px;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 12px;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-actions .button {
+	margin: 0;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-more > summary {
+	width: max-content;
+	cursor: pointer;
+	color: #2271b1;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-more > summary:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-more dl {
+	margin: 12px 0 0;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-more dt {
+	font-weight: 600;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-more dd {
+	margin: 2px 0 12px;
+	line-height: 1.5;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-more p {
+	margin: 0 0 4px;
+	padding: 0;
+	color: #50575e;
+}

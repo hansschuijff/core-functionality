@@ -20,19 +20,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 use DeWittePrins\CoreFunctionality\Plugin;
 
 use function __;
+use function _n;
 use function add_action;
 use function add_query_arg;
+use function count;
 use function current_user_can;
 use function esc_html;
 use function esc_html__;
 use function esc_url;
-use function implode;
 use function in_array;
+use function plugins_url;
 use function remove_query_arg;
 use function sanitize_key;
-use function sanitize_text_field;
 use function sprintf;
 use function wp_doing_ajax;
+use function wp_enqueue_style;
 use function wp_nonce_url;
 use function wp_safe_redirect;
 use function wp_unslash;
@@ -41,11 +43,12 @@ use function wp_verify_nonce;
 /**
  * Class ActivationQuestion
  *
- * Asks an administrator, once, whether a module or feature that needs confirmation
- * (ComponentMeta::$confirm_activation) may run on this site. Until the question is answered the
- * component does not launch. Both answers are final, so the notice has no close button and never
- * returns once answered: it asks for a decision, it does not nag until something is switched on
- * (Hans, October 2026). The choice can still be changed on the Feature Activation tab.
+ * Asks an administrator, once, whether the modules and features that need confirmation
+ * (ComponentMeta::$confirm_activation) may be activated on this site. Until the question is
+ * answered they do not launch. One answer covers the whole list: activate all or leave them
+ * inactive; choosing per component is what the Feature Activation tab is for. The notice has no
+ * close button and does not return once answered: it asks for a decision, it does not nag until
+ * something is activated (Hans, October 2026).
  *
  * @since 1.0.0
  */
@@ -57,13 +60,6 @@ class ActivationQuestion {
 	 * @var string
 	 */
 	private const ANSWER_ARG = 'dwp_cf_activation';
-
-	/**
-	 * Query arg holding the class name of the component that is answered for.
-	 *
-	 * @var string
-	 */
-	private const COMPONENT_ARG = 'dwp_cf_component';
 
 	/**
 	 * Answer that switches the component on.
@@ -90,6 +86,7 @@ class ActivationQuestion {
 	) {
 		add_action( 'admin_init', array( $this, 'handle_answer' ) );
 		add_action( 'admin_notices', array( $this, 'print_question' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_style' ) );
 	}
 
 	/**
@@ -99,31 +96,78 @@ class ActivationQuestion {
 	 * @return void
 	 */
 	public function handle_answer(): void {
-		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- The nonce is verified below, per component.
-		if ( wp_doing_ajax() || ! isset( $_GET[ self::ANSWER_ARG ], $_GET[ self::COMPONENT_ARG ], $_GET['_wpnonce'] ) ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- The nonce is verified below.
+		if ( wp_doing_ajax() || ! isset( $_GET[ self::ANSWER_ARG ], $_GET['_wpnonce'] ) ) {
 			return;
 		}
 
 		$answer = sanitize_key( wp_unslash( $_GET[ self::ANSWER_ARG ] ) );
-		$fqcn   = sanitize_text_field( wp_unslash( $_GET[ self::COMPONENT_ARG ] ) );
 		$nonce  = sanitize_key( wp_unslash( $_GET['_wpnonce'] ) );
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-		if ( ! current_user_can( 'manage_options' ) || ! wp_verify_nonce( $nonce, $this->get_nonce_action( $fqcn ) ) ) {
+		if ( ! current_user_can( 'manage_options' ) || ! wp_verify_nonce( $nonce, self::ANSWER_ARG ) ) {
 			return;
 		}
 
-		$register = $this->plugin->components_register;
-		if ( in_array( $answer, array( self::ANSWER_ENABLE, self::ANSWER_LEAVE_OFF ), true )
-			&& in_array( $fqcn, $register->get_components_awaiting_confirmation(), true )
-		) {
-			$enable = self::ANSWER_ENABLE === $answer;
-			$register->decide_activation( $fqcn, $enable );
-			$this->plugin->notices->add( 'success', $this->get_answer_message( $fqcn, $enable ) );
+		if ( in_array( $answer, array( self::ANSWER_ENABLE, self::ANSWER_LEAVE_OFF ), true ) ) {
+			$this->record_answer( self::ANSWER_ENABLE === $answer );
 		}
 
-		wp_safe_redirect( remove_query_arg( array( self::ANSWER_ARG, self::COMPONENT_ARG, '_wpnonce' ) ) );
+		wp_safe_redirect( remove_query_arg( array( self::ANSWER_ARG, '_wpnonce' ) ) );
 		exit;
+	}
+
+	/**
+	 * Records one answer for every component that waits for confirmation.
+	 *
+	 * Only "yes" gets a message; after "no" the notice simply goes away. Where to activate
+	 * them later is already said under "Read more" (Hans, October 2026).
+	 *
+	 * @since  1.0.0
+	 * @param  bool $enable Whether the components are activated.
+	 * @return void
+	 */
+	private function record_answer( bool $enable ): void {
+		$register = $this->plugin->components_register;
+		$awaiting = $register->get_components_awaiting_confirmation();
+
+		foreach ( $awaiting as $fqcn ) {
+			$register->decide_activation( $fqcn, $enable );
+		}
+
+		if ( $enable && ! empty( $awaiting ) ) {
+			$this->plugin->notices->add( 'success', _n( 'The new feature is active.', 'The new features are active.', count( $awaiting ), 'core-functionality' ) );
+		}
+	}
+
+	/**
+	 * Loads the style of the question on the admin screens where it is shown.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function enqueue_style(): void {
+		if ( ! $this->should_ask() ) {
+			return;
+		}
+
+		wp_enqueue_style(
+			'dwp-cf-activation-question',
+			plugins_url( 'assets/css/activation-question.css', __FILE__ ),
+			array(),
+			$this->plugin->get_data( 'version' )
+		);
+	}
+
+	/**
+	 * Whether the current user should see the question.
+	 *
+	 * @since  1.0.0
+	 * @return bool True when something waits for confirmation and the user may answer.
+	 */
+	private function should_ask(): bool {
+		return current_user_can( 'manage_options' )
+			&& ! empty( $this->plugin->components_register->get_components_awaiting_confirmation() );
 	}
 
 	/**
@@ -133,61 +177,86 @@ class ActivationQuestion {
 	 * @return void
 	 */
 	public function print_question(): void {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! $this->should_ask() ) {
 			return;
 		}
 
 		$awaiting = $this->plugin->components_register->get_components_awaiting_confirmation();
-		if ( empty( $awaiting ) ) {
-			return;
-		}
 
 		echo $this->render_question( $awaiting ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped while it is built.
 	}
 
 	/**
-	 * Returns the notice with the question.
+	 * Returns the notice: the list of components, the question with both answers, and "Read more".
 	 *
 	 * @since  1.0.0
 	 * @param  string[] $awaiting Class names of the components that wait for confirmation.
 	 * @return string The notice (HTML).
 	 */
 	private function render_question( array $awaiting ): string {
-		$intro_text = esc_html__( 'These modules and features run only after you confirm them. Either answer is final; you can change it later under Settings → Core Functionality, Feature Activation.', 'core-functionality' );
-
-		$items = array();
-		foreach ( $awaiting as $fqcn ) {
-			$items[] = $this->render_component_item( $fqcn );
-		}
-		$items_html = implode( '', $items );
+		$count         = count( $awaiting );
+		$title_text    = esc_html( _n( 'Core Functionality has a new feature that is not active yet:', 'Core Functionality has new features that are not active yet:', $count, 'core-functionality' ) );
+		$question_text = esc_html( _n( 'May I activate it for you?', 'May I activate them for you?', $count, 'core-functionality' ) );
+		$list_html     = $this->render_component_list( $awaiting );
+		$yes_button    = $this->render_answer_button( self::ANSWER_ENABLE, __( 'Yes', 'core-functionality' ), 'button-primary' );
+		$no_button     = $this->render_answer_button( self::ANSWER_LEAVE_OFF, __( 'No', 'core-functionality' ), 'button-secondary' );
+		$more_html     = $this->render_read_more( $awaiting );
 
 		return <<<HTML
-			<div class="notice notice-warning dwp-cf-activation-question">
-				<p><strong>Core Functionality</strong>: {$intro_text}</p>
-				<ul>{$items_html}</ul>
+			<div class="notice notice-info dwp-cf-activation-question">
+				<p class="dwp-cf-question-title"><strong>{$title_text}</strong></p>
+				{$list_html}
+				<div class="dwp-cf-question-actions">
+					<span>{$question_text}</span>
+					{$yes_button}
+					{$no_button}
+				</div><!-- closes dwp-cf-question-actions -->
+				{$more_html}
 			</div><!-- closes dwp-cf-activation-question -->
 		HTML;
 	}
 
 	/**
-	 * Returns the list item of one component: its name, module and description, and both answers.
+	 * Returns the list of component names, one per line.
 	 *
 	 * @since  1.0.0
-	 * @param  string $fqcn Class name of the module or feature.
-	 * @return string The list item (HTML).
+	 * @param  string[] $awaiting Class names of the components that wait for confirmation.
+	 * @return string The list (HTML).
 	 */
-	private function render_component_item( string $fqcn ): string {
-		$name_html        = esc_html( $this->get_component_label( $fqcn ) );
-		$description_html = esc_html( $fqcn::get_description() );
-		$description_part = '' !== $description_html ? ' — ' . $description_html : '';
-		$enable_button    = $this->render_answer_button( $fqcn, self::ANSWER_ENABLE, __( 'Switch on', 'core-functionality' ), 'button-primary' );
-		$leave_off_button = $this->render_answer_button( $fqcn, self::ANSWER_LEAVE_OFF, __( 'Leave off', 'core-functionality' ), 'button-secondary' );
+	private function render_component_list( array $awaiting ): string {
+		$items = '';
+		foreach ( $awaiting as $fqcn ) {
+			$name_html = esc_html( $this->get_component_label( $fqcn ) );
+			$items    .= "<li>{$name_html}</li>";
+		}
+
+		return "<ul class=\"dwp-cf-question-list\">{$items}</ul>";
+	}
+
+	/**
+	 * Returns the collapsed "Read more": what each component does and where to activate it later.
+	 *
+	 * @since  1.0.0
+	 * @param  string[] $awaiting Class names of the components that wait for confirmation.
+	 * @return string The details block (HTML).
+	 */
+	private function render_read_more( array $awaiting ): string {
+		$summary_text = esc_html__( 'Read more', 'core-functionality' );
+		$later_text   = esc_html__( 'If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation.', 'core-functionality' );
+
+		$descriptions = '';
+		foreach ( $awaiting as $fqcn ) {
+			$name_html        = esc_html( $this->get_component_label( $fqcn ) );
+			$description_html = esc_html( $fqcn::get_description() );
+			$descriptions    .= "<dt>{$name_html}</dt><dd>{$description_html}</dd>";
+		}
 
 		return <<<HTML
-			<li style="margin-bottom: 8px;">
-				<strong>{$name_html}</strong>{$description_part}<br />
-				{$enable_button} {$leave_off_button}
-			</li>
+			<details class="dwp-cf-question-more">
+				<summary>{$summary_text}</summary>
+				<dl>{$descriptions}</dl>
+				<p>{$later_text}</p>
+			</details><!-- closes dwp-cf-question-more -->
 		HTML;
 	}
 
@@ -205,59 +274,23 @@ class ActivationQuestion {
 		}
 
 		/* translators: 1: feature name, 2: module name. */
-		return sprintf( __( '%1$s (module %2$s)', 'core-functionality' ), $fqcn::get_name(), $module_fqcn::get_name() );
+		return sprintf( __( '%1$s (%2$s)', 'core-functionality' ), $fqcn::get_name(), $module_fqcn::get_name() );
 	}
 
 	/**
 	 * Returns one answer as a link styled as a button.
 	 *
 	 * @since  1.0.0
-	 * @param  string $fqcn         Class name of the module or feature.
 	 * @param  string $answer       self::ANSWER_ENABLE or self::ANSWER_LEAVE_OFF.
 	 * @param  string $label        The button text (not escaped).
 	 * @param  string $button_class The WordPress button class.
 	 * @return string The button (HTML).
 	 */
-	private function render_answer_button( string $fqcn, string $answer, string $label, string $button_class ): string {
-		$answer_url  = add_query_arg(
-			array(
-				self::ANSWER_ARG    => $answer,
-				self::COMPONENT_ARG => $fqcn,
-			)
-		);
-		$answer_url  = esc_url( wp_nonce_url( $answer_url, $this->get_nonce_action( $fqcn ) ) );
+	private function render_answer_button( string $answer, string $label, string $button_class ): string {
+		$answer_url  = esc_url( wp_nonce_url( add_query_arg( self::ANSWER_ARG, $answer ), self::ANSWER_ARG ) );
 		$label_html  = esc_html( $label );
-		$class_value = 'button button-small ' . $button_class;
+		$class_value = 'button ' . $button_class;
 
 		return "<a class=\"{$class_value}\" href=\"{$answer_url}\">{$label_html}</a>";
-	}
-
-	/**
-	 * Returns the message shown after an answer.
-	 *
-	 * @since  1.0.0
-	 * @param  string $fqcn   Class name of the module or feature.
-	 * @param  bool   $enable Whether it was switched on.
-	 * @return string The message (not escaped; the Notices service filters it).
-	 */
-	private function get_answer_message( string $fqcn, bool $enable ): string {
-		$label = $this->get_component_label( $fqcn );
-
-		return $enable
-			/* translators: %s: module or feature name. */
-			? sprintf( __( '%s is switched on.', 'core-functionality' ), $label )
-			/* translators: %s: module or feature name. */
-			: sprintf( __( '%s stays off.', 'core-functionality' ), $label );
-	}
-
-	/**
-	 * Returns the nonce action for answering about one component.
-	 *
-	 * @since  1.0.0
-	 * @param  string $fqcn Class name of the module or feature.
-	 * @return string The nonce action.
-	 */
-	private function get_nonce_action( string $fqcn ): string {
-		return self::ANSWER_ARG . '|' . $fqcn;
 	}
 }

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T22:41:53+01:00\n"
+"POT-Creation-Date: 2026-10-31T22:43:52+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -5487,35 +5487,44 @@ msgstr ""
 msgid "Additions to WooCommerce."
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:156
-msgid "These modules and features run only after you confirm them. Either answer is final; you can change it later under Settings → Core Functionality, Feature Activation."
+#: src/Notifiers/ActivationQuestion.php:139
+msgid "The new feature is active."
+msgid_plural "The new features are active."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Notifiers/ActivationQuestion.php:198
+msgid "Core Functionality has a new feature that is not active yet:"
+msgid_plural "Core Functionality has new features that are not active yet:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Notifiers/ActivationQuestion.php:199
+msgid "May I activate it for you?"
+msgid_plural "May I activate them for you?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Notifiers/ActivationQuestion.php:201
+msgid "Yes"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:183
-msgid "Switch on"
+#: src/Notifiers/ActivationQuestion.php:202
+msgid "No"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:184
-msgid "Leave off"
+#: src/Notifiers/ActivationQuestion.php:244
+msgid "Read more"
+msgstr ""
+
+#: src/Notifiers/ActivationQuestion.php:245
+msgid "If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation."
 msgstr ""
 
 #. translators: 1: feature name, 2: module name.
-#: src/Notifiers/ActivationQuestion.php:208
-#: src/Notifiers/DeploymentQuestion.php:243
+#: src/Notifiers/ActivationQuestion.php:277
 #, php-format
-msgid "%1$s (module %2$s)"
-msgstr ""
-
-#. translators: %s: module or feature name.
-#: src/Notifiers/ActivationQuestion.php:248
-#, php-format
-msgid "%s is switched on."
-msgstr ""
-
-#. translators: %s: module or feature name.
-#: src/Notifiers/ActivationQuestion.php:250
-#, php-format
-msgid "%s stays off."
+msgid "%1$s (%2$s)"
 msgstr ""
 
 #: src/Notifiers/DeploymentQuestion.php:169
@@ -5534,6 +5543,12 @@ msgstr ""
 
 #: src/Notifiers/DeploymentQuestion.php:206
 msgid "Keep this site's setting"
+msgstr ""
+
+#. translators: 1: feature name, 2: module name.
+#: src/Notifiers/DeploymentQuestion.php:243
+#, php-format
+msgid "%1$s (module %2$s)"
 msgstr ""
 
 #. translators: %s: module or feature name.
