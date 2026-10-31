@@ -595,7 +595,7 @@ class ComponentsRegister {
 	 * @param  string $fqcn Fully Qualified Class Name of a module or feature.
 	 * @return bool True when it is switched on.
 	 */
-	private function is_switched_on( string $fqcn ): bool {
+	public function is_switched_on( string $fqcn ): bool {
 		if ( ! $this->is_available_here( $fqcn ) ) {
 			return false;
 		}

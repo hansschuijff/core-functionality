@@ -132,35 +132,35 @@ msgstr "Validatie mislukt. Controleer je invoer."
 msgid "Settings saved successfully."
 msgstr "Instellingen opgeslagen."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:80
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:81
 msgid "Feature Activation"
 msgstr "Features activeren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:90
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:91
 msgid "Here you can enable and disable the modules and features in this plugin. Refreshing this list, will perform a scan that automatically detect new modules and features if there are any. By default new modules and features will be disabled en need to be enabled to launch them."
 msgstr "Hier zet je de modules en features van deze plugin aan en uit. Vernieuwen voert een scan uit die nieuwe modules en features vindt. Nieuwe modules en features staan standaard uit en moeten eerst worden aangezet."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:166
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:167
 msgid "Select all"
 msgstr "Alles selecteren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:221
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:222
 msgid "Available features:"
 msgstr "Beschikbare features:"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:390
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:420
 msgid "All modules and features where reset to their default settings."
 msgstr "Alle modules en features zijn teruggezet naar hun standaardinstellingen."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:423
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:453
 msgid "Critical Error: Failed to find modules and features in scan. Is this correct?"
 msgstr "Kritieke fout: de scan vond geen modules en features. Klopt dat?"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:427
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:457
 msgid "Scan was succesful. All Modules and Features succesfully registered."
 msgstr "Scan geslaagd. Alle modules en features zijn geregistreerd."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:458
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:488
 msgid "Scan for new features"
 msgstr "Zoeken naar nieuwe features"
 
@@ -5464,19 +5464,19 @@ msgstr "Afronden"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:167
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:168
 msgid "Show only disabled"
 msgstr "Alleen uitgeschakelde tonen"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:168
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:169
 msgid "Show all"
 msgstr "Alles tonen"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:169
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:170
 msgid "All modules and features are enabled."
 msgstr "Alle modules en features staan aan."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:285
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:314
 msgid "awaits your confirmation: saving this tab confirms the choice"
 msgstr "wacht op je bevestiging: opslaan op dit tabblad bevestigt de keuze"
 
@@ -5601,3 +5601,15 @@ msgstr "Vrij instelbaar"
 #: src/Enums/EnvironmentRule.php:47
 msgid "Automatically off"
 msgstr "Automatisch uit"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:302
+msgid "automatically on in this environment"
+msgstr "automatisch aan op deze omgeving"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:306
+msgid "automatically off in this environment"
+msgstr "automatisch uit op deze omgeving"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:310
+msgid "not ready for this environment yet"
+msgstr "nog niet klaar voor deze omgeving"

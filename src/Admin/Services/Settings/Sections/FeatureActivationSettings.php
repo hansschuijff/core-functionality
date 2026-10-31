@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use WP_Error;
 use DeWittePrins\CoreFunctionality\Plugin;
+use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
 use DeWittePrins\CoreFunctionality\Enums\Register;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
@@ -258,33 +259,62 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	 * Returns the value of the data attribute that tells the filter whether a component runs as saved.
 	 *
 	 * The filter works on the saved state, not on the checkboxes, so a row does not vanish while it is
-	 * being ticked. A component that waits for confirmation does not run, so it counts as disabled.
+	 * being ticked. A component that waits for confirmation, or that may not run here, counts as
+	 * disabled; one that is automatically on counts as running.
 	 *
 	 * @since  1.0.0
 	 * @param  string $fqcn Fully qualified class name of a module or feature.
-	 * @return string '1' when enabled and not waiting for confirmation, '0' otherwise.
+	 * @return string '1' when it is switched on here, '0' otherwise.
 	 */
 	private function get_saved_running_attr( string $fqcn ): string {
-		$register = $this->plugin->components_register;
-
-		return $register->is_enabled( $fqcn ) && ! $register->awaits_activation_confirmation( $fqcn ) ? '1' : '0';
+		return $this->plugin->components_register->is_switched_on( $fqcn ) ? '1' : '0';
 	}
 
 	/**
-	 * Returns the note behind the name of a component that waits for an administrator's confirmation.
+	 * Returns the note behind the name of a component whose checkbox does not decide on its own:
+	 * the release switches it on or off here, its code is not ready for this environment, or it
+	 * waits for an administrator's confirmation.
 	 *
 	 * @since  1.0.0
 	 * @param  string $fqcn Fully qualified class name of a module or feature.
-	 * @return string The note (HTML), or '' when it does not wait.
+	 * @return string The note (HTML), or '' when the checkbox decides.
 	 */
 	private function render_awaiting_confirmation_note( string $fqcn ): string {
-		if ( ! $this->plugin->components_register->awaits_activation_confirmation( $fqcn ) ) {
+		$note_text = $this->get_note_text( $fqcn );
+		if ( '' === $note_text ) {
 			return '';
 		}
 
-		$note_text = esc_html__( 'awaits your confirmation: saving this tab confirms the choice', 'core-functionality' );
+		return ' <span class="dwp-awaiting-confirmation">(' . esc_html( $note_text ) . ')</span>';
+	}
 
-		return ' <span class="dwp-awaiting-confirmation">(' . $note_text . ')</span>';
+	/**
+	 * Returns the text of the note behind the name of a component.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully qualified class name of a module or feature.
+	 * @return string The text (not escaped), or '' when there is nothing to note.
+	 */
+	private function get_note_text( string $fqcn ): string {
+		$register = $this->plugin->components_register;
+
+		if ( $register->is_automatically_on( $fqcn ) ) {
+			return __( 'automatically on in this environment', 'core-functionality' );
+		}
+
+		if ( EnvironmentRule::AUTO_OFF === $register->get_rule_here( $fqcn ) ) {
+			return __( 'automatically off in this environment', 'core-functionality' );
+		}
+
+		if ( ! $register->is_available_here( $fqcn ) ) {
+			return __( 'not ready for this environment yet', 'core-functionality' );
+		}
+
+		if ( $register->awaits_activation_confirmation( $fqcn ) ) {
+			return __( 'awaits your confirmation: saving this tab confirms the choice', 'core-functionality' );
+		}
+
+		return '';
 	}
 
 	/**
