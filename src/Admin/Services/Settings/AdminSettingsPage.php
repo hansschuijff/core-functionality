@@ -19,10 +19,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
 use DeWittePrins\CoreFunctionality\Services\ClassParser;
 use DeWittePrins\CoreFunctionality\Plugin;
+use Closure;
+use ReflectionException;
+use ReflectionFunction;
 use WP_Error;
 
 // Import global PHP and WordPress functions to optimize runtime lookups.
 use function __;
+use function _n;
+use function call_user_func_array;
+use function is_callable;
+use function max;
+use function preg_match_all;
+use function trim;
+use function wp_normalize_path;
 use function add_options_page;
 use function add_query_arg;
 use function admin_url;
@@ -102,11 +112,32 @@ class AdminSettingsPage {
 	private SettingsSectionInterface $current_section_object;
 
 	/**
-	 * Cached WordPress admin notices HTML.
+	 * The admin notice hooks whose output is moved into the canvas of this page.
+	 *
+	 * @var string[]
+	 */
+	private const NOTICE_HOOKS = array( 'admin_notices', 'all_admin_notices' );
+
+	/**
+	 * Captured notices of this plugin, shown at the top of the canvas.
 	 *
 	 * @var string
 	 */
-	private string $admin_notices_buffered_html = '';
+	private string $own_notices_html = '';
+
+	/**
+	 * Captured notices of other plugins and WordPress, shown collapsed.
+	 *
+	 * @var string
+	 */
+	private string $other_notices_html = '';
+
+	/**
+	 * Number of captured notices of other plugins and WordPress.
+	 *
+	 * @var int
+	 */
+	private int $other_notices_count = 0;
 
 	/**
 	 * Settings Page Controller Constructor.
@@ -118,8 +149,7 @@ class AdminSettingsPage {
 		add_action( 'admin_menu', array( $this, 'register_settings_page' ) );
 		add_action( 'admin_init', array( $this, 'save_settings' ) );
 
-		add_action( 'admin_notices', array( $this, 'start_buffering_admin_notices' ), PHP_INT_MIN );
-		add_action( 'admin_notices', array( $this, 'save_buffered_admin_notices' ), PHP_INT_MAX );
+		add_action( 'in_admin_header', array( $this, 'capture_admin_notices' ) );
 	}
 
 	/**
@@ -892,46 +922,138 @@ class AdminSettingsPage {
 	}
 
 	/**
-	 * Starts output buffering for admin notices at the absolute beginning of the hook execution.
+	 * Wraps every admin notice callback, so its output is captured instead of printed.
+	 *
+	 * Runs on in_admin_header, just before WordPress fires the notice hooks. The captured
+	 * notices are printed inside the canvas: those of this plugin first, the others in a
+	 * collapsed block, so they do not push the settings below the fold.
 	 *
 	 * @since  1.0.0
 	 * @return void
 	 */
-	public function start_buffering_admin_notices(): void {
+	public function capture_admin_notices(): void {
+		global $wp_filter;
+
 		if ( ! $this->is_this_settings_page() ) {
 			return;
 		}
-		ob_start();
+
+		foreach ( self::NOTICE_HOOKS as $hook_name ) {
+			if ( ! isset( $wp_filter[ $hook_name ] ) ) {
+				continue;
+			}
+			foreach ( $wp_filter[ $hook_name ]->callbacks as $priority => $callbacks ) {
+				foreach ( $callbacks as $key => $callback ) {
+					$wp_filter[ $hook_name ]->callbacks[ $priority ][ $key ]['function'] = $this->get_capturing_callback( $callback['function'] );
+				}
+			}
+		}
 	}
 
 	/**
-	 * Captures and cleans the buffered admin notices HTML at the absolute end of the hook execution.
+	 * Returns a callback that runs the original notice callback and keeps its output.
 	 *
 	 * @since  1.0.0
-	 * @return void
+	 * @param  mixed $original The original callback.
+	 * @return Closure The capturing callback.
 	 */
-	public function save_buffered_admin_notices(): void {
-		if ( ! $this->is_this_settings_page() ) {
-			return;
-		}
-		$this->admin_notices_buffered_html = ob_get_clean();
+	private function get_capturing_callback( mixed $original ): Closure {
+		return function ( ...$args ) use ( $original ): void {
+			if ( ! is_callable( $original ) ) {
+				return;
+			}
+			ob_start();
+			call_user_func_array( $original, $args );
+			$this->keep_notice_html( (string) ob_get_clean(), $this->is_own_callback( $original ) );
+		};
 	}
 
 	/**
-	 * Outputs the wrapping container and buffered notices HTML only if notifications exist.
+	 * Keeps the captured output of one notice callback.
+	 *
+	 * @since  1.0.0
+	 * @param  string $html   The output of the callback.
+	 * @param  bool   $is_own Whether the callback belongs to this plugin.
+	 * @return void
+	 */
+	private function keep_notice_html( string $html, bool $is_own ): void {
+		if ( '' === trim( $html ) ) {
+			return;
+		}
+
+		if ( $is_own ) {
+			$this->own_notices_html .= $html;
+			return;
+		}
+
+		$this->other_notices_html  .= $html;
+		$this->other_notices_count += max( 1, (int) preg_match_all( '/<div[^>]*class="[^"]*\b(?:notice|updated|error)\b/', $html ) );
+	}
+
+	/**
+	 * Whether a callback is defined in this plugin's own files.
+	 *
+	 * @since  1.0.0
+	 * @param  callable $callback The callback.
+	 * @return bool True when the callback lives in this plugin.
+	 */
+	private function is_own_callback( callable $callback ): bool {
+		try {
+			$file = (string) ( new ReflectionFunction( Closure::fromCallable( $callback ) ) )->getFileName();
+		} catch ( ReflectionException ) {
+			return false;
+		}
+
+		return str_starts_with( wp_normalize_path( $file ), wp_normalize_path( $this->plugin->get_data( 'plugin-dir' ) ) );
+	}
+
+	/**
+	 * Outputs the captured notices: this plugin's own, then the others collapsed.
 	 *
 	 * @since  1.0.0
 	 * @return void
 	 */
 	private function render_buffered_admin_notices(): void {
-		if ( empty( $this->admin_notices_buffered_html ) ) {
+		if ( '' === $this->own_notices_html && '' === $this->other_notices_html ) {
 			return;
 		}
 
+		$other_notices = $this->render_other_notices();
+
 		echo <<<HTML
 			<div class="dwp-gutenberg-notices">
-				{$this->admin_notices_buffered_html}
+				{$this->own_notices_html}
+				{$other_notices}
 			</div>
+		HTML;
+	}
+
+	/**
+	 * Renders the collapsed block with the notices of other plugins and WordPress.
+	 *
+	 * @since  1.0.0
+	 * @return string The block, or an empty string when there are none.
+	 */
+	private function render_other_notices(): string {
+		if ( '' === $this->other_notices_html ) {
+			return '';
+		}
+
+		$summary = esc_html(
+			sprintf(
+				/* translators: %d: number of notices. */
+				_n( 'Notice from other plugins (%d)', 'Notices from other plugins (%d)', $this->other_notices_count, 'core-functionality' ),
+				$this->other_notices_count
+			)
+		);
+
+		return <<<HTML
+			<details class="dwp-cf-other-notices">
+				<summary>{$summary}</summary>
+				<div class="dwp-cf-other-notices-body">
+					{$this->other_notices_html}
+				</div>
+			</details><!-- closes dwp-cf-other-notices -->
 		HTML;
 	}
 }

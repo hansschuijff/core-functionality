@@ -34,17 +34,17 @@ msgstr ""
 msgid "https://dewitteprins.nl"
 msgstr ""
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:133
-#: src/Admin/Services/Settings/AdminSettingsPage.php:485
+#: src/Admin/Services/Settings/AdminSettingsPage.php:163
+#: src/Admin/Services/Settings/AdminSettingsPage.php:515
 msgid "Core Functionality Settings"
 msgstr "Instellingen Core Functionality"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:134
+#: src/Admin/Services/Settings/AdminSettingsPage.php:164
 #: src/Environment/Plugins/CoreFunctionality.php:107
 msgid "Core Functionality"
 msgstr "Core Functionality"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:353
+#: src/Admin/Services/Settings/AdminSettingsPage.php:383
 #: src/Environment/Plugins/Automatewoo.php:156
 #: src/Environment/Plugins/BeaverBuilder.php:132
 #: src/Environment/Plugins/CodeSnippets.php:94
@@ -77,35 +77,35 @@ msgstr "Core Functionality"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:354
+#: src/Admin/Services/Settings/AdminSettingsPage.php:384
 msgid "This section does not exist (any more). Choose a section in the menu."
 msgstr "Deze sectie bestaat niet (meer). Kies een sectie in het menu."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:367
+#: src/Admin/Services/Settings/AdminSettingsPage.php:397
 msgid "Type to search... (↑↓ to navigate, Enter)"
 msgstr "Typ om te zoeken… (↑↓ om te navigeren, Enter)"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:468
+#: src/Admin/Services/Settings/AdminSettingsPage.php:498
 msgid "Search... (/)"
 msgstr "Zoeken… (/)"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:469
+#: src/Admin/Services/Settings/AdminSettingsPage.php:499
 msgid "Collapse menu"
 msgstr "Menu inklappen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:501
+#: src/Admin/Services/Settings/AdminSettingsPage.php:531
 msgid "No items found"
 msgstr "Geen items gevonden"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:731
+#: src/Admin/Services/Settings/AdminSettingsPage.php:761
 msgid "Reset to Factory Defaults"
 msgstr "Terug naar fabrieksinstellingen"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:732
+#: src/Admin/Services/Settings/AdminSettingsPage.php:762
 msgid "🚨 CRITICAL WARNING:\\n\\nAre you sure you want to trigger a settings reset for this section?"
 msgstr "🚨 BELANGRIJKE WAARSCHUWING:\\n\\nWeet je zeker dat je de instellingen van dit onderdeel wilt terugzetten?"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:748
+#: src/Admin/Services/Settings/AdminSettingsPage.php:778
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:400
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:405
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
@@ -113,19 +113,19 @@ msgstr "🚨 BELANGRIJKE WAARSCHUWING:\\n\\nWeet je zeker dat je de instellingen
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:783
+#: src/Admin/Services/Settings/AdminSettingsPage.php:813
 msgid "Security check failed. Please try again."
 msgstr "Beveiligingscontrole mislukt. Probeer het opnieuw."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:788
+#: src/Admin/Services/Settings/AdminSettingsPage.php:818
 msgid "You do not have sufficient permissions to update this settings."
 msgstr "Je hebt onvoldoende rechten om deze instellingen te wijzigen."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:810
+#: src/Admin/Services/Settings/AdminSettingsPage.php:840
 msgid "Validation failed. Please double-check your entries."
 msgstr "Validatie mislukt. Controleer je invoer."
 
-#: src/Admin/Services/Settings/AdminSettingsPage.php:817
+#: src/Admin/Services/Settings/AdminSettingsPage.php:847
 msgid "Settings saved successfully."
 msgstr "Instellingen opgeslagen."
 
@@ -1457,7 +1457,7 @@ msgid "Duplicate Post Settings"
 msgstr "Duplicate Post-instellingen"
 
 #: src/Environment/Plugins/DuplicatePost.php:71
-#: src/Modules/DuplicatePost/DuplicatePost.php:45
+#: src/Modules/DuplicatePost/DuplicatePost.php:46
 msgid "Duplicate Post"
 msgstr "Duplicate Post"
 
@@ -2555,7 +2555,7 @@ msgstr "Tijdelijke logins"
 #: src/Environment/Plugins/TheEventsCalendar.php:92
 #: src/Environment/Plugins/TheEventsCalendar.php:101
 #: src/Environment/Plugins/TheEventsCalendar.php:142
-#: src/Modules/Events/Events.php:43
+#: src/Modules/Events/Events.php:44
 msgid "Events"
 msgstr "Evenementen"
 
@@ -3653,7 +3653,7 @@ msgid "Product Add-ons"
 msgstr "Extra productopties"
 
 #: src/Environment/Plugins/WoocommerceProductAddons.php:60
-#: src/Modules/WooCommerce/WooCommerce.php:43
+#: src/Modules/WooCommerce/WooCommerce.php:44
 msgid "WooCommerce"
 msgstr ""
 
@@ -3890,11 +3890,11 @@ msgstr "Customizer Essence Pro"
 msgid "Customizations and adaptations for the ActiveWoo plugin."
 msgstr "Aanpassingen voor de ActiveWoo-plugin."
 
-#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:51
+#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:52
 msgid "Keep ActiveWoo License Alive"
 msgstr "ActiveWoo-licentie actief houden"
 
-#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:52
+#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:53
 msgid "Sustains a copy of the license in transient, so the plugin will keep thinking it is licensed."
 msgstr "Bewaart een kopie van de licentie in een transient, zodat de plugin blijft denken dat hij gelicentieerd is."
 
@@ -3914,23 +3914,23 @@ msgstr "Adminmenu indelen"
 msgid "Architects, structures and cleans up the admin side navigation."
 msgstr "Deelt het adminmenu in, ordent het en ruimt het op."
 
-#: src/Modules/AdminToolbar/AdminToolbar.php:39
+#: src/Modules/AdminToolbar/AdminToolbar.php:40
 msgid "Admin Toolbar"
 msgstr "Admin-toolbar"
 
-#: src/Modules/AdminToolbar/AdminToolbar.php:40
+#: src/Modules/AdminToolbar/AdminToolbar.php:41
 msgid "Provides advanced layout overrides, performance enhancements, and custom nodes filtering for the WordPress admin bar."
 msgstr "Aanpassingen in opmaak, snelheid en het filteren van onderdelen van de WordPress-admin-toolbar."
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:56
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
 msgid "Admin Toolbar Cleaner Feature"
 msgstr "Admin-toolbar opruimen"
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:58
 msgid "Moves unwanted Admin Toolbar shortcuts to an overflow submenu, based on a negative-selection user matrix."
 msgstr "Verplaatst ongewenste snelkoppelingen in de admin-toolbar naar een submenu \"Meer\", op basis van wat je niet selecteert."
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:150
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:152
 msgid "More"
 msgstr "Meer"
 
@@ -3958,11 +3958,11 @@ msgstr "In de hoofdbalk houden (zichtbaar)"
 msgid "Save Toolbar Visibility Filter"
 msgstr "Zichtbaarheid toolbar opslaan"
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:68
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
 msgid "Admin Toolbar Builder Feature"
 msgstr "Menubouwer admin-toolbar"
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:70
 msgid "The Admin Toolbar Builder Feature builds a navigation shortcuts menu in the admin toolbar."
 msgstr "Bouwt een eigen menu in de admin-toolbar."
 
@@ -4471,12 +4471,12 @@ msgstr "Toont de ID's van de onderdelen in de admin-toolbar, als hulp bij het on
 msgid "Node ID's"
 msgstr "Node-id's"
 
-#: src/Modules/AiAccess/AiAccess.php:46
+#: src/Modules/AiAccess/AiAccess.php:47
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:107
 msgid "AI Access"
 msgstr "AI-toegang"
 
-#: src/Modules/AiAccess/AiAccess.php:47
+#: src/Modules/AiAccess/AiAccess.php:48
 msgid "Abilities an AI assistant may use on this site, for example to write drafts. Publishing stays with you."
 msgstr "Wat een AI-assistent op deze site mag doen, bijvoorbeeld concepten schrijven. Publiceren blijft bij jou."
 
@@ -4557,19 +4557,19 @@ msgstr "Concept bijwerken"
 msgid "Changes a draft or an item pending review: only the fields that are given. Published items cannot be changed here; use start-rewrite for a copy where that is allowed."
 msgstr "Past een concept of een item dat op beoordeling wacht aan: alleen de opgegeven velden. Gepubliceerde items kunnen hier niet worden aangepast; gebruik start-rewrite voor een kopie waar dat mag."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:73
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:74
 msgid "Content Editing"
 msgstr "Inhoud bewerken"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:74
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:75
 msgid "An AI assistant may find, read and write drafts of posts, pages and other content types. It never publishes; you do."
 msgstr "Een AI-assistent mag concepten van berichten, pagina's en andere inhoudstypes zoeken, lezen en schrijven. Hij publiceert nooit; dat doe jij."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:108
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:110
 msgid "Content editing"
 msgstr "Inhoud bewerken"
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:109
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:111
 msgid "Finding, reading and writing drafts of site content."
 msgstr "Concepten van de inhoud van de site zoeken, lezen en schrijven."
 
@@ -4665,11 +4665,11 @@ msgstr "Het item is na het opslaan niet gevonden."
 msgid "The fields \"%s\" do not apply to this content type and were ignored."
 msgstr "De velden \"%s\" horen niet bij dit inhoudstype en zijn genegeerd."
 
-#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:73
+#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:74
 msgid "Course Content"
 msgstr "Cursusinhoud"
 
-#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:74
+#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:75
 msgid "An AI assistant may write drafts of Sensei courses and lessons and place lessons in a course and module. Quizzes and enrolments are left alone."
 msgstr "Een AI-assistent mag concepten van Sensei-cursussen en -lessen schrijven en lessen in een cursus en module plaatsen. Quizzen en inschrijvingen blijven onaangeroerd."
 
@@ -4695,11 +4695,11 @@ msgstr "De cursus heeft geen module %d."
 msgid "The course structure could not be saved."
 msgstr "De cursusstructuur kon niet worden opgeslagen."
 
-#: src/Modules/AiAccess/Features/EventContent/EventContent.php:68
+#: src/Modules/AiAccess/Features/EventContent/EventContent.php:69
 msgid "Event Content"
 msgstr "Evenementinhoud"
 
-#: src/Modules/AiAccess/Features/EventContent/EventContent.php:69
+#: src/Modules/AiAccess/Features/EventContent/EventContent.php:70
 msgid "An AI assistant may write drafts of events (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone."
 msgstr "Een AI-assistent mag concepten van evenementen (The Events Calendar) schrijven, met datums, locatie, organisatoren en prijs. Tickets blijven onaangeroerd."
 
@@ -4737,11 +4737,11 @@ msgstr "Locaties en organisatoren opsommen"
 msgid "Lists the existing venues and organizers of events with their ids, to link them to an event. New ones are not created."
 msgstr "Somt de bestaande locaties en organisatoren van evenementen op met hun id, om ze aan een evenement te koppelen. Nieuwe worden niet aangemaakt."
 
-#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:54
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:55
 msgid "Rewrite Copies"
 msgstr "Herschrijfkopieën"
 
-#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:55
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:56
 msgid "An AI assistant may change published content in a Rewrite & Republish copy (Yoast Duplicate Post) that replaces the original only when you publish it."
 msgstr "Een AI-assistent mag gepubliceerde inhoud aanpassen in een kopie via Herschrijven & Opnieuw publiceren (Yoast Duplicate Post), die het origineel pas vervangt als jij die publiceert."
 
@@ -4774,27 +4774,27 @@ msgstr "Duplicate Post staat geen kopie toe van dit inhoudstype, of niet voor de
 msgid "The copy could not be found after it was made."
 msgstr "De kopie is na het maken niet gevonden."
 
-#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:48
+#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
 msgid "SEO Fields"
 msgstr "SEO-velden"
 
-#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
+#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:50
 msgid "An AI assistant may write the SEO title and meta description of Yoast SEO."
 msgstr "Een AI-assistent mag de SEO-titel en metabeschrijving van Yoast SEO schrijven."
 
-#: src/Modules/Cleaner/Cleaner.php:41
+#: src/Modules/Cleaner/Cleaner.php:42
 msgid "WordPress Cleaner"
 msgstr "WordPress opschonen"
 
-#: src/Modules/Cleaner/Cleaner.php:42
+#: src/Modules/Cleaner/Cleaner.php:43
 msgid "Utilities that keep WordPress performing efficiently."
 msgstr "Hulpmiddelen die WordPress snel houden."
 
-#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:60
+#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:61
 msgid "Transient Optimizer Feature"
 msgstr "Transients opschonen"
 
-#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:61
+#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:62
 msgid "Monitors, indexes, and flushes expired or orphaned core transients clusters using automated background crons to optimize the options table."
 msgstr "Houdt verlopen en verweesde transients bij en ruimt ze automatisch op met een geplande taak, zodat de optietabel klein blijft."
 
@@ -4844,16 +4844,16 @@ msgstr "Opgeschoond! %d verlopen rijen zijn uit de optietabel verwijderd."
 msgid "Optimize Transient Cache Now"
 msgstr "Transients nu opschonen"
 
-#: src/Modules/DuplicatePost/DuplicatePost.php:46
+#: src/Modules/DuplicatePost/DuplicatePost.php:47
 msgid "Adjustments to Yoast Duplicate Post."
 msgstr "Aanpassingen aan Yoast Duplicate Post."
 
-#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:63
+#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:64
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:116
 msgid "Hide Yoast duplicate links"
 msgstr "Yoast-dupliceerlinks verbergen"
 
-#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:64
+#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:65
 msgid "Hides the duplicate links of Yoast Duplicate Post for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab."
 msgstr "Verbergt de dupliceerlinks van Yoast Duplicate Post bij de plugins die hun inhoud zelf dupliceren (standaard The Events Calendar, Event Tickets en Sensei), te kiezen op een instellingentabblad."
 
@@ -4901,12 +4901,12 @@ msgstr "Inhoudstypes: %s"
 msgid "Content type: %s"
 msgstr "Inhoudstype: %s"
 
-#: src/Modules/Events/Events.php:44
+#: src/Modules/Events/Events.php:45
 msgid "Additions to The Events Calendar and Event Tickets."
 msgstr "Aanvullingen op The Events Calendar en Event Tickets."
 
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:176
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:360
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:362
 msgid "Event templates"
 msgstr "Evenementtemplates"
 
@@ -5094,80 +5094,80 @@ msgstr "De vorige versie kon niet worden teruggezet. Er is niets gewijzigd."
 msgid "The previous version is restored; the replaced version is now the previous one."
 msgstr "De vorige versie is teruggezet; de vervangen versie is nu de vorige."
 
-#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:86
+#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:87
 msgid "CF event templates"
 msgstr "CF-evenementtemplates"
 
-#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:87
+#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:88
 msgid "Template overrides of The Events Calendar and Event Tickets kept for this site apart from the theme, used when the theme has no override of its own. Upload and download them as a zip on the settings page."
 msgstr "Eigen templates voor The Events Calendar en Event Tickets voor deze site, los van het thema, gebruikt als het thema geen eigen versie heeft. Upload en download ze als zip op de instellingenpagina."
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:115
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:116
 msgid "Event template check"
 msgstr "Controle evenementtemplates"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:116
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:117
 msgid "Warns when a template override of The Events Calendar or Event Tickets is out of date or overrides a template the plugin no longer has."
 msgstr "Waarschuwt als een aangepaste template van The Events Calendar of Event Tickets verouderd is of een template vervangt die de plugin niet meer heeft."
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:361
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:363
 msgid "Scan again"
 msgstr "Opnieuw scannen"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:383
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:385
 msgid "child theme"
 msgstr "het subthema"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:384
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:386
 msgid "parent theme"
 msgstr "het hoofdthema"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:385
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:387
 msgid "CF template"
 msgstr "de CF-template"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:388
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:390
 msgid "These templates are out of date:"
 msgstr "Deze templates zijn verouderd:"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:389
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:391
 msgid "These templates override one the plugin no longer has (moved or removed):"
 msgstr "Deze templates vervangen er een die de plugin niet meer heeft (verplaatst of verwijderd):"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:390
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:392
 msgid "These CF templates are out of date. A theme overrides them now, but they are used again after a theme switch:"
 msgstr "Deze CF-templates zijn verouderd. Nu gebruikt een thema een eigen versie, maar na een themawissel worden ze weer gebruikt:"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:391
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:393
 msgid "These templates in the child theme are the same as the CF templates and can be removed:"
 msgstr "Deze templates in het subthema zijn gelijk aan de CF-templates en kunnen weg:"
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:392
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:394
 msgid "These templates in the parent theme are the same as the CF templates and can be removed:"
 msgstr "Deze templates in het hoofdthema zijn gelijk aan de CF-templates en kunnen weg:"
 
 #. translators: 1: template path, 2: whose copy it is (child theme, parent theme, CF template), 3: its version, 4: the plugin's version.
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:403
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:405
 #, php-format
 msgid "%1$s: %2$s has v%3$s, the plugin has v%4$s"
 msgstr "%1$s: %2$s heeft v%3$s, de plugin heeft v%4$s"
 
 #. translators: 1: template path, 2: whose copy it is (child theme, parent theme, CF template).
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:405
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:407
 #, php-format
 msgid "%1$s: %2$s has it, the plugin no longer does"
 msgstr "%1$s: %2$s heeft hem, de plugin niet meer"
 
-#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:52
+#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
 msgid "Reader Experience Settings"
 msgstr "Instellingen Reader Experience"
 
-#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
+#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:54
 msgid "A settings tab for the Reader Experience plugin, which itself is steered by filters only."
 msgstr "Een instellingentabblad voor de plugin Reader Experience, die zelf alleen via filters wordt bestuurd."
 
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:130
-#: src/Modules/ReaderExperience/ReaderExperience.php:43
+#: src/Modules/ReaderExperience/ReaderExperience.php:44
 msgid "Reader Experience"
 msgstr "Reader Experience"
 
@@ -5289,91 +5289,91 @@ msgstr "Controleren op veel beoordelingen in korte tijd (spam)"
 msgid "Words per minute must be a number from %1$d to %2$d."
 msgstr "Woorden per minuut moet een getal van %1$d tot %2$d zijn."
 
-#: src/Modules/ReaderExperience/ReaderExperience.php:44
+#: src/Modules/ReaderExperience/ReaderExperience.php:45
 msgid "Settings for the Reader Experience plugin: heading anchors, reading time and feedback."
 msgstr "Instellingen voor de plugin Reader Experience: ankerlinks bij koppen, leestijd en feedback."
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:53
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
 msgid "Sensei message labels"
 msgstr "Labels van Sensei-berichten"
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:55
 msgid "Calls Sensei's messages \"Sensei messages\", so they are not mixed up with posts (both \"Berichten\" in Dutch)."
 msgstr "Noemt de berichten van Sensei \"Sensei-berichten\", zodat ze niet verward worden met gewone berichten."
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:94
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:96
 msgid "Sensei message"
 msgstr "Sensei-bericht"
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:95
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:97
 msgid "Sensei messages"
 msgstr "Sensei-berichten"
 
-#: src/Modules/Sensei/Sensei.php:45
+#: src/Modules/Sensei/Sensei.php:46
 msgid "Sensei LMS"
 msgstr "Sensei LMS"
 
-#: src/Modules/Sensei/Sensei.php:46
+#: src/Modules/Sensei/Sensei.php:47
 msgid "Adjustments to Sensei LMS."
 msgstr "Aanpassingen aan Sensei LMS."
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:151
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:152
 msgid "Business invoice totals"
 msgstr "Totalen op zakelijke facturen"
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:152
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:153
 msgid "On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements)."
 msgstr "Op pdf-facturen van bestellingen met een btw-nummer van de klant: het totaal exclusief btw, de btw per tarief met het percentage en het totaal inclusief btw, plus een melding als de btw verlegd is (Nederlandse factuureisen)."
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:296
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:298
 msgid "Total excl. VAT"
 msgstr "Totaal exclusief btw"
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:304
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:306
 msgid "VAT 0%"
 msgstr "Btw 0%"
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:310
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:312
 msgid "Total incl. VAT"
 msgstr "Totaal inclusief btw"
 
 #. translators: %s: VAT rate, such as 21%.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:405
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:407
 #, php-format
 msgid "Amount excl. VAT %s"
 msgstr "Bedrag exclusief btw %s"
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:504
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:506
 msgid "Intra-Community supply, VAT 0% (article 138 of VAT Directive 2006/112/EC)."
 msgstr "Intracommunautaire levering, btw 0% (artikel 138 Btw-richtlijn 2006/112/EG)."
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:507
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:509
 msgid "VAT reverse-charged (article 196 of VAT Directive 2006/112/EC)."
 msgstr "Btw verlegd (artikel 196 Btw-richtlijn 2006/112/EG)."
 
 #. translators: %s: the customer's VAT number.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:511
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:513
 #, php-format
 msgid "Customer VAT number: %s"
 msgstr "Btw-nummer afnemer: %s"
 
-#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:83
+#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:84
 msgid "Several products in the cart at once"
 msgstr "Meerdere producten tegelijk in de winkelwagen"
 
-#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:84
+#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:85
 msgid "One add-to-cart link adds several products with their own quantities: ?add-to-cart=101:1,102:3. Used by the ticket forms of Remote Tickets."
 msgstr "Eén add-to-cart-link legt meerdere producten met elk hun eigen aantal in de winkelwagen: ?add-to-cart=101:1,102:3. Gebruikt door de ticketformulieren van Remote Tickets."
 
 #. translators: %s: the product number(s) from the link, as a list ("1, 2 and 3").
-#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:166
+#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:168
 #, php-format
 msgid "The product with number %s could not be added. That product number does not exist."
 msgid_plural "The products with numbers %s could not be added. Those product numbers do not exist."
 msgstr[0] "Het product met nummer %s kon niet worden toegevoegd. Dat productnummer bestaat niet."
 msgstr[1] "De producten met nummers %s konden niet worden toegevoegd. Die productnummers bestaan niet."
 
-#: src/Modules/WooCommerce/WooCommerce.php:44
+#: src/Modules/WooCommerce/WooCommerce.php:45
 msgid "Additions to WooCommerce."
 msgstr "Aanvullingen op WooCommerce."
 
@@ -5461,63 +5461,63 @@ msgstr "Ongeldige aanroep: FinderService->find_modules_and_features() mag alleen
 msgid "Calling Settings->get_options() is only allowed, use Settings->get(), Settings->save() or Settings->delete() instead. For getting unmanaged options, you can use Settings->get_unmanaged()."
 msgstr "Settings->get_options() aanroepen is niet toegestaan. Gebruik Settings->get(), Settings->save() of Settings->delete(). Voor opties buiten de kluis kun je Settings->get_unmanaged() gebruiken."
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:82
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:83
 msgid "Cancel button in the order preview"
 msgstr "Annuleerknop in het bestelvoorbeeld"
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:83
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:84
 msgid "Adds a button to cancel the order to the status buttons of the order preview (the eye icon in the order list), with a confirmation."
 msgstr "Voegt aan de statusknoppen van het bestelvoorbeeld (het oogje in de bestellijst) een knop toe om de bestelling te annuleren, met een bevestigingsvraag."
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:118
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:120
 msgid "Change status:"
 msgstr "Status wijzigen:"
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:146
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:148
 msgid "Cancelled"
 msgstr "Geannuleerd"
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:147
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:149
 msgid "Change order status to cancelled"
 msgstr "Wijzig de status van de bestelling naar geannuleerd"
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:214
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:216
 msgid "Cancel this order?"
 msgstr "Deze bestelling annuleren?"
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:215
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:217
 msgid "Cancel this order? The subscription of this order will be cancelled as well, and that cannot be undone."
 msgstr "Deze bestelling annuleren? Het abonnement van deze bestelling wordt dan ook geannuleerd, en dat is niet terug te draaien."
 
-#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:82
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:83
 msgid "Totals in the order preview"
 msgstr "Totalen in het bestelvoorbeeld"
 
-#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:83
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:84
 msgid "Shows subtotal, discount, shipping, tax and total under the products in the order preview (the eye icon in the order list), and lets the preview scroll so it fits on the screen."
 msgstr "Toont subtotaal, korting, verzendkosten, btw en totaal onder de producten in het bestelvoorbeeld (het oogje in de bestellijst), en laat het voorbeeld scrollen zodat het op het scherm past."
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:58
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:59
 msgid "Short bulk actions for orders"
 msgstr "Korte bulkacties voor bestellingen"
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:59
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:60
 msgid "Short names for the status actions in the bulk action select of the order list: \"Process\", \"Put on hold\", \"Complete\" and \"Cancel\"."
 msgstr "Korte namen voor de statusacties in de bulkactiekeuze van de bestellijst: \"In behandeling nemen\", \"In de wacht zetten\", \"Afronden\" en \"Annuleren\"."
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:104
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:106
 msgid "Process"
 msgstr "In behandeling nemen"
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:105
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:107
 msgid "Put on hold"
 msgstr "In de wacht zetten"
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:106
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:108
 msgid "Complete"
 msgstr "Afronden"
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:107
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:109
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -5623,3 +5623,11 @@ msgstr "%s volgt nu de release."
 #, php-format
 msgid "%s keeps this site's setting."
 msgstr "%s houdt de eigen instelling van deze site."
+
+#. translators: %d: number of notices.
+#: src/Admin/Services/Settings/AdminSettingsPage.php:1045
+#, php-format
+msgid "Notice from other plugins (%d)"
+msgid_plural "Notices from other plugins (%d)"
+msgstr[0] "Melding van andere plugins (%d)"
+msgstr[1] "Meldingen van andere plugins (%d)"
