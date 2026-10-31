@@ -1064,7 +1064,7 @@ class AdminSettingsPage {
 		$summary = esc_html(
 			sprintf(
 				/* translators: %d: number of notices. */
-				_n( 'Notice from other plugins (%d)', 'Notices from other plugins (%d)', $this->other_notices_count, 'core-functionality' ),
+				_n( 'Other notice (%d)', 'Other notices (%d)', $this->other_notices_count, 'core-functionality' ),
 				$this->other_notices_count
 			)
 		);

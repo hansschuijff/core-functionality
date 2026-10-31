@@ -92,7 +92,7 @@ class OptionsManagementSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_name(): string {
-		return __( 'Options Vault Management', 'core-functionality' );
+		return __( 'Options Vault', 'core-functionality' );
 	}
 
 	/**
