@@ -186,7 +186,8 @@ class ActivationQuestion {
 	}
 
 	/**
-	 * Returns the notice: the list of components, the question with both answers, and "Read more".
+	 * Returns the notice: the list of components, "Read more", and at the bottom the question with
+	 * both answers.
 	 *
 	 * @since  1.0.0
 	 * @param  string[] $awaiting Class names of the components that wait for confirmation.
@@ -205,12 +206,12 @@ class ActivationQuestion {
 			<div class="notice notice-info dwp-cf-activation-question">
 				<p class="dwp-cf-question-title"><strong>{$title_text}</strong></p>
 				{$list_html}
+				{$more_html}
 				<div class="dwp-cf-question-actions">
-					<span>{$question_text}</span>
+					<span class="dwp-cf-question-text">{$question_text}</span>
 					{$yes_button}
 					{$no_button}
 				</div><!-- closes dwp-cf-question-actions -->
-				{$more_html}
 			</div><!-- closes dwp-cf-activation-question -->
 		HTML;
 	}

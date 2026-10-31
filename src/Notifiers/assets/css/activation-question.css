@@ -1,11 +1,13 @@
 /**
- * Activation question notice: short lines, a real list and room around the buttons.
+ * Activation question notice: short lines, a real list, a light tint like the WordPress notices,
+ * and the question with its buttons on a row of their own at the bottom.
  *
  * @package DeWittePrins\CoreFunctionality
  */
 
 .notice.dwp-cf-activation-question {
-	padding: 14px 18px 12px;
+	padding: 14px 18px;
+	background: #f0f6fc;
 }
 
 .dwp-cf-activation-question > * {
@@ -19,7 +21,7 @@
 }
 
 .dwp-cf-activation-question .dwp-cf-question-list {
-	margin: 0 0 16px 20px;
+	margin: 0 0 10px 20px;
 	list-style: disc;
 }
 
@@ -32,11 +34,20 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 10px;
-	margin: 0 0 12px;
+	margin: 14px 0 0;
+	padding: 12px 0 0;
+	border-top: 1px solid #c5d9ed;
+}
+
+.dwp-cf-activation-question .dwp-cf-question-text {
+	margin-right: 6px;
+	font-weight: 600;
 }
 
 .dwp-cf-activation-question .dwp-cf-question-actions .button {
+	min-width: 64px;
 	margin: 0;
+	text-align: center;
 }
 
 .dwp-cf-activation-question .dwp-cf-question-more > summary {
