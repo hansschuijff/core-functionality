@@ -151,6 +151,8 @@ class BusinessInvoiceTotals extends AbstractFeature {
 			name:         __( 'Business invoice totals', 'core-functionality' ),
 			description:  __( 'On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements).', 'core-functionality' ),
 			dependencies: 'woocommerce-pdf-invoices',
+			// It replaces a production snippet; it removes the snippet's hooks, but the site decides.
+			confirm_activation: true,
 		);
 	}
 
