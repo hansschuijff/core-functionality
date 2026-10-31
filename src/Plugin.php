@@ -20,7 +20,6 @@ use DeWittePrins\CoreFunctionality\Environment\EnvironmentLookup;
 use DeWittePrins\CoreFunctionality\Services\PluginIntegrityWatch;
 use DeWittePrins\CoreFunctionality\Notifiers\Notices;
 use DeWittePrins\CoreFunctionality\Notifiers\ActivationQuestion;
-use DeWittePrins\CoreFunctionality\Notifiers\DeploymentQuestion;
 use DeWittePrins\CoreFunctionality\Services\InterDependenciesGuard;
 use DeWittePrins\CoreFunctionality\Services\FileSystem\FileService;
 use DeWittePrins\CoreFunctionality\Services\ComponentsRegisterFiles;
@@ -29,9 +28,10 @@ use DeWittePrins\CoreFunctionality\Diagnostics\Logger;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\FeatureActivationSettings;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\PushNoticeSettings;
-use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\DeploymentSettings;
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\ReleaseSettings;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\OptionsManagementSettings;
 use DeWittePrins\CoreFunctionality\Services\ComponentsRegister;
+use DeWittePrins\CoreFunctionality\Services\ReleaseRegister;
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 use Throwable;
@@ -108,6 +108,14 @@ class Plugin {
 	 * @var ComponentsRegister
 	 */
 	public ComponentsRegister $components_register;
+
+	/**
+	 * The status and environment rules of the modules and features, as the release and this
+	 * installation set them.
+	 *
+	 * @var ReleaseRegister
+	 */
+	public ReleaseRegister $release_register;
 
 	/**
 	 * The current orientation of the website (admin or frontend).
@@ -192,6 +200,7 @@ class Plugin {
 		$this->current_deployment        = $lookup->get_current_deployment_env();
 		$environment                     = new Environment( $this );
 		$this->components_register_files = new ComponentsRegisterFiles( $this );
+		$this->release_register          = new ReleaseRegister( $this );
 		$this->components_register       = new ComponentsRegister( $this );
 		$this->kernel                    = new Kernel( $this, $interdependency_checker, $environment, $this->components_register );
 
@@ -241,11 +250,8 @@ class Plugin {
 
 		$this->notices = new Notices();
 
-		// Asks, once per component, whether a module or feature that needs confirmation may run.
+		// Asks, once, whether the modules and features that need confirmation may be activated.
 		new ActivationQuestion( $this );
-
-		// Asks, once per component, whether a new release may change where it runs when this site has its own value.
-		new DeploymentQuestion( $this );
 
 		// On admin_init, after init, so the component names can be translated.
 		add_action( 'admin_init', array( $this, 'notify_new_components' ) );
@@ -363,8 +369,12 @@ class Plugin {
 
 		$settings_factory->register_section( FeatureActivationSettings::class );
 		$settings_factory->register_section( PushNoticeSettings::class );
-		$settings_factory->register_section( DeploymentSettings::class );
 		$settings_factory->register_section( OptionsManagementSettings::class );
+
+		// The release file is written on a development environment and travels with the release.
+		if ( Deployment::DEVELOPMENT === $this->current_deployment ) {
+			$settings_factory->register_section( ReleaseSettings::class );
+		}
 	}
 
 	/**

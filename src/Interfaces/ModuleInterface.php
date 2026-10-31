@@ -11,7 +11,6 @@ declare( strict_types=1 );
 namespace DeWittePrins\CoreFunctionality\Interfaces;
 
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -108,14 +107,6 @@ interface ModuleInterface {
 	 * @return bool True when activation needs confirmation.
 	 */
 	public static function needs_activation_confirmation(): bool;
-
-	/**
-	 * Requests the development state of the module's code: the highest server tier it is ready for.
-	 *
-	 * @since  1.0.0
-	 * @return Deployment Development, staging or production.
-	 */
-	public static function get_status(): Deployment;
 
 	/**
 	 * Initiates the module base configuration layer.

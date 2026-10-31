@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -46,7 +45,6 @@ class AiAccess extends AbstractModule {
 			id:          'ai-access',
 			name:        __( 'AI Access', 'core-functionality' ),
 			description: __( 'Abilities an AI assistant may use on this site, for example to write drafts. Publishing stays with you.', 'core-functionality' ),
-			status:      Deployment::PRODUCTION,
 		);
 	}
 }

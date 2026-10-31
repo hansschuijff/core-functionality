@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -53,7 +52,6 @@ class MessageLabels extends AbstractFeature {
 			id:          'sensei_message_labels',
 			name:        __( 'Message labels', 'core-functionality' ),
 			description: __( 'Calls Sensei\'s messages "Sensei messages", so they are not mixed up with posts (both "Berichten" in Dutch).', 'core-functionality' ),
-			status:      Deployment::PRODUCTION,
 		);
 	}
 

@@ -113,7 +113,6 @@ class ComponentsRegisterFiles {
 		$file = match ( $register ) {
 			Register::COMPONENTS => RegisterFile::COMPONENTS->value,
 			Register::ENABLED    => RegisterFile::ENABLED->value,
-			Register::DEPLOYMENT => RegisterFile::DEPLOYMENT->value,
 			Register::FRONTEND   => RegisterFile::FRONTEND->value,
 			Register::ADMIN      => RegisterFile::ADMIN->value,
 			default              => '',

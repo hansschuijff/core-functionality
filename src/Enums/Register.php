@@ -23,7 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 enum Register: string {
 	case COMPONENTS = 'components-register';
-	case DEPLOYMENT = 'components-deployment-register';
 	case ENABLED    = 'components-enabled-register';
 	case FRONTEND   = 'components-frontend-register';
 	case ADMIN      = 'components-admin-register';

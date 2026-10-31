@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T23:01:21+01:00\n"
+"POT-Creation-Date: 2026-10-31T23:10:13+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -75,7 +75,7 @@ msgstr ""
 #: src/Environment/Plugins/YoastSeo.php:86
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:483
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:107
-#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
+#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:52
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:130
 msgid "Settings"
 msgstr ""
@@ -139,44 +139,6 @@ msgid "Notice from other plugins (%d)"
 msgid_plural "Notices from other plugins (%d)"
 msgstr[0] ""
 msgstr[1] ""
-
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:96
-msgid "Deployment Management"
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:106
-msgid "Here you set up to which environment (development, staging, production) each module and feature runs on this site. Its status is the development state of its code, set by the release: it never runs beyond that, whatever is chosen here. A feature also never runs beyond its module. On an update, a new release follows the values you did not change; where this site has its own value and the release changes it, you are asked first."
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:282
-msgid "Runs on"
-msgstr ""
-
-#. translators: %s: status label, such as Development.
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:309
-#, php-format
-msgid "Status: %s. The code is not ready for more, so it runs up to there."
-msgstr ""
-
-#. translators: %s: status label, such as Development.
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:311
-#, php-format
-msgid "Status: %s"
-msgstr ""
-
-#. translators: %s: the tier the new release sets.
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:335
-#, php-format
-msgid "The new release sets %s; saving this tab keeps the value chosen here."
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:434
-msgid "Critical Error: Failed to save the deployment states."
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/DeploymentSettings.php:441
-msgid "Release status settings saved successfully. Remember to commit changes in Git! 🚀"
-msgstr ""
 
 #: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:80
 msgid "Feature Activation"
@@ -446,6 +408,38 @@ msgstr ""
 
 #: src/Admin/Services/Settings/Sections/PushNoticeSettings.php:317
 msgid "Configuration"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:102
+msgid "Release Management"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:113
+msgid "Set what the release decides about each module and feature. Its status is how far the code is ready: it never runs on a higher environment. Per environment you choose whether it is automatically on, freely adjustable or automatically off there. Saving writes the plugin's release file; commit it afterwards. This tab only exists on a development environment."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:195
+msgid "Module and features"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:196
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:297
+#: src/Environment/Plugins/Automatewoo.php:221
+#: src/Environment/Plugins/Woocommerce.php:229
+#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:371
+msgid "Status"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:254
+msgid "This installation's configuration adjusts it."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:363
+msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:367
+msgid "The release file is saved. Remember to commit it."
 msgstr ""
 
 #. translators: %s: title of the page or settings tab.
@@ -753,6 +747,18 @@ msgstr ""
 
 #: src/Enums/Deployment.php:42
 msgid "🌐 Production"
+msgstr ""
+
+#: src/Enums/EnvironmentRule.php:45
+msgid "Automatically on"
+msgstr ""
+
+#: src/Enums/EnvironmentRule.php:46
+msgid "Freely adjustable"
+msgstr ""
+
+#: src/Enums/EnvironmentRule.php:47
+msgid "Automatically off"
 msgstr ""
 
 #: src/Environment/Core/WordPress.php:123
@@ -1305,12 +1311,6 @@ msgstr ""
 msgid "AutomateWoo Settings: Status"
 msgstr ""
 
-#: src/Environment/Plugins/Automatewoo.php:221
-#: src/Environment/Plugins/Woocommerce.php:229
-#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:371
-msgid "Status"
-msgstr ""
-
 #: src/Environment/Plugins/Automatewoo.php:225
 #: src/Environment/Plugins/Automatewoo.php:227
 msgid "AutomateWoo Preview"
@@ -1510,7 +1510,7 @@ msgid "Duplicate Post Settings"
 msgstr ""
 
 #: src/Environment/Plugins/DuplicatePost.php:71
-#: src/Modules/DuplicatePost/DuplicatePost.php:46
+#: src/Modules/DuplicatePost/DuplicatePost.php:45
 msgid "Duplicate Post"
 msgstr ""
 
@@ -2609,7 +2609,7 @@ msgstr ""
 #: src/Environment/Plugins/TheEventsCalendar.php:92
 #: src/Environment/Plugins/TheEventsCalendar.php:101
 #: src/Environment/Plugins/TheEventsCalendar.php:142
-#: src/Modules/Events/Events.php:44
+#: src/Modules/Events/Events.php:43
 msgid "Events"
 msgstr ""
 
@@ -3613,7 +3613,7 @@ msgid "%s Rates"
 msgstr ""
 
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:69
-#: src/Modules/ActiveWoo/ActiveWoo.php:42
+#: src/Modules/ActiveWoo/ActiveWoo.php:41
 msgid "ActiveWoo"
 msgstr ""
 
@@ -3707,7 +3707,7 @@ msgid "Product Add-ons"
 msgstr ""
 
 #: src/Environment/Plugins/WoocommerceProductAddons.php:60
-#: src/Modules/WooCommerce/WooCommerce.php:44
+#: src/Modules/WooCommerce/WooCommerce.php:43
 msgid "WooCommerce"
 msgstr ""
 
@@ -3940,15 +3940,15 @@ msgstr ""
 msgid "Essence Pro Theme Customizer"
 msgstr ""
 
-#: src/Modules/ActiveWoo/ActiveWoo.php:43
+#: src/Modules/ActiveWoo/ActiveWoo.php:42
 msgid "Customizations and adaptations for the ActiveWoo plugin."
 msgstr ""
 
-#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:52
+#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:51
 msgid "Keep License Alive"
 msgstr ""
 
-#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:53
+#: src/Modules/ActiveWoo/Features/KeepLicenseAlive/KeepLicenseAlive.php:52
 msgid "Sustains a copy of the license in transient, so the plugin will keep thinking it is licensed."
 msgstr ""
 
@@ -3968,24 +3968,24 @@ msgstr ""
 msgid "Architects, structures and cleans up the admin side navigation."
 msgstr ""
 
-#: src/Modules/AdminToolbar/AdminToolbar.php:40
+#: src/Modules/AdminToolbar/AdminToolbar.php:39
 msgid "Admin Toolbar"
 msgstr ""
 
-#: src/Modules/AdminToolbar/AdminToolbar.php:41
+#: src/Modules/AdminToolbar/AdminToolbar.php:40
 msgid "Provides advanced layout overrides, performance enhancements, and custom nodes filtering for the WordPress admin bar."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:56
 #: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:85
 msgid "Clean up"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:58
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
 msgid "Moves unwanted Admin Toolbar shortcuts to an overflow submenu, based on a negative-selection user matrix."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:152
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:150
 msgid "More"
 msgstr ""
 
@@ -4009,12 +4009,12 @@ msgstr ""
 msgid "Save Toolbar Visibility Filter"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:68
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:116
 msgid "Menu Builder"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:70
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
 msgid "The Admin Toolbar Builder Feature builds a navigation shortcuts menu in the admin toolbar."
 msgstr ""
 
@@ -4499,31 +4499,31 @@ msgstr ""
 msgid "Take the default or a JSON file into the editor (replace or merge), or download the menu as JSON."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:45
 msgid "Style Fixes"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:47
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
 msgid "The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:45
 msgid "Show Node IDs"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:47
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
 msgid "The Admin Toolbar Visualizer Feature Maps active runtime Node ID keys for development troubleshooting."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:85
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:83
 msgid "Node ID's"
 msgstr ""
 
-#: src/Modules/AiAccess/AiAccess.php:47
+#: src/Modules/AiAccess/AiAccess.php:46
 msgid "AI Access"
 msgstr ""
 
-#: src/Modules/AiAccess/AiAccess.php:48
+#: src/Modules/AiAccess/AiAccess.php:47
 msgid "Abilities an AI assistant may use on this site, for example to write drafts. Publishing stays with you."
 msgstr ""
 
@@ -4604,19 +4604,19 @@ msgstr ""
 msgid "Changes a draft or an item pending review: only the fields that are given. Published items cannot be changed here; use start-rewrite for a copy where that is allowed."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:74
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:73
 msgid "Content Editing"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:75
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:74
 msgid "An AI assistant may find, read and write drafts of posts, pages and other content types. It never publishes; you do."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:110
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:108
 msgid "Content editing"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:111
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:109
 msgid "Finding, reading and writing drafts of site content."
 msgstr ""
 
@@ -4712,11 +4712,11 @@ msgstr ""
 msgid "The fields \"%s\" do not apply to this content type and were ignored."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:74
+#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:73
 msgid "Course Content"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:75
+#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:74
 msgid "An AI assistant may write drafts of Sensei courses and lessons and place lessons in a course and module. Quizzes and enrolments are left alone."
 msgstr ""
 
@@ -4742,11 +4742,11 @@ msgstr ""
 msgid "The course structure could not be saved."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/EventContent/EventContent.php:69
+#: src/Modules/AiAccess/Features/EventContent/EventContent.php:68
 msgid "Event Content"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/EventContent/EventContent.php:70
+#: src/Modules/AiAccess/Features/EventContent/EventContent.php:69
 msgid "An AI assistant may write drafts of events (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone."
 msgstr ""
 
@@ -4784,11 +4784,11 @@ msgstr ""
 msgid "Lists the existing venues and organizers of events with their ids, to link them to an event. New ones are not created."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:55
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:54
 msgid "Rewrite Copies"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:56
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:55
 msgid "An AI assistant may change published content in a Rewrite & Republish copy (Yoast Duplicate Post) that replaces the original only when you publish it."
 msgstr ""
 
@@ -4821,27 +4821,27 @@ msgstr ""
 msgid "The copy could not be found after it was made."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
+#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:48
 msgid "SEO Fields"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:50
+#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
 msgid "An AI assistant may write the SEO title and meta description of Yoast SEO."
 msgstr ""
 
-#: src/Modules/Cleaner/Cleaner.php:42
+#: src/Modules/Cleaner/Cleaner.php:41
 msgid "WordPress Cleaner"
 msgstr ""
 
-#: src/Modules/Cleaner/Cleaner.php:43
+#: src/Modules/Cleaner/Cleaner.php:42
 msgid "Utilities that keep WordPress performing efficiently."
 msgstr ""
 
-#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:61
+#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:60
 msgid "Transient Optimizer Feature"
 msgstr ""
 
-#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:62
+#: src/Modules/Cleaner/Features/TransientOptimizer/TransientOptimizer.php:61
 msgid "Monitors, indexes, and flushes expired or orphaned core transients clusters using automated background crons to optimize the options table."
 msgstr ""
 
@@ -4891,16 +4891,16 @@ msgstr ""
 msgid "Optimize Transient Cache Now"
 msgstr ""
 
-#: src/Modules/DuplicatePost/DuplicatePost.php:47
+#: src/Modules/DuplicatePost/DuplicatePost.php:46
 msgid "Adjustments to Yoast Duplicate Post."
 msgstr ""
 
-#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:64
+#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:63
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:116
 msgid "Hide Yoast duplicate links"
 msgstr ""
 
-#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:65
+#: src/Modules/DuplicatePost/Features/HideLinks/HideLinks.php:64
 msgid "Hides the duplicate links of Yoast Duplicate Post for the plugins that duplicate their content themselves (by default The Events Calendar, Event Tickets and Sensei), chosen on a settings tab."
 msgstr ""
 
@@ -4948,7 +4948,7 @@ msgstr ""
 msgid "Content type: %s"
 msgstr ""
 
-#: src/Modules/Events/Events.php:45
+#: src/Modules/Events/Events.php:44
 msgid "Additions to The Events Calendar and Event Tickets."
 msgstr ""
 
@@ -5136,75 +5136,75 @@ msgstr ""
 msgid "The previous version is restored; the replaced version is now the previous one."
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:87
+#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:86
 msgid "Own templates"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:88
+#: src/Modules/Events/Features/TemplateFallback/TemplateFallback.php:87
 msgid "Template overrides of The Events Calendar and Event Tickets kept for this site apart from the theme, used when the theme has no override of its own. Upload and download them as a zip on the settings page."
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:116
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:115
 msgid "Template check"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:117
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:116
 msgid "Warns when a template override of The Events Calendar or Event Tickets is out of date or overrides a template the plugin no longer has."
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:362
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:360
 msgid "Event templates"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:363
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:361
 msgid "Scan again"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:385
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:383
 msgid "child theme"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:386
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:384
 msgid "parent theme"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:387
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:385
 msgid "CF template"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:390
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:388
 msgid "These templates are out of date:"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:391
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:389
 msgid "These templates override one the plugin no longer has (moved or removed):"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:392
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:390
 msgid "These CF templates are out of date. A theme overrides them now, but they are used again after a theme switch:"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:393
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:391
 msgid "These templates in the child theme are the same as the CF templates and can be removed:"
 msgstr ""
 
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:394
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:392
 msgid "These templates in the parent theme are the same as the CF templates and can be removed:"
 msgstr ""
 
 #. translators: 1: template path, 2: whose copy it is (child theme, parent theme, CF template), 3: its version, 4: the plugin's version.
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:405
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:403
 #, php-format
 msgid "%1$s: %2$s has v%3$s, the plugin has v%4$s"
 msgstr ""
 
 #. translators: 1: template path, 2: whose copy it is (child theme, parent theme, CF template).
-#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:407
+#: src/Modules/Events/Features/TemplateMonitor/TemplateMonitor.php:405
 #, php-format
 msgid "%1$s: %2$s has it, the plugin no longer does"
 msgstr ""
 
-#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:54
+#: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:53
 msgid "A settings tab for the Reader Experience plugin, which itself is steered by filters only."
 msgstr ""
 
@@ -5326,155 +5326,155 @@ msgstr ""
 msgid "Words per minute must be a number from %1$d to %2$d."
 msgstr ""
 
-#: src/Modules/ReaderExperience/ReaderExperience.php:44
+#: src/Modules/ReaderExperience/ReaderExperience.php:43
 msgid "Reader Experience"
 msgstr ""
 
-#: src/Modules/ReaderExperience/ReaderExperience.php:45
+#: src/Modules/ReaderExperience/ReaderExperience.php:44
 msgid "Settings for the Reader Experience plugin: heading anchors, reading time and feedback."
 msgstr ""
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:53
 msgid "Message labels"
 msgstr ""
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:55
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:54
 msgid "Calls Sensei's messages \"Sensei messages\", so they are not mixed up with posts (both \"Berichten\" in Dutch)."
 msgstr ""
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:96
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:94
 msgid "Sensei message"
 msgstr ""
 
-#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:97
+#: src/Modules/Sensei/Features/MessageLabels/MessageLabels.php:95
 msgid "Sensei messages"
 msgstr ""
 
-#: src/Modules/Sensei/Sensei.php:46
+#: src/Modules/Sensei/Sensei.php:45
 msgid "Sensei LMS"
 msgstr ""
 
-#: src/Modules/Sensei/Sensei.php:47
+#: src/Modules/Sensei/Sensei.php:46
 msgid "Adjustments to Sensei LMS."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:152
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:151
 msgid "Business invoice totals"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:153
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:152
 msgid "On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements)."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:298
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:296
 msgid "Total excl. VAT"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:306
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:304
 msgid "VAT 0%"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:312
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:310
 msgid "Total incl. VAT"
 msgstr ""
 
 #. translators: %s: VAT rate, such as 21%.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:407
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:405
 #, php-format
 msgid "Amount excl. VAT %s"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:506
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:504
 msgid "Intra-Community supply, VAT 0% (article 138 of VAT Directive 2006/112/EC)."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:509
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:507
 msgid "VAT reverse-charged (article 196 of VAT Directive 2006/112/EC)."
 msgstr ""
 
 #. translators: %s: the customer's VAT number.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:513
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:511
 #, php-format
 msgid "Customer VAT number: %s"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:84
+#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:83
 msgid "Several products in the cart at once"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:85
+#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:84
 msgid "One add-to-cart link adds several products with their own quantities: ?add-to-cart=101:1,102:3. Used by the ticket forms of Remote Tickets."
 msgstr ""
 
 #. translators: %s: the product number(s) from the link, as a list ("1, 2 and 3").
-#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:168
+#: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:166
 #, php-format
 msgid "The product with number %s could not be added. That product number does not exist."
 msgid_plural "The products with numbers %s could not be added. Those product numbers do not exist."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:83
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:82
 msgid "Cancel button in the order preview"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:84
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:83
 msgid "Adds a button to cancel the order to the status buttons of the order preview (the eye icon in the order list), with a confirmation."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:120
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:118
 msgid "Change status:"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:148
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:146
 msgid "Cancelled"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:149
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:147
 msgid "Change order status to cancelled"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:216
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:214
 msgid "Cancel this order?"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:217
+#: src/Modules/WooCommerce/Features/OrderPreviewCancel/OrderPreviewCancel.php:215
 msgid "Cancel this order? The subscription of this order will be cancelled as well, and that cannot be undone."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:83
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:82
 msgid "Totals in the order preview"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:84
+#: src/Modules/WooCommerce/Features/OrderPreviewTotals/OrderPreviewTotals.php:83
 msgid "Shows subtotal, discount, shipping, tax and total under the products in the order preview (the eye icon in the order list), and lets the preview scroll so it fits on the screen."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:59
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:58
 msgid "Short bulk actions for orders"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:60
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:59
 msgid "Short names for the status actions in the bulk action select of the order list: \"Process\", \"Put on hold\", \"Complete\" and \"Cancel\"."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:106
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:104
 msgid "Process"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:107
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:105
 msgid "Put on hold"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:108
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:106
 msgid "Complete"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:109
+#: src/Modules/WooCommerce/Features/ShortBulkActionLabels/ShortBulkActionLabels.php:107
 msgid "Cancel"
 msgstr ""
 
-#: src/Modules/WooCommerce/WooCommerce.php:45
+#: src/Modules/WooCommerce/WooCommerce.php:44
 msgid "Additions to WooCommerce."
 msgstr ""
 
@@ -5510,42 +5510,6 @@ msgstr ""
 
 #: src/Notifiers/ActivationQuestion.php:244
 msgid "If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation."
-msgstr ""
-
-#: src/Notifiers/DeploymentQuestion.php:169
-msgid "The new release changes where these modules and features may run, but this site has its own setting for them. Until you answer, this site's setting stays. Either answer is final; you can change it later under Settings → Core Functionality, Deployment Management."
-msgstr ""
-
-#. translators: 1: this site's tier, 2: the tier of the new release.
-#: src/Notifiers/DeploymentQuestion.php:200
-#, php-format
-msgid "runs on this site up to %1$s; the new release sets %2$s."
-msgstr ""
-
-#: src/Notifiers/DeploymentQuestion.php:205
-msgid "Follow the release"
-msgstr ""
-
-#: src/Notifiers/DeploymentQuestion.php:206
-msgid "Keep this site's setting"
-msgstr ""
-
-#. translators: 1: feature name, 2: module name.
-#: src/Notifiers/DeploymentQuestion.php:243
-#, php-format
-msgid "%1$s (module %2$s)"
-msgstr ""
-
-#. translators: %s: module or feature name.
-#: src/Notifiers/DeploymentQuestion.php:283
-#, php-format
-msgid "%s now follows the release."
-msgstr ""
-
-#. translators: %s: module or feature name.
-#: src/Notifiers/DeploymentQuestion.php:285
-#, php-format
-msgid "%s keeps this site's setting."
 msgstr ""
 
 #: src/Notifiers/Drivers/Pushover.php:86
@@ -5597,21 +5561,21 @@ msgid "The target private user or group chat ID window."
 msgstr ""
 
 #. translators: 1: plugin version, 2: comma-separated list of module and feature names.
-#: src/Plugin.php:298
+#: src/Plugin.php:304
 #, php-format
 msgid "Core Functionality %1$s added: %2$s. Check under Settings → Core Functionality whether they should be enabled on this site."
 msgstr ""
 
-#: src/Plugin.php:384
+#: src/Plugin.php:394
 msgid "De Witte Prins - Core Functionality has stopped!"
 msgstr ""
 
-#: src/Plugin.php:385
+#: src/Plugin.php:395
 msgid "The plugin stopped because its installation is damaged. The rest of the website works normally, but everything this plugin does is switched off."
 msgstr ""
 
 #. translators: 1: feature name, 2: module name.
-#: src/Services/ComponentsRegister.php:971
+#: src/Services/ComponentsRegister.php:832
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr ""
@@ -5626,7 +5590,7 @@ msgstr ""
 msgid "Settings saved successfully. Remember to commit changes in Git! 🚀"
 msgstr ""
 
-#: src/Services/ComponentsRegisterFiles.php:139
+#: src/Services/ComponentsRegisterFiles.php:138
 msgid "Path to the component registers could not be retrieved, fallback paths used. Please inform Support"
 msgstr ""
 

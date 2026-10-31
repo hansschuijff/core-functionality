@@ -13,7 +13,6 @@ declare( strict_types=1 );
 namespace DeWittePrins\CoreFunctionality\Abstracts;
 
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 
 /**
@@ -120,15 +119,5 @@ trait DescribedByMeta {
 	 */
 	public static function needs_activation_confirmation(): bool {
 		return static::meta()->confirm_activation;
-	}
-
-	/**
-	 * Returns the development state of the code: the highest server tier it is ready for.
-	 *
-	 * @since  1.0.0
-	 * @return Deployment Development, staging or production.
-	 */
-	public static function get_status(): Deployment {
-		return static::meta()->status;
 	}
 }

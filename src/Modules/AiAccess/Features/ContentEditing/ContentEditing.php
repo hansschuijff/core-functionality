@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\CreateDraft;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\FindContent;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\GetContent;
@@ -73,7 +72,6 @@ class ContentEditing extends AbstractFeature {
 			id:          'ai_access_content_editing',
 			name:        __( 'Content Editing', 'core-functionality' ),
 			description: __( 'An AI assistant may find, read and write drafts of posts, pages and other content types. It never publishes; you do.', 'core-functionality' ),
-			status:      Deployment::PRODUCTION,
 		);
 	}
 

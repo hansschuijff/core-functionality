@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 use WC_Abstract_Order;
 use WC_Order;
@@ -154,7 +153,6 @@ class BusinessInvoiceTotals extends AbstractFeature {
 			dependencies: 'woocommerce-pdf-invoices',
 			// It replaces a production snippet; it removes the snippet's hooks, but the site decides.
 			confirm_activation: true,
-			status:       Deployment::PRODUCTION,
 		);
 	}
 

@@ -24,7 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 enum RegisterFile: string {
 	case COMPONENTS = 'components-register.php';
-	case DEPLOYMENT = 'components-deployment-register.php';
 	case ENABLED    = 'components-enabled-register.php';
 	case FRONTEND   = 'components-frontend-register.php';
 	case ADMIN      = 'components-admin-register.php';

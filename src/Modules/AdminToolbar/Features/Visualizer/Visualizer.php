@@ -15,7 +15,6 @@ namespace DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\Visualize
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -45,7 +44,6 @@ class Visualizer extends AbstractFeature {
 			id:            'admin_toolbar_visualizer',
 			name:          __( 'Show Node IDs', 'core-functionality' ),
 			description:   __( 'The Admin Toolbar Visualizer Feature Maps active runtime Node ID keys for development troubleshooting.', 'core-functionality' ),
-			status:        Deployment::PRODUCTION,
 		);
 	}
 

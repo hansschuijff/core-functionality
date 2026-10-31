@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentEditing;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentTypeProfile;
 use Override;
@@ -75,7 +74,6 @@ class CourseContent extends AbstractFeature {
 			description:   __( 'An AI assistant may write drafts of Sensei courses and lessons and place lessons in a course and module. Quizzes and enrolments are left alone.', 'core-functionality' ),
 			dependencies:  'sensei-lms',
 			uses_features: array( ContentEditing::class ),
-			status:        Deployment::PRODUCTION,
 		);
 	}
 

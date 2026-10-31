@@ -1,0 +1,65 @@
+/**
+ * Release Management tab: one card per module, in the style of the Feature Activation tab.
+ *
+ * @package DeWittePrins\CoreFunctionality
+ */
+
+.dwp-release-card {
+	max-width: 1000px;
+	margin-bottom: 20px;
+	padding: 20px;
+	border: 1px solid #ccd0d4;
+	background: #fff;
+}
+
+.dwp-release-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.dwp-release-table th,
+.dwp-release-table td {
+	padding: 8px 10px 8px 0;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.dwp-release-table thead th {
+	padding-bottom: 10px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #50575e;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.dwp-release-table .dwp-release-name-column {
+	width: 34%;
+}
+
+.dwp-release-table tbody th {
+	font-weight: 400;
+}
+
+.dwp-release-table .dwp-release-module th {
+	padding-top: 14px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.dwp-release-table .dwp-release-feature th {
+	padding-left: 17px;
+	border-left: 2px solid #2271b1;
+}
+
+.dwp-release-table select {
+	width: 100%;
+	max-width: 170px;
+}
+
+.dwp-release-adjusted {
+	display: block;
+	margin-top: 2px;
+	font-size: 12px;
+	font-style: italic;
+	color: #996800;
+}

@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractFeature;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentEditing;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\ContentServices;
 use Override;
@@ -56,7 +55,6 @@ class RewriteCopies extends AbstractFeature {
 			description:   __( 'An AI assistant may change published content in a Rewrite & Republish copy (Yoast Duplicate Post) that replaces the original only when you publish it.', 'core-functionality' ),
 			dependencies:  'duplicate-post',
 			uses_features: array( ContentEditing::class ),
-			status:        Deployment::PRODUCTION,
 		);
 	}
 

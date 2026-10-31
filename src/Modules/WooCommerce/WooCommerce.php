@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -44,7 +43,6 @@ class WooCommerce extends AbstractModule {
 			name:         __( 'WooCommerce', 'core-functionality' ),
 			description:  __( 'Additions to WooCommerce.', 'core-functionality' ),
 			dependencies: 'woocommerce',
-			status:       Deployment::PRODUCTION,
 		);
 	}
 }

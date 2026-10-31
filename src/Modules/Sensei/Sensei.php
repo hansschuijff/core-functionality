@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Abstracts\AbstractModule;
 use DeWittePrins\CoreFunctionality\DTO\ComponentMeta;
-use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use Override;
 
 use function __;
@@ -46,7 +45,6 @@ class Sensei extends AbstractModule {
 			name:         __( 'Sensei LMS', 'core-functionality' ),
 			description:  __( 'Adjustments to Sensei LMS.', 'core-functionality' ),
 			dependencies: 'sensei-lms',
-			status:       Deployment::PRODUCTION,
 		);
 	}
 }
