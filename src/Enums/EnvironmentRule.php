@@ -42,9 +42,9 @@ enum EnvironmentRule: string {
 	 */
 	public function get_label(): string {
 		return match ( $this ) {
-			self::AUTO_ON    => __( 'Automatically on', 'core-functionality' ),
-			self::ADJUSTABLE => __( 'Freely adjustable', 'core-functionality' ),
-			self::AUTO_OFF   => __( 'Automatically off', 'core-functionality' ),
+			self::AUTO_ON    => __( 'Always active', 'core-functionality' ),
+			self::ADJUSTABLE => __( 'Adjustable', 'core-functionality' ),
+			self::AUTO_OFF   => __( 'Always inactive', 'core-functionality' ),
 		};
 	}
 }
