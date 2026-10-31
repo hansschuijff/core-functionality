@@ -20,6 +20,7 @@ use DeWittePrins\CoreFunctionality\Environment\EnvironmentLookup;
 use DeWittePrins\CoreFunctionality\Services\PluginIntegrityWatch;
 use DeWittePrins\CoreFunctionality\Notifiers\Notices;
 use DeWittePrins\CoreFunctionality\Notifiers\ActivationQuestion;
+use DeWittePrins\CoreFunctionality\Notifiers\DeploymentQuestion;
 use DeWittePrins\CoreFunctionality\Services\InterDependenciesGuard;
 use DeWittePrins\CoreFunctionality\Services\FileSystem\FileService;
 use DeWittePrins\CoreFunctionality\Services\ComponentsRegisterFiles;
@@ -242,6 +243,9 @@ class Plugin {
 
 		// Asks, once per component, whether a module or feature that needs confirmation may run.
 		new ActivationQuestion( $this );
+
+		// Asks, once per component, whether a new release may change where it runs when this site has its own value.
+		new DeploymentQuestion( $this );
 
 		// On admin_init, after init, so the component names can be translated.
 		add_action( 'admin_init', array( $this, 'notify_new_components' ) );

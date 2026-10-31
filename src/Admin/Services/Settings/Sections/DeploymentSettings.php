@@ -23,6 +23,8 @@ use DeWittePrins\CoreFunctionality\Interfaces\ModuleInterface;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
 
 use function __;
+use function esc_html__;
+use function sprintf;
 use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
@@ -101,7 +103,7 @@ class DeploymentSettings implements SettingsSectionInterface {
 	 */
 	#[Override]
 	public static function get_description(): string {
-		return __( 'Here you can manage the deployment scope of modules and features. It gives allowance to be launched in the corresponding or lower environments (development, staging, production). Although you can set a feature to a higher deployment than the module it is part of, the feature will not be launched beyond the deployment scope of the parent module. Only if both module and feature are set to production deployment, the feature will be launched in a production environment.', 'core-functionality' );
+		return __( 'Here you set up to which environment (development, staging, production) each module and feature runs on this site. Its status is the development state of its code, set by the release: it never runs beyond that, whatever is chosen here. A feature also never runs beyond its module. On an update, a new release follows the values you did not change; where this site has its own value and the release changes it, you are asked first.', 'core-functionality' );
 	}
 
 	/**
@@ -200,7 +202,7 @@ class DeploymentSettings implements SettingsSectionInterface {
 							<div style="font-weight: 400; color: #666; font-size: 15px; margin-top: 4px;">{$module_description}</div>
 						</th>
 						<th style="width: 250px; padding: 15px; text-align: right; vertical-align: middle;">
-							{$this->get_render_deployment_select( $module_fqcn, $module_deployment )}
+							{$this->get_render_deployment_cell( $module_fqcn, $module_deployment )}
 						</th>
 					</tr>
 				</thead>
@@ -239,7 +241,7 @@ class DeploymentSettings implements SettingsSectionInterface {
 		$html .= <<<HTML
 				</td>
 				<td style="padding: 15px; width: 250px; vertical-align: middle; text-align: right;">
-					{$this->get_render_deployment_select( $feature_fqcn, $feature_deployment )}
+					{$this->get_render_deployment_cell( $feature_fqcn, $feature_deployment )}
 				</td>
 			</tr>
 		HTML;
@@ -267,13 +269,86 @@ class DeploymentSettings implements SettingsSectionInterface {
 	}
 
 	/**
+	 * Renders the deployment cell of a module or feature: the "Draait op" select, its status and,
+	 * when a new release proposes another value, that proposal.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn               Fully Qualified Class Name of a module or feature.
+	 * @param  string $current_deployment Current deployment string of the module or feature.
+	 * @return string The cell content (HTML).
+	 */
+	private function get_render_deployment_cell( string $fqcn, string $current_deployment ): string {
+		$select_id   = esc_attr( 'dwp-deployment-' . md5( $fqcn ) );
+		$label_text  = esc_html__( 'Runs on', 'core-functionality' );
+		$select_html = $this->get_render_deployment_select( $fqcn, $current_deployment, $select_id );
+		$status_html = $this->get_render_status_note( $fqcn, $current_deployment );
+		$release     = $this->get_render_release_proposal( $fqcn );
+
+		return <<<HTML
+			<label for="{$select_id}" style="display: block; font-weight: 600; margin-bottom: 4px;">{$label_text}</label>
+			{$select_html}
+			{$status_html}
+			{$release}
+		HTML;
+	}
+
+	/**
+	 * Renders the status of a component: the development state of its code, a limit this site cannot raise.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn               Fully Qualified Class Name of a module or feature.
+	 * @param  string $current_deployment Current deployment string of the module or feature.
+	 * @return string The note (HTML).
+	 */
+	private function get_render_status_note( string $fqcn, string $current_deployment ): string {
+		$status     = $fqcn::get_status();
+		$deployment = Deployment::tryFrom( $current_deployment ) ?? $this->default_deployment;
+
+		$status_text = $status->get_rank() < $deployment->get_rank()
+			/* translators: %s: status label, such as Development. */
+			? sprintf( __( 'Status: %s. The code is not ready for more, so it runs up to there.', 'core-functionality' ), $status->get_label() )
+			/* translators: %s: status label, such as Development. */
+			: sprintf( __( 'Status: %s', 'core-functionality' ), $status->get_label() );
+		$status_html = esc_html( $status_text );
+
+		return "<p class=\"description\" style=\"margin: 6px 0 0 0;\">{$status_html}</p>";
+	}
+
+	/**
+	 * Renders the deployment value a new release proposes, while that question is open.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully Qualified Class Name of a module or feature.
+	 * @return string The note (HTML), or an empty string without an open question.
+	 */
+	private function get_render_release_proposal( string $fqcn ): string {
+		$questions = $this->plugin->components_register->get_deployment_questions();
+		if ( ! isset( $questions[ $fqcn ] ) ) {
+			return '';
+		}
+
+		$release_tier  = Deployment::tryFrom( $questions[ $fqcn ] );
+		$release_label = null !== $release_tier ? $release_tier->get_label() : $questions[ $fqcn ];
+		$proposal_html = esc_html(
+			sprintf(
+				/* translators: %s: the tier the new release sets. */
+				__( 'The new release sets %s; saving this tab keeps the value chosen here.', 'core-functionality' ),
+				$release_label
+			)
+		);
+
+		return "<p class=\"description\" style=\"margin: 6px 0 0 0; color: #996800;\">{$proposal_html}</p>";
+	}
+
+	/**
 	 * Renders the html for a deployment scope select control (development, staging, production)
 	 *
 	 * @param string $fqcn Fully Qualified Class Name of a module or feature.
 	 * @param string $current_deployment Current deployment string of the mmodule or class.
+	 * @param string $select_id          The id of the select, for its label (escaped).
 	 * @return string Select controll html.
 	 */
-	private function get_render_deployment_select( string $fqcn, string $current_deployment ): string {
+	private function get_render_deployment_select( string $fqcn, string $current_deployment, string $select_id ): string {
 
 		$fqcn = esc_attr( $fqcn );
 
@@ -290,7 +365,7 @@ class DeploymentSettings implements SettingsSectionInterface {
 		$production_label = esc_html( Deployment::PRODUCTION->get_label() );
 
 		return <<<HTML
-			<select name="feature_states[{$fqcn}]" style="max-width: 100%; font-size: 14px; height: 35px; padding: 0 30px 0 10px; border-color: #8c8f94;">
+			<select id="{$select_id}" name="feature_states[{$fqcn}]" style="max-width: 100%; font-size: 14px; height: 35px; padding: 0 30px 0 10px; border-color: #8c8f94;">
 				<option value="{$development_value}" {$is_development}>{$development_label}</option>
 				<option value="{$staging_value}" {$is_staging}>{$staging_label}</option>
 				<option value="{$production_value}" {$is_production}>{$production_label}</option>
@@ -359,6 +434,9 @@ class DeploymentSettings implements SettingsSectionInterface {
 			$this->plugin->notices->add( 'error', __( 'Critical Error: Failed to save the deployment states.', 'core-functionality' ) );
 			return false;
 		}
+
+		// Every component with an open release question was shown on this tab, so saving it is the answer.
+		$this->plugin->components_register->clear_deployment_questions();
 
 		return __( 'Release status settings saved successfully. Remember to commit changes in Git! 🚀', 'core-functionality' );
 	}

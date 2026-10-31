@@ -128,6 +128,38 @@ class ComponentsRegister {
 	private ?array $activation_decided = null;
 
 	/**
+	 * Settings token under which the deployment values of the installed release are kept (FQCN => tier).
+	 *
+	 * On the next update they tell whether this site changed a value itself (it differs from them) or
+	 * still follows the release.
+	 *
+	 * @var string
+	 */
+	private const DEPLOYMENT_RELEASE_SETTING = 'components-deployment-release';
+
+	/**
+	 * Settings token under which the open questions about a new release's deployment are kept
+	 * (FQCN => the tier the release sets).
+	 *
+	 * @var string
+	 */
+	private const DEPLOYMENT_QUESTIONS_SETTING = 'components-deployment-questions';
+
+	/**
+	 * Settings token under which the components that may run on this server are kept (list of FQCNs).
+	 *
+	 * @var string
+	 */
+	private const AVAILABLE_SETTING = 'components-available';
+
+	/**
+	 * Settings token that asks for the available components to be compared again on the next request.
+	 *
+	 * @var string
+	 */
+	private const AVAILABILITY_CHECK_SETTING = 'components-availability-check';
+
+	/**
 	 * ComponentsRegister Constructor.
 	 *
 	 * Hydrates all framework register matrices seamlessly using the unified
@@ -149,6 +181,9 @@ class ComponentsRegister {
 		$this->enabled_components    = $this->get_register( Register::ENABLED );
 		$this->components_register   = $this->get_register( Register::COMPONENTS );
 		$this->components_deployment = $this->get_register( Register::DEPLOYMENT );
+
+		// After the translations (init -10), because it reads the components' meta; before the Kernel (init 0).
+		add_action( 'init', array( $this, 'handle_newly_available_components' ), -5 );
 	}
 
 	/**
@@ -188,7 +223,198 @@ class ComponentsRegister {
 			set_transient( self::NEW_COMPONENTS_TRANSIENT, $new_components, WEEK_IN_SECONDS );
 		}
 
+		$this->follow_release_deployment();
+		$this->request_availability_check();
+
 		$this->plugin->settings->save( self::VERSION_SETTING, $plugin_version );
+	}
+
+	/**
+	 * Applies the deployment values of a new release to the existing components where this site allows it.
+	 *
+	 * Compares three values per component: the previous release, the new release and this site.
+	 * A site value equal to the previous release was never changed here, so it follows the new release.
+	 * A site value of its own stays; when the release changed too, an administrator is asked whether the
+	 * new release value may apply (DeploymentQuestion). Until then the site's value holds, so automatic
+	 * updates never overrule a local choice (Hans, October 2026). New components already got the release
+	 * value from add_file_defaults(). The first time there is no previous release to compare with, so
+	 * only the baseline is stored.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	private function follow_release_deployment(): void {
+		$release_values = $this->plugin->components_register_files->get_register( Register::DEPLOYMENT );
+		$release_values = is_array( $release_values ) ? $release_values : array();
+
+		$previous_release_values = $this->plugin->settings->get( self::DEPLOYMENT_RELEASE_SETTING, default: null );
+		$this->plugin->settings->save( self::DEPLOYMENT_RELEASE_SETTING, $release_values );
+
+		$site_values = $this->plugin->settings->get( RegisterSetting::DEPLOYMENT->value, default: null );
+
+		// Without a baseline nothing can be compared; without site values the site reads the file anyway.
+		if ( ! is_array( $previous_release_values ) || ! is_array( $site_values ) ) {
+			return;
+		}
+
+		$questions = $this->get_deployment_questions();
+		$default   = $this->default_deployment->value;
+
+		foreach ( $release_values as $fqcn => $release_value ) {
+			$previous_value = $previous_release_values[ $fqcn ] ?? $default;
+			$site_value     = $site_values[ $fqcn ] ?? $default;
+
+			if ( $previous_value === $release_value || $site_value === $release_value ) {
+				unset( $questions[ $fqcn ] );
+				continue;
+			}
+
+			if ( $site_value === $previous_value ) {
+				$site_values[ $fqcn ] = $release_value;
+				unset( $questions[ $fqcn ] );
+				continue;
+			}
+
+			$questions[ $fqcn ] = $release_value;
+		}
+
+		$this->plugin->settings->save( RegisterSetting::DEPLOYMENT->value, $site_values );
+		$this->components_deployment = $site_values;
+		$this->save_deployment_questions( $questions );
+	}
+
+	/**
+	 * Returns the open questions about a new release's deployment values.
+	 *
+	 * Only for components that still exist.
+	 *
+	 * @since  1.0.0
+	 * @return array<string, string> FQCN => the tier the release sets.
+	 */
+	public function get_deployment_questions(): array {
+		$questions = $this->plugin->settings->get( self::DEPLOYMENT_QUESTIONS_SETTING, default: array() );
+		$questions = is_array( $questions ) ? $questions : array();
+
+		$components = $this->flatten_components( $this->get_register( Register::COMPONENTS ) );
+
+		return array_intersect_key( $questions, array_flip( $components ) );
+	}
+
+	/**
+	 * Records an administrator's answer to the question whether a new release's deployment value may apply.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn  Fully Qualified Class Name of a module or feature with an open question.
+	 * @param  bool   $adopt True to take the release value, false to keep this site's value.
+	 * @return void
+	 */
+	public function answer_deployment_question( string $fqcn, bool $adopt ): void {
+		$questions = $this->get_deployment_questions();
+		if ( ! array_key_exists( $fqcn, $questions ) ) {
+			return;
+		}
+
+		if ( $adopt ) {
+			$site_values          = $this->get_register( Register::DEPLOYMENT );
+			$site_values[ $fqcn ] = $questions[ $fqcn ];
+			$this->save( Register::DEPLOYMENT, $site_values );
+		}
+
+		unset( $questions[ $fqcn ] );
+		$this->save_deployment_questions( $questions );
+	}
+
+	/**
+	 * Removes every open deployment question, as saving the Deployment tab decides them all.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function clear_deployment_questions(): void {
+		$this->save_deployment_questions( array() );
+	}
+
+	/**
+	 * Stores the open deployment questions, or removes the setting when there are none.
+	 *
+	 * @since  1.0.0
+	 * @param  array<string, string> $questions FQCN => the tier the release sets.
+	 * @return void
+	 */
+	private function save_deployment_questions( array $questions ): void {
+		if ( empty( $questions ) ) {
+			$this->plugin->settings->delete( self::DEPLOYMENT_QUESTIONS_SETTING );
+			return;
+		}
+
+		$this->plugin->settings->save( self::DEPLOYMENT_QUESTIONS_SETTING, $questions );
+	}
+
+	/**
+	 * Asks for the components that may run on this server to be compared again on the next request.
+	 *
+	 * Called when a status or deployment value may have changed: after an update and after a deployment save.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function request_availability_check(): void {
+		$this->plugin->settings->save( self::AVAILABILITY_CHECK_SETTING, true );
+	}
+
+	/**
+	 * Treats components that may now run on this server, and could not before, as new.
+	 *
+	 * A status or deployment change can make a component available here (Hans, October 2026). Like a new
+	 * component it is then switched on, or, when it asks for confirmation, its question is asked (again).
+	 * Runs only when a check was requested, or once to store the first list; the first list has nothing to
+	 * compare with, so it changes nothing. Hooked on init -5: after the translations, before the Kernel.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function handle_newly_available_components(): void {
+		$previous_available = $this->plugin->settings->get( self::AVAILABLE_SETTING, default: null );
+		$check_requested    = (bool) $this->plugin->settings->get( self::AVAILABILITY_CHECK_SETTING, default: false );
+
+		if ( is_array( $previous_available ) && ! $check_requested ) {
+			return;
+		}
+
+		$available = array_values(
+			array_filter(
+				$this->flatten_components( $this->get_register( Register::COMPONENTS ) ),
+				fn( string $fqcn ): bool => $this->current_deployment_allowed( $fqcn )
+			)
+		);
+
+		$this->plugin->settings->save( self::AVAILABLE_SETTING, $available );
+		$this->plugin->settings->delete( self::AVAILABILITY_CHECK_SETTING );
+
+		if ( ! is_array( $previous_available ) ) {
+			return;
+		}
+
+		$newly_available = array_diff( $available, $previous_available );
+		if ( empty( $newly_available ) ) {
+			return;
+		}
+
+		$enabled_components = $this->get_register( Register::ENABLED );
+		$decisions          = $this->get_activation_decisions();
+
+		foreach ( $newly_available as $fqcn ) {
+			if ( $fqcn::needs_activation_confirmation() ) {
+				unset( $decisions[ $fqcn ] );
+				continue;
+			}
+
+			$enabled_components[ $fqcn ] = true;
+		}
+
+		$this->save( Register::ENABLED, $enabled_components );
+		$this->plugin->settings->save( self::ACTIVATION_DECIDED_SETTING, $decisions );
+		$this->activation_decided = $decisions;
 	}
 
 	/**
@@ -525,20 +751,31 @@ class ComponentsRegister {
 	/**
 	 * Check if a component is authorized to execute within the active deployment tier infrastructure.
 	 *
+	 * Reads the component's status from its meta, so call it after init.
+	 *
 	 * @since  1.0.0
 	 * @param  string $fqcn Fully Qualified Class Name of the target element.
 	 * @return bool         True if authorized, false otherwise.
 	 */
 	private function current_deployment_allowed( string $fqcn ): bool {
+		return $this->get_effective_deployment( $fqcn )->allows( $this->current_deployment );
+	}
 
-		$component_deployment = $this->get_deployment( $fqcn );
+	/**
+	 * Returns up to which server tier a component runs: the lower of its status and its deployment.
+	 *
+	 * The status (in the code, set by the release) is a hard limit; the deployment ("Draait op") is
+	 * where this site lets it run. Reads the component's meta, so call it after init.
+	 *
+	 * @since  1.0.0
+	 * @param  string $fqcn Fully Qualified Class Name of a module or feature.
+	 * @return Deployment The tier up to which it runs.
+	 */
+	public function get_effective_deployment( string $fqcn ): Deployment {
+		$deployment = Deployment::tryFrom( $this->get_deployment( $fqcn ) ) ?? $this->default_deployment;
+		$status     = method_exists( $fqcn, 'get_status' ) ? $fqcn::get_status() : $this->default_deployment;
 
-		return match ( $this->current_deployment ) {
-
-			Deployment::DEVELOPMENT => true,
-			Deployment::STAGING     => in_array( $component_deployment, array( Deployment::STAGING->value, Deployment::PRODUCTION->value ), true ),
-			Deployment::PRODUCTION  => ( Deployment::PRODUCTION->value === $component_deployment ),
-		};
+		return $status->lowest_with( $deployment );
 	}
 
 	/**
@@ -773,6 +1010,11 @@ class ComponentsRegister {
 
 		// Flush and refresh internal runtime properties instantly to prevent lifecycle lag.
 		$this->cache_refresh( $register, $register_data );
+
+		// A changed deployment can make a component available on this server.
+		if ( Register::DEPLOYMENT === $register ) {
+			$this->request_availability_check();
+		}
 
 		if ( false === $settings_written && false === $file_written ) {
 			return false;

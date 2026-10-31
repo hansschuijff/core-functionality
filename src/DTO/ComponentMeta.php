@@ -12,6 +12,7 @@ declare( strict_types=1 );
 
 namespace DeWittePrins\CoreFunctionality\DTO;
 
+use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 
 /**
@@ -37,6 +38,8 @@ readonly class ComponentMeta {
 	 * @param string[]     $uses_features Fully qualified class names of features it needs.
 	 * @param bool         $confirm_activation Whether an administrator must confirm it before it runs on a
 	 *                                         site, for example because it replaces code that may still run there.
+	 * @param Deployment   $status        Development state of the code: the highest server tier it is ready
+	 *                                    for. Set by the release, a hard limit that a site cannot raise.
 	 */
 	public function __construct(
 		public string $id,
@@ -46,5 +49,6 @@ readonly class ComponentMeta {
 		public string|array $dependencies = array(),
 		public array $uses_features = array(),
 		public bool $confirm_activation = false,
+		public Deployment $status = Deployment::DEVELOPMENT,
 	) {}
 }
