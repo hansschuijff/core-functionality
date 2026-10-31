@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T23:43:41+01:00\n"
+"POT-Creation-Date: 2026-11-01T00:49:32+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -135,8 +135,8 @@ msgstr ""
 #. translators: %d: number of notices.
 #: src/Admin/Services/Settings/AdminSettingsPage.php:1067
 #, php-format
-msgid "Notice from other plugins (%d)"
-msgid_plural "Notices from other plugins (%d)"
+msgid "Other notice (%d)"
+msgid_plural "Other notices (%d)"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -164,44 +164,44 @@ msgstr ""
 msgid "All modules and features are enabled."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:222
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:221
 msgid "Available features:"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:302
-msgid "automatically on in this environment"
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:347
+msgid "always active in this environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:306
-msgid "automatically off in this environment"
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:351
+msgid "always inactive in this environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:310
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:355
 msgid "not ready for this environment yet"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:314
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:359
 msgid "awaits your confirmation: saving this tab confirms the choice"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:420
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:465
 msgid "All modules and features where reset to their default settings."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:453
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:498
 msgid "Critical Error: Failed to find modules and features in scan. Is this correct?"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:457
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:502
 msgid "Scan was succesful. All Modules and Features succesfully registered."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:488
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:533
 msgid "Scan for new features"
 msgstr ""
 
 #: src/Admin/Services/Settings/Sections/OptionsManagementSettings.php:95
-msgid "Options Vault Management"
+msgid "Options Vault"
 msgstr ""
 
 #: src/Admin/Services/Settings/Sections/OptionsManagementSettings.php:106
@@ -422,36 +422,59 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:102
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:103
 msgid "Release Management"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:113
-msgid "Set what the release decides about each module and feature. Its status is how far the code is ready: it never runs on a higher environment. Per environment you choose whether it is automatically on, freely adjustable or automatically off there. Saving writes the plugin's release file; commit it afterwards. This tab only exists on a development environment."
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:114
+msgid "For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:195
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:170
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
+#: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
+msgid "Explanation"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:171
+msgid "This page is only for the developers of the modules and features in this plugin."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:172
+msgid "The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:173
+msgid "Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
+msgid "These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:222
 msgid "Module and features"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:196
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:297
-#: src/Environment/Plugins/Automatewoo.php:221
-#: src/Environment/Plugins/Woocommerce.php:229
-#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:371
-msgid "Status"
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:224
+msgid "Activation per environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:254
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:286
 msgid "This installation's configuration adjusts it."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:363
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:329
+msgid "Build status"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:395
 msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:367
-msgid "The release file is saved. Remember to commit it."
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:399
+msgid "The settings are saved in settings/components-release.php. Remember to commit it."
 msgstr ""
 
 #. translators: %s: title of the page or settings tab.
@@ -762,15 +785,15 @@ msgid "🌐 Production"
 msgstr ""
 
 #: src/Enums/EnvironmentRule.php:45
-msgid "Automatically on"
+msgid "Always active"
 msgstr ""
 
 #: src/Enums/EnvironmentRule.php:46
-msgid "Freely adjustable"
+msgid "Adjustable"
 msgstr ""
 
 #: src/Enums/EnvironmentRule.php:47
-msgid "Automatically off"
+msgid "Always inactive"
 msgstr ""
 
 #: src/Environment/Core/WordPress.php:123
@@ -1321,6 +1344,12 @@ msgstr ""
 #: src/Environment/Plugins/Automatewoo.php:217
 #: src/Environment/Plugins/Automatewoo.php:219
 msgid "AutomateWoo Settings: Status"
+msgstr ""
+
+#: src/Environment/Plugins/Automatewoo.php:221
+#: src/Environment/Plugins/Woocommerce.php:229
+#: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:371
+msgid "Status"
 msgstr ""
 
 #: src/Environment/Plugins/Automatewoo.php:225
@@ -4146,12 +4175,6 @@ msgstr ""
 msgid "Expand all"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
-#: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
-msgid "Explanation"
-msgstr ""
-
 #. translators: %s: name of a plugin, theme or WordPress.
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:442
 #, php-format
@@ -5496,31 +5519,31 @@ msgid_plural "The new features are active."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Notifiers/ActivationQuestion.php:197
+#: src/Notifiers/ActivationQuestion.php:198
 msgid "Core Functionality has a new feature that is not active yet:"
 msgid_plural "Core Functionality has new features that are not active yet:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Notifiers/ActivationQuestion.php:198
+#: src/Notifiers/ActivationQuestion.php:199
 msgid "May I activate it for you?"
 msgid_plural "May I activate them for you?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Notifiers/ActivationQuestion.php:200
+#: src/Notifiers/ActivationQuestion.php:201
 msgid "Yes"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:201
+#: src/Notifiers/ActivationQuestion.php:202
 msgid "No"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:243
+#: src/Notifiers/ActivationQuestion.php:244
 msgid "Read more"
 msgstr ""
 
-#: src/Notifiers/ActivationQuestion.php:244
+#: src/Notifiers/ActivationQuestion.php:245
 msgid "If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation."
 msgstr ""
 

@@ -144,29 +144,25 @@ msgstr "Hier zet je de modules en features van deze plugin aan en uit. Vernieuwe
 msgid "Select all"
 msgstr "Alles selecteren"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:222
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:221
 msgid "Available features:"
 msgstr "Beschikbare features:"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:420
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:465
 msgid "All modules and features where reset to their default settings."
 msgstr "Alle modules en features zijn teruggezet naar hun standaardinstellingen."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:453
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:498
 msgid "Critical Error: Failed to find modules and features in scan. Is this correct?"
 msgstr "Kritieke fout: de scan vond geen modules en features. Klopt dat?"
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:457
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:502
 msgid "Scan was succesful. All Modules and Features succesfully registered."
 msgstr "Scan geslaagd. Alle modules en features zijn geregistreerd."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:488
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:533
 msgid "Scan for new features"
 msgstr "Zoeken naar nieuwe features"
-
-#: src/Admin/Services/Settings/Sections/OptionsManagementSettings.php:95
-msgid "Options Vault Management"
-msgstr "Beheer optiekluis"
 
 #: src/Admin/Services/Settings/Sections/OptionsManagementSettings.php:106
 msgid "Review unmapped feature settings inside the Quarantine pool. Choose to transport them in bulk to standalone or grouped database keys, or delete them permanently from the system."
@@ -1243,8 +1239,6 @@ msgstr "Bitly"
 msgid "AutomateWoo Settings: Status"
 msgstr "AutomateWoo-instellingen: Status"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:196
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:297
 #: src/Environment/Plugins/Automatewoo.php:221
 #: src/Environment/Plugins/Woocommerce.php:229
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:371
@@ -4056,6 +4050,7 @@ msgstr "Alles inklappen"
 msgid "Expand all"
 msgstr "Alles uitklappen"
 
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:170
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
@@ -5476,17 +5471,9 @@ msgstr "Alles tonen"
 msgid "All modules and features are enabled."
 msgstr "Alle modules en features staan aan."
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:314
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:359
 msgid "awaits your confirmation: saving this tab confirms the choice"
 msgstr "wacht op je bevestiging: opslaan op dit tabblad bevestigt de keuze"
-
-#. translators: %d: number of notices.
-#: src/Admin/Services/Settings/AdminSettingsPage.php:1067
-#, php-format
-msgid "Notice from other plugins (%d)"
-msgid_plural "Notices from other plugins (%d)"
-msgstr[0] "Melding van andere plugins (%d)"
-msgstr[1] "Meldingen van andere plugins (%d)"
 
 #: src/Notifiers/ActivationQuestion.php:138
 msgid "The new feature is active."
@@ -5494,31 +5481,31 @@ msgid_plural "The new features are active."
 msgstr[0] "De nieuwe functie is actief."
 msgstr[1] "De nieuwe functies zijn actief."
 
-#: src/Notifiers/ActivationQuestion.php:197
+#: src/Notifiers/ActivationQuestion.php:198
 msgid "Core Functionality has a new feature that is not active yet:"
 msgid_plural "Core Functionality has new features that are not active yet:"
 msgstr[0] "Core Functionality heeft een nieuwe functie die nog inactief is:"
 msgstr[1] "Core Functionality heeft nieuwe functies die nog inactief zijn:"
 
-#: src/Notifiers/ActivationQuestion.php:198
+#: src/Notifiers/ActivationQuestion.php:199
 msgid "May I activate it for you?"
 msgid_plural "May I activate them for you?"
 msgstr[0] "Mag ik deze voor je activeren?"
 msgstr[1] "Mag ik ze voor je activeren?"
 
-#: src/Notifiers/ActivationQuestion.php:200
+#: src/Notifiers/ActivationQuestion.php:201
 msgid "Yes"
 msgstr "Ja"
 
-#: src/Notifiers/ActivationQuestion.php:201
+#: src/Notifiers/ActivationQuestion.php:202
 msgid "No"
 msgstr "Nee"
 
-#: src/Notifiers/ActivationQuestion.php:243
+#: src/Notifiers/ActivationQuestion.php:244
 msgid "Read more"
 msgstr "Meer lezen"
 
-#: src/Notifiers/ActivationQuestion.php:244
+#: src/Notifiers/ActivationQuestion.php:245
 msgid "If you do not want to use the new features yet, you can still activate them later in the Settings, under Core Functionality → Feature Activation."
 msgstr "Wil je de nieuwe functies nu nog niet gebruiken, dan kun je ze later alsnog activeren in de Instellingen, bij Core Functionality → Features activeren."
 
@@ -5566,50 +5553,86 @@ msgstr "Templatecontrole"
 msgid "Message labels"
 msgstr "Berichtlabels"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:102
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:103
 msgid "Release Management"
 msgstr "Releasebeheer"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:113
-msgid "Set what the release decides about each module and feature. Its status is how far the code is ready: it never runs on a higher environment. Per environment you choose whether it is automatically on, freely adjustable or automatically off there. Saving writes the plugin's release file; commit it afterwards. This tab only exists on a development environment."
-msgstr "Hier leg je vast wat de release over elke module en feature beslist. De status zegt hoe ver de code klaar is: op een hogere omgeving draait hij nooit. Per omgeving kies je of hij daar automatisch aan, vrij instelbaar of automatisch uit is. Opslaan schrijft het releasebestand van de plugin; commit het daarna. Dit tabblad bestaat alleen op een ontwikkelomgeving."
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:195
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:222
 msgid "Module and features"
 msgstr "Module en features"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:254
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:286
 msgid "This installation's configuration adjusts it."
 msgstr "De configuratie van deze installatie past dit aan."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:363
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:395
 msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
 msgstr "Het releasebestand kon niet worden geschreven. Controleer of de map settings van de plugin beschrijfbaar is."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:367
-msgid "The release file is saved. Remember to commit it."
-msgstr "Het releasebestand is opgeslagen. Vergeet het niet te committen."
-
-#: src/Enums/EnvironmentRule.php:45
-msgid "Automatically on"
-msgstr "Automatisch aan"
-
-#: src/Enums/EnvironmentRule.php:46
-msgid "Freely adjustable"
-msgstr "Vrij instelbaar"
-
-#: src/Enums/EnvironmentRule.php:47
-msgid "Automatically off"
-msgstr "Automatisch uit"
-
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:302
-msgid "automatically on in this environment"
-msgstr "automatisch aan op deze omgeving"
-
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:306
-msgid "automatically off in this environment"
-msgstr "automatisch uit op deze omgeving"
-
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:310
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:355
 msgid "not ready for this environment yet"
 msgstr "nog niet klaar voor deze omgeving"
+
+#. translators: %d: number of notices.
+#: src/Admin/Services/Settings/AdminSettingsPage.php:1067
+#, php-format
+msgid "Other notice (%d)"
+msgid_plural "Other notices (%d)"
+msgstr[0] "Andere melding (%d)"
+msgstr[1] "Andere meldingen (%d)"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:347
+msgid "always active in this environment"
+msgstr "altijd actief op deze omgeving"
+
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:351
+msgid "always inactive in this environment"
+msgstr "altijd inactief op deze omgeving"
+
+#: src/Admin/Services/Settings/Sections/OptionsManagementSettings.php:95
+msgid "Options Vault"
+msgstr "Optiekluis"
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:114
+msgid "For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment."
+msgstr "Voor de ontwikkelaars van deze plugin: hoe ver elke module en feature gebouwd is, en hoe vrij hij per omgeving geactiveerd mag worden."
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:171
+msgid "This page is only for the developers of the modules and features in this plugin."
+msgstr "Deze pagina is alleen voor de ontwikkelaars van de modules en features in deze plugin."
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:172
+msgid "The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment."
+msgstr "De bouwstatus zegt hoe ver een module of feature ontwikkeld is. Die komt overeen met de omgevingen waarin hij actief mag zijn, zodat een feature die nog niet klaar is voor productie nooit op een productieomgeving geactiveerd kan worden."
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:173
+msgid "Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built."
+msgstr "Per omgeving kies je of een module of feature daar altijd actief is, altijd inactief, of instelbaar door de beheerder. Die keuze hangt meer af van het doel van de module of feature dan van hoe ver hij gebouwd is."
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
+msgid "These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point."
+msgstr "Deze instellingen worden opgeslagen in een instellingenbestand dat met de release meegaat. Het legt de randvoorwaarden vast voor het gebruik van deze plugin op andere systemen, zodat de beheerders daar vanaf een veilig startpunt beginnen."
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:224
+msgid "Activation per environment"
+msgstr "Activering per omgeving"
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:329
+msgid "Build status"
+msgstr "Bouwstatus"
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:399
+msgid "The settings are saved in settings/components-release.php. Remember to commit it."
+msgstr "De instellingen zijn opgeslagen in settings/components-release.php. Vergeet niet die te committen."
+
+#: src/Enums/EnvironmentRule.php:45
+msgid "Always active"
+msgstr "Altijd actief"
+
+#: src/Enums/EnvironmentRule.php:46
+msgid "Adjustable"
+msgstr "Instelbaar"
+
+#: src/Enums/EnvironmentRule.php:47
+msgid "Always inactive"
+msgstr "Altijd inactief"
