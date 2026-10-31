@@ -588,11 +588,11 @@ Known issues:
   early), the WooCommerce category link always used an example slug, and two buttons were never
   translated.
 - Built (October 2026): status and deployment split, with the release question and "newly available counts
-  as new" (see Components register). Visualizer, StylesFixer and the ActiveWoo module got
-  `status: Deployment::STAGING`, matching their deployment value, so they still run on staging; every other
-  component is at status development and does not run on staging or production until its status is
-  raised in the code (bevestig). Testing a production target before its status is production needs a
-  development site that behaves like production; accepted for now (Hans).
+  as new" (see Components register). Every built module and feature has status production, except the
+  AdminMenu module and its features, which stay at development (Hans, October 2026: they run well and do
+  nothing dangerous). Where they actually run is still each site's "Draait op". Testing a production target
+  before its status is production needs a development site that behaves like production; accepted for now
+  (Hans).
 - Tested in a logged-in admin (October 2026): the "new components" notice after a simulated update, the
   integrity check and all settings tabs. The two issues found there (the toolbar Cleaner reading
   `$node->id` from an array, and feature names ending in a period) are fixed. The plugin is active again
