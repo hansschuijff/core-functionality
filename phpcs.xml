@@ -15,6 +15,7 @@
 
     <!-- Settings defaults written by the plugin itself (var_export) -->
     <exclude-pattern>settings/modules/admin-toolbar/menu-builder.php</exclude-pattern>
+    <exclude-pattern>settings/components-release.php</exclude-pattern>
 
     <!-- Enforce the official WordPress Core standards -->
     <rule ref="WordPress-Core" />
