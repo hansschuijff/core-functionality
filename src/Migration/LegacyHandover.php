@@ -24,6 +24,7 @@ use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\MenuBuilder\Men
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\StylesFixer\StylesFixer;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\Visualizer\Visualizer;
 use DeWittePrins\CoreFunctionality\Modules\WooCommerce\Features\BusinessInvoiceTotals\BusinessInvoiceTotals;
+use DeWittePrins\CoreFunctionality\Modules\WooCommerce\Features\InvoiceDetails\InvoiceDetails;
 use DeWittePrins\CoreFunctionality\Modules\WooCommerce\Features\ShortBulkActionLabels\ShortBulkActionLabels;
 use DeWittePrins\CoreFunctionality\Plugin;
 
@@ -100,10 +101,12 @@ class LegacyHandover {
 			// WooCommerce has its own mark_cancelled bulk action, so the legacy one is not ported.
 			'files' => array( 'woocommerce/src/bulk-order-cancellation' ),
 		),
+		// The legacy PDF file is split over these two; both are meant to be on wherever the shop runs.
 		BusinessInvoiceTotals::class => array(
-			'callbacks' => array(
-				array( 'wpo_wcpdf_after_order_details', 'DeWittePrins\CoreFunctionalityLegacy\WooCommerce\render_tax_exempt_notice', 10 ),
-			),
+			'files' => array( 'woocommerce/src/pdf-invoice-customizations' ),
+		),
+		InvoiceDetails::class        => array(
+			'files' => array( 'woocommerce/src/pdf-invoice-customizations' ),
 		),
 	);
 
