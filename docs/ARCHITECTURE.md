@@ -541,8 +541,18 @@ Temporary, until the legacy plugin is gone (agreed with Hans, November 2026).
   module was hardly used either, so the design is still open (Hans, November 2026).
 - Mapped so far: KeepLicenseAlive, Cleaner,
   MenuBuilder, StylesFixer, Visualizer ("Show Node IDs"; its legacy file is commented out in the legacy
-  `admin-nav/config/autoload.php`, mapped anyway) (files); BusinessInvoiceTotals (`render_tax_exempt_notice`, callback). Not
-  mapped: the bulk order cancellation (legacy `bulk-order-cancellation` stays, bevestig).
+  `admin-nav/config/autoload.php`, mapped anyway), ShortBulkActionLabels (`woocommerce/src/bulk-order-cancellation`:
+  not ported, WooCommerce has its own `mark_cancelled`; the feature is on by default on the sites)
+  (files); BusinessInvoiceTotals (`render_tax_exempt_notice`, callback).
+- Next for the handover: port the rest of `woocommerce/src/pdf-invoice-customizations.php` (payment status
+  / due date / paid date rows, customer notes), so that file can be mapped as a whole (Hans, November 2026).
+- Granularity: files are enough. A module loader (`<module>/module-loader`) also passes the filter, so
+  stopping it stops the whole legacy module; no folder matching needed.
+- Not mapped on purpose (Hans, November 2026): the legacy `debug/` files load on development only
+  (`config/autoload-files-env.php`; only `debug/write-to-log` may load on production). TemplateFallback
+  takes over theme overrides, not legacy files: the theme comes first, and Hans removes its copies once
+  the CF templates are in place. MultiAddToCart and BusinessInvoiceTotals remove the hooks of the code
+  they replace (Remote Tickets Server Add-ons, Hans's snippet) themselves while they run.
 
 ## Settings and options
 
