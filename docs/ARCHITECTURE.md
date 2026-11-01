@@ -145,9 +145,15 @@ so the release decides about features; a module with features gets no entry of i
 (ReleaseRegister::with_module_entries()). It takes the widest setting of its features: the highest
 status, and per environment the widest rule among the features whose status reaches it (always active
 before adjustable before always inactive). So an always-active feature makes its module always active, and
-a module is always inactive only when all its features are. The Release Management tab shows the module
-row as text ("Follows its features") and saves only feature entries; a module without features keeps its
-own entry and selects. This hard-wires the rule that a module has no functionality of its own outside its
+a module is always inactive only when all its features are. The Release Management tab has no module row:
+the module's name heads its table, and only feature entries are saved; a module without features keeps its
+own row with selects.
+
+**The release gets a filtered configuration** (Hans, November 2026). Like the components register, which
+holds everything but passes on what fits the circumstances: a rule on an environment the build status does
+not reach yet makes no sense in the release, so the file gets "always inactive" there. The developer's
+choice for later is kept in the setting `components-release-choices` on the development site, and the tab
+shows those choices, so they apply in the file once the status is raised. This hard-wires the rule that a module has no functionality of its own outside its
 features (CLAUDE.md: a module contains only get_meta()). Considered and dropped: the module as a
 ceiling with its own rule, which needed extra rules between module and feature rules.
 
