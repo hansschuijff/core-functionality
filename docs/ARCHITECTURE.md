@@ -679,8 +679,29 @@ not travel with an update to another site.
 
 Later:
 
-- Rename of the folder and repository to `core-functionality` once the legacy plugin is retired (also
-  `PLUGIN_SLUG` in the release workflow).
+- Rename of the folder and repository to `core-functionality` (also `PLUGIN_SLUG` in the release
+  workflow). Planned direction (November 2026, plan not final yet): the legacy plugin moves first, to
+  "Core Functionality Legacy" in folder and repository `core-functionality-legacy`; this plugin then takes
+  `core-functionality`. On production the legacy swap (upload, deactivate the old one, activate the new
+  one, in wp-admin) comes before any release of this plugin under the new name: the old legacy install
+  still points at `hansschuijff/core-functionality`, so Git Updater would offer a higher version of this
+  plugin as an in-place update and replace legacy at once.
+- Legacy handover (agreed with Hans, November 2026): temporary and kept outside the features, so it can be
+  removed in one go. One register at plugin level (`settings/legacy-handover.php`: per feature the legacy
+  files it replaces, or single callbacks for files it only partly replaces) and one class
+  (`src/Migration/LegacyHandover.php`), called from the main file. It runs before the legacy plugin loads
+  its files (plugins load alphabetically, `core-functionality` before `core-functionality-legacy`; the
+  Kernel boots on `init`, too late) and only acts for features that are switched on. The legacy plugin gets
+  one filter in `should_load_file()`.
+- Logging and debugging (direction, November 2026): the Logger stays a central service, always callable,
+  that does nothing when logging is off (switched from inside, through its settings: on/off, log file,
+  dump function, later per module or feature via the caller's namespace and a level). An
+  `is_enabled()` check only where building the data is expensive. Outside the plugin, code checks the
+  plugin through the public API (`CF::is_ready()`), which is still parked (see above). The debug helpers of
+  the legacy `debug/` folder (plugins list, shortcodes metabox, debug to console, TEC template check)
+  become features in a Development module; `write-to-log` and `pretty-printing` go into the Logger. The
+  legacy settings (`dewitteprins_core_settings`: `active-logger`, `log-file`, `var-printer`) are the
+  starting point; where the Logger's current option `dwp_log_settings` comes from still needs checking.
 
 ## Release and translations
 
