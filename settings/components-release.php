@@ -10,24 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array (
-  'DeWittePrins\\CoreFunctionality\\Modules\\Sensei\\Sensei' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\Sensei\\Features\\MessageLabels\\MessageLabels' => 
   array (
     'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\WooCommerce\\WooCommerce' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
+    'development' => 'auto-on',
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
@@ -66,13 +52,6 @@ return array (
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\AdminToolbar\\AdminToolbar' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\AdminToolbar\\Features\\MenuBuilder\\MenuBuilder' => 
   array (
     'status' => 'production',
@@ -101,13 +80,6 @@ return array (
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\Events\\Events' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\Events\\Features\\TemplateFallback\\TemplateFallback' => 
   array (
     'status' => 'production',
@@ -116,13 +88,6 @@ return array (
     'production' => 'adjustable',
   ),
   'DeWittePrins\\CoreFunctionality\\Modules\\Events\\Features\\TemplateMonitor\\TemplateMonitor' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\AiAccess' => 
   array (
     'status' => 'production',
     'development' => 'adjustable',
@@ -164,13 +129,6 @@ return array (
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\AdminMenu\\AdminMenu' => 
-  array (
-    'status' => 'development',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\AdminMenu\\Features\\AdminMenuArchitect\\AdminMenuArchitect' => 
   array (
     'status' => 'development',
@@ -178,21 +136,7 @@ return array (
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\ActiveWoo\\ActiveWoo' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\ActiveWoo\\Features\\KeepLicenseAlive\\KeepLicenseAlive' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\ReaderExperience\\ReaderExperience' => 
   array (
     'status' => 'production',
     'development' => 'adjustable',
@@ -206,21 +150,7 @@ return array (
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\DuplicatePost\\DuplicatePost' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\DuplicatePost\\Features\\HideLinks\\HideLinks' => 
-  array (
-    'status' => 'production',
-    'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
-  ),
-  'DeWittePrins\\CoreFunctionality\\Modules\\Cleaner\\Cleaner' => 
   array (
     'status' => 'production',
     'development' => 'adjustable',
