@@ -73,6 +73,14 @@ class ReleaseRegister {
 	public const STATUS_KEY = 'status';
 
 	/**
+	 * Setting with the developer's choices on the Release Management tab, including the rules for
+	 * environments the status does not reach yet (only on a development site).
+	 *
+	 * @var string
+	 */
+	private const CHOICES_SETTING = 'components-release-choices';
+
+	/**
 	 * The release settings as they apply in this installation (FQCN => entry), built on first use.
 	 *
 	 * @var array<string, array<string, string>>|null
@@ -149,23 +157,52 @@ class ReleaseRegister {
 	}
 
 	/**
-	 * Writes the release file and asks for the components that may run here to be compared again.
+	 * Returns the developer's choices as the Release Management tab shows them: the release file,
+	 * with the choices for later saved on this site on top.
+	 *
+	 * @since  1.0.0
+	 * @return array<string, array<string, string>> FQCN => entry.
+	 */
+	public function get_release_choices(): array {
+		$choices = $this->plugin->settings->get( self::CHOICES_SETTING, default: array() );
+		$entries = $this->get_release_values();
+
+		foreach ( is_array( $choices ) ? $choices : array() as $fqcn => $entry ) {
+			if ( is_string( $fqcn ) && is_array( $entry ) ) {
+				$entries[ $fqcn ] = $this->sanitize_entry( $entry );
+			}
+		}
+
+		return $entries;
+	}
+
+	/**
+	 * Saves the developer's choices on this site and writes what of them applies to the release file,
+	 * then asks for the components that may run here to be compared again.
+	 *
+	 * The release only gets what the build status allows: a rule on an environment the status does
+	 * not reach yet becomes "always inactive" in the file. The choice itself is kept in the option, so
+	 * it applies once the status gets there (Hans, November 2026).
 	 *
 	 * @since  1.0.0
 	 * @param  array<string, array<string, string>> $entries FQCN => entry; invalid values become the defaults.
 	 * @return bool True when the file was written.
 	 */
 	public function save_release_values( array $entries ): bool {
-		$clean_entries = array();
+		$clean_entries     = array();
+		$effective_entries = array();
 		foreach ( $entries as $fqcn => $entry ) {
 			if ( is_string( $fqcn ) && is_array( $entry ) ) {
-				$clean_entries[ $fqcn ] = $this->sanitize_entry( $entry );
+				$clean_entries[ $fqcn ]     = $this->sanitize_entry( $entry );
+				$effective_entries[ $fqcn ] = $this->get_effective_entry( $clean_entries[ $fqcn ] );
 			}
 		}
 
+		$this->plugin->settings->save( self::CHOICES_SETTING, $clean_entries );
+
 		$written = $this->plugin->file_service->write(
 			$this->get_release_file_path(),
-			$clean_entries,
+			$effective_entries,
 			'Release settings of the modules and features: status and rule per environment. Written by the Release Management tab.'
 		);
 
@@ -173,6 +210,25 @@ class ReleaseRegister {
 		$this->plugin->components_register->request_availability_check();
 
 		return $written;
+	}
+
+	/**
+	 * Returns an entry as it may go into the release: always inactive on every environment its
+	 * status does not reach.
+	 *
+	 * @since  1.0.0
+	 * @param  array<string, string> $entry A clean entry.
+	 * @return array<string, string> The entry for the release file.
+	 */
+	private function get_effective_entry( array $entry ): array {
+		$status = Deployment::from( $entry[ self::STATUS_KEY ] );
+		foreach ( Deployment::cases() as $environment ) {
+			if ( ! $status->allows( $environment ) ) {
+				$entry[ $environment->value ] = EnvironmentRule::AUTO_OFF->value;
+			}
+		}
+
+		return $entry;
 	}
 
 	/**
