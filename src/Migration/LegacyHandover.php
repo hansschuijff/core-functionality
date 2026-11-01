@@ -23,6 +23,7 @@ use DeWittePrins\CoreFunctionality\Modules\AdminMenu\Features\AdminMenuArchitect
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\Cleaner\Cleaner;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\MenuBuilder\MenuBuilder;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\StylesFixer\StylesFixer;
+use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\Visualizer\Visualizer;
 use DeWittePrins\CoreFunctionality\Modules\WooCommerce\Features\BusinessInvoiceTotals\BusinessInvoiceTotals;
 use DeWittePrins\CoreFunctionality\Plugin;
 
@@ -97,6 +98,9 @@ class LegacyHandover {
 		),
 		StylesFixer::class           => array(
 			'files' => array( 'admin-nav/src/admin-toolbar/fix-admin-bar-styles' ),
+		),
+		Visualizer::class            => array(
+			'files' => array( 'admin-nav/src/admin-toolbar/list-all-admin-bar-node-ids' ),
 		),
 		BusinessInvoiceTotals::class => array(
 			'callbacks' => array(

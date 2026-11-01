@@ -536,7 +536,8 @@ Temporary, until the legacy plugin is gone (agreed with Hans, November 2026).
   plugin directly in front of the legacy plugin (`pre_update_option_active_plugins`, plus one re-save on
   the first request where the order is wrong).
 - Mapped so far: KeepLicenseAlive, AdminMenuArchitect (admin-menu add/remove items, bevestig), Cleaner,
-  MenuBuilder, StylesFixer (files); BusinessInvoiceTotals (`render_tax_exempt_notice`, callback). Not
+  MenuBuilder, StylesFixer, Visualizer ("Show Node IDs"; its legacy file is commented out in the legacy
+  `admin-nav/config/autoload.php`, mapped anyway) (files); BusinessInvoiceTotals (`render_tax_exempt_notice`, callback). Not
   mapped: the bulk order cancellation (legacy `bulk-order-cancellation` stays, bevestig).
 
 ## Settings and options
