@@ -537,7 +537,8 @@ Temporary, until the legacy plugin is gone (agreed with Hans, November 2026).
   the first request where the order is wrong).
 - Not mapped yet: AdminMenuArchitect. It is not complete (no menu data yet; what the legacy
   `admin-nav/src/admin-menu/add-items` and `remove-items` read from config should come from a settings
-  section, like the toolbar's), so those legacy files keep loading until it is (Hans, November 2026).
+  section, like the toolbar's), so those legacy files keep loading until it is. The legacy admin menu
+  module was hardly used either, so the design is still open (Hans, November 2026).
 - Mapped so far: KeepLicenseAlive, Cleaner,
   MenuBuilder, StylesFixer, Visualizer ("Show Node IDs"; its legacy file is commented out in the legacy
   `admin-nav/config/autoload.php`, mapped anyway) (files); BusinessInvoiceTotals (`render_tax_exempt_notice`, callback). Not
