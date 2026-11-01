@@ -696,8 +696,16 @@ Later:
 - Logging and debugging (direction, November 2026): the Logger stays a central service, always callable,
   that does nothing when logging is off (switched from inside, through its settings: on/off, log file,
   dump function, later per module or feature via the caller's namespace and a level). An
-  `is_enabled()` check only where building the data is expensive. Outside the plugin, code checks the
-  plugin through the public API (`CF::is_ready()`), which is still parked (see above). The debug helpers of
+  `is_enabled()` check only where building the data is expensive. The Logger becomes one instance owned by
+  `Plugin` (now it is only created for `InterDependenciesGuard`), so features use `$this->plugin->logger`.
+  Outside the plugin, code checks the plugin through the public API, which is still parked (see above);
+  only the readiness check is to be switched on before the rest is designed. Readiness has two moments
+  (Hans, November 2026; exact names are for the API design): the plugin core is loaded (end of the `Plugin`
+  constructor: Settings and Logger available, before `plugins_loaded`) and the features are ready (the
+  Kernel has launched them, now `core-functionality/ready`). Each gets a hook, and its check can be
+  `did_action()` on that hook. Avoid "kernel" in the first name: the Kernel is what starts the features.
+  Today the first moment only covers Settings and the Logger; it is kept as its own moment because more
+  core services may follow (open, Hans). The debug helpers of
   the legacy `debug/` folder (plugins list, shortcodes metabox, debug to console, TEC template check)
   become features in a Development module; `write-to-log` and `pretty-printing` go into the Logger. The
   legacy settings (`dewitteprins_core_settings`: `active-logger`, `log-file`, `var-printer`) are the
