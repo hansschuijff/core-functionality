@@ -49,7 +49,7 @@ components were scheduled from outside; the filter `dwp_cf_plugin_load_timing` w
 ## Structure
 
 ```
-core-functionality-oop/
+core-functionality/
 ├── core-functionality.php        bootstrap
 ├── src/
 │   ├── Plugin.php                container: services, paths, option keys, ready state
@@ -509,6 +509,36 @@ the post type `sensei_message` "Sensei messages" ("Sensei-berichten") through Se
 confuses lists of post types (Hans, October 2026). The other labels use Sensei's own patterns. Sensei's
 submenu item stays "Berichten": under the Sensei menu it is clear.
 
+## Legacy handover
+
+Temporary, until the legacy plugin is gone (agreed with Hans, November 2026).
+
+- Names: the legacy plugin is "Core Functionality Legacy" (folder and repository
+  `core-functionality-legacy`, main file still `core-functionality.php`, namespace
+  `DeWittePrins\CoreFunctionalityLegacy`, from 1.9.0). This plugin is "Core Functionality" in folder and
+  repository `core-functionality`, from 1.0.0. The legacy rename went to production first (1 November
+  2026, folder renamed by FTP, themes updated for the namespace): the old legacy install pointed at
+  `hansschuijff/core-functionality`, so Git Updater would otherwise have replaced it with this plugin.
+- Kept outside the features, so it can be removed in one go: `src/Migration/LegacyHandover.php` and its
+  call at the end of the main file. The register is the class constant `TAKEN_OVER` (feature class →
+  legacy `files` and/or `callbacks`), not a settings file: it is code knowledge, and `::class` keys break
+  loudly when a feature moves.
+- Files: the legacy plugin asks `core-functionality-legacy/load-file` (filter, legacy 1.9.1:
+  `may_load_file()` in its plugin loader and in every module loader) whether a file, relative to its
+  `src/` and without `.php`, may load. This runs while the legacy plugin loads, long before the Kernel
+  boots, so "switched on" is read from the register (available here, and automatically on or enabled, for
+  feature and module). Plugin dependencies and activation confirmations are not known yet then, so only
+  use `files` for features without `confirm_activation`.
+- Callbacks: for a file that is only partly taken over, the callback is removed on
+  `core-functionality/ready`, and only when the feature really launched.
+- Load order: WordPress loads plugins in the order of `active_plugins`, which it sorts as text, and
+  `core-functionality-legacy/` sorts before `core-functionality/` (`-` before `/`). The handover keeps this
+  plugin directly in front of the legacy plugin (`pre_update_option_active_plugins`, plus one re-save on
+  the first request where the order is wrong).
+- Mapped so far: KeepLicenseAlive, AdminMenuArchitect (admin-menu add/remove items, bevestig), Cleaner,
+  MenuBuilder, StylesFixer (files); BusinessInvoiceTotals (`render_tax_exempt_notice`, callback). Not
+  mapped: the bulk order cancellation (legacy `bulk-order-cancellation` stays, bevestig).
+
 ## Settings and options
 
 - **Settings files** (`settings/`) hold defaults and site data as PHP files returning arrays. General files
@@ -679,24 +709,8 @@ not travel with an update to another site.
 
 Later:
 
-- Rename of the folder and repository to `core-functionality` (also `PLUGIN_SLUG` in the release
-  workflow). Planned direction (November 2026, plan not final yet): the legacy plugin moves first, to
-  "Core Functionality Legacy" in folder and repository `core-functionality-legacy`; this plugin then takes
-  `core-functionality`. Its main file keeps the name `core-functionality.php` and its namespace becomes
-  `DeWittePrins\CoreFunctionalityLegacy`, so the two plugins share no namespace. On production the folder
-  is renamed by FTP and the plugin re-activated; that comes before any release of this plugin under the
-  new name: the old legacy install
-  still points at `hansschuijff/core-functionality`, so Git Updater would offer a higher version of this
-  plugin as an in-place update and replace legacy at once. Done on 1 November 2026: legacy 1.9.0 runs on
-  production as "Core Functionality Legacy" in `core-functionality-legacy/` (repository renamed), with the
-  themes updated for its namespace; the folder `core-functionality` is free for this plugin.
-- Legacy handover (agreed with Hans, November 2026): temporary and kept outside the features, so it can be
-  removed in one go. One register at plugin level (`settings/legacy-handover.php`: per feature the legacy
-  files it replaces, or single callbacks for files it only partly replaces) and one class
-  (`src/Migration/LegacyHandover.php`), called from the main file. It runs before the legacy plugin loads
-  its files (plugins load alphabetically, `core-functionality` before `core-functionality-legacy`; the
-  Kernel boots on `init`, too late) and only acts for features that are switched on. The legacy plugin gets
-  one filter in `should_load_file()`.
+- Retiring the legacy plugin: see Legacy handover. Still open there: which features cover the rest of the
+  legacy files, and when the legacy plugin can be deactivated on production.
 - Logging and debugging (direction, November 2026): the Logger stays a central service, always callable,
   that does nothing when logging is off (switched from inside, through its settings: on/off, log file,
   dump function, later per module or feature via the caller's namespace and a level). An
@@ -719,7 +733,7 @@ Later:
 
 `README.md` describes both. A pushed `vX.Y.Z` tag runs `.github/workflows/release.yml`: Composer installs
 the autoloader without development packages, the PHP syntax and the header version are checked, and a
-zip of the `core-functionality-oop` folder goes to the GitHub release, where Git Updater picks it up.
+zip of the `core-functionality` folder goes to the GitHub release, where Git Updater picks it up.
 `languages/` holds the `.pot` and the nl_NL `.po`/`.mo`; the text domain is loaded on `init`.
 
 ## Testing

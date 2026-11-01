@@ -12,15 +12,17 @@ asking first, and says briefly what changed. Both are mainly written for Claude.
 
 ## What this plugin is
 
-The OOP successor of the legacy `core-functionality` plugin (procedural, text domain
-`core-functionality-dwp`). Both are installed side by side while features move over; that is the only
-reason the folder is called `core-functionality-oop`. The final folder and slug are `core-functionality`.
-Not in production yet, so renames are still cheap (in their own commit). It is meant to keep growing with
+The OOP successor of the legacy plugin, now Core Functionality Legacy (folder and repo
+`core-functionality-legacy`, procedural, namespace `DeWittePrins\CoreFunctionalityLegacy`, text domain
+`core-functionality-dwp`). Both run side by side while features move over; this plugin has the final
+folder and slug `core-functionality` (version 1.0.0, a fresh start). The temporary
+`src/Migration/LegacyHandover.php` lets the legacy plugin step aside per switched-on feature (see
+`docs/ARCHITECTURE.md`, Legacy handover). Not in production yet, so renames are still cheap (in their own commit). It is meant to keep growing with
 new modules and features for Hans's own sites.
 
 ## How we work here
 
-- Claude works directly in this repository (WSL, `/home/hans/projects/speeltuin/wp-content/plugins/core-functionality-oop`)
+- Claude works directly in this repository (WSL, `/home/hans/projects/speeltuin/wp-content/plugins/core-functionality`)
   and commits in small separate commits. Hans pushes. Never stage files Hans is still editing; commit only
   what belongs to the change.
 - Think first, then build: for anything beyond a small fix, agree on the plan before writing code.
@@ -103,6 +105,7 @@ new modules and features for Hans's own sites.
 
 ## Git
 
-- Repository `github.com/hansschuijff/core-functionality-oop`, branch `main`.
+- Repository `github.com/hansschuijff/core-functionality` (SSH remote; renamed from `core-functionality-oop`
+  in November 2026), branch `main`.
 - `___/` is Hans's local scratch folder (gitignored): notes, old patches, prototypes. Do not treat it as
   part of the plugin, and do not rely on what it says without checking the code.

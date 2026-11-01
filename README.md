@@ -8,8 +8,9 @@ switched on under Settings → Core Functionality.
 Requires WordPress 7.0 and PHP 8.2. Updates through [Git Updater](https://git-updater.com/) from the
 GitHub releases. Architecture and decisions: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
-This is the OOP successor of the legacy `core-functionality` plugin. Both are installed side by side
-while features move over, which is why the folder is still called `core-functionality-oop`.
+This is the OOP successor of the legacy plugin, now called Core Functionality Legacy (folder
+`core-functionality-legacy`). Both are installed side by side while features move over; for every
+switched-on feature that took over a part of it, the legacy part steps aside (`src/Migration/LegacyHandover.php`).
 
 ## First time
 
@@ -189,11 +190,11 @@ WordPress Coding Standards with PSR-4 class files, `declare( strict_types=1 );` 
 Source strings are English, text domain `core-functionality`; `languages/` holds the `.pot` and the
 Dutch translation. After changing strings (in DDEV, from the site folder):
 
-    ddev wp i18n make-pot wp-content/plugins/core-functionality-oop wp-content/plugins/core-functionality-oop/languages/core-functionality.pot --domain=core-functionality --exclude=vendor,___,kernel,src/Modules/ActiveWoo/dev-notes
+    ddev wp i18n make-pot wp-content/plugins/core-functionality wp-content/plugins/core-functionality/languages/core-functionality.pot --domain=core-functionality --exclude=vendor,___,kernel,src/Modules/ActiveWoo/dev-notes
 
 Then update `languages/core-functionality-nl_NL.po` (Poedit or Loco Translate) and create the `.mo`:
 
-    ddev wp i18n make-mo wp-content/plugins/core-functionality-oop/languages/core-functionality-nl_NL.po wp-content/plugins/core-functionality-oop/languages
+    ddev wp i18n make-mo wp-content/plugins/core-functionality/languages/core-functionality-nl_NL.po wp-content/plugins/core-functionality/languages
 
 ## Release
 
