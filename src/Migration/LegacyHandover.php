@@ -24,6 +24,7 @@ use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\MenuBuilder\Men
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\StylesFixer\StylesFixer;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\Visualizer\Visualizer;
 use DeWittePrins\CoreFunctionality\Modules\WooCommerce\Features\BusinessInvoiceTotals\BusinessInvoiceTotals;
+use DeWittePrins\CoreFunctionality\Modules\WooCommerce\Features\ShortBulkActionLabels\ShortBulkActionLabels;
 use DeWittePrins\CoreFunctionality\Plugin;
 
 use function add_action;
@@ -94,6 +95,10 @@ class LegacyHandover {
 		),
 		Visualizer::class            => array(
 			'files' => array( 'admin-nav/src/admin-toolbar/list-all-admin-bar-node-ids' ),
+		),
+		ShortBulkActionLabels::class => array(
+			// WooCommerce has its own mark_cancelled bulk action, so the legacy one is not ported.
+			'files' => array( 'woocommerce/src/bulk-order-cancellation' ),
 		),
 		BusinessInvoiceTotals::class => array(
 			'callbacks' => array(
