@@ -38,4 +38,7 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 }
 
 // 2. Start de verkeersleider.
-new \DeWittePrins\CoreFunctionality\Plugin( __FILE__ );
+$dwp_cf_plugin = new \DeWittePrins\CoreFunctionality\Plugin( __FILE__ );
+
+// 3. Temporary: let the legacy plugin step aside for the features that took it over.
+( new \DeWittePrins\CoreFunctionality\Migration\LegacyHandover( $dwp_cf_plugin ) )->register();

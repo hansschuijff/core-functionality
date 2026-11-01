@@ -62,7 +62,7 @@ use function WC;
  *
  * Works with WooCommerce PDF Invoices & Packing Slips: invoices, and credit notes when its Pro version
  * makes them. Takes over Hans's earlier snippet for the totals and the reverse charge notice of the
- * legacy core-functionality plugin; their hooks are removed while this feature runs.
+ * legacy plugin; their hooks are removed while this feature runs (the legacy hook by LegacyHandover).
  *
  * @since 1.0.0
  */
@@ -127,15 +127,14 @@ class BusinessInvoiceTotals extends AbstractFeature {
 	/**
 	 * Hooks this feature takes over: hook, callback, priority.
 	 *
-	 * Hans's snippet (totals and border styles) and the reverse charge notice of the legacy
-	 * core-functionality plugin. Both add their hooks when they load, before CF launches (init 0).
+	 * Hans's snippet (totals and border styles), which adds its hooks when it loads, before CF launches
+	 * (init 0). The reverse charge notice of the legacy plugin is removed by LegacyHandover.
 	 *
 	 * @var array<int, array{0: string, 1: string, 2: int}>
 	 */
 	private const TAKEN_OVER_HOOKS = array(
 		array( 'wpo_wcpdf_woocommerce_totals', 'wpo_wcpdf_clean_b2b_invoice_totals', 10 ),
 		array( 'wpo_wcpdf_custom_styles', 'wpo_wcpdf_b2b_collapse_borders', 10 ),
-		array( 'wpo_wcpdf_after_order_details', 'DeWittePrins\CoreFunctionality\WooCommerce\render_tax_exempt_notice', 10 ),
 	);
 
 	/**
@@ -173,7 +172,7 @@ class BusinessInvoiceTotals extends AbstractFeature {
 	}
 
 	/**
-	 * Removes the hooks of the snippet and the legacy plugin that this feature replaces.
+	 * Removes the hooks of the snippet that this feature replaces.
 	 *
 	 * @since  1.0.0
 	 * @return void
