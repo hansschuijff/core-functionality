@@ -17,8 +17,8 @@ permissions:
   contents: write
 
 env:
-  # The folder name the plugin has on the sites; becomes core-functionality once the legacy plugin is gone.
-  PLUGIN_SLUG: core-functionality-oop
+  # The folder name the plugin has on the sites.
+  PLUGIN_SLUG: core-functionality
   PLUGIN_FILE: core-functionality.php
 
 jobs:

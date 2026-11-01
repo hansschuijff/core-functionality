@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Core Functionality OOP
+ * Plugin Name:       Core Functionality
  * Description:       Central Microkernel framework managing standalone modules and contextual guards.
  * Version:           1.0.0
  * Requires at least: 7.0
@@ -12,7 +12,7 @@
  * Text Domain:       core-functionality
  * Domain Path:       /languages
  *
- * GitHub Plugin URI: https://github.com/hansschuijff/core-functionality-oop
+ * GitHub Plugin URI: https://github.com/hansschuijff/core-functionality
  * Primary Branch:    main
  * Release Asset:     true
  *
