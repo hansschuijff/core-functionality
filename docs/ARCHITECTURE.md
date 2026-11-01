@@ -403,6 +403,9 @@ November 2026), and takes over the rest of the legacy `pdf-invoice-customization
   never wider than its cell. The logo height stays the PDF plugin's setting per site: 2cm suits the wide
   De Witte Prins logo. Tineke's logo had transparent space on its left in the file itself; a cropped copy
   is in Hans's Naslag folder (`logo-tinekevanurk-nl-retina-bijgesneden.png`) to set on that site.
+- Testing: an invoice keeps the settings of the moment it was made. On the speeltuin the invoice setting
+  "use the latest settings" (`use_latest_settings`) is on, so existing test invoices follow changed
+  settings (Hans, November 2026).
 
 ### Events
 
