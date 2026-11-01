@@ -61,8 +61,8 @@ use function WC;
  * charge for services, with the customer's VAT number.
  *
  * Works with WooCommerce PDF Invoices & Packing Slips: invoices, and credit notes when its Pro version
- * makes them. Takes over Hans's earlier snippet for the totals and the reverse charge notice of the
- * legacy plugin; their hooks are removed while this feature runs (the legacy hook by LegacyHandover).
+ * makes them. Takes over Hans's earlier snippet for the totals, whose hooks it removes while it runs,
+ * and the reverse charge notice of the legacy plugin, whose PDF file LegacyHandover stops.
  *
  * @since 1.0.0
  */
@@ -128,7 +128,7 @@ class BusinessInvoiceTotals extends AbstractFeature {
 	 * Hooks this feature takes over: hook, callback, priority.
 	 *
 	 * Hans's snippet (totals and border styles), which adds its hooks when it loads, before CF launches
-	 * (init 0). The reverse charge notice of the legacy plugin is removed by LegacyHandover.
+	 * (init 0). The legacy plugin's PDF file is stopped by LegacyHandover.
 	 *
 	 * @var array<int, array{0: string, 1: string, 2: int}>
 	 */
@@ -150,8 +150,6 @@ class BusinessInvoiceTotals extends AbstractFeature {
 			name:         __( 'Business invoice totals', 'core-functionality' ),
 			description:  __( 'On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements).', 'core-functionality' ),
 			dependencies: 'woocommerce-pdf-invoices',
-			// It replaces a production snippet; it removes the snippet's hooks, but the site decides.
-			confirm_activation: true,
 		);
 	}
 
