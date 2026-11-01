@@ -1,0 +1,33 @@
+/**
+ * Invoice details: styles added to the PDF documents.
+ *
+ * Printed inside the document's own style block (wpo_wcpdf_custom_styles), so these rules only reach
+ * the PDF documents, not the site.
+ *
+ * @package DeWittePrins\CoreFunctionality
+ * @since   1.0.0
+ */
+
+/*
+ * Room between the logo and the shop's address next to it. The logo keeps the height set in the PDF
+ * plugin's settings, but never grows into this room.
+ */
+td.header {
+	padding-right: 8mm;
+}
+
+td.header img {
+	max-width: 100%;
+}
+
+/*
+ * The customer's note under the totals, over the full width, so a long note no longer runs into the
+ * totals column next to it.
+ */
+.dwp-cf-customer-note {
+	margin-top: 12mm;
+}
+
+.dwp-cf-customer-note h3 {
+	margin-bottom: 2mm;
+}

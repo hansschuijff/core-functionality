@@ -9,10 +9,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-01T14:24:34+01:00\n"
+"POT-Creation-Date: 2026-11-01T16:39:26+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
+
+#. Plugin Name of the plugin
+#: core-functionality.php
+#: src/Admin/Services/Settings/AdminSettingsPage.php:164
+#: src/Environment/Plugins/CoreFunctionality.php:107
+msgid "Core Functionality"
+msgstr ""
 
 #. Description of the plugin
 #: core-functionality.php
@@ -32,11 +39,6 @@ msgstr ""
 #: src/Admin/Services/Settings/AdminSettingsPage.php:163
 #: src/Admin/Services/Settings/AdminSettingsPage.php:516
 msgid "Core Functionality Settings"
-msgstr ""
-
-#: src/Admin/Services/Settings/AdminSettingsPage.php:164
-#: src/Environment/Plugins/CoreFunctionality.php:107
-msgid "Core Functionality"
 msgstr ""
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:383
@@ -5422,44 +5424,60 @@ msgstr ""
 msgid "Adjustments to Sensei LMS."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:151
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:150
 msgid "Business invoice totals"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:152
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:151
 msgid "On PDF invoices of orders with a customer VAT number: the total excluding VAT, the VAT per rate with its percentage and the total including VAT, plus a notice when the VAT is reverse-charged (Dutch invoice requirements)."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:296
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:293
 msgid "Total excl. VAT"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:304
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:301
 msgid "VAT 0%"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:310
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:307
 msgid "Total incl. VAT"
 msgstr ""
 
 #. translators: %s: VAT rate, such as 21%.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:405
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:402
 #, php-format
 msgid "Amount excl. VAT %s"
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:504
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:501
 msgid "Intra-Community supply, VAT 0% (article 138 of VAT Directive 2006/112/EC)."
 msgstr ""
 
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:507
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:504
 msgid "VAT reverse-charged (article 196 of VAT Directive 2006/112/EC)."
 msgstr ""
 
 #. translators: %s: the customer's VAT number.
-#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:511
+#: src/Modules/WooCommerce/Features/BusinessInvoiceTotals/BusinessInvoiceTotals.php:508
 #, php-format
 msgid "Customer VAT number: %s"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/InvoiceDetails/InvoiceDetails.php:85
+msgid "Invoice details"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/InvoiceDetails/InvoiceDetails.php:86
+msgid "On PDF invoices: the payment date when the order is paid (and then no due date), the customer's note under the totals over the full width, and room between the logo and the address."
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/InvoiceDetails/InvoiceDetails.php:159
+msgid "Pay before:"
+msgstr ""
+
+#: src/Modules/WooCommerce/Features/InvoiceDetails/InvoiceDetails.php:280
+msgid "Paid on:"
 msgstr ""
 
 #: src/Modules/WooCommerce/Features/MultiAddToCart/MultiAddToCart.php:83
