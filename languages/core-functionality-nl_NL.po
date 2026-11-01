@@ -5553,19 +5553,15 @@ msgstr "Templatecontrole"
 msgid "Message labels"
 msgstr "Berichtlabels"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:103
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:104
 msgid "Release Management"
 msgstr "Releasebeheer"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:228
-msgid "Module and features"
-msgstr "Module en features"
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:334
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:287
 msgid "This installation's configuration adjusts it."
 msgstr "De configuratie van deze installatie past dit aan."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:443
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:396
 msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
 msgstr "Het releasebestand kon niet worden geschreven. Controleer of de map settings van de plugin beschrijfbaar is."
 
@@ -5593,35 +5589,35 @@ msgstr "altijd inactief op deze omgeving"
 msgid "Options Vault"
 msgstr "Optiekluis"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:114
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:115
 msgid "For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment."
 msgstr "Voor de ontwikkelaars van deze plugin: hoe ver elke module en feature gebouwd is, en hoe vrij hij per omgeving geactiveerd mag worden."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:173
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
 msgid "This page is only for the developers of the modules and features in this plugin."
 msgstr "Deze pagina is alleen voor de ontwikkelaars van de modules en features in deze plugin."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
 msgid "The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment."
 msgstr "De bouwstatus zegt hoe ver een module of feature ontwikkeld is. Die komt overeen met de omgevingen waarin hij actief mag zijn, zodat een feature die nog niet klaar is voor productie nooit op een productieomgeving geactiveerd kan worden."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
 msgid "Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built."
 msgstr "Per omgeving kies je of een module of feature daar altijd actief is, altijd inactief, of instelbaar door de beheerder. Die keuze hangt meer af van het doel van de module of feature dan van hoe ver hij gebouwd is."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:178
 msgid "These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point."
 msgstr "Deze instellingen worden opgeslagen in een instellingenbestand dat met de release meegaat. Het legt de randvoorwaarden vast voor het gebruik van deze plugin op andere systemen, zodat de beheerders daar vanaf een veilig startpunt beginnen."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:230
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:225
 msgid "Activation per environment"
 msgstr "Activering per omgeving"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:377
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:330
 msgid "Build status"
 msgstr "Bouwstatus"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:447
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:400
 msgid "The settings are saved in settings/components-release.php. Remember to commit it."
 msgstr "De instellingen zijn opgeslagen in settings/components-release.php. Vergeet niet die te committen."
 
@@ -5637,10 +5633,10 @@ msgstr "Instelbaar"
 msgid "Always inactive"
 msgstr "Altijd inactief"
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
 msgid "A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active."
 msgstr "Een module is alleen de container van zijn features en volgt ze: hij neemt de ruimste instelling van zijn features over, zodat hij er is waar een van zijn features actief mag zijn."
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:292
-msgid "Follows its features."
-msgstr "Volgt zijn features."
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:179
+msgid "The file only gets what the build status allows: on an environment it does not reach yet, a feature is always inactive there. Your choice for later is kept on this site and shown here, so it applies once the status gets there."
+msgstr "Het bestand krijgt alleen wat de bouwstatus toelaat: op een omgeving die de status nog niet bereikt, is een feature daar altijd inactief. Je keuze voor later blijft op deze site bewaard en staat hier, zodat die geldt zodra de status zover is."

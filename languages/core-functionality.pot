@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-01T00:59:24+01:00\n"
+"POT-Creation-Date: 2026-11-01T01:12:06+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -422,11 +422,11 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:103
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:104
 msgid "Release Management"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:114
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:115
 msgid "For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment."
 msgstr ""
 
@@ -437,51 +437,47 @@ msgstr ""
 msgid "Explanation"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:173
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
 msgid "This page is only for the developers of the modules and features in this plugin."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
 msgid "The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
 msgid "Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
 msgid "A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:178
 msgid "These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:228
-msgid "Module and features"
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:179
+msgid "The file only gets what the build status allows: on an environment it does not reach yet, a feature is always inactive there. Your choice for later is kept on this site and shown here, so it applies once the status gets there."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:230
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:225
 msgid "Activation per environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:292
-msgid "Follows its features."
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:334
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:287
 msgid "This installation's configuration adjusts it."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:377
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:330
 msgid "Build status"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:443
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:396
 msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:447
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:400
 msgid "The settings are saved in settings/components-release.php. Remember to commit it."
 msgstr ""
 
