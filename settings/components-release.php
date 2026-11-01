@@ -13,7 +13,7 @@ return array (
   'DeWittePrins\\CoreFunctionality\\Modules\\Sensei\\Features\\MessageLabels\\MessageLabels' => 
   array (
     'status' => 'production',
-    'development' => 'auto-on',
+    'development' => 'adjustable',
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
@@ -32,6 +32,13 @@ return array (
     'production' => 'adjustable',
   ),
   'DeWittePrins\\CoreFunctionality\\Modules\\WooCommerce\\Features\\MultiAddToCart\\MultiAddToCart' => 
+  array (
+    'status' => 'production',
+    'development' => 'adjustable',
+    'staging' => 'adjustable',
+    'production' => 'adjustable',
+  ),
+  'DeWittePrins\\CoreFunctionality\\Modules\\WooCommerce\\Features\\InvoiceDetails\\InvoiceDetails' => 
   array (
     'status' => 'production',
     'development' => 'adjustable',
