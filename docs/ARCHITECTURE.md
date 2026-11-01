@@ -380,11 +380,29 @@ orders keep the original amounts (the PDF plugin removes the refund rows); credi
 PDF Pro only) get the same layout with the refund's amounts and the parent order's VAT data. Shop prices
 stay as they are: production shows prices incl. VAT, so the line rows are incl. and the excl. total
 follows them. Takes over Hans's production snippet (`wpo_wcpdf_clean_b2b_invoice_totals`,
-`wpo_wcpdf_b2b_collapse_borders`) and the legacy `render_tax_exempt_notice()` from
-`pdf-invoice-customizations.php` by removing their hooks; the snippet can go once CF runs in production.
-It sets `confirm_activation`, so each site's administrator switches it on once (Hans, October 2026).
-Not ported yet from that legacy file: payment status / due date / paid date rows (they can show "Wacht op
-betaling" next to "Betaald op") and the customer notes after the order details.
+`wpo_wcpdf_b2b_collapse_borders`) by removing their hooks, and the legacy `render_tax_exempt_notice()`
+(LegacyHandover stops the legacy file); the snippet can go once CF runs in production. It no longer asks
+for confirmation: it is for Hans's own sites and handles the snippet itself (Hans, November 2026).
+
+Feature `InvoiceDetails` (same extra dependency) covers every PDF invoice, business or not (Hans,
+November 2026), and takes over the rest of the legacy `pdf-invoice-customizations.php`:
+
+- Paid or not is one decision: a payment date, or a status WooCommerce counts as paid. The legacy rows read
+  the two apart and printed "Wacht op betaling" next to "Betaald op" (seen on production invoices). A paid
+  invoice gets a "Paid on" row (payment date, else the completion date) and no due date
+  (`wpo_wcpdf_document_due_date` → 0). An unpaid invoice keeps the PDF plugin's own due date setting,
+  titled "Pay before" ("Betalen vóór"); production sets 14 days there itself. The "Payment status" row is
+  gone: "Paid on" or "Pay before" says enough.
+- The customer's checkout note moves from the narrow column next to the totals (where long notes ran into
+  the totals) to under the totals, full width: `wpo_wcpdf_shipping_notes` returns '' for the invoice and
+  the feature prints the note on `wpo_wcpdf_after_order_details` (priority 20, after the reverse charge
+  notice), with the plugin's own title and `customer-notes` class.
+- The legacy notes to the customer (order notes written by the shop) are not ported: they are messages, not
+  part of an invoice, and Hans does not miss them (November 2026).
+- CSS (`wpo_wcpdf_custom_styles`, all documents): 8 mm between the logo and the shop address, the logo
+  never wider than its cell. The logo height stays the PDF plugin's setting per site: 2cm suits the wide
+  De Witte Prins logo. Tineke's logo had transparent space on its left in the file itself; a cropped copy
+  is in Hans's Naslag folder (`logo-tinekevanurk-nl-retina-bijgesneden.png`) to set on that site.
 
 ### Events
 
@@ -543,16 +561,18 @@ Temporary, until the legacy plugin is gone (agreed with Hans, November 2026).
   MenuBuilder, StylesFixer, Visualizer ("Show Node IDs"; its legacy file is commented out in the legacy
   `admin-nav/config/autoload.php`, mapped anyway), ShortBulkActionLabels (`woocommerce/src/bulk-order-cancellation`:
   not ported, WooCommerce has its own `mark_cancelled`; the feature is on by default on the sites)
-  (files); BusinessInvoiceTotals (`render_tax_exempt_notice`, callback).
-- Next for the handover: port the rest of `woocommerce/src/pdf-invoice-customizations.php` (payment status
-  / due date / paid date rows, customer notes), so that file can be mapped as a whole (Hans, November 2026).
+  BusinessInvoiceTotals and InvoiceDetails (both `woocommerce/src/pdf-invoice-customizations`: the
+  file is split over the two, and either one stops it; Hans accepts that, as both are meant to be on
+  wherever the shop runs, November 2026) (files). No callbacks are mapped at the moment; the mechanism
+  stays for a file that cannot be stopped as a whole.
 - Granularity: files are enough. A module loader (`<module>/module-loader`) also passes the filter, so
   stopping it stops the whole legacy module; no folder matching needed.
 - Not mapped on purpose (Hans, November 2026): the legacy `debug/` files load on development only
   (`config/autoload-files-env.php`; only `debug/write-to-log` may load on production). TemplateFallback
   takes over theme overrides, not legacy files: the theme comes first, and Hans removes its copies once
   the CF templates are in place. MultiAddToCart and BusinessInvoiceTotals remove the hooks of the code
-  they replace (Remote Tickets Server Add-ons, Hans's snippet) themselves while they run.
+  they replace (Remote Tickets Server Add-ons, Hans's snippet) themselves while they run; Hans prefers
+  that, the new code being better (November 2026).
 
 ## Settings and options
 
