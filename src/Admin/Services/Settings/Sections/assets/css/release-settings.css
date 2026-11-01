@@ -64,28 +64,6 @@
 	color: #996800;
 }
 
-/* The explanation above the tables, collapsed by default. */
-.dwp-release-explanation {
-	max-width: 75ch;
-	margin: 0 0 20px;
-}
-
-.dwp-release-explanation > summary {
-	width: max-content;
-	cursor: pointer;
-	color: #2271b1;
-}
-
-.dwp-release-explanation > summary:focus-visible {
-	outline: 2px solid #2271b1;
-	outline-offset: 2px;
-}
-
-.dwp-release-explanation p {
-	margin: 10px 0 0;
-	line-height: 1.5;
-}
-
 /* The table needs its width; on a small screen the card scrolls instead of squeezing it. */
 .dwp-release-card {
 	overflow-x: auto;
@@ -116,17 +94,9 @@
 	padding-left: 10px;
 }
 
-/* A module with features follows them: its values are shown as text, not as selects. */
-.dwp-release-table .dwp-release-derived {
-	padding-left: 12px;
-	color: #50575e;
-}
-
-.dwp-release-derived-note {
-	display: block;
-	margin-top: 2px;
-	font-size: 12px;
-	font-weight: 400;
-	font-style: italic;
-	color: #646970;
+/* The module's name heads its table: it has no row of its own, as it follows its features. */
+.dwp-release-table thead .dwp-release-name-column {
+	font-size: 15px;
+	font-weight: 700;
+	color: #1d2327;
 }

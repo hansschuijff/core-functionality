@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\SettingsExplanation;
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
 use DeWittePrins\CoreFunctionality\Enums\Register;
@@ -148,9 +149,7 @@ class ReleaseSettings implements SettingsSectionInterface {
 	#[Override]
 	public function render( bool $reset_to_defaults = false ): void {
 		$components = $this->plugin->components_register->get_register( Register::COMPONENTS );
-		$release    = $this->plugin->release_register->with_module_entries(
-			$this->plugin->release_register->get_release_values()
-		);
+		$release    = $this->plugin->release_register->get_release_choices();
 
 		$html  = $this->render_explanation();
 		$html .= '<div class="dwp-release-modules">';
@@ -169,23 +168,17 @@ class ReleaseSettings implements SettingsSectionInterface {
 	 * @return string The explanation (HTML).
 	 */
 	private function render_explanation(): string {
-		$summary     = esc_html__( 'Explanation', 'core-functionality' );
-		$audience    = esc_html__( 'This page is only for the developers of the modules and features in this plugin.', 'core-functionality' );
-		$build       = esc_html__( 'The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment.', 'core-functionality' );
-		$activation  = esc_html__( 'Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built.', 'core-functionality' );
-		$container   = esc_html__( 'A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active.', 'core-functionality' );
-		$destination = esc_html__( 'These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point.', 'core-functionality' );
-
-		return <<<HTML
-			<details class="dwp-release-explanation">
-				<summary>{$summary}</summary>
-				<p>{$audience}</p>
-				<p>{$build}</p>
-				<p>{$activation}</p>
-				<p>{$container}</p>
-				<p>{$destination}</p>
-			</details><!-- closes dwp-release-explanation -->
-		HTML;
+		return SettingsExplanation::render(
+			__( 'Explanation', 'core-functionality' ),
+			array(
+				__( 'This page is only for the developers of the modules and features in this plugin.', 'core-functionality' ),
+				__( 'The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment.', 'core-functionality' ),
+				__( 'Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built.', 'core-functionality' ),
+				__( 'A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active.', 'core-functionality' ),
+				__( 'These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point.', 'core-functionality' ),
+				__( 'The file only gets what the build status allows: on an environment it does not reach yet, a feature is always inactive there. Your choice for later is kept on this site and shown here, so it applies once the status gets there.', 'core-functionality' ),
+			)
+		);
 	}
 
 	/**
@@ -198,10 +191,10 @@ class ReleaseSettings implements SettingsSectionInterface {
 	 * @return string The table (HTML).
 	 */
 	private function render_module_table( string $module_fqcn, array $features_fqcn, array $release ): string {
-		$header_row = $this->render_header_row();
+		$header_row = $this->render_header_row( $module_fqcn );
 		$rows       = empty( $features_fqcn )
 			? $this->render_component_row( $module_fqcn, $release, 'dwp-release-module' )
-			: $this->render_derived_module_row( $module_fqcn, $release );
+			: '';
 
 		foreach ( $features_fqcn as $feature_fqcn ) {
 			$rows .= $this->render_component_row( $feature_fqcn, $release, 'dwp-release-feature' );
@@ -218,14 +211,16 @@ class ReleaseSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Returns the header rows: the name and the build status, then the three environments grouped
-	 * under "Activation per environment".
+	 * Returns the header rows: the module's name and the build status, then the three environments
+	 * grouped under "Activation per environment". The module gets no row of its own: it follows its
+	 * features (Hans, November 2026).
 	 *
 	 * @since  1.0.0
+	 * @param  string $module_fqcn Class name of the module.
 	 * @return string The rows (HTML).
 	 */
-	private function render_header_row(): string {
-		$name_label       = esc_html__( 'Module and features', 'core-functionality' );
+	private function render_header_row( string $module_fqcn ): string {
+		$name_label       = esc_html( $module_fqcn::get_name() );
 		$status_label     = esc_html( $this->get_column_label( ReleaseRegister::STATUS_KEY ) );
 		$activation_label = esc_html__( 'Activation per environment', 'core-functionality' );
 		$environments     = count( Deployment::cases() );
@@ -275,48 +270,6 @@ class ReleaseSettings implements SettingsSectionInterface {
 				{$environment_cells}
 			</tr>
 		HTML;
-	}
-
-	/**
-	 * Returns the row of a module with features: its values follow from them, so it shows them as
-	 * text instead of selects (Hans, November 2026).
-	 *
-	 * @since  1.0.0
-	 * @param  string                               $module_fqcn Class name of the module.
-	 * @param  array<string, array<string, string>> $release     The entries, with the derived module entries.
-	 * @return string The row (HTML).
-	 */
-	private function render_derived_module_row( string $module_fqcn, array $release ): string {
-		$entry     = $release[ $module_fqcn ] ?? ReleaseRegister::get_default_entry();
-		$name_html = esc_html( $module_fqcn::get_name() );
-		$note_text = esc_html__( 'Follows its features.', 'core-functionality' );
-		$status    = Deployment::tryFrom( $entry[ ReleaseRegister::STATUS_KEY ] ) ?? Deployment::DEVELOPMENT;
-
-		$cells = $this->render_derived_cell( $status->get_label() );
-		foreach ( Deployment::cases() as $environment ) {
-			$rule   = EnvironmentRule::tryFrom( $entry[ $environment->value ] ) ?? EnvironmentRule::ADJUSTABLE;
-			$cells .= $this->render_derived_cell( $rule->get_label() );
-		}
-
-		return <<<HTML
-			<tr class="dwp-release-module">
-				<th scope="row">{$name_html}<span class="dwp-release-derived-note">{$note_text}</span></th>
-				{$cells}
-			</tr>
-		HTML;
-	}
-
-	/**
-	 * Returns a table cell with a derived value as text.
-	 *
-	 * @since  1.0.0
-	 * @param  string $label The label of the value (not escaped).
-	 * @return string The cell (HTML).
-	 */
-	private function render_derived_cell( string $label ): string {
-		$label_html = esc_html( $label );
-
-		return "<td class=\"dwp-release-derived\">{$label_html}</td>";
 	}
 
 	/**
