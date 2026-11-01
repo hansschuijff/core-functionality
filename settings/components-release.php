@@ -133,8 +133,8 @@ return array (
   array (
     'status' => 'development',
     'development' => 'adjustable',
-    'staging' => 'adjustable',
-    'production' => 'adjustable',
+    'staging' => 'auto-off',
+    'production' => 'auto-off',
   ),
   'DeWittePrins\\CoreFunctionality\\Modules\\ActiveWoo\\Features\\KeepLicenseAlive\\KeepLicenseAlive' => 
   array (
