@@ -687,7 +687,9 @@ Later:
   is renamed by FTP and the plugin re-activated; that comes before any release of this plugin under the
   new name: the old legacy install
   still points at `hansschuijff/core-functionality`, so Git Updater would offer a higher version of this
-  plugin as an in-place update and replace legacy at once.
+  plugin as an in-place update and replace legacy at once. Done on 1 November 2026: legacy 1.9.0 runs on
+  production as "Core Functionality Legacy" in `core-functionality-legacy/` (repository renamed), with the
+  themes updated for its namespace; the folder `core-functionality` is free for this plugin.
 - Legacy handover (agreed with Hans, November 2026): temporary and kept outside the features, so it can be
   removed in one go. One register at plugin level (`settings/legacy-handover.php`: per feature the legacy
   files it replaces, or single callbacks for files it only partly replaces) and one class
