@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use DeWittePrins\CoreFunctionality\Modules\ActiveWoo\Features\KeepLicenseAlive\KeepLicenseAlive;
-use DeWittePrins\CoreFunctionality\Modules\AdminMenu\Features\AdminMenuArchitect\AdminMenuArchitect;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\Cleaner\Cleaner;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\MenuBuilder\MenuBuilder;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\Features\StylesFixer\StylesFixer;
@@ -83,12 +82,6 @@ class LegacyHandover {
 	private const TAKEN_OVER = array(
 		KeepLicenseAlive::class      => array(
 			'files' => array( 'activewoo/license' ),
-		),
-		AdminMenuArchitect::class    => array(
-			'files' => array(
-				'admin-nav/src/admin-menu/add-items',
-				'admin-nav/src/admin-menu/remove-items',
-			),
 		),
 		Cleaner::class               => array(
 			'files' => array( 'admin-nav/src/admin-toolbar/admin-bar-cleanup' ),
