@@ -5683,3 +5683,11 @@ msgstr "Betaald op:"
 #: src/Modules/WooCommerce/Features/InvoiceDetails/InvoiceDetails.php:159
 msgid "Pay before:"
 msgstr "Betalen vóór:"
+
+#: core-functionality.php:57
+msgid "Core Functionality cannot start: the vendor folder with the autoloader is missing."
+msgstr "Core Functionality kan niet starten: de map vendor met de autoloader ontbreekt."
+
+#: core-functionality.php:58
+msgid "This happens when the source code was installed instead of the release zip. Upload the zip attached to the release on GitHub (core-functionality-x.y.z.zip)."
+msgstr "Dat gebeurt als de broncode is geïnstalleerd in plaats van de release-zip. Upload de zip die bij de release op GitHub hoort (core-functionality-x.y.z.zip)."
