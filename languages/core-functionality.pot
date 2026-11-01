@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-01T01:12:06+01:00\n"
+"POT-Creation-Date: 2026-11-01T14:24:34+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -55,7 +55,7 @@ msgstr ""
 #: src/Environment/Plugins/FluentCrm.php:141
 #: src/Environment/Plugins/FluentSmtp.php:72
 #: src/Environment/Plugins/GenesisBlocksPro.php:70
-#: src/Environment/Plugins/GitUpdater.php:74
+#: src/Environment/Plugins/GitUpdater.php:78
 #: src/Environment/Plugins/GravityForms.php:84
 #: src/Environment/Plugins/InstantImages.php:70
 #: src/Environment/Plugins/Jetpack.php:115
@@ -566,11 +566,6 @@ msgstr ""
 #: src/Environment/Plugins/FluentSmtp.php:65
 #: src/Environment/Plugins/GenesisConnectWoocommerce.php:78
 #: src/Environment/Plugins/GitRemoteUpdater.php:66
-#: src/Environment/Plugins/GitUpdater.php:65
-#: src/Environment/Plugins/GitUpdater.php:72
-#: src/Environment/Plugins/GitUpdater.php:80
-#: src/Environment/Plugins/GitUpdater.php:87
-#: src/Environment/Plugins/GitUpdater.php:94
 #: src/Environment/Plugins/GravityForms.php:65
 #: src/Environment/Plugins/LocoTranslate.php:66
 #: src/Environment/Plugins/LocoTranslate.php:73
@@ -1850,6 +1845,7 @@ msgid "FluentCRM Add-ons"
 msgstr ""
 
 #: src/Environment/Plugins/FluentCrm.php:147
+#: src/Environment/Plugins/GitUpdater.php:110
 #: src/Environment/Plugins/GravityForms.php:96
 #: src/Environment/Plugins/WoocommerceProductAddons.php:70
 msgid "Add-ons"
@@ -1920,44 +1916,78 @@ msgstr ""
 msgid "Git Remote Updater"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:63
-msgid "Github"
+#: src/Environment/Plugins/GitUpdater.php:64
+msgid "GitHub"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:65
-msgid "Git Updater"
+#: src/Environment/Plugins/GitUpdater.php:66
+#: src/Environment/Plugins/GitUpdater.php:72
+#: src/Environment/Plugins/GitUpdater.php:79
+msgid "Git Updater: GitHub settings"
 msgstr ""
 
 #: src/Environment/Plugins/GitUpdater.php:70
+msgid "Git Updater"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:76
+msgid "GitHub settings"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:83
 msgid "Git Updater Settings"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:72
-msgid "Git Updater: Github settings"
+#: src/Environment/Plugins/GitUpdater.php:85
+msgid "Updater settings"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:78
+#: src/Environment/Plugins/GitUpdater.php:86
+msgid "Git Updater: general settings"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:90
 msgid "Install plugin"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:80
+#: src/Environment/Plugins/GitUpdater.php:92
 msgid "Git Updater: Install Plugin"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:85
+#: src/Environment/Plugins/GitUpdater.php:96
 msgid "Install theme"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:87
+#: src/Environment/Plugins/GitUpdater.php:98
 msgid "Git Updater: Install Theme"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:92
+#: src/Environment/Plugins/GitUpdater.php:102
 msgid "Remote Management"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:94
+#: src/Environment/Plugins/GitUpdater.php:104
 msgid "Git Updater: Remote Management"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:108
+msgid "Git Updater Add-ons"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:114
+msgid "Extra packages"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:116
+msgid "Git Updater: Additions"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:122
+msgid "Allowed update clients"
+msgstr ""
+
+#: src/Environment/Plugins/GitUpdater.php:124
+msgid "Git Updater: Lite Client Domains"
 msgstr ""
 
 #: src/Environment/Plugins/GravityForms.php:65

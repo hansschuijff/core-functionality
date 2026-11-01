@@ -1809,45 +1809,79 @@ msgstr "Remote Updater"
 msgid "Git Remote Updater"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:63
-msgid "Github"
+#: src/Environment/Plugins/GitUpdater.php:64
+msgid "GitHub"
 msgstr "GitHub"
 
-#: src/Environment/Plugins/GitUpdater.php:65
+#: src/Environment/Plugins/GitUpdater.php:66
+#: src/Environment/Plugins/GitUpdater.php:72
+#: src/Environment/Plugins/GitUpdater.php:79
+msgid "Git Updater: GitHub settings"
+msgstr "Git Updater: GitHub-instellingen"
+
+#: src/Environment/Plugins/GitUpdater.php:70
 msgid "Git Updater"
 msgstr ""
 
-#: src/Environment/Plugins/GitUpdater.php:70
+#: src/Environment/Plugins/GitUpdater.php:76
+msgid "GitHub settings"
+msgstr "GitHub-instellingen"
+
+#: src/Environment/Plugins/GitUpdater.php:83
 msgid "Git Updater Settings"
 msgstr "Git Updater-instellingen"
 
-#: src/Environment/Plugins/GitUpdater.php:72
-msgid "Git Updater: Github settings"
-msgstr "Git Updater: GitHub-instellingen"
+#: src/Environment/Plugins/GitUpdater.php:85
+msgid "Updater settings"
+msgstr "Updater-instellingen"
 
-#: src/Environment/Plugins/GitUpdater.php:78
+#: src/Environment/Plugins/GitUpdater.php:86
+msgid "Git Updater: general settings"
+msgstr "Git Updater: algemene instellingen"
+
+#: src/Environment/Plugins/GitUpdater.php:90
 msgid "Install plugin"
 msgstr "Plugin installeren"
 
-#: src/Environment/Plugins/GitUpdater.php:80
+#: src/Environment/Plugins/GitUpdater.php:92
 msgid "Git Updater: Install Plugin"
 msgstr "Git Updater: plugin installeren"
 
-#: src/Environment/Plugins/GitUpdater.php:85
+#: src/Environment/Plugins/GitUpdater.php:96
 msgid "Install theme"
 msgstr "Thema installeren"
 
-#: src/Environment/Plugins/GitUpdater.php:87
+#: src/Environment/Plugins/GitUpdater.php:98
 msgid "Git Updater: Install Theme"
 msgstr "Git Updater: thema installeren"
 
-#: src/Environment/Plugins/GitUpdater.php:92
+#: src/Environment/Plugins/GitUpdater.php:102
 msgid "Remote Management"
 msgstr "Beheer op afstand"
 
-#: src/Environment/Plugins/GitUpdater.php:94
+#: src/Environment/Plugins/GitUpdater.php:104
 msgid "Git Updater: Remote Management"
 msgstr "Git Updater: beheer op afstand"
+
+#: src/Environment/Plugins/GitUpdater.php:108
+msgid "Git Updater Add-ons"
+msgstr "Git Updater Add-ons"
+
+#: src/Environment/Plugins/GitUpdater.php:114
+msgid "Extra packages"
+msgstr "Extra packages"
+
+#: src/Environment/Plugins/GitUpdater.php:116
+msgid "Git Updater: Additions"
+msgstr "Git Updater: extra packages"
+
+#: src/Environment/Plugins/GitUpdater.php:122
+msgid "Allowed update clients"
+msgstr "Toegestane update-afnemers"
+
+#: src/Environment/Plugins/GitUpdater.php:124
+msgid "Git Updater: Lite Client Domains"
+msgstr "Git Updater: domeinen die updates mogen ophalen (Lite Client Domains)"
 
 #: src/Environment/Plugins/GravityForms.php:65
 msgid "Gravity Forms"
