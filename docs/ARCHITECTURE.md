@@ -682,8 +682,10 @@ Later:
 - Rename of the folder and repository to `core-functionality` (also `PLUGIN_SLUG` in the release
   workflow). Planned direction (November 2026, plan not final yet): the legacy plugin moves first, to
   "Core Functionality Legacy" in folder and repository `core-functionality-legacy`; this plugin then takes
-  `core-functionality`. On production the legacy swap (upload, deactivate the old one, activate the new
-  one, in wp-admin) comes before any release of this plugin under the new name: the old legacy install
+  `core-functionality`. Its main file keeps the name `core-functionality.php` and its namespace becomes
+  `DeWittePrins\CoreFunctionalityLegacy`, so the two plugins share no namespace. On production the folder
+  is renamed by FTP and the plugin re-activated; that comes before any release of this plugin under the
+  new name: the old legacy install
   still points at `hansschuijff/core-functionality`, so Git Updater would offer a higher version of this
   plugin as an in-place update and replace legacy at once.
 - Legacy handover (agreed with Hans, November 2026): temporary and kept outside the features, so it can be
