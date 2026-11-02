@@ -51,14 +51,14 @@ class Pushover implements PushNoticeInterface {
 		// Extract variables directly from the immutable configuration array shield.
 		$token = $this->settings['token'] ?? '';
 		$user  = $this->settings['user'] ?? '';
-		$title = $this->settings['title'] ?? '[DeWittePrins]';
+		$title = '' !== $title ? $title : ( $this->settings['title'] ?? '[DeWittePrins]' );
 
 		// Guard: If credentials are empty, silently abort without crashing the core framework loop.
 		if ( empty( $token ) || empty( $user ) ) {
 			return false;
 		}
 
-		$url = 'https://pushover.net';
+		$url = 'https://api.pushover.net/1/messages.json';
 
 		wp_remote_post(
 			$url,

@@ -53,7 +53,7 @@ class Telegram implements PushNoticeInterface {
 			return false;
 		}
 
-		$url = "https://telegram.org{$bot_token}/sendMessage";
+		$url = "https://api.telegram.org/bot{$bot_token}/sendMessage";
 
 		wp_remote_post(
 			$url,
