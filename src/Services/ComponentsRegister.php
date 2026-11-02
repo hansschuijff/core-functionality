@@ -12,6 +12,7 @@ declare( strict_types=1 );
 
 namespace DeWittePrins\CoreFunctionality\Services;
 
+use DeWittePrins\CoreFunctionality\Enums\CoreFunction;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
@@ -69,6 +70,13 @@ class ComponentsRegister {
 	 * @var array<string, array>|null
 	 */
 	private ?array $components_register = null;
+
+	/**
+	 * Whether the missing components register has been reported in this request.
+	 *
+	 * @var bool
+	 */
+	private bool $missing_register_reported = false;
 
 	/**
 	 * Registry of modules and features with a frontend orientation.
@@ -851,6 +859,12 @@ class ComponentsRegister {
 		// Still empty after reading the components register file?
 		if ( empty( $this->components_register ) ) {
 
+			// Outside development this is a broken release: reinstalling solves it, a scan would hide it.
+			if ( ! $this->plugin->release_register->is_core_function_on( CoreFunction::DEVELOPER_TOOLS ) ) {
+				$this->report_missing_register();
+				return array();
+			}
+
 			// The components register file must be empty or not found.
 			$this->plugin->notices->add( 'error', __( 'Components register file was empty or not found. Please inform support.' ) );
 
@@ -863,6 +877,27 @@ class ComponentsRegister {
 		}
 
 		return is_array( $this->components_register ) ? $this->components_register : array();
+	}
+
+	/**
+	 * Reports, once per request, that the components register is missing and the plugin must be reinstalled.
+	 *
+	 * The notices service only exists in the admin; elsewhere the log has to do.
+	 *
+	 * @since  1.1.0
+	 * @return void
+	 */
+	private function report_missing_register(): void {
+		if ( $this->missing_register_reported ) {
+			return;
+		}
+		$this->missing_register_reported = true;
+
+		error_log( 'Core Functionality: the components register is missing, no modules or features can run. Reinstall the plugin.' );
+
+		if ( isset( $this->plugin->notices ) ) {
+			$this->plugin->notices->add( 'error', __( 'Core Functionality: the list of modules and features is missing, so none of them can run. Reinstall the plugin from its release zip.', 'core-functionality' ) );
+		}
 	}
 
 	/**
