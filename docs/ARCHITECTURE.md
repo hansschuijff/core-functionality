@@ -171,11 +171,12 @@ files to constants (October 2026).
 listed in the enum `CoreFunction` and asked through `ReleaseRegister::is_core_function_on()`, the one place
 that decides; the code that uses them only asks. They are set on a "Core functions" card on the Release
 Management tab and saved in the release file as `core:<id>`, so the configuration file and the filter reach
-them too. Only on or off, without status: they are part of the plugin. A development environment always has
-them all, as nothing can be taken from a developer. A lock in the code (`get_locked_state()`) goes above the
-file, the configuration file and the filter: Release Management with the feature scan belong together and are
-always off outside development, Feature Activation is always on. Push Notices and Options Management can be
-set, and are on while they are not in the file. A function switches itself off: it is not loaded, or its
+them too. Each has one level, "available up to": the entry's status, compared with `Deployment::allows()`,
+so production without staging cannot be set and a developer always has everything (Hans). The entry keeps
+the ordinary shape, so storage needs no exception; its rules do nothing. A lock in the code
+(`get_locked_level()`) goes above the file, the configuration file and the filter: Release Management with
+the feature scan belong together and stay at development, Feature Activation is locked at production. Push
+Notices and Options Management can be set, and are at production while they are not in the file. A function switches itself off: it is not loaded, or its
 public methods ask before they do their work, so a caller never has to check and stored settings do nothing
 (Hans, November 2026). So a tab's section is not registered, and `PushNotice::send()`,
 `ComponentsRegister::rebuild()` and `ReleaseRegister::save_release_values()` refuse. Options Management only
