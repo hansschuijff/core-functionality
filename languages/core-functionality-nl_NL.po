@@ -5701,29 +5701,20 @@ msgstr "Vergrendeld: deze horen alleen op een ontwikkelomgeving."
 msgid "Locked: without this tab a site cannot switch its features on or off."
 msgstr "Vergrendeld: zonder dit tabblad kan een site zijn features niet aan- of uitzetten."
 
-msgid "The settings tab of the push notices."
-msgstr "Het instellingentabblad van de pushmeldingen."
+msgid "Sending push notices and their settings tab. Where this is off, nothing is sent, even with stored settings."
+msgstr "Het versturen van pushmeldingen en hun instellingentabblad. Waar dit uit staat, wordt niets verstuurd, ook niet met opgeslagen instellingen."
 
 msgid "Only the settings tab for managing the option keys. The vault itself keeps working; when this is off, options stay in the quarantine or under their earlier keys."
 msgstr "Alleen het instellingentabblad voor het beheer van de optiesleutels. De kluis zelf blijft werken; staat dit uit, dan blijven opties in de quarantaine of onder hun eerdere sleutels staan."
 
-msgid "The core functions are parts of the plugin itself. They have no build status and a development environment always has them all, so only staging and production can be set. A locked one cannot be changed here."
-msgstr "De kernfuncties zijn onderdelen van de plugin zelf. Ze hebben geen bouwstatus en een ontwikkelomgeving heeft ze altijd allemaal, dus alleen staging en productie zijn in te stellen. Een vergrendelde functie is hier niet te wijzigen."
+msgid "The core functions are parts of the plugin itself. For each you choose the highest environment it is available on; the lower ones always have it. A locked one cannot be changed here."
+msgstr "De kernfuncties zijn onderdelen van de plugin zelf. Per functie kies je de hoogste omgeving waarop hij beschikbaar is; de lagere hebben hem altijd. Een vergrendelde functie is hier niet te wijzigen."
 
 msgid "Core functions"
 msgstr "Kernfuncties"
 
-msgid "🔒 Always on"
-msgstr "🔒 Altijd aan"
-
-msgid "🔒 Always off"
-msgstr "🔒 Altijd uit"
-
-msgid "On"
-msgstr "Aan"
-
-msgid "Off"
-msgstr "Uit"
-
 msgid "Core Functionality: the list of modules and features is missing, so none of them can run. Reinstall the plugin from its release zip."
 msgstr "Core Functionality: de lijst met modules en features ontbreekt, dus geen ervan kan draaien. Installeer de plugin opnieuw vanuit de release-zip."
+
+msgid "Available up to"
+msgstr "Beschikbaar tot"

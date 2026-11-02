@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-02T16:20:40+01:00\n"
+"POT-Creation-Date: 2026-11-02T16:47:38+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -430,87 +430,74 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:106
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:107
 msgid "Release Management"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:117
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:118
 msgid "For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
 msgid "Explanation"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:178
 msgid "This page is only for the developers of the modules and features in this plugin."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:178
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:179
 msgid "The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:179
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:180
 msgid "Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:180
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:181
 msgid "A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:181
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:182
 msgid "These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:182
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:183
 msgid "The file only gets what the build status allows: on an environment it does not reach yet, a feature is always inactive there. Your choice for later is kept on this site and shown here, so it applies once the status gets there."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:183
-msgid "The core functions are parts of the plugin itself. They have no build status and a development environment always has them all, so only staging and production can be set. A locked one cannot be changed here."
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:220
-msgid "Core functions"
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:184
+msgid "The core functions are parts of the plugin itself. For each you choose the highest environment it is available on; the lower ones always have it. A locked one cannot be changed here."
 msgstr ""
 
 #: src/Admin/Services/Settings/Sections/ReleaseSettings.php:221
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:385
+msgid "Core functions"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:239
+msgid "Available up to"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:362
 msgid "Activation per environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:281
-msgid "🔒 Always on"
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:282
-msgid "🔒 Always off"
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:306
-msgid "On"
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:307
-msgid "Off"
-msgstr ""
-
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:447
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:424
 msgid "This installation's configuration adjusts it."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:490
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:469
 msgid "Build status"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:558
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:535
 msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:562
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:539
 msgid "The settings are saved in settings/components-release.php. Remember to commit it."
 msgstr ""
 
@@ -809,7 +796,7 @@ msgid "Locked: without this tab a site cannot switch its features on or off."
 msgstr ""
 
 #: src/Enums/CoreFunction.php:61
-msgid "The settings tab of the push notices."
+msgid "Sending push notices and their settings tab. Where this is off, nothing is sent, even with stored settings."
 msgstr ""
 
 #: src/Enums/CoreFunction.php:62
