@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use DeWittePrins\CoreFunctionality\Enums\CoreFunction;
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
 use DeWittePrins\CoreFunctionality\Enums\Register;
@@ -131,6 +132,31 @@ class ReleaseRegister {
 	 */
 	public function get_entry( string $fqcn ): array {
 		return $this->get_settings()[ $fqcn ] ?? self::get_default_entry();
+	}
+
+	/**
+	 * Checks whether one of the plugin's own functions is on here. This is the one place that decides
+	 * it; the code that uses a function only asks (Hans, November 2026).
+	 *
+	 * A developer always has everything. Elsewhere a lock in the code goes first, then the release
+	 * settings; a function that is not in them is on.
+	 *
+	 * A locked function does not read the release settings, so the components register may ask about
+	 * one while it is being filled.
+	 *
+	 * @since  1.1.0
+	 * @param  CoreFunction $core_function The function.
+	 * @return bool True when it is on.
+	 */
+	public function is_core_function_on( CoreFunction $core_function ): bool {
+		$environment = $this->plugin->get_deployment();
+
+		if ( Deployment::DEVELOPMENT === $environment ) {
+			return true;
+		}
+
+		return $core_function->get_locked_state()
+			?? EnvironmentRule::AUTO_OFF !== $this->get_rule( $core_function->get_release_key(), $environment );
 	}
 
 	/**
@@ -269,6 +295,9 @@ class ReleaseRegister {
 		 * Runs after the release file and the configuration file. Each entry holds the status
 		 * ('development', 'staging' or 'production') and a rule per environment ('auto-on',
 		 * 'adjustable' or 'auto-off'), keyed by 'development', 'staging' and 'production'.
+		 *
+		 * The plugin's own functions are in here too, as 'core:<id>' (see CoreFunction): 'auto-off' switches
+		 * one off on that environment. A lock in the code and the development environment go above this.
 		 *
 		 * @since 1.0.0
 		 *

@@ -30,6 +30,7 @@ use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\FeatureActiv
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\PushNoticeSettings;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\ReleaseSettings;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\OptionsManagementSettings;
+use DeWittePrins\CoreFunctionality\Enums\CoreFunction;
 use DeWittePrins\CoreFunctionality\Services\ComponentsRegister;
 use DeWittePrins\CoreFunctionality\Services\ReleaseRegister;
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
@@ -367,27 +368,18 @@ class Plugin {
 	 */
 	public function register_settingspage_sections( AdminSettingsPage $settings_factory ): void {
 
-		$settings_factory->register_section( FeatureActivationSettings::class );
-		$settings_factory->register_section( PushNoticeSettings::class );
-		$settings_factory->register_section( OptionsManagementSettings::class );
+		$sections = array(
+			FeatureActivationSettings::class => CoreFunction::FEATURE_ACTIVATION,
+			PushNoticeSettings::class        => CoreFunction::PUSH_NOTICES,
+			OptionsManagementSettings::class => CoreFunction::OPTIONS_MANAGEMENT,
+			ReleaseSettings::class           => CoreFunction::DEVELOPER_TOOLS,
+		);
 
-		// The release file is written by the developer and travels with the release.
-		if ( $this->allows_developer_tools() ) {
-			$settings_factory->register_section( ReleaseSettings::class );
+		foreach ( $sections as $section_class => $core_function ) {
+			if ( $this->release_register->is_core_function_on( $core_function ) ) {
+				$settings_factory->register_section( $section_class );
+			}
 		}
-	}
-
-	/**
-	 * Checks whether the developer's tools may be used here: the Release Management tab and the scan
-	 * for new features.
-	 *
-	 * This is the one place that grants this permission; the tools only ask.
-	 *
-	 * @since  1.0.1
-	 * @return bool True when the developer's tools are allowed on this environment.
-	 */
-	public function allows_developer_tools(): bool {
-		return Deployment::DEVELOPMENT === $this->current_deployment;
 	}
 
 	/**

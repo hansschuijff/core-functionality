@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use WP_Error;
 use DeWittePrins\CoreFunctionality\Plugin;
+use DeWittePrins\CoreFunctionality\Enums\CoreFunction;
 use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
 use DeWittePrins\CoreFunctionality\Enums\Register;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
@@ -492,7 +493,7 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	 */
 	private function save_rescan(): string|bool {
 
-		if ( ! $this->plugin->allows_developer_tools() ) {
+		if ( ! $this->plugin->release_register->is_core_function_on( CoreFunction::DEVELOPER_TOOLS ) ) {
 			return false;
 		}
 
@@ -538,7 +539,7 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	public function get_action_buttons(): array {
 		$buttons = array( 'save' => AdminSettingsPage::get_save_button() );
 
-		if ( $this->plugin->allows_developer_tools() ) {
+		if ( $this->plugin->release_register->is_core_function_on( CoreFunction::DEVELOPER_TOOLS ) ) {
 			$button_text_rescan = esc_html__( 'Scan for new features', 'core-functionality' );
 
 			$buttons['rescan'] = '<button type="submit" name="dwp_cf_rescan" value="1" class="button button-secondary">' . $button_text_rescan . '</button>';
