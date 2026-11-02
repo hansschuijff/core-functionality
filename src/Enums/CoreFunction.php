@@ -58,23 +58,23 @@ enum CoreFunction: string {
 		return match ( $this ) {
 			self::DEVELOPER_TOOLS    => __( 'Locked: these only belong on a development environment.', 'core-functionality' ),
 			self::FEATURE_ACTIVATION => __( 'Locked: without this tab a site cannot switch its features on or off.', 'core-functionality' ),
-			self::PUSH_NOTICES       => __( 'The settings tab of the push notices.', 'core-functionality' ),
+			self::PUSH_NOTICES       => __( 'Sending push notices and their settings tab. Where this is off, nothing is sent, even with stored settings.', 'core-functionality' ),
 			self::OPTIONS_MANAGEMENT => __( 'Only the settings tab for managing the option keys. The vault itself keeps working; when this is off, options stay in the quarantine or under their earlier keys.', 'core-functionality' ),
 		};
 	}
 
 	/**
-	 * Returns the state the code forces outside a development environment.
+	 * Returns the level the code forces: the highest environment the function is available on.
 	 *
 	 * A lock goes above the release file, the configuration file and the filter.
 	 *
 	 * @since  1.1.0
-	 * @return bool|null True for always on, false for always off, null when it can be set.
+	 * @return Deployment|null The level, or null when it can be set.
 	 */
-	public function get_locked_state(): ?bool {
+	public function get_locked_level(): ?Deployment {
 		return match ( $this ) {
-			self::DEVELOPER_TOOLS    => false,
-			self::FEATURE_ACTIVATION => true,
+			self::DEVELOPER_TOOLS    => Deployment::DEVELOPMENT,
+			self::FEATURE_ACTIVATION => Deployment::PRODUCTION,
 			default                  => null,
 		};
 	}

@@ -138,8 +138,9 @@ class ReleaseRegister {
 	 * Checks whether one of the plugin's own functions is on here. This is the one place that decides
 	 * it; the code that uses a function only asks (Hans, November 2026).
 	 *
-	 * A developer always has everything. Elsewhere a lock in the code goes first, then the release
-	 * settings; a function that is not in them is on.
+	 * A function has one level: the highest environment it is available on, so production without
+	 * staging cannot be set and a developer always has everything. A lock in the code goes first, then
+	 * the release settings; a function that is not in them is available everywhere.
 	 *
 	 * A locked function does not read the release settings, so the components register may ask about
 	 * one while it is being filled.
@@ -149,14 +150,22 @@ class ReleaseRegister {
 	 * @return bool True when it is on.
 	 */
 	public function is_core_function_on( CoreFunction $core_function ): bool {
-		$environment = $this->plugin->get_deployment();
+		$level = $core_function->get_locked_level() ?? $this->get_core_function_level( $core_function );
 
-		if ( Deployment::DEVELOPMENT === $environment ) {
-			return true;
-		}
+		return $level->allows( $this->plugin->get_deployment() );
+	}
 
-		return $core_function->get_locked_state()
-			?? EnvironmentRule::AUTO_OFF !== $this->get_rule( $core_function->get_release_key(), $environment );
+	/**
+	 * Returns the level of a core function in the release settings.
+	 *
+	 * @since  1.1.0
+	 * @param  CoreFunction $core_function The function.
+	 * @return Deployment The level; production when the function is not in the settings.
+	 */
+	private function get_core_function_level( CoreFunction $core_function ): Deployment {
+		$key = $core_function->get_release_key();
+
+		return isset( $this->get_settings()[ $key ] ) ? $this->get_status( $key ) : Deployment::PRODUCTION;
 	}
 
 	/**
@@ -302,8 +311,8 @@ class ReleaseRegister {
 		 * ('development', 'staging' or 'production') and a rule per environment ('auto-on',
 		 * 'adjustable' or 'auto-off'), keyed by 'development', 'staging' and 'production'.
 		 *
-		 * The plugin's own functions are in here too, as 'core:<id>' (see CoreFunction): 'auto-off' switches
-		 * one off on that environment. A lock in the code and the development environment go above this.
+		 * The plugin's own functions are in here too, as 'core:<id>' (see CoreFunction): the status is the
+		 * highest environment one is available on, its rules do nothing. A lock in the code goes above this.
 		 *
 		 * @since 1.0.0
 		 *
