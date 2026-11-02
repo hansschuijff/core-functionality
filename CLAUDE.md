@@ -93,6 +93,9 @@ new modules and features for Hans's own sites.
   written by the Release Management tab (only on a development environment) and committed; not in the
   code. Raise a status only when Hans says a component is ready. A new component is development and freely
   adjustable until it is in that file. See `docs/ARCHITECTURE.md`, Release settings.
+- The plugin's own switchable parts are listed in the enum `CoreFunction`. Only
+  `ReleaseRegister::is_core_function_on()` decides whether one is on; other code only asks it, never checks
+  the environment itself for this. See `docs/ARCHITECTURE.md`, Core functions.
 - Feature names are short within their module ("Menubouwer" under Admin-toolbar); where the module is not
   shown around a name, use `ComponentsRegister::get_display_name()` ("Menubouwer (Admin-toolbar)").
 - A feature that can clash with code the plugin cannot see (it replaces a snippet or a legacy file that may

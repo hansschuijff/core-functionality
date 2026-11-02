@@ -105,9 +105,9 @@ anything reads the registers, the components option is removed so it is refilled
 file; components that are new get their enabled state from the file, while the
 site's choices for existing components stay. An administrator gets a notice (on `admin_init`) listing
 what was added. During development the version does not change, so a rescan on the settings page is
-still how new code is picked up locally. That scan and the Release Management tab are the developer's
-tools: `Plugin::allows_developer_tools()` is the one place that grants them (now: development
-environments only), the tools only ask it (Hans, November 2026).
+still how new code is picked up locally. That scan is a developer's tool (see "Core functions" below).
+A missing components register outside development means a broken release: the plugin does not scan then,
+but says it must be reinstalled (Hans, November 2026).
 
 **Confirmation before activation.** New components follow the register file, so they are usually on after
 an update; that is the point (a new feature is welcome). A component whose `ComponentMeta` sets
@@ -166,6 +166,19 @@ not overwrite it and an organisation can roll one file out to many sites; path f
 `core-functionality/configuration-file`), then the filter `core-functionality/release-settings`. The
 Release Management tab notes a component the configuration adjusts. No constant: Hans prefers filters and
 files to constants (October 2026).
+
+**Core functions** (Hans, November 2026). The plugin's own parts that can be switched per environment are
+listed in the enum `CoreFunction` and asked through `ReleaseRegister::is_core_function_on()`, the one place
+that decides; the code that uses them only asks. They are set on a "Core functions" card on the Release
+Management tab and saved in the release file as `core:<id>`, so the configuration file and the filter reach
+them too. Only on or off, without status: they are part of the plugin. A development environment always has
+them all, as nothing can be taken from a developer. A lock in the code (`get_locked_state()`) goes above the
+file, the configuration file and the filter: Release Management with the feature scan belong together and are
+always off outside development, Feature Activation is always on. Push Notices and Options Management can be
+set, and are on while they are not in the file. For now switching off hides their settings tab; nothing
+calls `PushNotice::send()` yet. Settings can still be changed in the code or the files: this keeps honest
+people on the right road, it does not stop whoever can edit PHP. If the `kernel/` register files ever need
+updating on a site, consider opening these functions there or adding an import (open point).
 
 This replaced an earlier model with a status in `ComponentMeta` plus a per-site "Draait op" value, a
 question when a new release changed it, and a Deployment tab: a per-site value lives in the database,
