@@ -371,10 +371,23 @@ class Plugin {
 		$settings_factory->register_section( PushNoticeSettings::class );
 		$settings_factory->register_section( OptionsManagementSettings::class );
 
-		// The release file is written on a development environment and travels with the release.
-		if ( Deployment::DEVELOPMENT === $this->current_deployment ) {
+		// The release file is written by the developer and travels with the release.
+		if ( $this->allows_developer_tools() ) {
 			$settings_factory->register_section( ReleaseSettings::class );
 		}
+	}
+
+	/**
+	 * Checks whether the developer's tools may be used here: the Release Management tab and the scan
+	 * for new features.
+	 *
+	 * This is the one place that grants this permission; the tools only ask.
+	 *
+	 * @since  1.0.1
+	 * @return bool True when the developer's tools are allowed on this environment.
+	 */
+	public function allows_developer_tools(): bool {
+		return Deployment::DEVELOPMENT === $this->current_deployment;
 	}
 
 	/**

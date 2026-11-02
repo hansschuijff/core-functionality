@@ -492,6 +492,10 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	 */
 	private function save_rescan(): string|bool {
 
+		if ( ! $this->plugin->allows_developer_tools() ) {
+			return false;
+		}
+
 		$discovery_results = $this->plugin->components_register->rebuild();
 
 		if ( empty( $discovery_results ) || ! is_array( $discovery_results ) ) {
@@ -525,17 +529,23 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	/**
 	 * Returns the buttons of the footer: save, scan for new features, and reset to factory defaults.
 	 *
+	 * The scan is a developer's tool: elsewhere a plugin update already brings the new components.
+	 *
 	 * @since  1.0.0
 	 * @return array<string, string> Button key => button HTML.
 	 */
 	#[Override]
 	public function get_action_buttons(): array {
-		$button_text_rescan = esc_html__( 'Scan for new features', 'core-functionality' );
+		$buttons = array( 'save' => AdminSettingsPage::get_save_button() );
 
-		return array(
-			'save'    => AdminSettingsPage::get_save_button(),
-			'rescan'  => '<button type="submit" name="dwp_cf_rescan" value="1" class="button button-secondary">' . $button_text_rescan . '</button>',
-			'factory' => AdminSettingsPage::get_factory_reset_button(),
-		);
+		if ( $this->plugin->allows_developer_tools() ) {
+			$button_text_rescan = esc_html__( 'Scan for new features', 'core-functionality' );
+
+			$buttons['rescan'] = '<button type="submit" name="dwp_cf_rescan" value="1" class="button button-secondary">' . $button_text_rescan . '</button>';
+		}
+
+		$buttons['factory'] = AdminSettingsPage::get_factory_reset_button();
+
+		return $buttons;
 	}
 }
