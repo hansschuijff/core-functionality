@@ -70,7 +70,7 @@ class PushNotice {
 		}
 
 		// Rocket launch trigger: execute the driver passing the local instance configuration forward.
-		return ( new $driver( $this->settings ) )->send( $message );
+		return ( new $driver( $driver_settings ) )->send( $message );
 	}
 
 	/**
@@ -80,7 +80,7 @@ class PushNotice {
 	 * @return string|false Verified driver FQCN string, or false on error.
 	 */
 	public function get_current_driver(): string|false {
-		$driver = $this->settings->get( 'active-push-notice-driver' );
+		$driver = $this->settings->get( 'push-notice-driver' );
 
 		if ( empty( $driver ) ) {
 			$driver = Telegram::class; // Fallback to safe core default.
@@ -116,7 +116,7 @@ class PushNotice {
 		$slug = ClassParser::camel_to_kebab( $slug );
 
 		// Use the clean kebabcase slug context to dynamically request the unique settings block path.
-		$driver_settings = $this->settings->get( 'active-push-notice-driver-settings-' . $slug );
+		$driver_settings = $this->settings->get( 'push-notice-driver-settings-' . $slug );
 
 		if ( ! is_array( $driver_settings ) ) {
 			return false;
