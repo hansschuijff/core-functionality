@@ -210,11 +210,17 @@ class ReleaseRegister {
 	 * not reach yet becomes "always inactive" in the file. The choice itself is kept in the option, so
 	 * it applies once the status gets there (Hans, November 2026).
 	 *
+	 * Where the developer's tools are off it changes nothing.
+	 *
 	 * @since  1.0.0
 	 * @param  array<string, array<string, string>> $entries FQCN => entry; invalid values become the defaults.
 	 * @return bool True when the file was written.
 	 */
 	public function save_release_values( array $entries ): bool {
+		if ( ! $this->is_core_function_on( CoreFunction::DEVELOPER_TOOLS ) ) {
+			return false;
+		}
+
 		$clean_entries     = array();
 		$effective_entries = array();
 		foreach ( $entries as $fqcn => $entry ) {

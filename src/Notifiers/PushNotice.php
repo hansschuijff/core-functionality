@@ -13,9 +13,11 @@ declare(strict_types=1);
 
 namespace DeWittePrins\CoreFunctionality\Notifiers;
 
+use DeWittePrins\CoreFunctionality\Enums\CoreFunction;
 use DeWittePrins\CoreFunctionality\Notifiers\Interfaces\PushNoticeInterface;
 use DeWittePrins\CoreFunctionality\Notifiers\Drivers\Telegram;
 use DeWittePrins\CoreFunctionality\Services\ClassParser;
+use DeWittePrins\CoreFunctionality\Services\ReleaseRegister;
 use DeWittePrins\CoreFunctionality\Services\Settings;
 
 use function is_array;
@@ -34,18 +36,29 @@ class PushNotice {
 	 * Constructor.
 	 *
 	 * @since 1.0.0
-	 * @param Settings $settings The injected shared framework settings gateway.
+	 * @param Settings        $settings         The injected shared framework settings gateway.
+	 * @param ReleaseRegister $release_register Tells whether push notices are on here.
 	 */
-	public function __construct( private readonly Settings $settings ) {}
+	public function __construct(
+		private readonly Settings $settings,
+		private readonly ReleaseRegister $release_register,
+	) {}
 
 	/**
 	 * Send a message to the admin to alert to an event.
+	 *
+	 * Switched off, this sends nothing, whoever asks and whatever settings are stored: the caller
+	 * does not have to check.
 	 *
 	 * @since 1.0.0
 	 * @param string $message The alert text.
 	 * @return bool True If successfully sent, false otherwise.
 	 */
 	public function send( string $message ): bool {
+		if ( ! $this->release_register->is_core_function_on( CoreFunction::PUSH_NOTICES ) ) {
+			return false;
+		}
+
 		$driver = $this->get_current_driver();
 		if ( false === $driver ) {
 			return false; // No valid driver implementation found, unable to notify.

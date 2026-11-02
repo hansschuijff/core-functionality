@@ -532,11 +532,16 @@ class ComponentsRegister {
 	 * Forces a physical disk rescan to compile and freeze a fresh framework configuration blueprint.
 	 *
 	 * This method meant only for onboarging onboarding new modules and features in a setting page.
+	 * Where the developer's tools are off it scans nothing and changes nothing.
 	 *
 	 * @since  1.0.0
 	 * @return array<string, array> The complete actualized array of module FQCNs with their verified feature FQCNs.
 	 */
 	public function rebuild(): array {
+		if ( ! $this->plugin->release_register->is_core_function_on( CoreFunction::DEVELOPER_TOOLS ) ) {
+			return $this->components_register ?? array();
+		}
+
 		$components_register = ( new FinderService( $this->plugin ) )->find_modules_and_features();
 
 		if ( ! $components_register ) {
