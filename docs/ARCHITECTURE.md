@@ -105,7 +105,9 @@ anything reads the registers, the components option is removed so it is refilled
 file; components that are new get their enabled state from the file, while the
 site's choices for existing components stay. An administrator gets a notice (on `admin_init`) listing
 what was added. During development the version does not change, so a rescan on the settings page is
-still how new code is picked up locally.
+still how new code is picked up locally. That scan and the Release Management tab are the developer's
+tools: `Plugin::allows_developer_tools()` is the one place that grants them (now: development
+environments only), the tools only ask it (Hans, November 2026).
 
 **Confirmation before activation.** New components follow the register file, so they are usually on after
 an update; that is the point (a new feature is welcome). A component whose `ComponentMeta` sets
