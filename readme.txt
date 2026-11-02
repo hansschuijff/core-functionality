@@ -2,7 +2,7 @@
 Contributors: hansschuijff
 Tags: core-functionality
 Requires at least: 7.0
-Tested up to: 7.1
+Tested up to: 7.1.4
 Requires PHP: 8.2
 Stable tag: 1.0.0
 License: GPLv2
