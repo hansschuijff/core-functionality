@@ -59,7 +59,7 @@ enum CoreFunction: string {
 			self::DEVELOPER_TOOLS    => __( 'Locked: these only belong on a development environment.', 'core-functionality' ),
 			self::FEATURE_ACTIVATION => __( 'Locked: without this tab a site cannot switch its features on or off.', 'core-functionality' ),
 			self::PUSH_NOTICES       => __( 'The settings tab of the push notices.', 'core-functionality' ),
-			self::OPTIONS_MANAGEMENT => __( 'The settings tab for managing the options of this plugin.', 'core-functionality' ),
+			self::OPTIONS_MANAGEMENT => __( 'Only the settings tab for managing the option keys. The vault itself keeps working; when this is off, options stay in the quarantine or under their earlier keys.', 'core-functionality' ),
 		};
 	}
 

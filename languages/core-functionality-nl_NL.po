@@ -5704,8 +5704,8 @@ msgstr "Vergrendeld: zonder dit tabblad kan een site zijn features niet aan- of 
 msgid "The settings tab of the push notices."
 msgstr "Het instellingentabblad van de pushmeldingen."
 
-msgid "The settings tab for managing the options of this plugin."
-msgstr "Het instellingentabblad voor het beheer van de opties van deze plugin."
+msgid "Only the settings tab for managing the option keys. The vault itself keeps working; when this is off, options stay in the quarantine or under their earlier keys."
+msgstr "Alleen het instellingentabblad voor het beheer van de optiesleutels. De kluis zelf blijft werken; staat dit uit, dan blijven opties in de quarantaine of onder hun eerdere sleutels staan."
 
 msgid "The core functions are parts of the plugin itself. They have no build status and a development environment always has them all, so only staging and production can be set. A locked one cannot be changed here."
 msgstr "De kernfuncties zijn onderdelen van de plugin zelf. Ze hebben geen bouwstatus en een ontwikkelomgeving heeft ze altijd allemaal, dus alleen staging en productie zijn in te stellen. Een vergrendelde functie is hier niet te wijzigen."
