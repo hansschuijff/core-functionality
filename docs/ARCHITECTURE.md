@@ -178,7 +178,9 @@ always off outside development, Feature Activation is always on. Push Notices an
 set, and are on while they are not in the file. A function switches itself off: it is not loaded, or its
 public methods ask before they do their work, so a caller never has to check and stored settings do nothing
 (Hans, November 2026). So a tab's section is not registered, and `PushNotice::send()`,
-`ComponentsRegister::rebuild()` and `ReleaseRegister::save_release_values()` refuse. Settings can still be changed in the code or the files: this keeps honest
+`ComponentsRegister::rebuild()` and `ReleaseRegister::save_release_values()` refuse. Options Management only
+covers the tab that manages the token keys: the Options Vault itself is critical and always runs, so with
+the tab off options simply stay in the quarantine or under their earlier keys (Hans). Settings can still be changed in the code or the files: this keeps honest
 people on the right road, it does not stop whoever can edit PHP. If the `kernel/` register files ever need
 updating on a site, consider opening these functions there or adding an import (open point).
 
