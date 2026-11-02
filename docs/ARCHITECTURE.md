@@ -802,6 +802,21 @@ Not built yet; agreed with Hans in November 2026. Prototype: `wp-content/themes/
   their own colours (Spectra legacy, Ultimate Blocks, Otter); images and a light and dark logo that also follow a
   manual choice, which `<picture>` with `prefers-color-scheme` does not do.
 
+### Block injection module
+
+Not built yet; decided with Hans in November 2026, one of the next projects towards the renewed sites. Reusable
+blocks, such as calls to action, are edited in the block editor in their own post type and inserted by criteria.
+
+- The idea comes from the Block Injector plugin (on the local site for trying out only); its code is not a base and it
+  does not go to production, see the review below.
+- Criteria must cover events and courses as well as posts, pages and products. Start with the ones in use.
+- Insert with `parse_blocks()` after the n-th top-level block, not with a regex on the content, so a block never lands
+  inside a group. Use `WP_HTML_Tag_Processor` for positions such as after a heading.
+
+Review of Block Injector, from reading the code without running it: the heading regex skips headings with attributes,
+the block count includes nested blocks, the expiry date has no effect, the status toggle has no working nonce and can
+change any post, and the `pmab_posts` ajax list has no capability check.
+
 ## Release and translations
 
 `README.md` describes both. A pushed `vX.Y.Z` tag runs `.github/workflows/release.yml`: Composer installs
