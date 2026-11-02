@@ -809,7 +809,8 @@ blocks, such as calls to action, are edited in the block editor in their own pos
 
 - The idea comes from the Block Injector plugin (on the local site for trying out only); its code is not a base and it
   does not go to production, see the review below.
-- Criteria must cover events and courses as well as posts, pages and products. Start with the ones in use.
+- The available post types are a setting, read from what is registered on the site, not a fixed list in the code. This
+  covers events and courses as well as posts, pages and products. A stored type that no longer exists is skipped.
 - Insert with `parse_blocks()` after the n-th top-level block, not with a regex on the content, so a block never lands
   inside a group. Use `WP_HTML_Tag_Processor` for positions such as after a heading.
 
