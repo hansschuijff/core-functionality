@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-01T19:20:05+01:00\n"
+"POT-Creation-Date: 2026-11-02T15:54:24+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -145,67 +145,69 @@ msgid_plural "Other notices (%d)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:81
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:82
+#: src/Enums/CoreFunction.php:45
 msgid "Feature Activation"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:91
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:92
 msgid "Here you can enable and disable the modules and features in this plugin. Refreshing this list, will perform a scan that automatically detect new modules and features if there are any. By default new modules and features will be disabled en need to be enabled to launch them."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:167
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:168
 msgid "Select all"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:168
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:169
 msgid "Show only disabled"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:169
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:170
 msgid "Show all"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:170
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:171
 msgid "All modules and features are enabled."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:221
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:222
 msgid "Available features:"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:347
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:348
 msgid "always active in this environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:351
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:352
 msgid "always inactive in this environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:355
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:356
 msgid "not ready for this environment yet"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:359
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:360
 msgid "awaits your confirmation: saving this tab confirms the choice"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:465
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:466
 msgid "All modules and features where reset to their default settings."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:498
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:503
 msgid "Critical Error: Failed to find modules and features in scan. Is this correct?"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:502
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:507
 msgid "Scan was succesful. All Modules and Features succesfully registered."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:533
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:543
 msgid "Scan for new features"
 msgstr ""
 
 #: src/Admin/Services/Settings/Sections/OptionsManagementSettings.php:95
+#: src/Enums/CoreFunction.php:47
 msgid "Options Vault"
 msgstr ""
 
@@ -388,6 +390,7 @@ msgid "Deep Purge Completed! %d configurations tokens and data structures fully 
 msgstr ""
 
 #: src/Admin/Services/Settings/Sections/PushNoticeSettings.php:118
+#: src/Enums/CoreFunction.php:46
 msgid "Push Notice Services"
 msgstr ""
 
@@ -427,62 +430,87 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:104
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:106
 msgid "Release Management"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:115
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:117
 msgid "For the developers of this plugin: how far each module and feature is built, and how freely it may be activated per environment."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:172
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
 msgid "Explanation"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:174
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
 msgid "This page is only for the developers of the modules and features in this plugin."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:175
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:178
 msgid "The build status says how far a module or feature has been developed. It matches the environments where it may be active, so a feature that is not ready for production can never be activated on a production environment."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:179
 msgid "Per environment you choose whether a module or feature is always active there, always inactive, or adjustable by the administrator. That choice depends on the purpose of the module or feature more than on how far it is built."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:177
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:180
 msgid "A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:178
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:181
 msgid "These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:179
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:182
 msgid "The file only gets what the build status allows: on an environment it does not reach yet, a feature is always inactive there. Your choice for later is kept on this site and shown here, so it applies once the status gets there."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:225
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:183
+msgid "The core functions are parts of the plugin itself. They have no build status and a development environment always has them all, so only staging and production can be set. A locked one cannot be changed here."
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:220
+msgid "Core functions"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:221
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:385
 msgid "Activation per environment"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:287
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:281
+msgid "🔒 Always on"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:282
+msgid "🔒 Always off"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:306
+msgid "On"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:307
+msgid "Off"
+msgstr ""
+
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:447
 msgid "This installation's configuration adjusts it."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:330
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:490
 msgid "Build status"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:396
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:558
 msgid "The release file could not be written. Check whether the settings folder of the plugin is writable."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:400
+#: src/Admin/Services/Settings/Sections/ReleaseSettings.php:562
 msgid "The settings are saved in settings/components-release.php. Remember to commit it."
 msgstr ""
 
@@ -766,6 +794,26 @@ msgstr ""
 #: src/Environment/Themes/AnyGenesis.php:108
 #: src/Environment/Themes/AnyGenesis.php:115
 msgid "Link to"
+msgstr ""
+
+#: src/Enums/CoreFunction.php:44
+msgid "Release Management and feature scan"
+msgstr ""
+
+#: src/Enums/CoreFunction.php:59
+msgid "Locked: these only belong on a development environment."
+msgstr ""
+
+#: src/Enums/CoreFunction.php:60
+msgid "Locked: without this tab a site cannot switch its features on or off."
+msgstr ""
+
+#: src/Enums/CoreFunction.php:61
+msgid "The settings tab of the push notices."
+msgstr ""
+
+#: src/Enums/CoreFunction.php:62
+msgid "The settings tab for managing the options of this plugin."
 msgstr ""
 
 #: src/Enums/DependencyType.php:39
@@ -5651,23 +5699,27 @@ msgid "The target private user or group chat ID window."
 msgstr ""
 
 #. translators: 1: plugin version, 2: comma-separated list of module and feature names.
-#: src/Plugin.php:304
+#: src/Plugin.php:305
 #, php-format
 msgid "Core Functionality %1$s added: %2$s. Check under Settings → Core Functionality whether they should be enabled on this site."
 msgstr ""
 
-#: src/Plugin.php:394
+#: src/Plugin.php:399
 msgid "De Witte Prins - Core Functionality has stopped!"
 msgstr ""
 
-#: src/Plugin.php:395
+#: src/Plugin.php:400
 msgid "The plugin stopped because its installation is damaged. The rest of the website works normally, but everything this plugin does is switched off."
 msgstr ""
 
 #. translators: 1: feature name, 2: module name.
-#: src/Services/ComponentsRegister.php:832
+#: src/Services/ComponentsRegister.php:840
 #, php-format
 msgid "%1$s (%2$s)"
+msgstr ""
+
+#: src/Services/ComponentsRegister.php:899
+msgid "Core Functionality: the list of modules and features is missing, so none of them can run. Reinstall the plugin from its release zip."
 msgstr ""
 
 #. translators: %1$s: path of the register file.

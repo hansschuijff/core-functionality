@@ -5691,3 +5691,39 @@ msgstr "Core Functionality kan niet starten: de map vendor met de autoloader ont
 #: core-functionality.php:58
 msgid "This happens when the source code was installed instead of the release zip. Upload the zip attached to the release on GitHub (core-functionality-x.y.z.zip)."
 msgstr "Dat gebeurt als de broncode is geïnstalleerd in plaats van de release-zip. Upload de zip die bij de release op GitHub hoort (core-functionality-x.y.z.zip)."
+
+msgid "Release Management and feature scan"
+msgstr "Releasebeheer en feature-scan"
+
+msgid "Locked: these only belong on a development environment."
+msgstr "Vergrendeld: deze horen alleen op een ontwikkelomgeving."
+
+msgid "Locked: without this tab a site cannot switch its features on or off."
+msgstr "Vergrendeld: zonder dit tabblad kan een site zijn features niet aan- of uitzetten."
+
+msgid "The settings tab of the push notices."
+msgstr "Het instellingentabblad van de pushmeldingen."
+
+msgid "The settings tab for managing the options of this plugin."
+msgstr "Het instellingentabblad voor het beheer van de opties van deze plugin."
+
+msgid "The core functions are parts of the plugin itself. They have no build status and a development environment always has them all, so only staging and production can be set. A locked one cannot be changed here."
+msgstr "De kernfuncties zijn onderdelen van de plugin zelf. Ze hebben geen bouwstatus en een ontwikkelomgeving heeft ze altijd allemaal, dus alleen staging en productie zijn in te stellen. Een vergrendelde functie is hier niet te wijzigen."
+
+msgid "Core functions"
+msgstr "Kernfuncties"
+
+msgid "🔒 Always on"
+msgstr "🔒 Altijd aan"
+
+msgid "🔒 Always off"
+msgstr "🔒 Altijd uit"
+
+msgid "On"
+msgstr "Aan"
+
+msgid "Off"
+msgstr "Uit"
+
+msgid "Core Functionality: the list of modules and features is missing, so none of them can run. Reinstall the plugin from its release zip."
+msgstr "Core Functionality: de lijst met modules en features ontbreekt, dus geen ervan kan draaien. Installeer de plugin opnieuw vanuit de release-zip."
