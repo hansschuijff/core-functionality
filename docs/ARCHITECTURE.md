@@ -175,8 +175,10 @@ them too. Only on or off, without status: they are part of the plugin. A develop
 them all, as nothing can be taken from a developer. A lock in the code (`get_locked_state()`) goes above the
 file, the configuration file and the filter: Release Management with the feature scan belong together and are
 always off outside development, Feature Activation is always on. Push Notices and Options Management can be
-set, and are on while they are not in the file. For now switching off hides their settings tab; nothing
-calls `PushNotice::send()` yet. Settings can still be changed in the code or the files: this keeps honest
+set, and are on while they are not in the file. A function switches itself off: it is not loaded, or its
+public methods ask before they do their work, so a caller never has to check and stored settings do nothing
+(Hans, November 2026). So a tab's section is not registered, and `PushNotice::send()`,
+`ComponentsRegister::rebuild()` and `ReleaseRegister::save_release_values()` refuse. Settings can still be changed in the code or the files: this keeps honest
 people on the right road, it does not stop whoever can edit PHP. If the `kernel/` register files ever need
 updating on a site, consider opening these functions there or adding an import (open point).
 
