@@ -787,6 +787,21 @@ Later:
   legacy settings (`dewitteprins_core_settings`: `active-logger`, `log-file`, `var-printer`) are the
   starting point; where the Logger's current option `dwp_log_settings` comes from still needs checking.
 
+### Light and dark mode for the future FSE theme
+
+Not built yet; agreed with Hans in November 2026. Prototype: `wp-content/themes/__TODO/theme-dark-mode`.
+
+- The css and colours live in the theme (`--c-*` tokens with `light-dark()`, `color-scheme`, the `theme.json`
+  palette). Without this plugin the theme still follows the visitor's system setting.
+- This plugin adds the manual choice as a feature: the early script, the switcher block and the stored choice.
+  The contract with the theme is `data-theme` on `<html>` and the `--c-*` names.
+- The feature only works when the theme declares support (for example through `add_theme_support()`), so a theme
+  without dark css never gets a switcher.
+- The front end is what counts. The admin and the editor stay light; dark styles do not load there.
+- Still to solve: the early script must be excluded from Cloudflare Rocket Loader and WP Rocket's delay; blocks with
+  their own colours (Spectra legacy, Ultimate Blocks, Otter); images and a light and dark logo that also follow a
+  manual choice, which `<picture>` with `prefers-color-scheme` does not do.
+
 ## Release and translations
 
 `README.md` describes both. A pushed `vX.Y.Z` tag runs `.github/workflows/release.yml`: Composer installs
