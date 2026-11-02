@@ -64,6 +64,18 @@
 	color: #996800;
 }
 
+/* A core function explains itself under its name; a locked one shows its state instead of a choice. */
+.dwp-release-core-description {
+	display: block;
+	margin-top: 2px;
+	font-size: 12px;
+	color: #50575e;
+}
+
+.dwp-release-table .dwp-release-locked {
+	color: #50575e;
+}
+
 /* The table needs its width; on a small screen the card scrolls instead of squeezing it. */
 .dwp-release-card {
 	overflow-x: auto;

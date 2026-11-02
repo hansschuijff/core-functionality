@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\SettingsExplanation;
+use DeWittePrins\CoreFunctionality\Enums\CoreFunction;
 use DeWittePrins\CoreFunctionality\Enums\Deployment;
 use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
 use DeWittePrins\CoreFunctionality\Enums\Register;
@@ -44,9 +45,10 @@ use function wp_unslash;
  * Class ReleaseSettings
  *
  * The Release Management tab: per module and feature its status and its rule per environment, as
- * the release decides them (see ReleaseRegister). Saving writes the release file in the plugin's
- * settings folder, which is committed and travels with the release. The tab is only registered on a
- * development environment, so the sites that install the plugin do not get it (Hans, October 2026).
+ * the release decides them (see ReleaseRegister), and which of the plugin's own functions are on per
+ * environment (see CoreFunction). Saving writes the release file in the plugin's settings folder,
+ * which is committed and travels with the release. The tab is only registered on a development
+ * environment, so the sites that install the plugin do not get it (Hans, October 2026).
  *
  * @since 1.0.0
  */
@@ -152,6 +154,7 @@ class ReleaseSettings implements SettingsSectionInterface {
 		$release    = $this->plugin->release_register->get_release_choices();
 
 		$html  = $this->render_explanation();
+		$html .= $this->render_core_table( $release );
 		$html .= '<div class="dwp-release-modules">';
 		foreach ( $components as $module_fqcn => $features_fqcn ) {
 			$html .= $this->render_module_table( $module_fqcn, (array) $features_fqcn, $release );
@@ -177,8 +180,165 @@ class ReleaseSettings implements SettingsSectionInterface {
 				__( 'A module is only the container of its features and follows them: it takes the widest setting of its features, so it is there wherever one of them may be active.', 'core-functionality' ),
 				__( 'These settings are saved in a settings file that goes with the release. It sets the conditions for using this plugin on other systems, so their administrators start from a safe point.', 'core-functionality' ),
 				__( 'The file only gets what the build status allows: on an environment it does not reach yet, a feature is always inactive there. Your choice for later is kept on this site and shown here, so it applies once the status gets there.', 'core-functionality' ),
+				__( 'The core functions are parts of the plugin itself. They have no build status and a development environment always has them all, so only staging and production can be set. A locked one cannot be changed here.', 'core-functionality' ),
 			)
 		);
+	}
+
+	/**
+	 * Returns the table of the plugin's own functions.
+	 *
+	 * @since  1.1.0
+	 * @param  array<string, array<string, string>> $release The entries of the release file.
+	 * @return string The table (HTML).
+	 */
+	private function render_core_table( array $release ): string {
+		$header_row = $this->render_core_header_row();
+
+		$rows = '';
+		foreach ( CoreFunction::cases() as $core_function ) {
+			$rows .= $this->render_core_row( $core_function, $release );
+		}
+
+		return <<<HTML
+			<div class="dwp-release-card">
+				<table class="dwp-release-table">
+					<thead>{$header_row}</thead>
+					<tbody>{$rows}</tbody>
+				</table>
+			</div><!-- closes dwp-release-card -->
+		HTML;
+	}
+
+	/**
+	 * Returns the header rows of the core functions: their name, then the environments that can be set.
+	 *
+	 * @since  1.1.0
+	 * @return string The rows (HTML).
+	 */
+	private function render_core_header_row(): string {
+		$name_label       = esc_html__( 'Core functions', 'core-functionality' );
+		$activation_label = esc_html__( 'Activation per environment', 'core-functionality' );
+		$environments     = $this->get_core_environments();
+		$colspan          = count( $environments );
+
+		$environment_cells = '';
+		foreach ( $environments as $environment ) {
+			$environment_cells .= '<th scope="col">' . esc_html( $environment->get_label() ) . '</th>';
+		}
+
+		return <<<HTML
+			<tr>
+				<th scope="col" rowspan="2" class="dwp-release-name-column">{$name_label}</th>
+				<th scope="colgroup" colspan="{$colspan}" class="dwp-release-group-heading">{$activation_label}</th>
+			</tr>
+			<tr>
+				{$environment_cells}
+			</tr>
+		HTML;
+	}
+
+	/**
+	 * Returns the row of one core function.
+	 *
+	 * @since  1.1.0
+	 * @param  CoreFunction                         $core_function The function.
+	 * @param  array<string, array<string, string>> $release       The entries of the release file.
+	 * @return string The row (HTML).
+	 */
+	private function render_core_row( CoreFunction $core_function, array $release ): string {
+		$key              = $core_function->get_release_key();
+		$entry            = $release[ $key ] ?? array();
+		$name             = $core_function->get_label();
+		$name_html        = esc_html( $name );
+		$description_html = esc_html( $core_function->get_description() );
+		$note_html        = $this->render_adjusted_note( $key );
+
+		$environment_cells = '';
+		foreach ( $this->get_core_environments() as $environment ) {
+			$environment_cells .= null === $core_function->get_locked_state()
+				? $this->render_select_cell( $key, $environment->value, $entry, $this->get_core_options(), $name )
+				: $this->render_locked_cell( $core_function );
+		}
+
+		return <<<HTML
+			<tr class="dwp-release-core">
+				<th scope="row">{$name_html}<span class="dwp-release-core-description">{$description_html}</span>{$note_html}</th>
+				{$environment_cells}
+			</tr>
+		HTML;
+	}
+
+	/**
+	 * Returns the cell of a locked core function: its state, without a choice.
+	 *
+	 * @since  1.1.0
+	 * @param  CoreFunction $core_function The locked function.
+	 * @return string The cell (HTML).
+	 */
+	private function render_locked_cell( CoreFunction $core_function ): string {
+		$state = $core_function->get_locked_state()
+			? esc_html__( '🔒 Always on', 'core-functionality' )
+			: esc_html__( '🔒 Always off', 'core-functionality' );
+
+		return "<td class=\"dwp-release-locked\">{$state}</td>";
+	}
+
+	/**
+	 * Returns the environments on which a core function can be set: all but development, which always
+	 * has them all.
+	 *
+	 * @since  1.1.0
+	 * @return Deployment[] The environments.
+	 */
+	private function get_core_environments(): array {
+		return array( Deployment::STAGING, Deployment::PRODUCTION );
+	}
+
+	/**
+	 * Returns the choices of a core function on an environment.
+	 *
+	 * @since  1.1.0
+	 * @return array<string, string> Value => label.
+	 */
+	private function get_core_options(): array {
+		return array(
+			EnvironmentRule::AUTO_ON->value  => __( 'On', 'core-functionality' ),
+			EnvironmentRule::AUTO_OFF->value => __( 'Off', 'core-functionality' ),
+		);
+	}
+
+	/**
+	 * Returns the entries of the core functions that can be set, from the posted form data.
+	 *
+	 * A core function is part of the plugin, so its status never limits it. Locked ones get no entry:
+	 * the code decides those.
+	 *
+	 * @since  1.1.0
+	 * @param  array<mixed> $posted The posted entries.
+	 * @return array<string, array<string, string>> Key => entry.
+	 */
+	private function get_posted_core_entries( array $posted ): array {
+		$entries = array();
+		foreach ( CoreFunction::cases() as $core_function ) {
+			if ( null !== $core_function->get_locked_state() ) {
+				continue;
+			}
+
+			$key          = $core_function->get_release_key();
+			$posted_entry = isset( $posted[ $key ] ) && is_array( $posted[ $key ] ) ? $posted[ $key ] : array();
+
+			$entry = array( ReleaseRegister::STATUS_KEY => Deployment::PRODUCTION->value );
+			foreach ( Deployment::cases() as $environment ) {
+				$is_off = EnvironmentRule::AUTO_OFF->value === ( $posted_entry[ $environment->value ] ?? '' );
+
+				$entry[ $environment->value ] = $is_off ? EnvironmentRule::AUTO_OFF->value : EnvironmentRule::AUTO_ON->value;
+			}
+
+			$entries[ $key ] = $entry;
+		}
+
+		return $entries;
 	}
 
 	/**
@@ -391,6 +551,8 @@ class ReleaseSettings implements SettingsSectionInterface {
 			}
 			$entries[ $fqcn ] = $this->sanitize_posted_entry( $posted[ $fqcn ] );
 		}
+
+		$entries += $this->get_posted_core_entries( $posted );
 
 		if ( ! $this->plugin->release_register->save_release_values( $entries ) ) {
 			$this->plugin->notices->add( 'error', __( 'The release file could not be written. Check whether the settings folder of the plugin is writable.', 'core-functionality' ) );
