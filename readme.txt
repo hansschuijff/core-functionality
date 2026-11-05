@@ -4,7 +4,7 @@ Tags: core-functionality
 Requires at least: 7.0
 Tested up to: 7.1.4
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,13 @@ Mock answer
 
 == Changelog ==
 
+= 1.1.0 =
+* AI Access: abilities of other plugins that change the live site or send e-mail are hidden from MCP (feature Hide Live Changes).
+* Core functions: the plugin's own functions are decided in one place, each with one level, set on the Release Management tab.
+* Push notices: the real API addresses of Telegram and Pushover, and the driver gets the settings the tab saves.
+* A notice instead of a fatal error when the autoloader is missing, and a request to reinstall when the components register is missing.
+* The feature scan only runs where the developer tools are allowed.
+* Tested up to WordPress 7.1.4.
+
 = 1.0.0 =
 * Initial Release, a complete OOP based redesign of the previous core functionality plugin.
-* AI Access: abilities of other plugins that change the live site or send e-mail are hidden from MCP (feature Hide Live Changes).
