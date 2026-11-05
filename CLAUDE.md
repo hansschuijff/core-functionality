@@ -86,8 +86,10 @@ new modules and features for Hans's own sites.
   settings page instead. On the speeltuin Claude rescans and switches new modules and features on itself, in
   the app's browser pane (Settings → Core Functionality, "Zoeken naar nieuwe features", then tick and save);
   new components start switched off after a rescan (after an update they follow the register file).
-  Leave changes to these files uncommitted: they get their final content after the migration strategy
-  (another session) and are only committed just before production (Hans, October 2026).
+  Since the first release (1.0.0) these files are committed with every change that adds a component or
+  changes a status, so each release carries the right data; production cannot rescan (the scan only runs
+  where the developer tools are allowed) and only knows the components in the release's files (Hans,
+  November 2026).
 - The status (how far the code is ready) and the rule per environment (always active,
   adjustable, always inactive) of each feature (a module follows its features) live in `settings/components-release.php`,
   written by the Release Management tab (only on a development environment) and committed; not in the
