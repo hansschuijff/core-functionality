@@ -5718,3 +5718,11 @@ msgstr "Core Functionality: de lijst met modules en features ontbreekt, dus geen
 
 msgid "Available up to"
 msgstr "Beschikbaar tot"
+
+#: src/Modules/AiAccess/Features/HideLiveAbilities/HideLiveAbilities.php:69
+msgid "Hide Live Changes"
+msgstr "Live wijzigingen verbergen"
+
+#: src/Modules/AiAccess/Features/HideLiveAbilities/HideLiveAbilities.php:70
+msgid "An AI assistant cannot use abilities of other plugins that change the live site or send e-mail."
+msgstr "Een AI-assistent kan geen acties van andere plugins gebruiken die de live site wijzigen of e-mail versturen."
