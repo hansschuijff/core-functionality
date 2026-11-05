@@ -27,6 +27,7 @@ return array (
   'DeWittePrins\\CoreFunctionality\\Modules\\Events\\Features\\TemplateFallback\\TemplateFallback' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\Events\\Features\\TemplateMonitor\\TemplateMonitor' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\AiAccess' => true,
+  'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\HideLiveAbilities\\HideLiveAbilities' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\SeoFields\\SeoFields' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\EventContent\\EventContent' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\RewriteCopies\\RewriteCopies' => true,

@@ -37,11 +37,12 @@ return array (
   ),
   'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\AiAccess' => 
   array (
-    0 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\SeoFields\\SeoFields',
-    1 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\EventContent\\EventContent',
-    2 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\RewriteCopies\\RewriteCopies',
-    3 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\CourseContent\\CourseContent',
-    4 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\ContentEditing\\ContentEditing',
+    0 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\HideLiveAbilities\\HideLiveAbilities',
+    1 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\SeoFields\\SeoFields',
+    2 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\EventContent\\EventContent',
+    3 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\RewriteCopies\\RewriteCopies',
+    4 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\CourseContent\\CourseContent',
+    5 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\ContentEditing\\ContentEditing',
   ),
   'DeWittePrins\\CoreFunctionality\\Modules\\AdminMenu\\AdminMenu' => 
   array (
