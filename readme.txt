@@ -33,3 +33,4 @@ Mock answer
 
 = 1.0.0 =
 * Initial Release, a complete OOP based redesign of the previous core functionality plugin.
+* AI Access: abilities of other plugins that change the live site or send e-mail are hidden from MCP (feature Hide Live Changes).

@@ -513,6 +513,17 @@ The tab has a short intro and a collapsed explanation (`SettingsExplanation`).
   watcher rebuilds its indexable after these meta changes (on production; Yoast keeps no indexables on a
   development site).
 
+- `HideLiveAbilities` (no dependency): hides abilities of other plugins from the MCP Adapter when they change
+  the live site or send e-mail without a step where Hans can confirm (Hans, November 2026), through
+  `wp_register_ability_args` (priority 99) with `meta.mcp.public` false; the adapter then neither lists nor runs them.
+  List per plugin, filterable (`core-functionality/ai-access-hidden-abilities`): Yoast SEO (`update-post-seo-data`,
+  which an Editor may run on published items, and the site settings), WooCommerce (orders, products), Jetpack
+  Forms (forms, responses), WP Rocket (settings, cache, monitoring) and FluentCRM sending only
+  (`send-test-email`, `send-email-to-contact`, `change-campaign-status`). FluentCRM's contact, tag, list,
+  sequence and automation abilities stay open so Claude can help with the CRM and its migration; what to
+  close there is decided after the migration (Hans, November 2026). Reading abilities stay open. Not covered: the
+  application password also works on the plain REST API with the user's rights (a role of its own is the open proposal).
+
 Tested through MCP on the speeltuin (October 2026): posts, pages, events (dates, venue, organizer, TEC's
 custom tables), Sensei (lessons placed in a course, a module and at a position), Yoast's fields and a
 rewrite copy of a post merged back by publishing it (the original kept its id, URL and terms), plus
@@ -674,6 +685,7 @@ card per content type with its levels under each other.
 | `core-functionality/ai-access-content-summary` | filter | The summary of an item the abilities return |
 | `core-functionality/ai-access-editable-statuses` | filter | Statuses in which an AI assistant may change an item |
 | `core-functionality/ai-access-rewrite-available` | filter | Whether Rewrite & Republish copies can be made |
+| `core-functionality/ai-access-hidden-abilities` | filter | Abilities of other plugins hidden from MCP (they change the live site or send e-mail) |
 | `core-functionality/duplicate-post-hidden-types` | filter | Post types for which Duplicate Post shows no links |
 
 ## Decisions
@@ -701,6 +713,7 @@ card per content type with its levels under each other.
 | Catalogue in memory only | Built per request on first use, not stored in the database | Hrefs can be closures and titles are translated; the cost is small |
 | Visibility per menu node | Admin, front end or both, set in the menu builder; the guard's orientation only says what kind of link it is | Where a link is useful depends on the menu, not on the plugin |
 | AI writes, Hans publishes | AI Access abilities only write drafts; published items change in a Rewrite & Republish copy (October 2026) | Hans wants to work together with AI but keep the last word on what goes live |
+| Other plugins' live abilities hidden | `HideLiveAbilities` sets `meta.mcp.public` false for abilities of other plugins that change the live site or send e-mail without a confirm step, whatever the role allows (November 2026) | Yoast lets an Editor change the SEO data of published items directly; a fixed list also holds when a role gets more rights later |
 | AI Access extensible | Content types, field groups and abilities come in through filters, one feature per plugin integration | Hans expects to extend and adjust it later; each integration switches on with its own plugin |
 
 ## Open points
