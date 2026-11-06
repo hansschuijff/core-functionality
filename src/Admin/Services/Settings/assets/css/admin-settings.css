@@ -642,7 +642,8 @@ span.dwp-menu-item.is-active {
 
 /* A card that warns about a lifted safeguard, in WordPress's warning colours. */
 .dwp-cf-warning-card {
-    margin: 0 0 20px 0;
+    /* 36px: the explanation below pulls itself up by 16px. */
+    margin: 0 0 36px 0;
     padding: 14px 20px;
     max-width: 1000px;
     background: #fcf9e8;
