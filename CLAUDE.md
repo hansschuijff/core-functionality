@@ -104,6 +104,11 @@ new modules and features for Hans's own sites.
 - A feature that can clash with code the plugin cannot see (it replaces a snippet or a legacy file that may
   still run) gets `confirm_activation: true` in its `ComponentMeta`: it then waits for an administrator's
   one-time answer before it runs. See `docs/ARCHITECTURE.md`, Components register.
+- A feature that lifts a safeguard (such as `UnapprovedChanges`) gets an `activation_warning` in its
+  `ComponentMeta`: a confirm when it is ticked, and it is never switched on automatically (not after a
+  rescan, an update or a status change). Its description states the scope and risks precisely; longer
+  descriptions use blank lines between paragraphs and show in the module's "Explanation" on the Feature
+  Activation tab, with optional details from `get_explanation_details()` (Hans, November 2026).
 - The app's browser pane blocks WordPress's own scripts on the speeltuin (`load-scripts.php`, even
   `jquery.min.js`: `ERR_BLOCKED_BY_CLIENT`, October 2026), so admin JS does not run there. Test page
   scripts by injecting jQuery from code.jquery.com and running the code with `javascript_tool`. (bevestig)

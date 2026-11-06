@@ -127,6 +127,13 @@ all decisions, because it switches everything on. Decisions live only in the set
 `components-activation-decided` (FQCN => true), never in the register files: they belong to one site.
 The flag is a safety net for now; whether it gets more uses or companions is open.
 
+**Switched on by hand only (1.1.1).** A component whose `ComponentMeta` has an `activation_warning` lifts a
+safeguard, so it is never switched on automatically: `ComponentsRegister::is_switched_on_by_hand_only()`
+makes `handle_newly_available_components()`, `add_file_defaults()`, the enabled register file (`save()`)
+and the Feature Activation tab's reset defaults skip it. Ticking it on that tab shows the warning in a
+confirm (`data-activation-warning`, `feature-activation.js`); "select all" and the module toggle leave it
+alone. Found when saving a release status switched `UnapprovedChanges` on by itself (November 2026).
+
 **Release settings.** Two different limit questions sit above a site's own choice (Hans, October 2026):
 how far is the code ready (the **status**), and does what the component does suit this kind of environment
 (the **rule**: an e-mail blocker belongs on development and never on production, the way the old
@@ -513,16 +520,30 @@ The tab has a short intro and a collapsed explanation (`SettingsExplanation`).
   watcher rebuilds its indexable after these meta changes (on production; Yoast keeps no indexables on a
   development site).
 
-- `HideLiveAbilities` (no dependency): hides abilities of other plugins from the MCP Adapter when they change
-  the live site or send e-mail without a step where Hans can confirm (Hans, November 2026), through
-  `wp_register_ability_args` (priority 99) with `meta.mcp.public` false; the adapter then neither lists nor runs them.
-  List per plugin, filterable (`core-functionality/ai-access-hidden-abilities`): Yoast SEO (`update-post-seo-data`,
-  which an Editor may run on published items, and the site settings), WooCommerce (orders, products), Jetpack
-  Forms (forms, responses), WP Rocket (settings, cache, monitoring) and FluentCRM sending only
-  (`send-test-email`, `send-email-to-contact`, `change-campaign-status`). FluentCRM's contact, tag, list,
-  sequence and automation abilities stay open so Claude can help with the CRM and its migration; what to
-  close there is decided after the migration (Hans, November 2026). Reading abilities stay open. Not covered: the
-  application password also works on the plain REST API with the user's rights (a role of its own is the open proposal).
+**Unapproved abilities of other plugins (1.1.1).** Some plugins offer abilities that change the site at once
+or send e-mail, with no draft or step where Hans can review them first; Yoast even lets an Editor change the
+SEO data of published items. `ContentEditing` blocks them by default through its `UnapprovedAbilitiesBlocker`:
+on `wp_register_ability_args` (priority 99, after other filters) it sets `meta.mcp.public` false, so the MCP
+Adapter neither lists nor runs them, whatever the role allows (Hans, November 2026). The list per plugin is
+filterable (`core-functionality/ai-access-hidden-abilities`): Yoast SEO (`update-post-seo-data` and the site
+settings), WooCommerce (orders, products), Jetpack Forms (forms, responses), WP Rocket (settings, cache,
+monitoring) and FluentCRM sending only (`send-test-email`, `send-email-to-contact`, `change-campaign-status`).
+FluentCRM's contact, tag, list, sequence and automation abilities stay open so Claude can help with the CRM
+and its migration; what to close there is decided after the migration (Hans, November 2026). Reading
+abilities stay open. Whether the block is on is the filter `core-functionality/ai-access-hide-abilities`
+(default true).
+
+- `UnapprovedChanges` ("Other Changes Without Asking for Approval", "Overige bewerkingen zonder
+  toestemmingsvraag"; uses `ContentEditing`): lifts the block by returning false on that filter. Off by
+  default and only switched on by hand: it has an `activation_warning` (a confirm when it is ticked), and its
+  explanation lists per plugin the blocked actions that exist on this site (`get_explanation_details()`). The
+  description says explicitly that it gives no right to publish posts, pages, events or courses; those keep
+  going through a draft. Because switching it on can open the site in ways that harm security and overview,
+  its description is longer than usual and states the scope and risks precisely (Hans, November 2026).
+
+Not covered: the application password also works on the plain REST API with the user's rights (a role of its
+own is the open proposal). Replaced in 1.1.1: the feature `HideLiveAbilities` of 1.1.0, which did the same
+as an opt-in feature but never reached production (no release status, see Release settings).
 
 Tested through MCP on the speeltuin (October 2026): posts, pages, events (dates, venue, organizer, TEC's
 custom tables), Sensei (lessons placed in a course, a module and at a position), Yoast's fields and a
@@ -650,7 +671,10 @@ group. The footer button is "Save"; a tab can bring its own buttons (`get_action
 "Scan for new features" between them; the factory reset button stands apart at the far right in red, as the
 exceptional action (Hans). The page title is the tab's name (no "Settings" behind it). Tabs can show an
 explanation with `SettingsExplanation`: closed by default, with an info icon and a bold summary that
-invite to open it. Shared card styles in
+invite to open it. `SettingsExplanation::render_list()` lists items (a bold term, paragraphs, optional
+details); the Feature Activation tab uses it for an "Explanation" under every module card with the
+description of each feature (paragraphs split on blank lines, details from `get_explanation_details()`),
+so a longer description stays readable (Hans, November 2026). Shared card styles in
 `admin-settings.css` (`dwp-cf-card-group` light grey, `dwp-cf-card` white on top, like a difference in
 height, with the choices along a blue line) give a calm vertical layout; the AI Access tab uses them, one
 card per content type with its levels under each other.
@@ -685,7 +709,8 @@ card per content type with its levels under each other.
 | `core-functionality/ai-access-content-summary` | filter | The summary of an item the abilities return |
 | `core-functionality/ai-access-editable-statuses` | filter | Statuses in which an AI assistant may change an item |
 | `core-functionality/ai-access-rewrite-available` | filter | Whether Rewrite & Republish copies can be made |
-| `core-functionality/ai-access-hidden-abilities` | filter | Abilities of other plugins hidden from MCP (they change the live site or send e-mail) |
+| `core-functionality/ai-access-hidden-abilities` | filter | Abilities of other plugins hidden from MCP (they change the site or send e-mail without approval) |
+| `core-functionality/ai-access-hide-abilities` | filter | Whether those abilities are hidden (default true; `UnapprovedChanges` returns false) |
 | `core-functionality/duplicate-post-hidden-types` | filter | Post types for which Duplicate Post shows no links |
 
 ## Decisions
@@ -713,7 +738,8 @@ card per content type with its levels under each other.
 | Catalogue in memory only | Built per request on first use, not stored in the database | Hrefs can be closures and titles are translated; the cost is small |
 | Visibility per menu node | Admin, front end or both, set in the menu builder; the guard's orientation only says what kind of link it is | Where a link is useful depends on the menu, not on the plugin |
 | AI writes, Hans publishes | AI Access abilities only write drafts; published items change in a Rewrite & Republish copy (October 2026) | Hans wants to work together with AI but keep the last word on what goes live |
-| Other plugins' live abilities hidden | `HideLiveAbilities` sets `meta.mcp.public` false for abilities of other plugins that change the live site or send e-mail without a confirm step, whatever the role allows (November 2026) | Yoast lets an Editor change the SEO data of published items directly; a fixed list also holds when a role gets more rights later |
+| Other plugins' unapproved abilities blocked | `ContentEditing` sets `meta.mcp.public` false for abilities of other plugins that change the site or send e-mail without a step to approve them, whatever the role allows; `UnapprovedChanges` lifts it, off by default and by hand only (1.1.1, November 2026) | Yoast lets an Editor change the SEO data of published items directly; a fixed list also holds when a role gets more rights later. Closed unless chosen, because the AI Access list reads as "tick = grant access" |
+| Hand-only components | `activation_warning` in `ComponentMeta`: a confirm on ticking, never switched on automatically | A component that lifts a safeguard must not turn on through an update or a status change |
 | AI Access extensible | Content types, field groups and abilities come in through filters, one feature per plugin integration | Hans expects to extend and adjust it later; each integration switches on with its own plugin |
 
 ## Open points
@@ -830,6 +856,19 @@ blocks, such as calls to action, are edited in the block editor in their own pos
 Review of Block Injector, from reading the code without running it: the heading regex skips headings with attributes,
 the block count includes nested blocks, the expiry date has no effect, the status toggle has no working nonce and can
 change any post, and the `pmab_posts` ajax list has no capability check.
+
+### AI Access: unapproved abilities
+
+Open after 1.1.1 (November 2026):
+
+- After the update on production: check with `discover-abilities` on dewitteprins.nl and tinekevanurk.nl that
+  the Yoast, WP Rocket and Jetpack writes are gone and `core-functionality/*` and `get-post-seo-data` remain.
+  Yoast, WP Rocket and Jetpack do not register these abilities on the speeltuin.
+- A log of the direct actions an AI assistant ran while `UnapprovedChanges` is on.
+- A warning when the AI user has more rights than an Editor.
+- Plugins that are not on the list are open. Consider "closed by default, except reading" instead of a list.
+- A "product content" feature that edits WooCommerce products in a draft (as rewrite copies do for posts).
+- FluentCRM: what to close beyond sending is decided after the migration (Hans).
 
 ## Release and translations
 
