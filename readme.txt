@@ -4,7 +4,7 @@ Tags: core-functionality
 Requires at least: 7.0
 Tested up to: 7.1.4
 Requires PHP: 8.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,8 +31,15 @@ Mock answer
 
 == Changelog ==
 
+= 1.1.1 =
+* AI Access: abilities of other plugins that change the site or send e-mail without approval (Yoast SEO, WooCommerce, Jetpack Forms, WP Rocket, FluentCRM sending) are now blocked by Content Editing by default. It replaces the feature Hide Live Changes of 1.1.0, which never reached production.
+* AI Access: new feature Other Changes Without Asking for Approval lifts that block. Off by default, with a warning when it is switched on and a list of the actions it allows on this site.
+* AI Access: Rewrite Copies is now called Edit Published Content as a Draft; clearer descriptions for all AI Access and admin toolbar features.
+* Feature Activation: every module card has an Explanation with the description of its features.
+* A feature with an activation warning is never switched on automatically, also not after an update or a status change.
+
 = 1.1.0 =
-* AI Access: abilities of other plugins that change the live site or send e-mail are hidden from MCP (feature Hide Live Changes).
+* AI Access: abilities of other plugins that change the live site or send e-mail can be hidden from MCP (feature Hide Live Changes; did not reach production, replaced in 1.1.1).
 * Core functions: the plugin's own functions are decided in one place, each with one level, set on the Release Management tab.
 * Push notices: the real API addresses of Telegram and Pushover, and the driver gets the settings the tab saves.
 * A notice instead of a fatal error when the autoloader is missing, and a request to reinstall when the components register is missing.
