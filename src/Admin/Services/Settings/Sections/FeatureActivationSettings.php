@@ -244,7 +244,7 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	private function render_feature( string $feature_fqcn, bool $reset_to_defaults ): void {
 		$feature_name    = $feature_fqcn::get_name();
 		$feature_enabled = $reset_to_defaults
-			? $this->default_enabled_setting
+			? $this->default_enabled_setting && ! $this->plugin->components_register->is_switched_on_by_hand_only( $feature_fqcn )
 			: $this->plugin->components_register->is_enabled( $feature_fqcn );
 		$checkbox        = $this->render_checkbox( $feature_fqcn, 'js-dwp-feature-toggle', $feature_enabled );
 		$saved_running   = $this->get_saved_running_attr( $feature_fqcn );
@@ -535,18 +535,23 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 	}
 
 	/**
-	 * Returns the enabled components as they are after a reset: every module and feature in the register.
+	 * Returns the enabled components as they are after a reset: every module and feature in the register,
+	 * except those that only a person may switch on (an activation warning).
 	 *
 	 * @since  1.0.0
 	 * @return string[] Fully qualified class names.
 	 */
 	private function get_initial_enabled_components_array() {
-		$components_register = $this->plugin->components_register->get_register( Register::COMPONENTS );
+		$register            = $this->plugin->components_register;
+		$components_register = $register->get_register( Register::COMPONENTS );
 		// Built a flat array with all the classes in $components_register..
 		$enabled_components = array();
 		foreach ( $components_register as $module_fqcn => $features_fqcn ) {
 			$enabled_components[ $module_fqcn ] = true;
 			foreach ( $features_fqcn as $feature_fqcn ) {
+				if ( $register->is_switched_on_by_hand_only( $feature_fqcn ) ) {
+					continue;
+				}
 				$enabled_components[ $feature_fqcn ] = true;
 			}
 		}

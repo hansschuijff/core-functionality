@@ -264,6 +264,11 @@ class ComponentsRegister {
 				continue;
 			}
 
+			// A component with an activation warning is only ever switched on by hand.
+			if ( $this->is_switched_on_by_hand_only( $fqcn ) ) {
+				continue;
+			}
+
 			$enabled_components[ $fqcn ] = true;
 		}
 
@@ -293,6 +298,10 @@ class ComponentsRegister {
 
 		$file_values = $this->plugin->components_register_files->get_register( $register );
 		foreach ( $fqcns as $fqcn ) {
+			if ( $this->is_switched_on_by_hand_only( $fqcn ) ) {
+				continue;
+			}
+
 			if ( array_key_exists( $fqcn, $file_values ) && ! array_key_exists( $fqcn, $site_values ) ) {
 				$site_values[ $fqcn ] = $file_values[ $fqcn ];
 			}
@@ -684,6 +693,42 @@ class ComponentsRegister {
 	}
 
 	/**
+	 * Checks if a module or feature is only ever switched on by hand: it carries an activation warning
+	 * (ComponentMeta::$activation_warning), such as giving an AI assistant changes nobody reviews first.
+	 * Such a component is never switched on by an update, a release change, a factory reset or a
+	 * register file from another site (Hans, November 2026).
+	 *
+	 * @since  1.1.1
+	 * @param  string $fqcn Fully Qualified Class Name of a module or feature.
+	 * @return bool         True if only a person may switch it on.
+	 */
+	public function is_switched_on_by_hand_only( string $fqcn ): bool {
+		if ( ! class_exists( $fqcn ) || ! method_exists( $fqcn, 'get_activation_warning' ) ) {
+			return false;
+		}
+
+		return '' !== $fqcn::get_activation_warning();
+	}
+
+	/**
+	 * Returns the enabled list without the components that are only switched on by hand, for the
+	 * register file: that file travels with the release, and must not switch them on elsewhere.
+	 *
+	 * @since  1.1.1
+	 * @param  array<string, true> $enabled_components The enabled components (FQCN => true).
+	 * @return array<string, true> The list for the file.
+	 */
+	private function without_hand_only_components( array $enabled_components ): array {
+		foreach ( array_keys( $enabled_components ) as $fqcn ) {
+			if ( $this->is_switched_on_by_hand_only( (string) $fqcn ) ) {
+				unset( $enabled_components[ $fqcn ] );
+			}
+		}
+
+		return $enabled_components;
+	}
+
+	/**
 	 * Checks if a module or feature waits for an administrator to confirm its activation.
 	 *
 	 * That is the case when it asks for confirmation (ComponentMeta::$confirm_activation), nobody
@@ -932,8 +977,10 @@ class ComponentsRegister {
 		$settings_written = $this->plugin->settings->save( $settings_key, $register_data )
 			|| $this->plugin->settings->get( $settings_key, default: null ) === $register_data;
 
-		// Commit directly toward the physical file blueprints (The Git Source of Truth).
-		$file_written = $this->plugin->components_register_files->save_register( $register, $register_data );
+		// Commit directly toward the physical file blueprints (The Git Source of Truth). The enabled
+		// file leaves out what only a person may switch on: it travels with the release.
+		$file_data    = Register::ENABLED === $register ? $this->without_hand_only_components( $register_data ) : $register_data;
+		$file_written = $this->plugin->components_register_files->save_register( $register, $file_data );
 
 		// Flush and refresh internal runtime properties instantly to prevent lifecycle lag.
 		$this->cache_refresh( $register, $register_data );
