@@ -10,6 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array (
+  'core:push-notices' => 
+  array (
+    'status' => 'production',
+    'development' => 'adjustable',
+    'staging' => 'adjustable',
+    'production' => 'adjustable',
+  ),
+  'core:options-management' => 
+  array (
+    'status' => 'production',
+    'development' => 'adjustable',
+    'staging' => 'adjustable',
+    'production' => 'adjustable',
+  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\Sensei\\Features\\MessageLabels\\MessageLabels' => 
   array (
     'status' => 'production',
@@ -102,6 +116,13 @@ return array (
     'production' => 'adjustable',
   ),
   'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\SeoFields\\SeoFields' => 
+  array (
+    'status' => 'production',
+    'development' => 'adjustable',
+    'staging' => 'adjustable',
+    'production' => 'adjustable',
+  ),
+  'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\UnapprovedChanges\\UnapprovedChanges' => 
   array (
     'status' => 'production',
     'development' => 'adjustable',

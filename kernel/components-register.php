@@ -37,8 +37,8 @@ return array (
   ),
   'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\AiAccess' => 
   array (
-    0 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\HideLiveAbilities\\HideLiveAbilities',
-    1 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\SeoFields\\SeoFields',
+    0 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\SeoFields\\SeoFields',
+    1 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\UnapprovedChanges\\UnapprovedChanges',
     2 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\EventContent\\EventContent',
     3 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\RewriteCopies\\RewriteCopies',
     4 => 'DeWittePrins\\CoreFunctionality\\Modules\\AiAccess\\Features\\CourseContent\\CourseContent',
