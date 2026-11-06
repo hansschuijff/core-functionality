@@ -540,6 +540,10 @@ abilities stay open. Whether the block is on is the filter `core-functionality/a
   description says explicitly that it gives no right to publish posts, pages, events or courses; those keep
   going through a draft. Because switching it on can open the site in ways that harm security and overview,
   its description is longer than usual and states the scope and risks precisely (Hans, November 2026).
+  While the block is lifted (by this feature or by code), the AI Access tab opens with a warning card
+  (`dwp-cf-warning-card`): that it is on, the actions it allows on this site and a link to switch it off on
+  the Feature Activation tab; the permission is set there, so it should be visible there (Hans, 1.1.2). The
+  lines per plugin come from `UnapprovedAbilitiesBlocker::get_action_lines()`, shared with the explanation.
 
 Not covered: the application password also works on the plain REST API with the user's rights (a role of its
 own is the open proposal). Replaced in 1.1.1: the feature `HideLiveAbilities` of 1.1.0, which did the same
