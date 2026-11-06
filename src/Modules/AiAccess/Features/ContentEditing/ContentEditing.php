@@ -71,7 +71,7 @@ class ContentEditing extends AbstractFeature {
 		return new ComponentMeta(
 			id:          'ai_access_content_editing',
 			name:        __( 'Content Editing', 'core-functionality' ),
-			description: __( 'An AI assistant may find, read and write drafts of posts, pages and other content types. It never publishes; you do.', 'core-functionality' ),
+			description: __( 'The AI assistant may find and read posts, pages and other content, and make and change drafts of them. It never publishes: you do.', 'core-functionality' ),
 		);
 	}
 
@@ -86,6 +86,8 @@ class ContentEditing extends AbstractFeature {
 	public function launch(): void {
 		add_action( 'wp_abilities_api_categories_init', array( $this, 'register_category' ) );
 		add_action( 'wp_abilities_api_init', array( $this, 'register_abilities' ) );
+
+		( new UnapprovedAbilitiesBlocker() )->launch();
 
 		add_action(
 			'core-functionality/register-settings-sections',
