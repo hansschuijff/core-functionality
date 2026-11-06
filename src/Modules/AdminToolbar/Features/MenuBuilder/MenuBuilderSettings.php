@@ -18,6 +18,7 @@ use DeWittePrins\CoreFunctionality\Environment\Registers\AdminToolbarRegister;
 use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\AdminToolbar;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
 use DeWittePrins\CoreFunctionality\Enums\ProviderStatus;
+use DeWittePrins\CoreFunctionality\Enums\TitleForm;
 use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use DeWittePrins\CoreFunctionality\Plugin;
 use WP_Error;
@@ -55,7 +56,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * builds the pool and the menu tree from that data.
  *
  * The saved tree holds per node: id, type (shortcut or submenu), title (empty: the shortcut's own,
- * translated title), href (submenus only), visibility (admin, frontend or both) and children.
+ * translated title), title-form (shortcuts only, and only when not automatic: short, full or source),
+ * href (submenus only), visibility (admin, frontend or both) and children.
  *
  * @since 1.0.0
  */
@@ -372,6 +374,7 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 			$rows[] = $row + array(
 				'instance'   => (string) $instance_id,
 				'title'      => $title,
+				'titleForm'  => TitleForm::of_node( $meta )->value,
 				'visibility' => ( Orientation::tryFrom( (string) ( $meta['visibility'] ?? '' ) ) ?? Orientation::BOTH )->value,
 				'depth'      => $depth,
 			);
@@ -475,6 +478,16 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 			'emptyTree'             => __( 'The menu is empty. Add menu items from the list.', 'core-functionality' ),
 			'title'                 => __( 'Title', 'core-functionality' ),
 			'titleHint'             => __( 'Leave empty to use the menu item\'s own title, which follows the translation.', 'core-functionality' ),
+			'titleForm'             => __( 'Own title', 'core-functionality' ),
+			'titleFormHint'         => __( 'Which of its own titles the menu item shows when the title field is empty.', 'core-functionality' ),
+			'titleFormAuto'         => __( 'Auto', 'core-functionality' ),
+			'titleFormAutoTip'      => __( 'Short under a parent of the same plugin or subject, otherwise full', 'core-functionality' ),
+			'titleFormShort'        => __( 'Short', 'core-functionality' ),
+			'titleFormShortTip'     => __( 'Always the short title (Settings), where the menu item has one', 'core-functionality' ),
+			'titleFormFull'         => __( 'Full', 'core-functionality' ),
+			'titleFormFullTip'      => __( 'Always the full title (WooCommerce Settings)', 'core-functionality' ),
+			'titleFormSource'       => __( 'Source', 'core-functionality' ),
+			'titleFormSourceTip'    => __( 'The name of the plugin or theme (WooCommerce), for a parent that already says what it is (Settings)', 'core-functionality' ),
 			'submenuTitle'          => __( 'Submenu', 'core-functionality' ),
 			'url'                   => __( 'URL', 'core-functionality' ),
 			'urlHint'               => __( 'Leave empty for a submenu without a link of its own; it is hidden when none of its items is shown.', 'core-functionality' ),
@@ -491,7 +504,7 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 			/* translators: %d: number of selected items. */
 			'selectedCount'         => __( '%d selected', 'core-functionality' ),
 			'resetTitles'           => __( 'Reset titles', 'core-functionality' ),
-			'resetTitlesTip'        => __( 'Use the menu items\' own titles again, which follow the translation.', 'core-functionality' ),
+			'resetTitlesTip'        => __( 'Use the menu items\' own titles again, in their automatic form, which follow the translation.', 'core-functionality' ),
 			'clearSelection'        => __( 'Clear selection', 'core-functionality' ),
 			/* translators: %d: number of items that will be removed. */
 			'removeSelectedConfirm' => __( 'Remove %d items (the selected items and the items below them)?', 'core-functionality' ),
@@ -653,10 +666,19 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 				}
 			}
 
-			$sanitized[ sanitize_key( (string) $instance_id ) ] = array(
-				'id'         => $node_id,
-				'type'       => $type,
-				'title'      => $title,
+			$node = array(
+				'id'    => $node_id,
+				'type'  => $type,
+				'title' => $title,
+			);
+
+			// Only a chosen title form is stored, so a menu without one stays equal to the default.
+			$title_form = TitleForm::of_node( $meta );
+			if ( 'shortcut' === $type && TitleForm::AUTO !== $title_form ) {
+				$node['title-form'] = $title_form->value;
+			}
+
+			$sanitized[ sanitize_key( (string) $instance_id ) ] = $node + array(
 				'href'       => $href,
 				'visibility' => ( Orientation::tryFrom( (string) ( $meta['visibility'] ?? '' ) ) ?? Orientation::BOTH )->value,
 				'children'   => ( ! empty( $meta['children'] ) && is_array( $meta['children'] ) && $depth < self::MAX_DEPTH )

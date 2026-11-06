@@ -801,6 +801,23 @@
 	color: #fff;
 }
 
+.dwp-mb-segment:disabled {
+	color: #a7aaad;
+	cursor: default;
+}
+
+/* Title form: which of its own titles a menu item shows (edit panel and bulk bar). */
+.dwp-mb-edit .dwp-mb-title-form .dwp-mb-segment {
+	padding: 2px 8px;
+	font-size: 12px;
+}
+
+.dwp-mb-bulk-title-form {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
 /* Its own visibility conflicts with a parent: never shown. Explained in the tooltip. */
 .dwp-mb-conflict {
 	color: #a7262a;
@@ -873,7 +890,8 @@
 	display: none;
 }
 
-.dwp-mb-field label {
+.dwp-mb-field label,
+.dwp-mb-field-label {
 	display: block;
 	margin-bottom: 3px;
 	font-size: 12px;

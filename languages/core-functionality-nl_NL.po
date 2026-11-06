@@ -4258,8 +4258,44 @@ msgid "Reset titles"
 msgstr "Titels terugzetten"
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:492
-msgid "Use the menu items' own titles again, which follow the translation."
-msgstr "Weer de eigen titels van de menu-items gebruiken; die volgen de vertaling."
+msgid "Use the menu items' own titles again, in their automatic form, which follow the translation."
+msgstr "Weer de eigen titels van de menu-items gebruiken, in hun automatische vorm; die volgen de vertaling."
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Own title"
+msgstr "Eigen titel"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Which of its own titles the menu item shows when the title field is empty."
+msgstr "Welke van zijn eigen titels het menu-item toont als het titelveld leeg is."
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Auto"
+msgstr "Auto"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Short under a parent of the same plugin or subject, otherwise full"
+msgstr "Kort onder een ouder van dezelfde plugin of hetzelfde onderwerp, anders volledig"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Short"
+msgstr "Kort"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Always the short title (Settings), where the menu item has one"
+msgstr "Altijd de korte titel (Instellingen), als het menu-item er een heeft"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Full"
+msgstr "Volledig"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "Always the full title (WooCommerce Settings)"
+msgstr "Altijd de volledige titel (WooCommerce-instellingen)"
+
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php
+msgid "The name of the plugin or theme (WooCommerce), for a parent that already says what it is (Settings)"
+msgstr "De naam van de plugin of het thema (WooCommerce), voor een ouder die al zegt wat het is (Instellingen)"
 
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:493
 msgid "Clear selection"

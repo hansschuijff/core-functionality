@@ -21,6 +21,7 @@ use DeWittePrins\CoreFunctionality\Modules\AdminToolbar\AdminToolbar;
 use Override;
 use DeWittePrins\CoreFunctionality\Environment\Registers\AdminToolbarRegister;
 use DeWittePrins\CoreFunctionality\Enums\Orientation;
+use DeWittePrins\CoreFunctionality\Enums\TitleForm;
 use DeWittePrins\CoreFunctionality\DTO\ToolbarShortcut;
 use WP_Admin_Bar;
 
@@ -35,6 +36,8 @@ use function add_action;
 use function array_key_first;
 use function count;
 use function plugins_url;
+use function str_replace;
+use function ucwords;
 use function wp_enqueue_script;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -149,6 +152,7 @@ class MenuBuilder extends AbstractFeature {
 				$pool[ $shortcut->id ] = array(
 					'shortcut' => $shortcut,
 					'group'    => '' !== $shortcut->group ? $shortcut->group : $provider_id,
+					'provider' => $provider_id,
 				);
 			}
 		}
@@ -193,9 +197,11 @@ class MenuBuilder extends AbstractFeature {
 				}
 				$group = $pool[ $node_id ]['group'];
 
-				// An empty title follows the (translated) title of the shortcut, short under a parent of
-				// the same group; the URL always comes from the shortcut.
-				$title = '' !== $title ? $title : $shortcut->get_title_in( $group, $parent_group );
+				// An empty title follows the (translated) title of the shortcut in the form the node asks
+				// for; the URL always comes from the shortcut.
+				$title = '' !== $title
+					? $title
+					: $this->get_shortcut_title( $shortcut, TitleForm::of_node( $node_meta ), $pool[ $node_id ]['provider'], $group, $parent_group );
 				$href  = $shortcut->get_href();
 				$label = $shortcut->label;
 			} else {
@@ -232,6 +238,42 @@ class MenuBuilder extends AbstractFeature {
 		}
 
 		return $added;
+	}
+
+	/**
+	 * Returns the title a shortcut shows without a title of its own, in the form its node asks for.
+	 *
+	 * The menu builder's editor (ownDefaultTitle() in menu-builder-settings.js) applies the same rule.
+	 *
+	 * @since  1.1.3
+	 * @param  ToolbarShortcut $shortcut     The shortcut.
+	 * @param  TitleForm       $form         The title form chosen for the node.
+	 * @param  string          $provider_id  The plugin, theme or core that offers the shortcut.
+	 * @param  string          $group        The group of the shortcut.
+	 * @param  string          $parent_group The group of the parent node ('' at the top or under a mixed submenu).
+	 * @return string The title.
+	 */
+	private function get_shortcut_title( ToolbarShortcut $shortcut, TitleForm $form, string $provider_id, string $group, string $parent_group ): string {
+		return match ( $form ) {
+			TitleForm::SHORT  => '' !== $shortcut->short_title ? $shortcut->short_title : $shortcut->title,
+			TitleForm::FULL   => $shortcut->title,
+			TitleForm::SOURCE => $this->get_provider_name( $provider_id ),
+			TitleForm::AUTO   => $shortcut->get_title_in( $group, $parent_group ),
+		};
+	}
+
+	/**
+	 * Returns the name of a provider as the menu builder shows it: the name its guard gives, else
+	 * the id made readable (as MenuBuilderSettings::get_provider_name()).
+	 *
+	 * @since  1.1.3
+	 * @param  string $provider_id The plugin, theme or core id.
+	 * @return string The name.
+	 */
+	private function get_provider_name( string $provider_id ): string {
+		$name = AdminToolbarRegister::get_name( $provider_id );
+
+		return '' !== $name ? $name : ucwords( str_replace( '-', ' ', $provider_id ) );
 	}
 
 	/**

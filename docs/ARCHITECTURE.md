@@ -261,7 +261,8 @@ names none: the course types belong to Sensei LMS.
 the menu builder. Where a node is shown is not decided by the guard but per node in the menu builder.
 
 **Menu builder.** The saved tree (settings key `menu-builder-hierarchical-tree`) holds per node: `id`,
-`type` (`shortcut` or `submenu`), `title` (empty: the shortcut's own, translated title), `href` (submenus
+`type` (`shortcut` or `submenu`), `title` (empty: the shortcut's own, translated title), `title-form`
+(shortcuts only, only when not automatic: `short`, `full` or `source`; see Titles below), `href` (submenus
 only; a shortcut's URL always comes from the guard), `visibility` (`admin`, `frontend` or `both`, the
 default) and `children`, at most four levels (`MenuBuilderSettings::MAX_DEPTH`; the runtime has no limit of its own). At runtime a shortcut whose provider is not active is left
 out together with its children, and a submenu without a link of its own is left out when none of its
@@ -328,6 +329,14 @@ short one ("Categories", "New") with a group (what it is about: plugins, posts, 
 Without a title of its own, a menu item under a parent of the same group shows the short title, elsewhere
 the full one; a custom submenu counts as the group all its menu items share. The pool shows full titles.
 The toolbar (MenuBuilder.php) and the editor (serialize()) apply the same rule, so nothing is stored.
+That automatic rule is not always right: under a custom submenu "Settings" that gathers several plugins,
+"WooCommerce Settings" is too long and "Settings" says nothing. So each shortcut has a title form (enum
+`TitleForm`, a switch in its settings panel and in the bulk bar): Auto (the rule above), Short, Full, or
+Source (the name of its plugin or theme, from the guard's translated `get_name()`: "WooCommerce"). Stored
+as `title-form` only when not Auto, so older menus and the default stay equal; a title of its own still wins,
+and "Reset titles" also sets the form back to Auto. Nothing fixed is stored, so it keeps following the
+translation (Hans, November 2026). `MenuBuilder::get_shortcut_title()` and `ownDefaultTitle()` in the
+editor apply the same rule.
 
 Menu item ids read `cf-<source>-<page>`: `cf-woocommerce-orders`, `cf-events-calendar-settings-seo`; the
 source alone is its menu head (`cf-automatewoo`), and `view-` marks a page on the site

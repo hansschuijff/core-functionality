@@ -123,12 +123,54 @@
 			return wrapper;
 		}
 
+		// One-click choice which of its own titles a shortcut shows (when its title field is empty):
+		// automatic, short, full, or the name of its source. Stored as '' for automatic.
+		const titleForms = [
+			[ '', t.titleFormAuto, t.titleFormAutoTip ],
+			[ 'short', t.titleFormShort, t.titleFormShortTip ],
+			[ 'full', t.titleFormFull, t.titleFormFullTip ],
+			[ 'source', t.titleFormSource, t.titleFormSourceTip ],
+		];
+
+		function createTitleFormControl() {
+			const group = el('span', 'dwp-mb-segmented dwp-mb-title-form');
+			group.setAttribute('role', 'group');
+			group.setAttribute('aria-label', t.titleForm);
+
+			titleForms.forEach(function (option) {
+				const button = el('button', 'dwp-mb-segment', option[ 1 ]);
+				button.type = 'button';
+				button.title = option[ 2 ];
+				button.dataset.titleForm = option[ 0 ];
+				group.appendChild(button);
+			});
+
+			return group;
+		}
+
+		// Sets the title form of a shortcut (custom submenus have none) and shows the resulting title.
+		function setTitleForm(node, form) {
+			const state = rows.get(node);
+			if ('shortcut' !== state.type) {
+				return;
+			}
+			state.titleForm = form;
+			refreshHeader(node);
+		}
+
+		function refreshTitleForm(node) {
+			const state = rows.get(node);
+			node.querySelectorAll('.dwp-mb-edit [data-title-form]').forEach(function (button) {
+				button.setAttribute('aria-pressed', String(button.dataset.titleForm === state.titleForm));
+			});
+		}
+
 		function refreshVisibility(node, restriction) {
 			const state    = rows.get(node);
 			const warning  = node.querySelector('.dwp-mb-conflict');
 			const conflict = '' !== restriction && 'both' !== state.visibility && restriction !== state.visibility;
 
-			node.querySelectorAll('.dwp-mb-segment').forEach(function (button) {
+			node.querySelectorAll('.dwp-mb-segment[data-visibility]').forEach(function (button) {
 				button.setAttribute('aria-pressed', String(button.dataset.visibility === state.visibility));
 			});
 
@@ -404,11 +446,20 @@
 			return branch;
 		}
 
-		// The title the node gets without one of its own: the short title under a parent of the same
-		// group ("New" under Plugins), else the full title. serialize() keeps parentGroup current.
+		// The title the node gets without one of its own, in its title form. Automatic: the short title
+		// under a parent of the same group ("New" under Plugins), else the full title. serialize() keeps
+		// parentGroup current. MenuBuilder::get_shortcut_title() applies the same rule in the toolbar.
 		function ownDefaultTitle(state) {
 			if ('submenu' === state.type) {
 				return t.submenuTitle;
+			}
+			switch (state.titleForm) {
+				case 'short':
+					return state.shortTitle || state.defaultTitle;
+				case 'full':
+					return state.defaultTitle;
+				case 'source':
+					return state.sourceName || state.defaultTitle;
 			}
 			return state.shortTitle && state.parentGroup && state.group === state.parentGroup
 				? state.shortTitle
@@ -423,6 +474,7 @@
 			const state = rows.get(node);
 			node.querySelector('.dwp-mb-title').textContent = displayTitle(state);
 			node.querySelector('.dwp-mb-edit .regular-text').placeholder = ownDefaultTitle(state);
+			refreshTitleForm(node);
 		}
 
 		function field(labelText, input, hint) {
@@ -452,6 +504,15 @@
 				serialize();
 			});
 			panel.appendChild(field(t.title, title, 'submenu' === state.type ? '' : t.titleHint));
+
+			if ('shortcut' === state.type) {
+				const formField = el('div', 'dwp-mb-field');
+				const forms     = createTitleFormControl();
+				const short     = forms.querySelector('[data-title-form="short"]');
+				short.disabled  = !state.shortTitle; // Without a short title, Short would show the full one.
+				formField.append(el('span', 'dwp-mb-field-label', t.titleForm), forms, el('p', 'description', t.titleFormHint));
+				panel.appendChild(formField);
+			}
 
 			const url = el('input', 'regular-text code');
 			url.type = 'text';
@@ -492,7 +553,9 @@
 				shortTitle: row.shortTitle || '',
 				group: 'shortcut' === row.type ? (row.group || row.provider || '') : '',
 				parentGroup: '',
+				sourceName: 'shortcut' === row.type && row.provider ? row.providerName : '',
 				title: row.title || '',
+				titleForm: 'shortcut' === row.type && [ 'short', 'full', 'source' ].includes(row.titleForm) ? row.titleForm : '',
 				href: row.href || '',
 				visibility: row.visibility || 'both',
 			};
@@ -822,6 +885,8 @@
 		const bulkCount = el('span', 'dwp-mb-bulk-count');
 		const bulkShow  = createVisibilityControl();
 		bulkShow.prepend(el('span', 'dwp-mb-bulk-label', t.visibility));
+		const bulkForm  = el('span', 'dwp-mb-bulk-title-form');
+		bulkForm.append(el('span', 'dwp-mb-bulk-label', t.titleForm), createTitleFormControl());
 
 		function bulkButton(text, className, tip) {
 			const button = el('button', 'button button-small ' + className, text);
@@ -835,6 +900,7 @@
 		bulkBar.append(
 			bulkCount,
 			bulkShow,
+			bulkForm,
 			bulkButton(t.selectBelow, 'js-dwp-mb-bulk-below', t.selectBelowTip),
 			bulkButton(t.resetTitles, 'js-dwp-mb-bulk-reset', t.resetTitlesTip),
 			bulkButton(t.remove, 'js-dwp-mb-bulk-remove'),
@@ -859,6 +925,11 @@
 					rows.get(node).visibility = button.dataset.visibility;
 				});
 				serialize();
+			} else if (undefined !== button.dataset.titleForm) {
+				selected.forEach(function (node) {
+					setTitleForm(node, button.dataset.titleForm);
+				});
+				serialize();
 			} else if (button.classList.contains('js-dwp-mb-bulk-below')) {
 				branchesOf(selectedRoots()).forEach(function (node) {
 					setSelected(node, true);
@@ -868,7 +939,8 @@
 				selected.forEach(function (node) {
 					const state = rows.get(node);
 					if ('shortcut' === state.type) {
-						state.title = '';
+						state.title     = '';
+						state.titleForm = '';
 						node.querySelector('.dwp-mb-edit input[type="text"]').value = '';
 						refreshHeader(node);
 					}
@@ -898,6 +970,9 @@
 
 			if (button.dataset.visibility) {
 				rows.get(node).visibility = button.dataset.visibility;
+				serialize();
+			} else if (undefined !== button.dataset.titleForm) {
+				setTitleForm(node, button.dataset.titleForm);
 				serialize();
 			} else if (button.classList.contains('js-dwp-mb-collapse')) {
 				setCollapsed(node, !node.classList.contains('is-collapsed'));
@@ -1593,6 +1668,7 @@
 				out.push(Object.assign(row, {
 					instance: String(instance),
 					title: 'shortcut' === row.type && title === row.defaultTitle ? '' : title,
+					titleForm: String(meta[ 'title-form' ] || ''),
 					visibility: [ 'admin', 'frontend' ].includes(meta.visibility) ? meta.visibility : 'both',
 					depth: depth,
 				}));
@@ -1954,10 +2030,15 @@
 					id: state.id,
 					type: state.type,
 					title: state.title,
+				};
+				if (state.titleForm) {
+					payload[ 'title-form' ] = state.titleForm;
+				}
+				Object.assign(payload, {
 					href: 'submenu' === state.type ? state.href : '',
 					visibility: state.visibility,
 					children: {},
-				};
+				});
 
 				const parent = 0 === depth ? result : stack[ depth - 1 ];
 				parent[ node.dataset.instance ] = payload;
@@ -1989,6 +2070,7 @@
 				const state = rows.get(node);
 				return Object.assign({}, sources.get(node), {
 					title: state.title,
+					titleForm: state.titleForm,
 					href: state.href,
 					visibility: state.visibility,
 					instance: node.dataset.instance,
