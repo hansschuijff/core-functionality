@@ -17,11 +17,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+use function __;
 use function add_filter;
 use function apply_filters;
 use function array_merge;
+use function explode;
+use function implode;
 use function in_array;
 use function is_array;
+use function sprintf;
+use function wp_get_ability;
 
 /**
  * Class UnapprovedAbilitiesBlocker
@@ -46,6 +51,20 @@ class UnapprovedAbilitiesBlocker {
 	 * @var   int
 	 */
 	private const FILTER_PRIORITY = 99;
+
+	/**
+	 * Readable names of the plugins whose abilities are on the list, by ability namespace.
+	 *
+	 * @since 1.1.2 Moved here from UnapprovedChanges (1.1.1).
+	 * @var   array<string, string>
+	 */
+	private const PLUGIN_NAMES = array(
+		'yoast-seo'     => 'Yoast SEO',
+		'woocommerce'   => 'WooCommerce',
+		'jetpack-forms' => 'Jetpack Forms',
+		'wp-rocket'     => 'WP Rocket',
+		'fluent-crm'    => 'FluentCRM',
+	);
 
 	/**
 	 * The hidden ability names, built once per request.
@@ -84,12 +103,13 @@ class UnapprovedAbilitiesBlocker {
 	}
 
 	/**
-	 * Returns whether the abilities on the list are hidden.
+	 * Returns whether the abilities on the list are hidden. Public since 1.1.2, so the settings tab
+	 * can say when the block is lifted.
 	 *
 	 * @since  1.1.1
 	 * @return bool True when they are hidden.
 	 */
-	private static function is_blocking(): bool {
+	public static function is_blocking(): bool {
 		/**
 		 * Filters whether abilities of other plugins that change the site without approval are hidden
 		 * from MCP. The feature "Other Changes Without Asking for Approval" returns false.
@@ -130,6 +150,65 @@ class UnapprovedAbilitiesBlocker {
 		self::$hidden_abilities = is_array( $abilities ) ? $abilities : $defaults;
 
 		return self::$hidden_abilities;
+	}
+
+	/**
+	 * Returns the blocked actions that exist on this site, one line per plugin with the labels its
+	 * plugin gives them, or a single line saying there are none. Shown in the explanation of
+	 * "Other Changes Without Asking for Approval" and on the settings tab while the block is lifted.
+	 *
+	 * @since  1.1.2
+	 * @return string[] The lines, as plain text.
+	 */
+	public static function get_action_lines(): array {
+		$labels_per_plugin = self::get_existing_labels_per_plugin();
+
+		if ( empty( $labels_per_plugin ) ) {
+			return array( __( 'None of these plugins offers such actions on this site at the moment.', 'core-functionality' ) );
+		}
+
+		$lines = array();
+		foreach ( $labels_per_plugin as $plugin_name => $labels ) {
+			/* translators: 1: plugin name, 2: comma-separated list of actions. */
+			$lines[] = sprintf( __( '%1$s: %2$s', 'core-functionality' ), $plugin_name, implode( ', ', $labels ) );
+		}
+
+		return $lines;
+	}
+
+	/**
+	 * Returns the labels of the abilities on the list that exist on this site, grouped by plugin name.
+	 *
+	 * @since  1.1.2
+	 * @return array<string, string[]> Labels per plugin name.
+	 */
+	private static function get_existing_labels_per_plugin(): array {
+		$labels_per_plugin = array();
+
+		foreach ( self::get_hidden_abilities() as $ability_name ) {
+			$ability = wp_get_ability( $ability_name );
+			if ( null === $ability ) {
+				continue;
+			}
+
+			$plugin_name                         = self::get_plugin_name( $ability_name );
+			$labels_per_plugin[ $plugin_name ][] = $ability->get_label();
+		}
+
+		return $labels_per_plugin;
+	}
+
+	/**
+	 * Returns the readable plugin name of an ability, from the namespace before the slash.
+	 *
+	 * @since  1.1.2
+	 * @param  string $ability_name The ability name, such as 'wp-rocket/set-option'.
+	 * @return string The plugin name, or the namespace when it is not known.
+	 */
+	private static function get_plugin_name( string $ability_name ): string {
+		$namespace = explode( '/', $ability_name )[0];
+
+		return self::PLUGIN_NAMES[ $namespace ] ?? $namespace;
 	}
 
 	/**

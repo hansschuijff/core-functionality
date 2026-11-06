@@ -25,10 +25,7 @@ use Override;
 
 use function __;
 use function add_filter;
-use function explode;
 use function implode;
-use function sprintf;
-use function wp_get_ability;
 
 /**
  * Class UnapprovedChanges
@@ -43,20 +40,6 @@ use function wp_get_ability;
  * @since 1.1.1
  */
 class UnapprovedChanges extends AbstractFeature {
-
-	/**
-	 * Readable names of the plugins whose abilities are on the list, by ability namespace.
-	 *
-	 * @since 1.1.1
-	 * @var   array<string, string>
-	 */
-	private const PLUGIN_NAMES = array(
-		'yoast-seo'     => 'Yoast SEO',
-		'woocommerce'   => 'WooCommerce',
-		'jetpack-forms' => 'Jetpack Forms',
-		'wp-rocket'     => 'WP Rocket',
-		'fluent-crm'    => 'FluentCRM',
-	);
 
 	/**
 	 * Returns the descriptive data of this feature.
@@ -112,53 +95,6 @@ class UnapprovedChanges extends AbstractFeature {
 	 */
 	#[Override]
 	public static function get_explanation_details(): array {
-		$labels_per_plugin = self::get_blocked_labels_per_plugin();
-
-		if ( empty( $labels_per_plugin ) ) {
-			return array( __( 'None of these plugins offers such actions on this site at the moment.', 'core-functionality' ) );
-		}
-
-		$lines = array();
-		foreach ( $labels_per_plugin as $plugin_name => $labels ) {
-			/* translators: 1: plugin name, 2: comma-separated list of actions. */
-			$lines[] = sprintf( __( '%1$s: %2$s', 'core-functionality' ), $plugin_name, implode( ', ', $labels ) );
-		}
-
-		return $lines;
-	}
-
-	/**
-	 * Returns the labels of the blocked abilities that exist on this site, grouped by plugin name.
-	 *
-	 * @since  1.1.1
-	 * @return array<string, string[]> Labels per plugin name.
-	 */
-	private static function get_blocked_labels_per_plugin(): array {
-		$labels_per_plugin = array();
-
-		foreach ( UnapprovedAbilitiesBlocker::get_hidden_abilities() as $ability_name ) {
-			$ability = wp_get_ability( $ability_name );
-			if ( null === $ability ) {
-				continue;
-			}
-
-			$plugin_name                         = self::get_plugin_name( $ability_name );
-			$labels_per_plugin[ $plugin_name ][] = $ability->get_label();
-		}
-
-		return $labels_per_plugin;
-	}
-
-	/**
-	 * Returns the readable plugin name of an ability, from the namespace before the slash.
-	 *
-	 * @since  1.1.1
-	 * @param  string $ability_name The ability name, such as 'wp-rocket/set-option'.
-	 * @return string The plugin name, or the namespace when it is not known.
-	 */
-	private static function get_plugin_name( string $ability_name ): string {
-		$namespace = explode( '/', $ability_name )[0];
-
-		return self::PLUGIN_NAMES[ $namespace ] ?? $namespace;
+		return UnapprovedAbilitiesBlocker::get_action_lines();
 	}
 }

@@ -639,6 +639,40 @@ span.dwp-menu-item.is-active {
     margin: 0 0 12px 0;
     font-size: 14px;
 }
+
+/* A card that warns about a lifted safeguard, in WordPress's warning colours. */
+.dwp-cf-warning-card {
+    margin: 0 0 20px 0;
+    padding: 14px 20px;
+    max-width: 1000px;
+    background: #fcf9e8;
+    border: 1px solid #f0c33c;
+    border-left: 4px solid #dba617;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+.dwp-cf-warning-card > h3 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+.dwp-cf-warning-card > h3 .dashicons {
+    color: #996800;
+}
+.dwp-cf-warning-card > p,
+.dwp-cf-warning-card > ul {
+    max-width: 75ch;
+    margin: 0 0 8px 0;
+}
+.dwp-cf-warning-card > ul {
+    padding-left: 18px;
+    list-style: disc;
+}
+.dwp-cf-warning-card > p:last-child {
+    margin-bottom: 0;
+}
 .dwp-cf-cards {
     display: grid;
     /* min() keeps a card within a narrow screen instead of at least 280px wide. */

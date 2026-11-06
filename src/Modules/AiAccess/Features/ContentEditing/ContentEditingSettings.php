@@ -17,26 +17,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Sections\FeatureActivationSettings;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\SettingsExplanation;
 use DeWittePrins\CoreFunctionality\Environment\Registers\PostTypeRegister;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\AiAccess;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Interfaces\ContentTypeProfileInterface;
+use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\UnapprovedChanges\UnapprovedChanges;
 use DeWittePrins\CoreFunctionality\Plugin;
 use Override;
 use WP_Error;
 
 use function __;
+use function add_query_arg;
 use function checked;
 use function esc_attr;
 use function esc_html;
 use function esc_html__;
+use function esc_url;
 use function get_post_type_object;
 use function implode;
 use function is_array;
 use function is_string;
+use function menu_page_url;
 use function plugins_url;
 use function sanitize_key;
+use function sprintf;
 use function wp_unslash;
 
 /**
@@ -226,8 +233,54 @@ class ContentEditingSettings implements SettingsSectionInterface {
 			$groups[] = $this->render_plugin_group( $plugin_name, $profiles, $choices );
 		}
 
+		echo $this->render_unapproved_changes_notice(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
 		echo $this->render_explanation(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
 		echo '<div class="dwp-cf-ai-levels">' . implode( '', $groups ) . '</div><!-- closes dwp-cf-ai-levels -->'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts.
+	}
+
+	/**
+	 * Returns a warning card while the block on other plugins' unapproved actions is lifted (by
+	 * "Other Changes Without Asking for Approval" or by code): which actions the AI assistant may
+	 * then use directly, and where to switch it off. Empty while the block is on (Hans, November
+	 * 2026: the permission is set here, so it should be visible here).
+	 *
+	 * @since  1.1.2
+	 * @return string The card (HTML), or ''.
+	 */
+	private function render_unapproved_changes_notice(): string {
+		if ( UnapprovedAbilitiesBlocker::is_blocking() ) {
+			return '';
+		}
+
+		/* translators: %s: feature name. */
+		$title_html   = esc_html( sprintf( __( '%s is switched on', 'core-functionality' ), UnapprovedChanges::get_name() ) );
+		$intro_html   = esc_html__( 'The AI assistant may also use the actions below. They apply on the site at once, without you being able to review or approve them first. Publishing posts, pages, events and courses stays with you.', 'core-functionality' );
+		$actions_html = $this->render_unapproved_actions_list();
+		$link_url     = esc_url( add_query_arg( array( 'section' => FeatureActivationSettings::get_id() ), menu_page_url( AdminSettingsPage::SLUG, false ) ) );
+		$link_html    = esc_html__( 'Switch this off on the Feature Activation tab', 'core-functionality' );
+
+		return '<section class="dwp-cf-warning-card">'
+			. '<h3><span class="dashicons dashicons-warning" aria-hidden="true"></span> ' . $title_html . '</h3>'
+			. '<p>' . $intro_html . '</p>'
+			. $actions_html
+			. '<p><a href="' . $link_url . '">' . $link_html . '</a></p>'
+			. '</section><!-- closes dwp-cf-warning-card -->';
+	}
+
+	/**
+	 * Returns the actions the AI assistant may use directly while the block is lifted, one list item
+	 * per plugin.
+	 *
+	 * @since  1.1.2
+	 * @return string The list (HTML).
+	 */
+	private function render_unapproved_actions_list(): string {
+		$items = array();
+		foreach ( UnapprovedAbilitiesBlocker::get_action_lines() as $line ) {
+			$items[] = '<li>' . esc_html( $line ) . '</li>';
+		}
+
+		return '<ul>' . implode( '', $items ) . '</ul>';
 	}
 
 	/**
