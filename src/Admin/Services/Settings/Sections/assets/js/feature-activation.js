@@ -26,8 +26,9 @@ jQuery( document ).ready( function( $ ) {
 		var $containers = $moduleGrid.find( '.js-dwp-features-container' );
 
 		if ( 'select' === currentState ) {
-			// Activate all modules and features globally.
-			$inputs.prop( 'checked', true );
+			// Activate all modules and features globally, except those that ask for confirmation:
+			// they are only ticked one by one, after their warning.
+			$inputs.not( '[data-activation-warning]' ).prop( 'checked', true );
 			$cards.removeClass( 'is-disabled' );
 			$containers.slideDown( 150 );
 
@@ -56,8 +57,9 @@ jQuery( document ).ready( function( $ ) {
 			$card.removeClass( 'is-disabled' );
 			$features.slideDown( 150 );
 
-			// UX Service: Automatically activate underlying children features on parent boot.
-			$features.find( 'input[type="checkbox"]:not(:disabled)' ).prop( 'checked', true );
+			// UX Service: Automatically activate underlying children features on parent boot,
+			// except those that ask for confirmation first.
+			$features.find( 'input[type="checkbox"]:not(:disabled):not([data-activation-warning])' ).prop( 'checked', true );
 		} else {
 			$card.addClass( 'is-disabled' );
 			$features.slideUp( 150 );
@@ -68,6 +70,19 @@ jQuery( document ).ready( function( $ ) {
 
 		// Verify state of the master button after single interactions.
 		updateMasterButtonState();
+	});
+
+	// ==========================================================================
+	// 2b. CONFIRMATION BEFORE TICKING A COMPONENT WITH A WARNING
+	// ==========================================================================
+	// A component with an activation warning (such as giving an AI assistant changes that are not
+	// reviewed first) is only ticked when the user confirms the warning; cancelling unticks it.
+	$moduleGrid.on( 'change', 'input[data-activation-warning]', function() {
+		var $checkbox = $( this );
+
+		if ( $checkbox.is( ':checked' ) && ! window.confirm( $checkbox.attr( 'data-activation-warning' ) ) ) {
+			$checkbox.prop( 'checked', false );
+		}
 	});
 
 	// ==========================================================================
@@ -95,8 +110,9 @@ jQuery( document ).ready( function( $ ) {
 	 * Evaluates checked elements to dynamically correct the master button label.
 	 */
 	function updateMasterButtonState() {
-		var totalCheckboxes = $moduleGrid.find( 'input[type="checkbox"]:not(:disabled)' ).length;
-		var checkedCount    = $moduleGrid.find( 'input[type="checkbox"]:not(:disabled):checked' ).length;
+		// Components with a warning are left out: "select all" never ticks them.
+		var totalCheckboxes = $moduleGrid.find( 'input[type="checkbox"]:not(:disabled):not([data-activation-warning])' ).length;
+		var checkedCount    = $moduleGrid.find( 'input[type="checkbox"]:not(:disabled):not([data-activation-warning]):checked' ).length;
 
 		if ( checkedCount === 0 ) {
 			$toggleAllBtn.attr( 'data-state', 'select' ).text( 'Alles inschakelen' );

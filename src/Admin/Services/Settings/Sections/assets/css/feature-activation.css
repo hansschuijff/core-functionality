@@ -30,3 +30,8 @@
 .dwp-modules-grid.is-showing-disabled-only .dwp-module-card.is-filtered-out {
 	display: none;
 }
+
+/* The explanation of a module's features, under its checkboxes. */
+.dwp-module-card .dwp-cf-explanation {
+	margin: 12px 0 0 0;
+}

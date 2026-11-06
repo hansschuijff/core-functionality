@@ -110,6 +110,22 @@ interface FeatureInterface {
 	public static function needs_activation_confirmation(): bool;
 
 	/**
+	 * Requests the warning shown when someone ticks the feature, or ''.
+	 *
+	 * @since  1.1.1
+	 * @return string The warning (translated, plain text).
+	 */
+	public static function get_activation_warning(): string;
+
+	/**
+	 * Requests extra lines for the explanation of the feature on the feature activation tab.
+	 *
+	 * @since  1.1.1
+	 * @return string[] The lines, as plain text.
+	 */
+	public static function get_explanation_details(): array;
+
+	/**
 	 * Initiates the specific filters, action hooks, and layout alterations.
 	 *
 	 * @since  1.0.0

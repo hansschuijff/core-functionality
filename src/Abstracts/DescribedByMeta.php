@@ -120,4 +120,25 @@ trait DescribedByMeta {
 	public static function needs_activation_confirmation(): bool {
 		return static::meta()->confirm_activation;
 	}
+
+	/**
+	 * Returns the warning shown when someone ticks the module or feature, or ''.
+	 *
+	 * @since  1.1.1
+	 * @return string The warning (translated, plain text).
+	 */
+	public static function get_activation_warning(): string {
+		return static::meta()->activation_warning;
+	}
+
+	/**
+	 * Returns extra lines for the explanation on the feature activation tab, under the description.
+	 * A component overrides it when what it does depends on the site, such as a list of abilities.
+	 *
+	 * @since  1.1.1
+	 * @return string[] The lines, as plain text.
+	 */
+	public static function get_explanation_details(): array {
+		return array();
+	}
 }

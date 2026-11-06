@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+use function array_shift;
 use function esc_html;
 use function implode;
 
@@ -51,6 +52,68 @@ class SettingsExplanation {
 		return '<details class="dwp-cf-explanation"' . $open_attr . '><summary><span class="dashicons dashicons-info-outline" aria-hidden="true"></span> ' . $summary_html . '</summary>'
 			. '<div class="dwp-cf-explanation-body">' . $paragraphs_html . $aside_html . '</div>'
 			. '</details><!-- closes dwp-cf-explanation -->';
+	}
+
+	/**
+	 * Returns an explanation that lists items, each with a bold term, its paragraphs and an optional
+	 * list of details: for example the features of a module with what each one does. Each item is an
+	 * array with 'term' (string), 'paragraphs' (string[]) and optionally 'details' (string[]).
+	 *
+	 * @since  1.1.1
+	 * @param  string $summary The line that opens it.
+	 * @param  array  $items   The items, as plain text.
+	 * @param  bool   $open    Whether it starts open.
+	 * @return string The explanation (HTML).
+	 */
+	public static function render_list( string $summary, array $items, bool $open = false ): string {
+		$summary_html = esc_html( $summary );
+		$items_html   = array();
+		foreach ( $items as $item ) {
+			$items_html[] = self::render_list_item( $item );
+		}
+		$open_attr = $open ? ' open' : '';
+
+		return '<details class="dwp-cf-explanation"' . $open_attr . '><summary><span class="dashicons dashicons-info-outline" aria-hidden="true"></span> ' . $summary_html . '</summary>'
+			. '<div class="dwp-cf-explanation-body"><ul class="dwp-cf-explanation-list">' . implode( '', $items_html ) . '</ul><!-- closes dwp-cf-explanation-list --></div>'
+			. '</details><!-- closes dwp-cf-explanation -->';
+	}
+
+	/**
+	 * Returns one item of a listing explanation: the term in bold before its first paragraph, the
+	 * other paragraphs, and the details as a nested list.
+	 *
+	 * @since  1.1.1
+	 * @param  array{term: string, paragraphs: string[], details?: string[]} $item The item, as plain text.
+	 * @return string The item (HTML).
+	 */
+	private static function render_list_item( array $item ): string {
+		$term_html    = '<strong>' . esc_html( $item['term'] ) . '</strong>';
+		$paragraphs   = $item['paragraphs'];
+		$first        = array_shift( $paragraphs ) ?? '';
+		$first_html   = '<p>' . $term_html . ( '' !== $first ? ': ' . esc_html( $first ) : '' ) . '</p>';
+		$details_html = self::render_details( $item['details'] ?? array() );
+
+		return '<li>' . $first_html . self::render_paragraphs( $paragraphs ) . $details_html . '</li>';
+	}
+
+	/**
+	 * Returns the details of a list item as a nested list, or '' when there are none.
+	 *
+	 * @since  1.1.1
+	 * @param  string[] $details The details, as plain text.
+	 * @return string The details (HTML).
+	 */
+	private static function render_details( array $details ): string {
+		if ( empty( $details ) ) {
+			return '';
+		}
+
+		$html = array();
+		foreach ( $details as $detail ) {
+			$html[] = '<li>' . esc_html( $detail ) . '</li>';
+		}
+
+		return '<ul class="dwp-cf-explanation-details">' . implode( '', $html ) . '</ul>';
 	}
 
 	/**

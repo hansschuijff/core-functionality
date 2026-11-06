@@ -109,6 +109,22 @@ interface ModuleInterface {
 	public static function needs_activation_confirmation(): bool;
 
 	/**
+	 * Requests the warning shown when someone ticks the module, or ''.
+	 *
+	 * @since  1.1.1
+	 * @return string The warning (translated, plain text).
+	 */
+	public static function get_activation_warning(): string;
+
+	/**
+	 * Requests extra lines for the explanation of the module on the feature activation tab.
+	 *
+	 * @since  1.1.1
+	 * @return string[] The lines, as plain text.
+	 */
+	public static function get_explanation_details(): array;
+
+	/**
 	 * Initiates the module base configuration layer.
 	 *
 	 * Executed exclusively by the central loader orchestrator once the module's

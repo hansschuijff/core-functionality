@@ -21,6 +21,7 @@ use DeWittePrins\CoreFunctionality\Enums\EnvironmentRule;
 use DeWittePrins\CoreFunctionality\Enums\Register;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\AdminSettingsPage;
 use DeWittePrins\CoreFunctionality\Admin\Services\Settings\Interfaces\SettingsSectionInterface;
+use DeWittePrins\CoreFunctionality\Admin\Services\Settings\SettingsExplanation;
 
 use function __;
 use function checked;
@@ -29,6 +30,8 @@ use function esc_attr__;
 use function esc_html;
 use function esc_html__;
 use function esc_html_e;
+use function is_string;
+use function preg_split;
 use function sanitize_key;
 use function sanitize_text_field;
 use function wp_unslash;
@@ -152,6 +155,8 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 				$this->render_feature( $feature_fqcn, $reset_to_defaults );
 			}
 
+			$this->render_features_explanation( $features_fqcn );
+
 			$this->render_module_end();
 		}
 
@@ -273,9 +278,10 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 		$class_attr = esc_attr( $js_class );
 
 		if ( ! $this->is_decided_by_release( $fqcn ) ) {
-			$checked = checked( $is_enabled, true, false );
+			$checked      = checked( $is_enabled, true, false );
+			$warning_attr = $this->get_activation_warning_attr( $fqcn );
 
-			return "<input type=\"checkbox\" class=\"{$class_attr}\" name=\"{$field_name}\" value=\"{$value_attr}\" {$checked} />";
+			return "<input type=\"checkbox\" class=\"{$class_attr}\" name=\"{$field_name}\" value=\"{$value_attr}\"{$warning_attr} {$checked} />";
 		}
 
 		$checked      = checked( $this->plugin->components_register->is_switched_on( $fqcn ), true, false );
@@ -284,6 +290,68 @@ class FeatureActivationSettings implements SettingsSectionInterface {
 			: '';
 
 		return "{$hidden_field}<input type=\"checkbox\" class=\"{$class_attr}\" value=\"{$value_attr}\" {$checked} disabled />";
+	}
+
+	/**
+	 * Returns the data attribute with the warning the script shows when the checkbox is ticked,
+	 * or '' when the component has no warning.
+	 *
+	 * @since  1.1.1
+	 * @param  string $fqcn Fully qualified class name of a module or feature.
+	 * @return string The attribute (HTML, with a leading space), or ''.
+	 */
+	private function get_activation_warning_attr( string $fqcn ): string {
+		$warning = $fqcn::get_activation_warning();
+		if ( '' === $warning ) {
+			return '';
+		}
+
+		return ' data-activation-warning="' . esc_attr( $warning ) . '"';
+	}
+
+	/**
+	 * Renders the folded explanation under the features of a module: per feature its name and
+	 * what it does, so the checkboxes can stay short (Hans, November 2026).
+	 *
+	 * @since  1.1.1
+	 * @param  array $features_fqcn Fully qualified class names of the module's features.
+	 * @return void
+	 */
+	private function render_features_explanation( array $features_fqcn ): void {
+		$items = array();
+		foreach ( $features_fqcn as $feature_fqcn ) {
+			$item = is_string( $feature_fqcn ) ? $this->get_explanation_item( $feature_fqcn ) : null;
+			if ( null !== $item ) {
+				$items[] = $item;
+			}
+		}
+
+		if ( empty( $items ) ) {
+			return;
+		}
+
+		echo SettingsExplanation::render_list( __( 'Explanation', 'core-functionality' ), $items ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- render_list() escapes every part.
+	}
+
+	/**
+	 * Returns the explanation item of a feature: its name, its description split into paragraphs
+	 * at blank lines, and the details it adds itself. Null when it has no description.
+	 *
+	 * @since  1.1.1
+	 * @param  string $feature_fqcn Fully qualified class name of the feature.
+	 * @return array{term: string, paragraphs: string[], details: string[]}|null The item, as plain text.
+	 */
+	private function get_explanation_item( string $feature_fqcn ): ?array {
+		$description = $feature_fqcn::get_description();
+		if ( '' === $description ) {
+			return null;
+		}
+
+		return array(
+			'term'       => $feature_fqcn::get_name(),
+			'paragraphs' => preg_split( '/\n\s*\n/', $description ),
+			'details'    => $feature_fqcn::get_explanation_details(),
+		);
 	}
 
 	/**

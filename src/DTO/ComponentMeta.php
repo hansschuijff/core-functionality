@@ -37,6 +37,8 @@ readonly class ComponentMeta {
 	 * @param string[]     $uses_features Fully qualified class names of features it needs.
 	 * @param bool         $confirm_activation Whether an administrator must confirm it before it runs on a
 	 *                                         site, for example because it replaces code that may still run there.
+	 * @param string       $activation_warning Optional (translated) warning shown when someone ticks it on the
+	 *                                         feature activation tab; they must confirm it before it is ticked.
 	 */
 	public function __construct(
 		public string $id,
@@ -46,5 +48,6 @@ readonly class ComponentMeta {
 		public string|array $dependencies = array(),
 		public array $uses_features = array(),
 		public bool $confirm_activation = false,
+		public string $activation_warning = '',
 	) {}
 }

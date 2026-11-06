@@ -599,6 +599,30 @@ span.dwp-menu-item.is-active {
 .dwp-cf-explanation-aside p {
     margin: 0;
 }
+/* A listing explanation: one item per component, a line of air between them, lines kept short. */
+.dwp-cf-explanation-list {
+    margin: 0;
+    padding-left: 18px;
+    list-style: disc;
+    max-width: 75ch;
+}
+.dwp-cf-explanation-list > li {
+    margin-bottom: 12px;
+}
+.dwp-cf-explanation-list > li:last-child {
+    margin-bottom: 0;
+}
+.dwp-cf-explanation-list > li > p:last-child {
+    margin-bottom: 0;
+}
+.dwp-cf-explanation-details {
+    margin: 4px 0 0 0;
+    padding-left: 18px;
+    list-style: circle;
+}
+.dwp-cf-explanation-details > li {
+    margin-bottom: 2px;
+}
 
 /* Cards of choices, grouped under a heading (such as content types per plugin). */
 /* The group lies a level lower (light grey), its cards a level higher (white), like a difference in height. */
