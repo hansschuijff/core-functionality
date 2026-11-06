@@ -4,7 +4,7 @@ Tags: core-functionality
 Requires at least: 7.0
 Tested up to: 7.1.4
 Requires PHP: 8.2
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,9 @@ A modular core functionality plugin build using OOP concepts and responding to t
 Mock answer
 
 == Changelog ==
+
+= 1.1.2 =
+* AI Access: while Other Changes Without Asking for Approval is on, the AI Access tab shows a warning card with the actions it allows on this site and a link to switch it off.
 
 = 1.1.1 =
 * AI Access: abilities of other plugins that change the site or send e-mail without approval (Yoast SEO, WooCommerce, Jetpack Forms, WP Rocket, FluentCRM sending) are now blocked by Content Editing by default. It replaces the feature Hide Live Changes of 1.1.0, which never reached production.

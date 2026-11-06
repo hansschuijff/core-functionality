@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Core Functionality
  * Description:       Central Microkernel framework managing standalone modules and contextual guards.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Requires at least: 7.0
  * Requires PHP:      8.2
  * Author:            Hans Schuijff
