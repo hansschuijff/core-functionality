@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-only.
 msgid ""
 msgstr ""
-"Project-Id-Version: Core Functionality 1.1.0\n"
+"Project-Id-Version: Core Functionality 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/core-functionality\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-06T01:18:54+01:00\n"
+"POT-Creation-Date: 2026-11-06T09:47:53+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -79,7 +79,7 @@ msgstr ""
 #: src/Environment/Plugins/WoocommerceActiveCampaignIntegration.php:80
 #: src/Environment/Plugins/YoastSeo.php:86
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:483
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:107
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:114
 #: src/Modules/ReaderExperience/Features/Configuration/Configuration.php:52
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:130
 msgid "Settings"
@@ -114,7 +114,7 @@ msgid "🚨 CRITICAL WARNING:\\n\\nAre you sure you want to trigger a settings r
 msgstr ""
 
 #: src/Admin/Services/Settings/AdminSettingsPage.php:800
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:400
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:453
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:405
 #: src/Modules/Events/Features/TemplateFallback/CfTemplatesSettings.php:820
 #: src/Modules/ReaderExperience/Features/Configuration/ConfigurationSettings.php:517
@@ -177,7 +177,7 @@ msgstr ""
 #: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:333
 #: src/Admin/Services/Settings/Sections/ReleaseSettings.php:176
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:440
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:242
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:295
 #: src/Modules/DuplicatePost/Features/HideLinks/HideLinksSettings.php:253
 msgid "Explanation"
 msgstr ""
@@ -202,15 +202,15 @@ msgstr ""
 msgid "All modules and features where reset to their default settings."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:571
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:576
 msgid "Critical Error: Failed to find modules and features in scan. Is this correct?"
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:575
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:580
 msgid "Scan was succesful. All Modules and Features succesfully registered."
 msgstr ""
 
-#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:611
+#: src/Admin/Services/Settings/Sections/FeatureActivationSettings.php:616
 msgid "Scan for new features"
 msgstr ""
 
@@ -4730,47 +4730,61 @@ msgstr ""
 msgid "Finding, reading and writing drafts of site content."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:118
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:125
 msgid "Choose per content type what an AI assistant (such as Claude) may do on this site. It never publishes or deletes: you decide what goes live."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:244
+#. translators: %s: feature name.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:256
+#, php-format
+msgid "%s is switched on"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:257
+msgid "The AI assistant may also use the actions below. They apply on the site at once, without you being able to review or approve them first. Publishing posts, pages, events and courses stays with you."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:260
+msgid "Switch this off on the Feature Activation tab"
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:297
 msgid "These options let an AI assistant help you make the content of this site. The assistant logs in as a WordPress user with an application password and never has more rights than that user. What you switch on below narrows that down to these content types and these actions."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:245
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:298
 msgid "Read: the assistant may find and read items of the type, published ones too, for example as a source for a new text."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:246
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:299
 msgid "Make and change drafts: the assistant may make new drafts, change drafts and items pending review, and put them up for review. This covers everything that belongs to making content: text, layout in blocks, terms and fields. It never publishes and never deletes: you check, change and publish a draft, or throw it away."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:247
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:300
 msgid "Change published content: the assistant may change an item that is already published, in a copy (Rewrite & Republish of Yoast Duplicate Post). The original stays unchanged and online. Only when you publish the copy does it replace the original; until then you can still change the copy or throw it away."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:248
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:301
 msgid "Although changing published content this way should be safe, check that it works well for your content before you switch it on. When in doubt, have the assistant write a new draft and paste it into the existing content yourself."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:249
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:302
 msgid "The levels are steps: a level includes the ones before it."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:277
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:330
 msgid "Other"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:359
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:412
 msgid "Read"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:360
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:413
 msgid "Make and change drafts"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:361
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:414
 msgid "Change published content"
 msgstr ""
 
@@ -4820,6 +4834,16 @@ msgstr ""
 #: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:335
 #, php-format
 msgid "The fields \"%s\" do not apply to this content type and were ignored."
+msgstr ""
+
+#: src/Modules/AiAccess/Features/ContentEditing/UnapprovedAbilitiesBlocker.php:167
+msgid "None of these plugins offers such actions on this site at the moment."
+msgstr ""
+
+#. translators: 1: plugin name, 2: comma-separated list of actions.
+#: src/Modules/AiAccess/Features/ContentEditing/UnapprovedAbilitiesBlocker.php:173
+#, php-format
+msgid "%1$s: %2$s"
 msgstr ""
 
 #: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:73
@@ -4939,34 +4963,24 @@ msgstr ""
 msgid "The AI assistant may write the SEO title and meta description (Yoast SEO) of drafts."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:71
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:54
 msgid "Other Changes Without Asking for Approval"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:74
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:57
 msgid "This lets the AI assistant make changes you cannot review or approve beforehand. First read in the explanation which kinds of changes this covers. Do you want to switch this on?"
 msgstr ""
 
-#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:87
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:70
 msgid "With this, the AI assistant may also change settings and data of other plugins, such as Yoast SEO, WooCommerce, WP Rocket, Jetpack Forms and FluentCRM. Such changes have no draft: they apply on the site at once, without you being able to review them first. Think of changing a published product, clearing the cache or sending an e-mail. The list below shows which actions this concerns on this site."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:88
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:71
 msgid "Posts, pages, events and courses always go through a draft: the AI assistant may not publish them, also with this option. That stays with you."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:89
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:72
 msgid "Off by default. Only switch it on when the AI assistant may do such actions for you. What it can do then exactly depends on the user role of the AI assistant."
-msgstr ""
-
-#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:118
-msgid "None of these plugins offers such actions on this site at the moment."
-msgstr ""
-
-#. translators: 1: plugin name, 2: comma-separated list of actions.
-#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:124
-#, php-format
-msgid "%1$s: %2$s"
 msgstr ""
 
 #: src/Modules/Cleaner/Cleaner.php:41
@@ -5731,12 +5745,12 @@ msgid "The plugin stopped because its installation is damaged. The rest of the w
 msgstr ""
 
 #. translators: 1: feature name, 2: module name.
-#: src/Services/ComponentsRegister.php:845
+#: src/Services/ComponentsRegister.php:890
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr ""
 
-#: src/Services/ComponentsRegister.php:904
+#: src/Services/ComponentsRegister.php:949
 msgid "Core Functionality: the list of modules and features is missing, so none of them can run. Reinstall the plugin from its release zip."
 msgstr ""
 

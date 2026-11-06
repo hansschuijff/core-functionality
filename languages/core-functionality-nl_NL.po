@@ -5748,3 +5748,17 @@ msgstr "Geen van deze plugins biedt op dit moment zulke acties op deze site."
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
+
+#. translators: %s: feature name.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:256
+#, php-format
+msgid "%s is switched on"
+msgstr "%s staat aan"
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:257
+msgid "The AI assistant may also use the actions below. They apply on the site at once, without you being able to review or approve them first. Publishing posts, pages, events and courses stays with you."
+msgstr "De AI-assistent mag ook de acties hieronder gebruiken. Ze gelden meteen op de site, zonder dat je ze eerst kunt beoordelen of goedkeuren. Berichten, pagina's, evenementen en cursussen publiceren blijft aan jou."
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditingSettings.php:260
+msgid "Switch this off on the Feature Activation tab"
+msgstr "Zet dit uit op het tabblad Features activeren"
