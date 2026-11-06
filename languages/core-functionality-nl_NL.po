@@ -3957,10 +3957,6 @@ msgstr "In de hoofdbalk houden (zichtbaar)"
 msgid "Save Toolbar Visibility Filter"
 msgstr "Zichtbaarheid toolbar opslaan"
 
-#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
-msgid "The Admin Toolbar Builder Feature builds a navigation shortcuts menu in the admin toolbar."
-msgstr "Bouwt een eigen menu in de admin-toolbar."
-
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:127
 msgid "Compose the shortcuts menu of the admin toolbar from the links of all known plugins and themes. Links of plugins that are not active are kept, but only shown once the plugin is active."
 msgstr "Stel het menu van de admin-toolbar samen uit de menu-items van alle bekende plugins en thema's. Menu-items van plugins die niet actief zijn blijven bewaard, maar verschijnen pas als de plugin actief is."
@@ -4443,14 +4439,6 @@ msgstr "Importeren / exporteren…"
 msgid "Take the default or a JSON file into the editor (replace or merge), or download the menu as JSON."
 msgstr "Neem de standaard of een JSON-bestand over in de editor (vervangen of samenvoegen), of download het menu als JSON."
 
-#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
-msgid "The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar."
-msgstr "Lost een paar opmaakproblemen in de admin-toolbar op."
-
-#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
-msgid "The Admin Toolbar Visualizer Feature Maps active runtime Node ID keys for development troubleshooting."
-msgstr "Toont de ID's van de onderdelen in de admin-toolbar, als hulp bij het ontwikkelen."
-
 #: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:83
 msgid "Node ID's"
 msgstr "Node-id's"
@@ -4543,10 +4531,6 @@ msgstr "Past een concept of een item dat op beoordeling wacht aan: alleen de opg
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:73
 msgid "Content Editing"
 msgstr "Inhoud bewerken"
-
-#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:74
-msgid "An AI assistant may find, read and write drafts of posts, pages and other content types. It never publishes; you do."
-msgstr "Een AI-assistent mag concepten van berichten, pagina's en andere inhoudstypes zoeken, lezen en schrijven. Hij publiceert nooit; dat doe jij."
 
 #: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:108
 msgid "Content editing"
@@ -4652,10 +4636,6 @@ msgstr "De velden \"%s\" horen niet bij dit inhoudstype en zijn genegeerd."
 msgid "Course Content"
 msgstr "Cursusinhoud"
 
-#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:74
-msgid "An AI assistant may write drafts of Sensei courses and lessons and place lessons in a course and module. Quizzes and enrolments are left alone."
-msgstr "Een AI-assistent mag concepten van Sensei-cursussen en -lessen schrijven en lessen in een cursus en module plaatsen. Quizzen en inschrijvingen blijven onaangeroerd."
-
 #: src/Modules/AiAccess/Features/CourseContent/CourseFields.php:140
 msgid "A course's structure cannot be changed here; place each lesson instead."
 msgstr "De structuur van een cursus kan hier niet worden aangepast; plaats in plaats daarvan elke les."
@@ -4681,10 +4661,6 @@ msgstr "De cursusstructuur kon niet worden opgeslagen."
 #: src/Modules/AiAccess/Features/EventContent/EventContent.php:68
 msgid "Event Content"
 msgstr "Evenementinhoud"
-
-#: src/Modules/AiAccess/Features/EventContent/EventContent.php:69
-msgid "An AI assistant may write drafts of events (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone."
-msgstr "Een AI-assistent mag concepten van evenementen (The Events Calendar) schrijven, met datums, locatie, organisatoren en prijs. Tickets blijven onaangeroerd."
 
 #: src/Modules/AiAccess/Features/EventContent/EventFields.php:155
 msgid "This event has no dates yet; give both start and end."
@@ -4720,14 +4696,6 @@ msgstr "Locaties en organisatoren opsommen"
 msgid "Lists the existing venues and organizers of events with their ids, to link them to an event. New ones are not created."
 msgstr "Somt de bestaande locaties en organisatoren van evenementen op met hun id, om ze aan een evenement te koppelen. Nieuwe worden niet aangemaakt."
 
-#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:54
-msgid "Rewrite Copies"
-msgstr "Herschrijfkopieën"
-
-#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:55
-msgid "An AI assistant may change published content in a Rewrite & Republish copy (Yoast Duplicate Post) that replaces the original only when you publish it."
-msgstr "Een AI-assistent mag gepubliceerde inhoud aanpassen in een kopie via Herschrijven & Opnieuw publiceren (Yoast Duplicate Post), die het origineel pas vervangt als jij die publiceert."
-
 #: src/Modules/AiAccess/Features/RewriteCopies/StartRewrite.php:78
 msgid "Start rewrite"
 msgstr "Herschrijven starten"
@@ -4760,10 +4728,6 @@ msgstr "De kopie is na het maken niet gevonden."
 #: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:48
 msgid "SEO Fields"
 msgstr "SEO-velden"
-
-#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
-msgid "An AI assistant may write the SEO title and meta description of Yoast SEO."
-msgstr "Een AI-assistent mag de SEO-titel en metabeschrijving van Yoast SEO schrijven."
 
 #: src/Modules/Cleaner/Cleaner.php:41
 msgid "WordPress Cleaner"
@@ -5719,10 +5683,68 @@ msgstr "Core Functionality: de lijst met modules en features ontbreekt, dus geen
 msgid "Available up to"
 msgstr "Beschikbaar tot"
 
-#: src/Modules/AiAccess/Features/HideLiveAbilities/HideLiveAbilities.php:69
-msgid "Hide Live Changes"
-msgstr "Live wijzigingen verbergen"
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilder.php:69
+msgid "Builds a menu of shortcuts in the admin toolbar, set up on its own settings tab."
+msgstr "Maakt een menu met snelkoppelingen in de admin-toolbar, in te stellen op een eigen tabblad."
 
-#: src/Modules/AiAccess/Features/HideLiveAbilities/HideLiveAbilities.php:70
-msgid "An AI assistant cannot use abilities of other plugins that change the live site or send e-mail."
-msgstr "Een AI-assistent kan geen acties van andere plugins gebruiken die de live site wijzigen of e-mail versturen."
+#: src/Modules/AdminToolbar/Features/StylesFixer/StylesFixer.php:46
+msgid "Fixes some display problems in the admin toolbar."
+msgstr "Herstelt enkele weergaveproblemen in de admin-toolbar."
+
+#: src/Modules/AdminToolbar/Features/Visualizer/Visualizer.php:46
+msgid "Shows the id of each item in the admin toolbar, to help when setting up a menu or looking for a problem."
+msgstr "Toont het id van elk onderdeel in de admin-toolbar, handig bij het inrichten van een menu of het zoeken naar een probleem."
+
+#: src/Modules/AiAccess/Features/ContentEditing/ContentEditing.php:74
+msgid "The AI assistant may find and read posts, pages and other content, and make and change drafts of them. It never publishes: you do."
+msgstr "De AI-assistent mag berichten, pagina's en andere inhoud zoeken en lezen, en er concepten van maken en aanpassen. Hij publiceert nooit: dat doe jij."
+
+#: src/Modules/AiAccess/Features/CourseContent/CourseContent.php:74
+msgid "The AI assistant may read Sensei courses and lessons, make and change drafts of them, and place a lesson in a course and module. Quizzes and enrolments are left alone."
+msgstr "De AI-assistent mag cursussen en lessen van Sensei lezen, er concepten van maken en aanpassen, en een les in een cursus en module plaatsen. Quizzen en inschrijvingen blijven ongemoeid."
+
+#: src/Modules/AiAccess/Features/EventContent/EventContent.php:69
+msgid "The AI assistant may read events and make and change drafts of them (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone."
+msgstr "De AI-assistent mag evenementen lezen en er concepten van maken en aanpassen (The Events Calendar), met datums, locatie, organisatoren en kosten. Tickets blijven ongemoeid."
+
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:54
+msgid "Edit Published Content as a Draft"
+msgstr "Gepubliceerde inhoud in concept bewerken"
+
+#: src/Modules/AiAccess/Features/RewriteCopies/RewriteCopies.php:55
+msgid "The AI assistant may change a published item in a draft copy (Yoast Duplicate Post). The original only changes when you publish the copy, and keeps its address and categories."
+msgstr "De AI-assistent mag een gepubliceerd item aanpassen in een conceptkopie (Yoast Duplicate Post). Het origineel verandert pas als jij de kopie publiceert, en houdt zijn adres en categorieën."
+
+#: src/Modules/AiAccess/Features/SeoFields/SeoFields.php:49
+msgid "The AI assistant may write the SEO title and meta description (Yoast SEO) of drafts."
+msgstr "De AI-assistent mag de SEO-titel en metabeschrijving (Yoast SEO) van concepten schrijven."
+
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:71
+msgid "Other Changes Without Asking for Approval"
+msgstr "Overige bewerkingen zonder toestemmingsvraag"
+
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:74
+msgid "This lets the AI assistant make changes you cannot review or approve beforehand. First read in the explanation which kinds of changes this covers. Do you want to switch this on?"
+msgstr "Hiermee mag de AI-assistent wijzigingen doen die je niet vooraf kunt beoordelen of goedkeuren. Lees eerst in de uitleg om wat voor wijzigingen het gaat. Wil je dit aanzetten?"
+
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:87
+msgid "With this, the AI assistant may also change settings and data of other plugins, such as Yoast SEO, WooCommerce, WP Rocket, Jetpack Forms and FluentCRM. Such changes have no draft: they apply on the site at once, without you being able to review them first. Think of changing a published product, clearing the cache or sending an e-mail. The list below shows which actions this concerns on this site."
+msgstr "Hiermee mag de AI-assistent ook instellingen en gegevens van andere plugins aanpassen, zoals Yoast SEO, WooCommerce, WP Rocket, Jetpack Forms en FluentCRM. Zulke wijzigingen hebben geen concept: ze gelden meteen op de site, zonder dat je ze eerst kunt beoordelen. Denk aan een gepubliceerd product wijzigen, de cache legen of een mail versturen. De lijst hieronder toont om welke acties het op deze site gaat."
+
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:88
+msgid "Posts, pages, events and courses always go through a draft: the AI assistant may not publish them, also with this option. That stays with you."
+msgstr "Berichten, pagina's, evenementen en cursussen blijven altijd via een concept lopen: de AI-assistent mag die ook met dit vinkje niet publiceren. Dat blijft aan jou."
+
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:89
+msgid "Off by default. Only switch it on when the AI assistant may do such actions for you. What it can do then exactly depends on the user role of the AI assistant."
+msgstr "Standaard staat dit uit. Zet het alleen aan als de AI-assistent zulke handelingen voor je mag doen. Wat er dan precies kan, hangt af van de gebruikersrol van de AI-assistent."
+
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:118
+msgid "None of these plugins offers such actions on this site at the moment."
+msgstr "Geen van deze plugins biedt op dit moment zulke acties op deze site."
+
+#. translators: 1: plugin name, 2: comma-separated list of actions.
+#: src/Modules/AiAccess/Features/UnapprovedChanges/UnapprovedChanges.php:124
+#, php-format
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
