@@ -271,6 +271,12 @@ is inserted before (at the end: of the last node), so it never takes over a subm
 its branch. With one node selected, "Add" (the checked pool items) inserts below it (inside it when it is a submenu
 without a link). The admin menu feature has a similar, latent mechanism for menu items.
 
+On touch screens a tap on a menu item with a submenu opens or closes that submenu (on every level) and never
+follows its link, as in the admin menu on a phone (`menu-builder-touch.js`; WordPress's `admin-bar.js` only
+does this for the top level of the toolbar, deeper down a tap followed the link). Rule for building menus: the
+link of an item with a submenu is always also one of its items, as in the admin menu, so nothing becomes
+unreachable; the parent's link is not duplicated (Hans, November 2026).
+
 Visibility is shown as a one-click switch per node. A node is shown only where its parents are shown
 too (the runtime checks every node), but a child keeps its own setting under a restricted parent: its
 setting usually follows from where its link goes, and changing it automatically would lose that when the

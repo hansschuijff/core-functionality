@@ -34,6 +34,8 @@ use function esc_url;
 use function add_action;
 use function array_key_first;
 use function count;
+use function plugins_url;
+use function wp_enqueue_script;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -91,6 +93,33 @@ class MenuBuilder extends AbstractFeature {
 
 		add_action( 'admin_bar_menu', array( $this, 'inject_toolbar_shortcuts' ), 999 );
 		add_action( 'admin_bar_menu', array( $this, 'cleanup_default_toolbar_nodes' ), 1000 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_touch_script' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_touch_script' ) );
+	}
+
+	/**
+	 * Enqueues the script that opens the menu's submenus with a tap on touch screens.
+	 *
+	 * WordPress only does that for the top level of the toolbar; deeper down a tap follows the link.
+	 *
+	 * @since  1.1.3
+	 * @return void
+	 */
+	public function enqueue_touch_script(): void {
+		if ( ! current_user_can( 'administrator' ) ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'dwp-cf-admin-toolbar-menu-builder-touch-js',
+			plugins_url( 'assets/js/menu-builder-touch.js', __FILE__ ),
+			array( 'admin-bar' ),
+			$this->plugin->get_data( 'version' ),
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
 	}
 
 	/**

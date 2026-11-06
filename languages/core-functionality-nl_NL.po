@@ -3979,6 +3979,10 @@ msgstr "Toolbarmenu (max. %d niveaus)"
 msgid "Drag to reorder; while dragging, move sideways to set the depth, or use the arrows to indent. Admin, Both and Site set where a menu item is shown; a menu item is only shown where its parents are shown too."
 msgstr "Sleep om de volgorde te wijzigen; beweeg tijdens het slepen opzij om de diepte te kiezen, of gebruik de pijlen om in te springen. Admin, Beide en Site bepalen waar een menu-item verschijnt; een menu-item verschijnt alleen waar ook zijn ouders verschijnen."
 
+#: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:188
+msgid "On a phone or tablet, a tap on a menu item with items below it opens them instead of following its link. So make its link also one of those items, as in the admin menu."
+msgstr "Op een telefoon of tablet opent een tik op een menu-item met items eronder die items, in plaats van de link te volgen. Zet de link daarom ook als een van die items eronder, zoals in het adminmenu."
+
 #: src/Modules/AdminToolbar/Features/MenuBuilder/MenuBuilderSettings.php:232
 msgid "There is no default menu yet. \"Save as default\" makes this menu the starting point for other sites: it goes into the plugin and along with the next release."
 msgstr "Er is nog geen standaardmenu. \"Opslaan als standaard\" maakt dit menu het startpunt voor andere sites: het gaat de plugin in en met de volgende release mee."

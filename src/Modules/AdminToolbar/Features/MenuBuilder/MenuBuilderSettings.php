@@ -185,6 +185,7 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 		/* translators: %d: the maximum number of menu levels. */
 		$tree_title = esc_html( sprintf( __( 'Toolbar menu (max. %d levels)', 'core-functionality' ), self::MAX_DEPTH + 1 ) );
 		$tree_desc  = esc_html__( 'Drag to reorder; while dragging, move sideways to set the depth, or use the arrows to indent. Admin, Both and Site set where a menu item is shown; a menu item is only shown where its parents are shown too.', 'core-functionality' );
+		$touch_desc = esc_html__( 'On a phone or tablet, a tap on a menu item with items below it opens them instead of following its link. So make its link also one of those items, as in the admin menu.', 'core-functionality' );
 		$status     = esc_html( $this->get_default_status_text() );
 		$json       = wp_json_encode( $data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE );
 
@@ -205,6 +206,7 @@ class MenuBuilderSettings implements SettingsSectionInterface {
 				<h3>{$tree_title}</h3>
 				<div class="dwp-mb-intro js-dwp-mb-intro">
 					<p class="description">{$tree_desc}</p>
+					<p class="description">{$touch_desc}</p>
 					<p class="dwp-mb-status">{$status}</p>
 				</div>
 				<div class="dwp-mb-tree js-dwp-mb-tree"></div>
