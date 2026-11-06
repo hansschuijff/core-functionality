@@ -43,7 +43,7 @@ class StylesFixer extends AbstractFeature {
 		return new ComponentMeta(
 			id:            'fix_admin_bar_styles',
 			name:          __( 'Style Fixes', 'core-functionality' ),
-			description:   __( 'The Admin Toolbar Styles Fixer Feature solves some styling issues in the admin toolbar.', 'core-functionality' ),
+			description:   __( 'Fixes some display problems in the admin toolbar.', 'core-functionality' ),
 		);
 	}
 

@@ -51,8 +51,8 @@ class RewriteCopies extends AbstractFeature {
 	public static function get_meta(): ComponentMeta {
 		return new ComponentMeta(
 			id:            'ai_access_rewrite_copies',
-			name:          __( 'Rewrite Copies', 'core-functionality' ),
-			description:   __( 'An AI assistant may change published content in a Rewrite & Republish copy (Yoast Duplicate Post) that replaces the original only when you publish it.', 'core-functionality' ),
+			name:          __( 'Edit Published Content as a Draft', 'core-functionality' ),
+			description:   __( 'The AI assistant may change a published item in a draft copy (Yoast Duplicate Post). The original only changes when you publish the copy, and keeps its address and categories.', 'core-functionality' ),
 			dependencies:  'duplicate-post',
 			uses_features: array( ContentEditing::class ),
 		);

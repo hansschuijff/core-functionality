@@ -43,7 +43,7 @@ class Visualizer extends AbstractFeature {
 		return new ComponentMeta(
 			id:            'admin_toolbar_visualizer',
 			name:          __( 'Show Node IDs', 'core-functionality' ),
-			description:   __( 'The Admin Toolbar Visualizer Feature Maps active runtime Node ID keys for development troubleshooting.', 'core-functionality' ),
+			description:   __( 'Shows the id of each item in the admin toolbar, to help when setting up a menu or looking for a problem.', 'core-functionality' ),
 		);
 	}
 

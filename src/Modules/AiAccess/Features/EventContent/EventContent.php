@@ -66,7 +66,7 @@ class EventContent extends AbstractFeature {
 		return new ComponentMeta(
 			id:            'ai_access_event_content',
 			name:          __( 'Event Content', 'core-functionality' ),
-			description:   __( 'An AI assistant may write drafts of events (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone.', 'core-functionality' ),
+			description:   __( 'The AI assistant may read events and make and change drafts of them (The Events Calendar), with dates, venue, organizers and cost. Tickets are left alone.', 'core-functionality' ),
 			dependencies:  'the-events-calendar',
 			uses_features: array( ContentEditing::class ),
 		);

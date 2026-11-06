@@ -46,7 +46,7 @@ class SeoFields extends AbstractFeature {
 		return new ComponentMeta(
 			id:            'ai_access_seo_fields',
 			name:          __( 'SEO Fields', 'core-functionality' ),
-			description:   __( 'An AI assistant may write the SEO title and meta description of Yoast SEO.', 'core-functionality' ),
+			description:   __( 'The AI assistant may write the SEO title and meta description (Yoast SEO) of drafts.', 'core-functionality' ),
 			dependencies:  'yoast-seo',
 			uses_features: array( ContentEditing::class ),
 		);

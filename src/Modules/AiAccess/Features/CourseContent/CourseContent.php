@@ -71,7 +71,7 @@ class CourseContent extends AbstractFeature {
 		return new ComponentMeta(
 			id:            'ai_access_course_content',
 			name:          __( 'Course Content', 'core-functionality' ),
-			description:   __( 'An AI assistant may write drafts of Sensei courses and lessons and place lessons in a course and module. Quizzes and enrolments are left alone.', 'core-functionality' ),
+			description:   __( 'The AI assistant may read Sensei courses and lessons, make and change drafts of them, and place a lesson in a course and module. Quizzes and enrolments are left alone.', 'core-functionality' ),
 			dependencies:  'sensei-lms',
 			uses_features: array( ContentEditing::class ),
 		);
