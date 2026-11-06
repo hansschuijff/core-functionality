@@ -112,6 +112,9 @@ new modules and features for Hans's own sites.
 - The app's browser pane blocks WordPress's own scripts on the speeltuin (`load-scripts.php`, even
   `jquery.min.js`: `ERR_BLOCKED_BY_CLIENT`, October 2026), so admin JS does not run there. Test page
   scripts by injecting jQuery from code.jquery.com and running the code with `javascript_tool`. (bevestig)
+  The plugin's own scripts and styles are blocked too; to test them in the pane, a temporary mu-plugin that
+  prints the file contents inline (`<script>` / `<style>` in `admin_footer`, only on the tab under test)
+  works; remove it afterwards (November 2026).
 - Comments are still partly Dutch; new code is English, converting old comments is low priority.
 
 ## Git
