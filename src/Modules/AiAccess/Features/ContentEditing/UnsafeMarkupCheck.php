@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WP_HTML_Tag_Processor;
 
 use function array_keys;
+use function array_map;
 use function in_array;
 use function is_array;
 use function is_string;
@@ -74,6 +75,17 @@ class UnsafeMarkupCheck {
 		}
 
 		return $added;
+	}
+
+	/**
+	 * Returns all unsafe markup in the html: what wp_kses_post() would remove.
+	 *
+	 * @since  1.1.3
+	 * @param  string $html The html.
+	 * @return string[] A description of the markup; empty when there is none.
+	 */
+	public function find_all( string $html ): array {
+		return array_map( 'strval', array_keys( $this->count_unsafe_markup( $html ) ) );
 	}
 
 	/**

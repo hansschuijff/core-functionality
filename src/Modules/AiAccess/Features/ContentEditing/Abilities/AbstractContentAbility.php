@@ -239,7 +239,7 @@ abstract class AbstractContentAbility implements AbilityInterface {
 			),
 			'content' => array(
 				'type'        => 'string',
-				'description' => 'The content as block editor markup (for example <!-- wp:paragraph --><p>Text</p><!-- /wp:paragraph -->). Replaces the whole content, so send all of it. Inline SVG and other markup that wp_kses_post() refuses is removed; to change existing content, prefer core-functionality/replace-in-draft.',
+				'description' => 'The content as block editor markup (for example <!-- wp:paragraph --><p>Text</p><!-- /wp:paragraph -->). Replaces the whole content, so send all of it. Markup that wp_kses_post() refuses, such as inline SVG, is removed by create-draft and refused by update-draft; to change existing content, prefer core-functionality/replace-in-draft.',
 			),
 			'excerpt' => array(
 				'type'        => 'string',

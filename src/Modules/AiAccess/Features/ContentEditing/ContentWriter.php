@@ -158,6 +158,11 @@ class ContentWriter {
 			return $terms;
 		}
 
+		$removed = $this->check_removed_markup( $input );
+		if ( is_wp_error( $removed ) ) {
+			return $removed;
+		}
+
 		$postarr = $this->get_changed_fields( $input );
 		if ( isset( $postarr['post_content'] ) ) {
 			$missing = $this->check_protected_blocks( $profile, $post->post_content, $postarr['post_content'] );
@@ -174,6 +179,31 @@ class ContentWriter {
 		}
 
 		return $this->finish( $post->ID, $terms, $input['fields'] ?? array() );
+	}
+
+	/**
+	 * Refuses new content with markup that wp_kses_post() would remove, such as inline SVG, so it
+	 * is not lost without anyone noticing.
+	 *
+	 * @since  1.1.3
+	 * @param  array $input The input.
+	 * @return true|WP_Error True, or the markup that would be removed.
+	 */
+	private function check_removed_markup( array $input ): true|WP_Error {
+		if ( ! isset( $input['content'] ) ) {
+			return true;
+		}
+
+		$unsafe = $this->markup_check->find_all( (string) $input['content'] );
+		if ( array() === $unsafe ) {
+			return true;
+		}
+
+		return new WP_Error(
+			'cf_ai_removed_markup',
+			/* translators: %s: the markup that would be removed, separated by commas. */
+			sprintf( __( 'Nothing was changed. Saving this content would remove this markup: %s. To change existing content, use core-functionality/replace-in-draft; new markup of this kind is for the site owner to add.', 'core-functionality' ), implode( ', ', $unsafe ) )
+		);
 	}
 
 	/**
