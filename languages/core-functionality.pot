@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T18:11:09+01:00\n"
+"POT-Creation-Date: 2026-11-08T18:22:23+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -4700,7 +4700,7 @@ msgstr ""
 
 #: src/Modules/AiAccess/Features/ContentEditing/Abilities/CreateDraft.php:109
 #: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:149
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:193
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:223
 msgid "An AI assistant may not make drafts of this content type."
 msgstr ""
 
@@ -4868,64 +4868,70 @@ msgstr ""
 msgid "Nothing was changed. %s"
 msgstr ""
 
+#. translators: %s: the markup that would be removed, separated by commas.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:205
+#, php-format
+msgid "Nothing was changed. Saving this content would remove this markup: %s. To change existing content, use core-functionality/replace-in-draft; new markup of this kind is for the site owner to add."
+msgstr ""
+
 #. translators: %s: the markup that is refused, separated by commas.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:247
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:277
 #, php-format
 msgid "Nothing was changed. The new text adds markup an AI assistant may not add: %s. The site owner can add it."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:254
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:284
 msgid "Nothing was changed. Saving would also change other parts of the content, for example because this user may not save unfiltered HTML."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:290
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:320
 msgid "The stored content differs from the result of the replacements: something changed it while saving. Check it with get-content."
 msgstr ""
 
 #. translators: %s: the current post status.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:307
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:337
 #, php-format
 msgid "Only a draft can be submitted for review; this one has the status \"%s\"."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:334
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:364
 msgid "Use core-functionality/start-rewrite to work in a copy that replaces the original once it is published."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:335
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:365
 msgid "Ask the site owner to set it back to draft."
 msgstr ""
 
 #. translators: 1: the post status, 2: what to do instead.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:340
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:370
 #, php-format
 msgid "This item has the status \"%1$s\" and cannot be changed by an AI assistant. %2$s"
 msgstr ""
 
 #. translators: %s: block names, separated by commas.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:391
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:421
 #, php-format
 msgid "The new content leaves out blocks that must stay: %s. Keep them as they are."
 msgstr ""
 
 #. translators: %s: taxonomy name.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:411
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:441
 #, php-format
 msgid "The taxonomy \"%s\" cannot be used for this content type."
 msgstr ""
 
 #. translators: 1: term id, 2: taxonomy name.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:421
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:451
 #, php-format
 msgid "There is no term %1$d in \"%2$s\". Use core-functionality/list-terms to find existing terms."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:448
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:478
 msgid "The item could not be found after saving."
 msgstr ""
 
 #. translators: %s: the id of a group of fields.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:456
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:486
 #, php-format
 msgid "The fields \"%s\" do not apply to this content type and were ignored."
 msgstr ""

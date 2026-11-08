@@ -4517,7 +4517,7 @@ msgstr "Maakt een nieuw bericht, een nieuwe pagina of een ander item aan als con
 
 #: src/Modules/AiAccess/Features/ContentEditing/Abilities/CreateDraft.php:109
 #: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:149
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:193
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:223
 msgid "An AI assistant may not make drafts of this content type."
 msgstr "Een AI-assistent mag geen concepten van dit inhoudstype maken."
 
@@ -4630,49 +4630,49 @@ msgid "Change published content"
 msgstr "Gepubliceerde inhoud aanpassen"
 
 #. translators: %s: the current post status.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:307
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:337
 #, php-format
 msgid "Only a draft can be submitted for review; this one has the status \"%s\"."
 msgstr "Alleen een concept kan ter beoordeling worden aangeboden; dit item heeft de status \"%s\"."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:334
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:364
 msgid "Use core-functionality/start-rewrite to work in a copy that replaces the original once it is published."
 msgstr "Gebruik core-functionality/start-rewrite om te werken in een kopie die het origineel vervangt zodra die gepubliceerd wordt."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:335
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:365
 msgid "Ask the site owner to set it back to draft."
 msgstr "Vraag de eigenaar van de site om het terug te zetten naar concept."
 
 #. translators: 1: the post status, 2: what to do instead.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:340
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:370
 #, php-format
 msgid "This item has the status \"%1$s\" and cannot be changed by an AI assistant. %2$s"
 msgstr "Dit item heeft de status \"%1$s\" en kan niet door een AI-assistent worden aangepast. %2$s"
 
 #. translators: %s: block names, separated by commas.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:391
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:421
 #, php-format
 msgid "The new content leaves out blocks that must stay: %s. Keep them as they are."
 msgstr "De nieuwe inhoud laat blokken weg die moeten blijven: %s. Laat ze staan zoals ze zijn."
 
 #. translators: %s: taxonomy name.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:411
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:441
 #, php-format
 msgid "The taxonomy \"%s\" cannot be used for this content type."
 msgstr "De taxonomie \"%s\" kan niet voor dit inhoudstype worden gebruikt."
 
 #. translators: 1: term id, 2: taxonomy name.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:421
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:451
 #, php-format
 msgid "There is no term %1$d in \"%2$s\". Use core-functionality/list-terms to find existing terms."
 msgstr "Er is geen term %1$d in \"%2$s\". Gebruik core-functionality/list-terms om bestaande termen te vinden."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:448
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:478
 msgid "The item could not be found after saving."
 msgstr "Het item is na het opslaan niet gevonden."
 
 #. translators: %s: the id of a group of fields.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:456
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:486
 #, php-format
 msgid "The fields \"%s\" do not apply to this content type and were ignored."
 msgstr "De velden \"%s\" horen niet bij dit inhoudstype en zijn genegeerd."
@@ -5857,15 +5857,21 @@ msgid "Nothing was changed. %s"
 msgstr "Er is niets gewijzigd. %s"
 
 #. translators: %s: the markup that is refused, separated by commas.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:247
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:277
 #, php-format
 msgid "Nothing was changed. The new text adds markup an AI assistant may not add: %s. The site owner can add it."
 msgstr "Er is niets gewijzigd. De nieuwe tekst voegt opmaak toe die een AI-assistent niet mag toevoegen: %s. De eigenaar van de site kan dat wel."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:254
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:284
 msgid "Nothing was changed. Saving would also change other parts of the content, for example because this user may not save unfiltered HTML."
 msgstr "Er is niets gewijzigd. Opslaan zou ook andere delen van de inhoud wijzigen, bijvoorbeeld omdat deze gebruiker geen ongefilterde HTML mag opslaan."
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:290
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:320
 msgid "The stored content differs from the result of the replacements: something changed it while saving. Check it with get-content."
 msgstr "De opgeslagen inhoud wijkt af van het resultaat van de vervangingen: iets heeft die tijdens het opslaan gewijzigd. Controleer die met get-content."
+
+#. translators: %s: the markup that would be removed, separated by commas.
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:205
+#, php-format
+msgid "Nothing was changed. Saving this content would remove this markup: %s. To change existing content, use core-functionality/replace-in-draft; new markup of this kind is for the site owner to add."
+msgstr "Er is niets gewijzigd. Bij het opslaan van deze inhoud zou deze opmaak verdwijnen: %s. Gebruik core-functionality/replace-in-draft om bestaande inhoud aan te passen; nieuwe opmaak van deze soort voegt de eigenaar van de site toe."
