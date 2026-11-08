@@ -170,7 +170,7 @@ class CleanerSettings implements SettingsSectionInterface {
 					<tr>
 						<td style="padding: 12px 15px; vertical-align: middle;">
 							<strong style="font-size: 13px; color: #1e293b;"><?php echo esc_html( $node_data['label'] ); ?></strong>
-							<code style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 3px; margin-left: 8px; color: #64748b; font-family: monospace;"><?php echo esc_html( $node_id ); ?></code>
+							<?php echo $this->render_node_id_badges( $node_id ); ?>
 						</td>
 						<td style="padding: 12px 15px; text-align: center; vertical-align: middle;">
 							<input type="checkbox" name="<?php echo $section_id; ?>[<?php echo esc_attr( $node_id ); ?>][main]" value="1" <?php checked( $keep_in_main, true ); ?> style="margin: 0; width: 18px; height: 18px;" />
@@ -182,6 +182,29 @@ class CleanerSettings implements SettingsSectionInterface {
 			</tbody>
 		</table>
 		<?php
+	}
+
+	/**
+	 * Renders the node ids a row stands for: all ids of a group, otherwise the row's own id.
+	 *
+	 * @since  1.1.3
+	 * @param  string $row_id The row id.
+	 * @return string The escaped markup.
+	 */
+	private function render_node_id_badges( string $row_id ): string {
+		$node_groups = Cleaner::get_node_groups();
+		$node_ids    = $node_groups[ $row_id ]['node_ids'] ?? array( $row_id );
+
+		$badges = '';
+		foreach ( $node_ids as $node_id ) {
+			$node_id_html = esc_html( $node_id );
+
+			$badges .= <<<HTML
+				<code style="font-size: 11px; background: #f1f5f9; padding: 2px 6px; border-radius: 3px; margin-left: 8px; color: #64748b; font-family: monospace;">{$node_id_html}</code>
+			HTML;
+		}
+
+		return $badges;
 	}
 
 	/**
