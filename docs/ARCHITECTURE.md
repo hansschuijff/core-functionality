@@ -501,19 +501,34 @@ goes through `wp_kses_post()`, terms must exist in a taxonomy of the type's prof
 that drops a protected block (an event's date or ticket block, a course outline, a lesson's quiz) is
 refused.
 
+**`replace-in-draft` (1.1.3).** `wp_kses_post()` removes inline SVG, so `create-draft` and `update-draft` lose
+it without an error; page 19116 on dewitteprins.nl has 12 of them. `update-draft` is left as it is for now
+(open point, Hans decides). `replace-in-draft` changes only pieces: `ContentReplacer` looks up every `old_text`
+in the original content (it must occur exactly once, overlapping occurrences included), refuses pairs that
+overlap, and fills in by byte offset; if one pair fails nothing changes. Because the whole content cannot go
+through `wp_kses_post()` and checking only `new_text` misses a fragment that turns unsafe in place (`class="x"` into
+`onclick="x"`), `UnsafeMarkupCheck` compares before and after with `WP_HTML_Tag_Processor` and refuses tags,
+attributes and URL protocols `wp_kses_post()` would not allow that the change adds. Existing SVG stays, its
+colors and text may change; new SVG elements or attributes, and any change to a handler, URL or script, are
+refused. A tag the processor cannot finish (a `<script>` without an end tag) counts as unsafe, because it sees
+nothing after it. Before saving, the result goes through `pre_post_content` and `content_save_pre`; if those
+would change it (a user without `unfiltered_html` would lose the SVG) it is refused. After saving, a difference
+with the expected content (a plugin on `wp_insert_post_data`) gives a warning; the revision allows going back. Not
+checked: whether `old_text` cuts through block markup, so an ordinary block can become invalid; the site owner sees that in the editor.
+
 Feature `ContentEditing` (no dependency) holds the base: `ContentTypes` (profiles per post type, from
 `core-functionality/ai-access-content-types`, with the choices of the "AI Access" tab; defaults in
 `settings/modules/ai-access/`),
 `FieldHandlers` (groups of extra fields under `fields`, from `core-functionality/ai-access-field-handlers`),
 `ContentReader`, `ContentWriter`, and the abilities `find-content`, `get-content`, `list-terms`,
-`create-draft`, `update-draft`, `submit-for-review` (list filterable: `core-functionality/ai-access-abilities`,
+`create-draft`, `update-draft`, `replace-in-draft`, `submit-for-review` (list filterable: `core-functionality/ai-access-abilities`,
 which also hands over the shared `ContentServices`). The other features plug in through those filters and
 each has its own dependency (listed below).
 
 **Levels per content type** (Hans, October 2026: every checkbox must say which action it allows):
 `read` (find and read, published items too: `find-content`, `get-content`, `list-terms`), `write` (make and
 change drafts and items pending review, submit for review: `create-draft`, `update-draft`,
-`submit-for-review`; "making" covers layout in blocks, terms and fields too; uploading media is not possible
+`replace-in-draft`, `submit-for-review`; "making" covers layout in blocks, terms and fields too; uploading media is not possible
 yet) and `rewrite` (change published content in a copy: `start-rewrite`). They are steps: a level counts only
 when every lower one is on (`ContentTypes::has_level()`), saving switches the lower ones on, and a small
 script on the tab keeps the checkboxes of a card in steps. Defaults: read and write on, rewrite as the
