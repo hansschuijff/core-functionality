@@ -501,9 +501,11 @@ goes through `wp_kses_post()`, terms must exist in a taxonomy of the type's prof
 that drops a protected block (an event's date or ticket block, a course outline, a lesson's quiz) is
 refused.
 
-**`replace-in-draft` (1.1.3).** `wp_kses_post()` removes inline SVG, so `create-draft` and `update-draft` lose
-it without an error; page 19116 on dewitteprins.nl has 12 of them. `update-draft` is left as it is for now
-(open point, Hans decides). `replace-in-draft` changes only pieces: `ContentReplacer` looks up every `old_text`
+**`replace-in-draft` (1.1.3).** `wp_kses_post()` removes inline SVG; page 19116 on dewitteprins.nl has 12 of them.
+`update-draft` therefore refuses content with markup that function would remove (`UnsafeMarkupCheck::find_all()`)
+instead of losing it silently, and points to `replace-in-draft` (Hans, November 2026). `create-draft` still
+removes it: a new item has nothing to lose. In a sample of 45 of the 150 published articles on dewitteprins.nl
+(2011-2026), `update-draft` refuses one. `replace-in-draft` changes only pieces: `ContentReplacer` looks up every `old_text`
 in the original content (it must occur exactly once, overlapping occurrences included), refuses pairs that
 overlap, and fills in by byte offset; if one pair fails nothing changes. Because the whole content cannot go
 through `wp_kses_post()` and checking only `new_text` misses a fragment that turns unsafe in place (`class="x"` into

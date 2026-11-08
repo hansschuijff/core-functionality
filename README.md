@@ -134,7 +134,7 @@ WordPress user with an application password and has that user's rights.
 | `core-functionality/get-content` | One item in full: block markup, excerpt, terms, extra fields |
 | `core-functionality/list-terms` | Existing categories, tags and other terms |
 | `core-functionality/create-draft` | A new item as a draft |
-| `core-functionality/update-draft` | Change a draft, an item pending review, or a copy (removes inline SVG) |
+| `core-functionality/update-draft` | Change a draft, an item pending review, or a copy; refuses content with markup it would remove, such as inline SVG |
 | `core-functionality/replace-in-draft` | Replace pieces of the content of the same items; the rest stays byte for byte the same |
 | `core-functionality/submit-for-review` | Set a draft to pending review |
 | `core-functionality/start-rewrite` | Copy of a published item (with Duplicate Post) |
