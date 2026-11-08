@@ -502,9 +502,9 @@ that drops a protected block (an event's date or ticket block, a course outline,
 refused.
 
 **`replace-in-draft` (1.1.3).** `wp_kses_post()` removes inline SVG; page 19116 on dewitteprins.nl has 12 of them.
-`update-draft` therefore refuses content with markup that function would remove (`UnsafeMarkupCheck::find_all()`)
-instead of losing it silently, and points to `replace-in-draft` (Hans, November 2026). `create-draft` still
-removes it: a new item has nothing to lose. In a sample of 45 of the 150 published articles on dewitteprins.nl
+`create-draft` and `update-draft` therefore refuse content with markup that function would remove
+(`UnsafeMarkupCheck::find_all()`) instead of losing it silently, and point to `replace-in-draft` (Hans, November
+2026). In a sample of 45 of the 150 published articles on dewitteprins.nl
 (2011-2026), `update-draft` refuses one. `replace-in-draft` changes only pieces: `ContentReplacer` looks up every `old_text`
 in the original content (it must occur exactly once, overlapping occurrences included), refuses pairs that
 overlap, and fills in by byte offset; if one pair fails nothing changes. Because the whole content cannot go
