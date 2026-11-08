@@ -115,6 +115,11 @@ class ContentWriter {
 			return $terms;
 		}
 
+		$removed = $this->check_removed_markup( $input );
+		if ( is_wp_error( $removed ) ) {
+			return $removed;
+		}
+
 		$post_id = wp_insert_post(
 			wp_slash(
 				array(
