@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-08T18:22:23+01:00\n"
+"POT-Creation-Date: 2026-11-08T21:43:08+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -915,6 +915,7 @@ msgstr ""
 
 #: src/Environment/Core/WordPress.php:202
 #: src/Environment/Plugins/SenseiLms.php:190
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:307
 msgid "View"
 msgstr ""
 
@@ -929,6 +930,7 @@ msgstr ""
 #: src/Environment/Core/WordPress.php:211
 #: src/Environment/Core/WordPress.php:254
 #: src/Environment/Plugins/TheEventsCalendar.php:94
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:303
 msgid "Edit"
 msgstr ""
 
@@ -4092,17 +4094,21 @@ msgstr ""
 msgid "Provides advanced layout overrides, performance enhancements, and custom nodes filtering for the WordPress admin bar."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:56
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:59
 #: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:85
 msgid "Clean up"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:57
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:60
 msgid "Moves unwanted Admin Toolbar shortcuts to an overflow submenu, based on a negative-selection user matrix."
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:150
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:149
 msgid "More"
+msgstr ""
+
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php:311
+msgid "Duplicate"
 msgstr ""
 
 #: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:96
@@ -4121,7 +4127,7 @@ msgstr ""
 msgid "Keep in Main Toolbar (Visible)"
 msgstr ""
 
-#: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:236
+#: src/Modules/AdminToolbar/Features/Cleaner/CleanerSettings.php:259
 msgid "Save Toolbar Visibility Filter"
 msgstr ""
 
@@ -4699,8 +4705,8 @@ msgid "Creates a new post, page or other item as a draft, with title, content, e
 msgstr ""
 
 #: src/Modules/AiAccess/Features/ContentEditing/Abilities/CreateDraft.php:109
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:149
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:223
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:154
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:228
 msgid "An AI assistant may not make drafts of this content type."
 msgstr ""
 
@@ -4869,69 +4875,69 @@ msgid "Nothing was changed. %s"
 msgstr ""
 
 #. translators: %s: the markup that would be removed, separated by commas.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:205
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:210
 #, php-format
 msgid "Nothing was changed. Saving this content would remove this markup: %s. To change existing content, use core-functionality/replace-in-draft; new markup of this kind is for the site owner to add."
 msgstr ""
 
 #. translators: %s: the markup that is refused, separated by commas.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:277
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:282
 #, php-format
 msgid "Nothing was changed. The new text adds markup an AI assistant may not add: %s. The site owner can add it."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:284
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:289
 msgid "Nothing was changed. Saving would also change other parts of the content, for example because this user may not save unfiltered HTML."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:320
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:325
 msgid "The stored content differs from the result of the replacements: something changed it while saving. Check it with get-content."
 msgstr ""
 
 #. translators: %s: the current post status.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:337
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:342
 #, php-format
 msgid "Only a draft can be submitted for review; this one has the status \"%s\"."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:364
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:369
 msgid "Use core-functionality/start-rewrite to work in a copy that replaces the original once it is published."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:365
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:370
 msgid "Ask the site owner to set it back to draft."
 msgstr ""
 
 #. translators: 1: the post status, 2: what to do instead.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:370
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:375
 #, php-format
 msgid "This item has the status \"%1$s\" and cannot be changed by an AI assistant. %2$s"
 msgstr ""
 
 #. translators: %s: block names, separated by commas.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:421
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:426
 #, php-format
 msgid "The new content leaves out blocks that must stay: %s. Keep them as they are."
 msgstr ""
 
 #. translators: %s: taxonomy name.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:441
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:446
 #, php-format
 msgid "The taxonomy \"%s\" cannot be used for this content type."
 msgstr ""
 
 #. translators: 1: term id, 2: taxonomy name.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:451
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:456
 #, php-format
 msgid "There is no term %1$d in \"%2$s\". Use core-functionality/list-terms to find existing terms."
 msgstr ""
 
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:478
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:483
 msgid "The item could not be found after saving."
 msgstr ""
 
 #. translators: %s: the id of a group of fields.
-#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:486
+#: src/Modules/AiAccess/Features/ContentEditing/ContentWriter.php:491
 #, php-format
 msgid "The fields \"%s\" do not apply to this content type and were ignored."
 msgstr ""

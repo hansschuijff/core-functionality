@@ -1442,6 +1442,10 @@ msgstr "Duplicate Post-instellingen"
 msgid "Duplicate Post"
 msgstr "Duplicate Post"
 
+#: src/Modules/AdminToolbar/Features/Cleaner/Cleaner.php
+msgid "Duplicate"
+msgstr "Dupliceren"
+
 #: src/Environment/Plugins/EuVatCompliance.php:76
 #: src/Environment/Plugins/EuVatCompliance.php:78
 msgid "VAT Compliance"
