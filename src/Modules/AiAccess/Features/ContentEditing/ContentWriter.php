@@ -40,6 +40,7 @@ use function wp_insert_post;
 use function wp_kses_post;
 use function wp_set_object_terms;
 use function wp_slash;
+use function wp_unslash;
 use function wp_update_post;
 
 /**
@@ -64,12 +65,16 @@ class ContentWriter {
 	 * Constructor.
 	 *
 	 * @since 1.0.0
-	 * @param ContentTypes  $types    The content types that may be used.
-	 * @param FieldHandlers $handlers The groups of extra fields.
+	 * @param ContentTypes      $types        The content types that may be used.
+	 * @param FieldHandlers     $handlers     The groups of extra fields.
+	 * @param ContentReplacer   $replacer     Replaces pieces of text.
+	 * @param UnsafeMarkupCheck $markup_check Finds unsafe markup that a change adds.
 	 */
 	public function __construct(
 		private readonly ContentTypes $types,
 		private readonly FieldHandlers $handlers,
+		private readonly ContentReplacer $replacer,
+		private readonly UnsafeMarkupCheck $markup_check,
 	) {}
 
 	/**
@@ -169,6 +174,122 @@ class ContentWriter {
 		}
 
 		return $this->finish( $post->ID, $terms, $input['fields'] ?? array() );
+	}
+
+	/**
+	 * Replaces pieces of the content of a draft or a post pending review. All pieces apply or
+	 * none does, and everything around them stays byte for byte the same. That is why the content
+	 * does not go through wp_kses_post() here (it would remove inline SVG); check_replacement()
+	 * refuses what that function would have refused in the new text.
+	 *
+	 * @since  1.1.3
+	 * @param  WP_Post $post         The post.
+	 * @param  array   $replacements List of arrays with old_text and new_text.
+	 * @return array|WP_Error The post and warnings, or the reason why nothing was saved.
+	 */
+	public function replace_in_content( WP_Post $post, array $replacements ): array|WP_Error {
+		$profile = $this->types->get( $post->post_type );
+		if ( null === $profile || ! $this->types->can_write( $post->post_type ) ) {
+			return new WP_Error( 'cf_ai_type', __( 'An AI assistant may not make drafts of this content type.', 'core-functionality' ) );
+		}
+
+		if ( ! $this->is_editable( $post ) ) {
+			return $this->not_editable_error( $post );
+		}
+
+		$new_content = $this->replacer->replace( $post->post_content, $replacements );
+		if ( is_wp_error( $new_content ) ) {
+			return $new_content;
+		}
+
+		$refused = $this->check_replacement( $profile, $post->post_content, $new_content );
+		if ( is_wp_error( $refused ) ) {
+			return $refused;
+		}
+
+		$saved = wp_update_post(
+			wp_slash(
+				array(
+					'ID'           => $post->ID,
+					'post_content' => $new_content,
+				)
+			),
+			true
+		);
+		if ( is_wp_error( $saved ) ) {
+			return $saved;
+		}
+
+		return $this->add_stored_content_warning( $this->finish( $post->ID, array(), array() ), $new_content );
+	}
+
+	/**
+	 * Refuses new content that loses a protected block, adds unsafe markup or would not survive
+	 * saving as it is.
+	 *
+	 * @since  1.1.3
+	 * @param  ContentTypeProfileInterface $profile     The profile of the post type.
+	 * @param  string                      $old_content The current content.
+	 * @param  string                      $new_content The new content.
+	 * @return true|WP_Error True, or the reason why it is refused.
+	 */
+	private function check_replacement( ContentTypeProfileInterface $profile, string $old_content, string $new_content ): true|WP_Error {
+		$missing = $this->check_protected_blocks( $profile, $old_content, $new_content );
+		if ( is_wp_error( $missing ) ) {
+			return $missing;
+		}
+
+		$added = $this->markup_check->find_added( $old_content, $new_content );
+		if ( array() !== $added ) {
+			return new WP_Error(
+				'cf_ai_unsafe_markup',
+				/* translators: %s: the markup that is refused, separated by commas. */
+				sprintf( __( 'Nothing was changed. The new text adds markup an AI assistant may not add: %s. The site owner can add it.', 'core-functionality' ), implode( ', ', $added ) )
+			);
+		}
+
+		if ( $this->apply_save_filters( $new_content ) !== $new_content ) {
+			return new WP_Error(
+				'cf_ai_save_filters',
+				__( 'Nothing was changed. Saving would also change other parts of the content, for example because this user may not save unfiltered HTML.', 'core-functionality' )
+			);
+		}
+
+		return true;
+	}
+
+	/**
+	 * Returns the content as the filters of wp_insert_post() would save it.
+	 *
+	 * @since  1.1.3
+	 * @param  string $content The content.
+	 * @return string The content after the filters.
+	 */
+	private function apply_save_filters( string $content ): string {
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core's own filter.
+		$filtered = apply_filters( 'pre_post_content', wp_slash( $content ) );
+
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core's own filter.
+		return wp_unslash( apply_filters( 'content_save_pre', $filtered ) );
+	}
+
+	/**
+	 * Adds a warning when the stored content is not what was meant to be saved, for example because
+	 * a plugin changed it while saving. The revision of the save makes it possible to go back.
+	 *
+	 * @since  1.1.3
+	 * @param  array|WP_Error $result  The post and warnings.
+	 * @param  string         $content The content that was meant to be saved.
+	 * @return array|WP_Error The post and warnings.
+	 */
+	private function add_stored_content_warning( array|WP_Error $result, string $content ): array|WP_Error {
+		if ( is_wp_error( $result ) || $result['post']->post_content === $content ) {
+			return $result;
+		}
+
+		$result['warnings'][] = __( 'The stored content differs from the result of the replacements: something changed it while saving. Check it with get-content.', 'core-functionality' );
+
+		return $result;
 	}
 
 	/**

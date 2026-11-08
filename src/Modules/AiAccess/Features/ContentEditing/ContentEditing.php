@@ -23,6 +23,7 @@ use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abil
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\FindContent;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\GetContent;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\ListTerms;
+use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\ReplaceInDraft;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\SubmitForReview;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Abilities\UpdateDraft;
 use DeWittePrins\CoreFunctionality\Modules\AiAccess\Features\ContentEditing\Interfaces\AbilityInterface;
@@ -140,6 +141,7 @@ class ContentEditing extends AbstractFeature {
 			new ListTerms( $services ),
 			new CreateDraft( $services ),
 			new UpdateDraft( $services ),
+			new ReplaceInDraft( $services ),
 			new SubmitForReview( $services ),
 		);
 
@@ -177,7 +179,7 @@ class ContentEditing extends AbstractFeature {
 				types:    $types,
 				handlers: $handlers,
 				reader:   new ContentReader( $types, $handlers ),
-				writer:   new ContentWriter( $types, $handlers ),
+				writer:   new ContentWriter( $types, $handlers, new ContentReplacer(), new UnsafeMarkupCheck() ),
 			);
 		}
 

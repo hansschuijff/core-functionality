@@ -148,7 +148,7 @@ class StartRewrite extends AbstractContentAbility {
 		return array(
 			'copy'     => $this->services->reader->summarize( $copy ),
 			'original' => $this->services->reader->summarize( $post ),
-			'next'     => 'Change the copy with core-functionality/update-draft using the id of the copy. The site owner publishes it to replace the original.',
+			'next'     => 'Change the copy with core-functionality/replace-in-draft (or update-draft for other fields) using the id of the copy. The site owner publishes it to replace the original.',
 		);
 	}
 
