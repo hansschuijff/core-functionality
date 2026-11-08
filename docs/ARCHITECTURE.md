@@ -361,6 +361,25 @@ Cleanup point (minor): the catalogue holds some duplicate links (the same URL fr
 Sensei Pro repeating Sensei LMS, a menu head equal to its first item, or two WooCommerce links with `#`).
 Harmless, at most a little inefficient.
 
+### Toolbar cleaner
+
+The `Cleaner` feature moves every top-level toolbar node to the "More" overflow unless it is ticked on its
+settings tab. It recognises a node only by its id; URLs are not stored. New ids are logged on each request
+(`admin-toolbar-cleaner-movable-nodes`), the ticks live in `admin-toolbar-cleaner-keep-this-nodes`.
+
+Some functions change id per page, so ticking one left the other in "More" while they looked the same.
+`Cleaner::get_node_groups()` lists these as one row with one choice, stored under the row id: `view` also
+covers `preview` (draft) and `archive` (list screen), `duplicate-post` also covers `new-draft` and
+`rewrite-republish` (Duplicate Post makes one top-level node, or a parent with both as children). `edit` keeps
+its id everywhere, but changes its title per page; it is in the list for the fixed label ("Edit"). At most
+one id of a group is top-level on a page, so a group never merges two visible items. Titles on the toolbar
+itself stay as they are. The stored formats did not change: ticks on `edit` and `view` keep working, old rows
+for other group members are dropped from the logged list, and a tick on only such a member no longer counts
+(Hans, November 2026). The list is only written when it changes.
+
+Hans also named an item for deleting a post; WordPress has no such toolbar node and none was found on the
+speeltuin, so it is not grouped. If it exists on another site, add its id to a group. (bevestig)
+
 ### Reader Experience
 
 Hans's Reader Experience plugin has no options; it is steered by filters only. The module
