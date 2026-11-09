@@ -4,7 +4,7 @@ Tags: core-functionality
 Requires at least: 7.0
 Tested up to: 7.1.4
 Requires PHP: 8.2
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,14 @@ A modular core functionality plugin build using OOP concepts and responding to t
 Mock answer
 
 == Changelog ==
+
+= 1.1.3 =
+* AI Access: new ability Replace in Draft changes pieces of a draft, an item pending review or a rewrite copy without sending the whole content back; the rest stays exactly the same, so inline SVG survives.
+* AI Access: Update Draft and Create Draft refuse content that would lose markup (such as inline SVG) instead of removing it without notice.
+* AI Access: more space below the warning card on the AI Access tab.
+* Admin toolbar: the Clean up tab shows View, Edit and Duplicate as one row each, so a link that changes its id per page (such as View on a draft or a list screen) no longer ends up under "More".
+* Admin toolbar: each Menu Builder item can choose its title form (Auto, Short, Full or Source).
+* Admin toolbar: submenus of the Menu Builder open with a tap on touch screens, on every level.
 
 = 1.1.2 =
 * AI Access: while Other Changes Without Asking for Approval is on, the AI Access tab shows a warning card with the actions it allows on this site and a link to switch it off.
