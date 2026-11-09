@@ -377,8 +377,9 @@ itself stay as they are. The stored formats did not change: ticks on `edit` and 
 for other group members are dropped from the logged list, and a tick on only such a member no longer counts
 (Hans, November 2026). The list is only written when it changes.
 
-Hans also named an item for deleting a post; WordPress has no such toolbar node and none was found on the
-speeltuin, so it is not grouped. If it exists on another site, add its id to a group. (bevestig)
+The view and edit links are not on every page, by WordPress's design: `edit` only on the front end (on a
+single post, term or author page), `view` / `preview` / `archive` only in the admin (editor, term or list
+screen). That they come and go is no sign the cleaner treats them apart.
 
 ### Reader Experience
 
