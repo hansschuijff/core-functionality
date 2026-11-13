@@ -178,6 +178,13 @@ return array (
     'staging' => 'adjustable',
     'production' => 'adjustable',
   ),
+  'DeWittePrins\\CoreFunctionality\\Modules\\Themes\\Features\\GenesisOnlyPlugins\\GenesisOnlyPlugins' => 
+  array (
+    'status' => 'staging',
+    'development' => 'adjustable',
+    'staging' => 'adjustable',
+    'production' => 'auto-off',
+  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\DuplicatePost\\Features\\HideLinks\\HideLinks' => 
   array (
     'status' => 'production',
