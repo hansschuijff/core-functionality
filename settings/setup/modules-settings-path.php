@@ -21,4 +21,5 @@ return array(
 	'events'            => 'events/',
 	'ai-access'         => 'ai-access/',
 	'duplicate-post'    => 'duplicate-post/',
+	'themes'            => 'themes/',
 );

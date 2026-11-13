@@ -53,6 +53,11 @@ return array(
 	'duplicate-post-settings'        => 'duplicate-post-settings',
 
 	/**
+	 * Feature: Themes->GenesisOnlyPlugins. The plugins that only work with Genesis.
+	 */
+	'genesis-only-plugins'           => 'genesis-only-plugins',
+
+	/**
 	 * Feature: module->feature
 	 */
 

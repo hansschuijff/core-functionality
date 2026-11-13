@@ -5888,12 +5888,26 @@ msgstr "Houdt de site in de pas met het actieve thema."
 msgid "Genesis-only plugins"
 msgstr "Plugins alleen voor Genesis"
 
-#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:75
-msgid "Switches off plugins that only work with Genesis when the active theme is not built on Genesis, and tells the administrator which ones."
-msgstr "Zet plugins die alleen met Genesis werken uit als het actieve thema niet op Genesis gebouwd is, en meldt de beheerder welke."
+msgid "Switches off plugins that only work with Genesis when the site switches to a theme not built on Genesis, and warns when one of them is still active."
+msgstr "Zet plugins die alleen met Genesis werken uit als de site overstapt op een thema dat niet op Genesis gebouwd is, en waarschuwt als er daarna nog een actief is."
 
 #. translators: %s: comma-separated plugin names.
-#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:209
 #, php-format
-msgid "The active theme is not built on Genesis, so these Genesis-only plugins were switched off: %s."
-msgstr "Het actieve thema is niet op Genesis gebouwd, dus deze plugins die alleen voor Genesis zijn, zijn uitgezet: %s."
+msgid "The new theme is not built on Genesis, so these Genesis-only plugins were switched off: %s."
+msgstr "Het nieuwe thema is niet op Genesis gebouwd, dus deze plugins die alleen voor Genesis zijn, zijn uitgezet: %s."
+
+#. translators: %s: comma-separated plugin names.
+#, php-format
+msgid "These Genesis-only plugins were switched off: %s."
+msgstr "Deze plugins die alleen voor Genesis zijn, zijn uitgezet: %s."
+
+#. translators: %s: comma-separated plugin names.
+#, php-format
+msgid "The active theme is not built on Genesis, but these plugins that only work with Genesis are active: %s."
+msgstr "Het actieve thema is niet op Genesis gebouwd, maar deze plugins die alleen met Genesis werken, staan aan: %s."
+
+msgid "Switch them off"
+msgstr "Zet ze uit"
+
+msgid "Go to the plugins"
+msgstr "Naar de plugins"

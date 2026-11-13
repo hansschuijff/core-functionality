@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-13T20:33:10+01:00\n"
+"POT-Creation-Date: 2026-11-13T21:05:58+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: core-functionality\n"
@@ -5619,18 +5619,39 @@ msgstr ""
 msgid "Adjustments to Sensei LMS."
 msgstr ""
 
-#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:75
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:113
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:321
 msgid "Genesis-only plugins"
 msgstr ""
 
-#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:76
-msgid "Switches off plugins that only work with Genesis when the active theme is not built on Genesis, and tells the administrator which ones."
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:114
+msgid "Switches off plugins that only work with Genesis when the site switches to a theme not built on Genesis, and warns when one of them is still active."
 msgstr ""
 
 #. translators: %s: comma-separated plugin names.
-#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:204
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:161
 #, php-format
-msgid "The active theme is not built on Genesis, so these Genesis-only plugins were switched off: %s."
+msgid "The new theme is not built on Genesis, so these Genesis-only plugins were switched off: %s."
+msgstr ""
+
+#. translators: %s: comma-separated plugin names.
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:226
+#, php-format
+msgid "These Genesis-only plugins were switched off: %s."
+msgstr ""
+
+#. translators: %s: comma-separated plugin names.
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:325
+#, php-format
+msgid "The active theme is not built on Genesis, but these plugins that only work with Genesis are active: %s."
+msgstr ""
+
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:351
+msgid "Switch them off"
+msgstr ""
+
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:364
+msgid "Go to the plugins"
 msgstr ""
 
 #: src/Modules/Themes/Themes.php:46
