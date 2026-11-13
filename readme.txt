@@ -4,7 +4,7 @@ Tags: core-functionality
 Requires at least: 7.0
 Tested up to: 7.1.4
 Requires PHP: 8.2
-Stable tag: 1.1.3
+Stable tag: 1.2.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,9 @@ A modular core functionality plugin build using OOP concepts and responding to t
 Mock answer
 
 == Changelog ==
+
+= 1.2.0 =
+* Themes: new module. Its feature Genesis-only plugins switches off plugins that only work with Genesis when the site switches to a theme not built on Genesis. After that it only warns on the dashboard and the plugins and updates pages, with a button to switch them off. Status staging; off on production for now.
 
 = 1.1.3 =
 * AI Access: new ability Replace in Draft changes pieces of a draft, an item pending review or a rewrite copy without sending the whole content back; the rest stays exactly the same, so inline SVG survives.
