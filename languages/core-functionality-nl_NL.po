@@ -5879,3 +5879,21 @@ msgstr "De opgeslagen inhoud wijkt af van het resultaat van de vervangingen: iet
 #, php-format
 msgid "Nothing was changed. Saving this content would remove this markup: %s. To change existing content, use core-functionality/replace-in-draft; new markup of this kind is for the site owner to add."
 msgstr "Er is niets gewijzigd. Bij het opslaan van deze inhoud zou deze opmaak verdwijnen: %s. Gebruik core-functionality/replace-in-draft om bestaande inhoud aan te passen; nieuwe opmaak van deze soort voegt de eigenaar van de site toe."
+
+#: src/Modules/Themes/Themes.php:46
+msgid "Keeps the site in step with the active theme."
+msgstr "Houdt de site in de pas met het actieve thema."
+
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:74
+msgid "Genesis-only plugins"
+msgstr "Plugins alleen voor Genesis"
+
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:75
+msgid "Switches off plugins that only work with Genesis when the active theme is not built on Genesis, and tells the administrator which ones."
+msgstr "Zet plugins die alleen met Genesis werken uit als het actieve thema niet op Genesis gebouwd is, en meldt de beheerder welke."
+
+#. translators: %s: comma-separated plugin names.
+#: src/Modules/Themes/Features/GenesisOnlyPlugins/GenesisOnlyPlugins.php:209
+#, php-format
+msgid "The active theme is not built on Genesis, so these Genesis-only plugins were switched off: %s."
+msgstr "Het actieve thema is niet op Genesis gebouwd, dus deze plugins die alleen voor Genesis zijn, zijn uitgezet: %s."

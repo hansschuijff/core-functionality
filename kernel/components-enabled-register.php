@@ -38,6 +38,8 @@ return array (
   'DeWittePrins\\CoreFunctionality\\Modules\\ActiveWoo\\Features\\KeepLicenseAlive\\KeepLicenseAlive' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\ReaderExperience\\ReaderExperience' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\ReaderExperience\\Features\\Configuration\\Configuration' => true,
+  'DeWittePrins\\CoreFunctionality\\Modules\\Themes\\Themes' => true,
+  'DeWittePrins\\CoreFunctionality\\Modules\\Themes\\Features\\GenesisOnlyPlugins\\GenesisOnlyPlugins' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\DuplicatePost\\DuplicatePost' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\DuplicatePost\\Features\\HideLinks\\HideLinks' => true,
   'DeWittePrins\\CoreFunctionality\\Modules\\Cleaner\\Cleaner' => true,

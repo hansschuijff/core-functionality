@@ -56,6 +56,10 @@ return array (
   array (
     0 => 'DeWittePrins\\CoreFunctionality\\Modules\\ReaderExperience\\Features\\Configuration\\Configuration',
   ),
+  'DeWittePrins\\CoreFunctionality\\Modules\\Themes\\Themes' => 
+  array (
+    0 => 'DeWittePrins\\CoreFunctionality\\Modules\\Themes\\Features\\GenesisOnlyPlugins\\GenesisOnlyPlugins',
+  ),
   'DeWittePrins\\CoreFunctionality\\Modules\\DuplicatePost\\DuplicatePost' => 
   array (
     0 => 'DeWittePrins\\CoreFunctionality\\Modules\\DuplicatePost\\Features\\HideLinks\\HideLinks',
