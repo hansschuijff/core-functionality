@@ -638,6 +638,41 @@ the post type `sensei_message` "Sensei messages" ("Sensei-berichten") through Se
 confuses lists of post types (Hans, October 2026). The other labels use Sensei's own patterns. Sensei's
 submenu item stays "Berichten": under the Sensei menu it is clear.
 
+### Themes
+
+The module `Themes` (no dependency) keeps the site in step with the active theme. It came with the block
+theme `de-witte-prins`, which replaces the Genesis child theme on both sites (November 2026); the theme
+only does presentation, so this belongs here (Hans).
+
+Feature `GenesisOnlyPlugins` deactivates plugins that only work with Genesis when the active theme's
+template is not `genesis` (any other theme, block or classic). It runs on `after_switch_theme` (init 99 of
+the first request after a switch, also after `wp theme activate`) and on `admin_init` as a cheap check
+(one `is_plugin_active()` per listed plugin), so a Genesis-only plugin switched on later is caught on the
+next admin page load. Deactivation is normal (`deactivate_plugins()`, not silent); none of the listed
+plugins has a deactivation hook. An administrator (`activate_plugins`) gets an info notice with the
+names; without a logged-in user (WP-CLI, cron) there is no notice.
+
+The default list (filter `core-functionality/genesis-only-plugins`, basenames) was checked against the
+plugins' source on the speeltuin (13 November 2026): Dambuster, Featured Page Advanced (both refuse to
+activate without Genesis), Connect for WooCommerce, Connect for Sensei LMS, eNews Extended, Simple
+Sidebars, Display Featured Image for Genesis, Featured Videos for Genesis, Genesis Admin Bar Plus. Left
+out because they work with any theme: Genesis Blocks, Genesis Blocks Pro (folder
+`genesis-page-builder`, the plugin once called Genesis Page Builder), Genesis Custom Blocks (Pro) and
+Genesis Simple FAQ (shortcodes, no Genesis calls).
+
+Legacy check (13 November 2026, block theme active, front pages and admin load without fatal errors):
+the legacy plugin calls Genesis functions in only three places, all safe without Genesis.
+`genesis/src/customize-widget-areas.php` calls `genesis_widget_area()` only from `genesis_*` hooks, and its
+configs (`load-widget-areas`, `remove-widget-areas`, `hookup-callbacks`) return nothing without Genesis;
+`shoutout/src/add-shoutouts.php` calls `genesis_get_theme_handle()` behind `is_genesis_child_theme()`;
+`the-events-calendar/_deprecated/deprecated.php` calls `genesis_share_get_icon_output()` behind a Genesis
+Simple Share check. The rest only hooks into `genesis_*` actions and filters, which never fire. Still to
+move or drop once Genesis is gone for good: the legacy `genesis/` module (widget areas, forced Genesis
+settings, Essence Pro tweaks), `the-events-calendar/src/genesis-connect.php` (layout and archive settings
+for event archives, to redo in the block theme's templates), the Genesis layout filter in
+`sensei-lms/src/other-customizations.php` (commented out) and the Genesis branch in
+`shoutout/src/add-shoutouts.php` (bevestig).
+
 ## Legacy handover
 
 Temporary, until the legacy plugin is gone (agreed with Hans, November 2026).
