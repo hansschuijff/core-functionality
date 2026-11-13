@@ -644,15 +644,22 @@ The module `Themes` (no dependency) keeps the site in step with the active theme
 theme `de-witte-prins`, which replaces the Genesis child theme on both sites (November 2026); the theme
 only does presentation, so this belongs here (Hans).
 
-Feature `GenesisOnlyPlugins` deactivates plugins that only work with Genesis when the active theme's
-template is not `genesis` (any other theme, block or classic). It runs on `after_switch_theme` (init 99 of
-the first request after a switch, also after `wp theme activate`) and on `admin_init` as a cheap check
-(one `is_plugin_active()` per listed plugin), so a Genesis-only plugin switched on later is caught on the
-next admin page load. Deactivation is normal (`deactivate_plugins()`, not silent); none of the listed
-plugins has a deactivation hook. An administrator (`activate_plugins`) gets an info notice with the
-names; without a logged-in user (WP-CLI, cron) there is no notice.
+Feature `GenesisOnlyPlugins` handles plugins that only work with Genesis. The theme switch is the one
+moment it acts by itself: on `after_switch_theme` (init 99 of the first request after a switch, also after
+`wp theme activate`) to a theme whose template is not `genesis` (any other theme, block or classic), it
+deactivates the listed plugins that are active, with an info notice for an administrator (`activate_plugins`;
+none without a logged-in user). After that it only reports (Hans, 13 November 2026): a plugin that is still
+or again active without Genesis may be kept on purpose, so no broom that sweeps an existing situation away.
+On the dashboard and the plugins and updates pages (`current_screen`, like `TemplateMonitor`), users who
+manage plugins see a warning with the active ones, a "Switch them off" button (nonce, then a redirect
+without the query args and an info notice) and, outside the plugins page, a link to the active plugins.
+The check is a few `is_plugin_active()` calls on the already loaded plugin list, so no transient.
+Deactivation is normal (`deactivate_plugins()`, not silent); none of the listed plugins has a deactivation
+hook.
 
-The default list (filter `core-functionality/genesis-only-plugins`, basenames) was checked against the
+The list lives in the settings file `settings/modules/themes/genesis-only-plugins.php` (key
+`genesis-only-plugins`, module `themes`), read through `Settings::get()`, and can be adjusted with the filter
+`core-functionality/genesis-only-plugins` (basenames). It was checked against the
 plugins' source on the speeltuin (13 November 2026): Dambuster, Featured Page Advanced (both refuse to
 activate without Genesis), Connect for WooCommerce, Connect for Sensei LMS, eNews Extended, Simple
 Sidebars, Display Featured Image for Genesis, Featured Videos for Genesis, Genesis Admin Bar Plus. Left
